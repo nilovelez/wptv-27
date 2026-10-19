@@ -45,6 +45,7 @@ Replace the legacy classic theme `wptv2` on WordPress.tv with a new block theme,
 - PHP-only blocks (`supports.autoRegister`, no `block.json`, no build) only where core cannot do the job: producer credit, video downloads/subtitles.
 - Front page with the `wptv3` structure, without "Popular videos" (replaced by recent events and video categories).
 - Provisional Navigation block links in the header.
+- Design lockdown (`inc/lockdown.php`): no Site Editor access for anyone, theme files always win over database copies of templates and parts, user global styles and Additional CSS ignored, no custom design controls in `theme.json`. Templates are thin wrappers around theme patterns.
 - Design based on `wptv3` as an interim reference.
 
 ### 1c. Forms, admin and verification

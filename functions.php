@@ -15,6 +15,7 @@ define( 'WPTV_THEME_DIR', __DIR__ );
 
 // Loaded on every site that uses the theme (WordPress.tv and blog.WordPress.tv).
 require_once WPTV_THEME_DIR . '/inc/setup.php';
+require_once WPTV_THEME_DIR . '/inc/lockdown.php';
 require_once WPTV_THEME_DIR . '/inc/video.php';
 require_once WPTV_THEME_DIR . '/inc/head.php';
 require_once WPTV_THEME_DIR . '/inc/attachments.php';

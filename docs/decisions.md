@@ -120,6 +120,17 @@ Template:
 - **Affects:** `templates/front-page.html`.
 - **Status:** accepted
 
+## Phase 1b: The design lives in code; nobody can change it from the admin
+
+- **Decision:** the theme files are the only source of truth for the design.
+  - Nobody, administrators included, can open the Site Editor.
+  - Templates and parts are built from theme patterns (`patterns/*.php`, referenced with `wp:pattern`). Copies of templates and parts saved in the database are ignored.
+  - Global styles saved by users and Additional CSS are ignored or disabled. Colors, fonts and spacing come only from `theme.json`.
+  - Editors and administrators can still edit the content of posts and static pages (for example `get-involved`, or the side text of `/submit-video/`). Custom colors, font sizes and spacing are disabled in `theme.json`, so content edits cannot restyle the site.
+- **Reason:** decided by the project owner. In a block theme, an unprotected Site Editor lets anyone change the design, and a database copy of a template silently hides later theme deploys. Deploys already go through code.
+- **Affects:** `theme.json`, `inc/lockdown.php`, `templates/`, `parts/`, `patterns/`.
+- **Status:** accepted
+
 ## Phase 1b: Provisional navigation links
 
 - **Decision:** the header uses a Navigation block with provisional links based on the current wordpress.tv header, editable in the Site Editor, until the production menus are known.
