@@ -18,7 +18,9 @@ The work ships in two releases. Phases below map to them.
 
 ### Release 1: block theme with current functionality (Phases 0 and 1)
 
-Purpose: a **quick, low-risk test** on the live site. Same features, same routes, same editorial workflow as `wptv2`, now in a block theme, plus a first test of videos embedded as **VideoPress blocks** instead of `[wpvideo]` shortcodes.
+Purpose: a **quick, low-risk test** on the live site. A block theme with the new design that is **as faithful as possible to the current production behavior**: same features, same routes, same editorial workflow as `wptv2`, plus a first test of videos embedded as **VideoPress blocks** instead of `[wpvideo]` shortcodes. From there, features are replaced step by step.
+
+The local site mirrors the test site, an Atomic site outside the multisite where some production features (such as the direct VideoPress upload) do not work. Production behavior is reproduced from the `wptv2` code; see [wpcom-constraints.md](wpcom-constraints.md#environments).
 
 - Functional parity: every route, endpoint, feed, form and admin tool keeps working as today.
 - The submission form keeps creating `pending` posts with a `[wpvideo <guid>]` shortcode and the `_wptv_submitted_video` custom fields; moderators keep the per-field **Approve** review box. No workflow changes.
@@ -94,8 +96,8 @@ Posts may embed the video either as `[wpvideo <guid>]` or as a VideoPress block.
 ### 1e. Verification and rollout ⏳
 
 1. Full route regression run locally against the `wptv2` baseline.
-2. Deploy to the WordPress.com **test site** (through the WP.com employee). Checklist: routes sample, front page, single (shortcode and block posts), archives, search, feeds, `/api/`, `/oembed/`, `/unisubs/`, video submission end to end, subtitle submission, review box, design lockdown, PHP error log.
-3. Activate on **production** in an agreed window. Repeat the checklist. Rollback: reactivate `wptv2` (kept installed) and flush rewrites.
+2. Activate on the **test site** (https://wptv.nilovelez.com/, Atomic). Checklist: routes sample, front page, single (shortcode and block posts), archives, search, feeds, `/api/`, `/oembed/`, `/unisubs/`, submission form rendering and validation, subtitle form, review box, design lockdown, PHP error log. Multisite-only features must fail gracefully here (no fatal errors, sections hidden).
+3. Deploy to **production** through the WP.com employee and activate in an agreed window. Repeat the checklist, plus the **production-only** items: video submission end to end (VideoPress upload and GUID), thumbnails, downloads, subtitles, video data in JSON-LD and Open Graph. Rollback: reactivate `wptv2` (kept installed) and flush rewrites.
 4. Production block test: a few posts converted by hand (see 1c).
 5. **Exit criterion:** release 1 runs in production with no regressions reported during the agreed observation period.
 

@@ -45,10 +45,24 @@ WordPress.tv is a site on the **WordPress.com multisite**, not a standalone inst
 | `is_super_admin()` | On WordPress.com this means Automattic staff. |
 | `wptv_post_views` meta | Filled by WordPress.com stats. Not updated locally. |
 
+## Environments
+
+| Environment | What it is | Multisite internals |
+|---|---|---|
+| **Production** (wordpress.tv) | Site on the WordPress.com multisite. | Yes |
+| **Test site** (https://wptv.nilovelez.com/) | WordPress.com **Atomic** site, outside the multisite. Much is the same as production, but multisite-only features do not work, for example the direct VideoPress upload from the submission form and the internal `video_*` helpers. | No |
+| **Local** (Studio, http://localhost:8882/) | Mirror of the test site. | No |
+
+Consequences:
+
+- Every multisite-only call stays behind `function_exists()` / `class_exists()`, so the theme runs without errors on the test site and locally, and with full behavior in production.
+- The test site checks everything except multisite-only features. Those are only verifiable in production (or by a WordPress.com employee on the multisite), and the release 1 rollout checklist marks them as production-only.
+- Behaviors that depend on multisite internals (upload GUID, thumbnails, downloads, subtitles, video data in JSON-LD and Open Graph) are reproduced from the `wptv2` code, not from what the test site shows.
+
 ## Local development caveats
 
-- The local Studio site uses SQLite and runs Jetpack and VideoPress, but without the WordPress.com internals listed above. Thumbnails, downloads, subtitles, JSON-LD video data and Open Graph video tags cannot be fully tested locally.
-- The local content was imported, so **IDs differ from production**. Never hardcode term, post or user IDs. Use slugs.
+- The local Studio site is a mirror of the test site. It uses SQLite and runs Jetpack and VideoPress, but without the WordPress.com internals listed above. Thumbnails, downloads, subtitles, JSON-LD video data and Open Graph video tags cannot be fully tested locally.
+- The local and test site content was imported, so **IDs differ from production**. Never hardcode term, post or user IDs. Use slugs.
 - Classic menus are empty locally and the `/subtitle/` page does not exist locally.
 
 ## Open points
