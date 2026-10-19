@@ -49,6 +49,7 @@ WordPress.tv publishes community videos (WordCamps, meetups, workshops). It runs
 
 - Local development uses WordPress Studio (SQLite database, so `wp db` commands do not work. Use WP-CLI object commands instead).
 - The `wptv2` and `wptv3` themes are installed next to this one for reference.
+- Leave `wptv-27` active after development and visual checks so the project owner can review changes. Do not switch back to `wptv3` unless explicitly asked. If a test temporarily changes themes, restore `wptv-27` afterwards.
 - The full route regression test is slow and costly. Run it only at milestones and after routing-code changes, never after every minor change. See "When to run" in [`tests/routes/README.md`](tests/routes/README.md).
 - Production deploys go through a WordPress.com employee. There is no direct access to production code. See [`docs/wpcom-constraints.md`](docs/wpcom-constraints.md).
 

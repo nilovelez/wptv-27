@@ -15,6 +15,17 @@ Template:
 
 ---
 
+## Phase 1b: Single-video pattern and guarded metadata blocks
+
+- **Decision:** `single.html` only references header, the hidden `wptv/single` PHP pattern, and footer. Follow functional `wptv3`: title/speakers, wide player, native Jetpack reactions, description/details columns, comments, previous/next and breadcrumbs. Core blocks handle everything except producer credit and VideoPress downloads/subtitles, registered in PHP with `supports.autoRegister` and no build step.
+- **Legacy behavior:** producer username links to its WordPress.org profile, using the producer name when both taxonomies exist; name-only credits link to the existing producer archive. Downloads retain Low/Med/High MP4 labels, HLS-only exclusion, original attachment/API fallback, OGG, TTML and `/subtitle/?video=<attachment ID>`. The sidebar uses the first shortcode, as wptv2 does, even though the general GUID helper uses the last. Missing APIs, classes, terms or data must not emit empty sections or PHP warnings. No routes or stored content change.
+- **Full description:** core Post Excerpt truncates explicit excerpts and strips links. A `render_block_core/post-excerpt` filter in `inc/single.php`, scoped to the `wptv-single__excerpt` instance, preserves the full legacy excerpt and its slides link using the standard excerpt output filters. Other excerpt blocks, archives and feeds are unchanged.
+- **Verification:** 52/52 pattern blocks and 3/3 template blocks valid. 18 read-only checks plus 12 isolated multisite API simulations. Four sample single URLs return 200; native comments render an existing six-comment thread, including a reply. A block-only local video renders through Post Content; extracting its GUID for metadata is still Phase 1c. Actual download/subtitle behavior remains production-only verification.
+- **Environment:** Machete adds independent sharing controls locally; leave its settings and the reference themes unchanged. Record this as a test-environment difference, not custom theme functionality.
+- **Review workflow:** leave `wptv-27` active after changes, as requested by the owner, instead of returning to `wptv3`.
+- **Affects:** `templates/single.html`, `patterns/single.php`, `inc/video-blocks.php`, `inc/single.php`, `functions.php`, `style.css`, `tests/blocks/`, `AGENTS.md`.
+- **Status:** accepted
+
 ## Release split: parity test first, new submission workflow second
 
 - **Decision:** the project ships in two releases. **Release 1** (Phase 1) is the block theme with the current functionality and workflow, tested on the WordPress.com test site and then activated in production, with `wptv2` kept installed for immediate rollback. **Release 2** (Phase 2) replaces the per-field moderation workflow with a front-end form that fills the real fields, embeds videos as VideoPress blocks, adds autocomplete for existing terms, and ships a shortcode-to-block migration script.

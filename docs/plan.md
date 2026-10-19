@@ -72,9 +72,9 @@ Design level: functional `wptv3` (structure and base styles; no fine polish).
 - ✅ Design lockdown (`inc/lockdown.php`): no Site Editor for anyone, theme files win over database copies, user global styles and Additional CSS ignored, no custom design controls.
 - ✅ Front page: latest video, Featured, recent events, video categories, paginated recent videos (`patterns/front-page.php`, `inc/block-queries.php`). 11 checks in `tests/blocks/front-page.php`.
 - ✅ VideoPress thumbnail filter with attachment and placeholder fallbacks.
-- ⏳ Single video: title, player, description, video details (terms, producer, downloads, CC license), likes/sharing, comments, previous/next, breadcrumbs.
+- ✅ Single video: hidden `wptv/single` pattern and thin `single.html` wrapper. Core title, speakers, player, full description with slides link, published date and terms, native Jetpack likes/sharing, comments and reply form, previous/next, breadcrumbs, CC BY-SA. 52/52 pattern blocks and 3/3 template blocks valid; desktop/mobile review on shortcode and block posts, existing comment thread checked. No stored post content changed.
 - ⏳ Remaining templates: page, archive, category, `category-wordcamptv`, taxonomy (event hero and the others), search, 404.
-- ⏳ PHP-only blocks (`supports.autoRegister`) only where core cannot do the job: producer credit, video downloads/subtitles.
+- ✅ PHP-only `wptv/producer` and `wptv/video-downloads` (`supports.autoRegister`, `inc/video-blocks.php`). Legacy producer name/profile rules, MP4 quality labels, HLS exclusion, original/OGG fallback and TTML/subtitle contribution URLs; all multisite-only calls guarded. 18 checks in `tests/blocks/single.php` and 12 isolated API simulations in `tests/blocks/single-multisite.php --skip-wordpress`. These simulations do not replace production verification. Block GUID support remains Phase 1c.
 - ⏳ Desktop and mobile check of every template (functional, not pixel polish).
 
 ### 1c. VideoPress block support ⏳

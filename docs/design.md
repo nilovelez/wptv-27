@@ -23,6 +23,19 @@ The reference is the installed `wptv3` theme, read-only. This is not a new visua
 
 Video and term grids reduce to two columns below 900px and one below 480px. Preserve the section order and existing URLs. No Popular videos or fabricated directory links.
 
+## Single-video layout map
+
+1. Shared header, unchanged.
+2. Wide breadcrumbs, one post-title h1, linked speakers.
+3. Wide Post Content block renders the stored shortcode or VideoPress block, with no content rewrite or duplicated player.
+4. Native Jetpack Like and Sharing blocks below the player.
+5. Wide description/details columns, stacked on mobile. Full excerpt and presentation slides on the left; published date, event, speakers, tags, language, producer, available downloads/subtitles and CC BY-SA license on the right. Thin gray divider; compact Inter metadata.
+6. Core comments, pagination and reply form at reading width; honor the existing discussion settings.
+7. Core previous/next post links, wrapping on mobile.
+8. Shared footer, unchanged.
+
+Unavailable multisite data is omitted, never fabricated. Machete may independently inject sharing controls on the local/Atomic sites; do not change plugin configuration or add environment-specific theme patches to compensate.
+
 ## Content and imagery
 
 Use factual US English interface copy. Video titles, speakers, categories and events come from existing content. Use real VideoPress imagery, not generated speaker/conference pictures. The bundled legacy placeholder is an explicit fallback when video data and attachment images are unavailable. The latest local test video uses a VideoPress block; legacy posts use `[wpvideo]`.

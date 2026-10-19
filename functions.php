@@ -29,6 +29,8 @@ if ( apply_filters( 'wptv_setup_theme', true ) ) {
 	require_once WPTV_THEME_DIR . '/inc/taxonomies.php';
 	require_once WPTV_THEME_DIR . '/inc/query.php';
 	require_once WPTV_THEME_DIR . '/inc/block-queries.php';
+	require_once WPTV_THEME_DIR . '/inc/video-blocks.php';
+	require_once WPTV_THEME_DIR . '/inc/single.php';
 	require_once WPTV_THEME_DIR . '/inc/content.php';
 	require_once WPTV_THEME_DIR . '/inc/publishing.php';
 	require_once WPTV_THEME_DIR . '/inc/open-graph.php';
