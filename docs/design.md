@@ -29,7 +29,7 @@ Video and term grids reduce to two columns below 900px and one below 480px. Pres
 2. Wide breadcrumbs, one post-title h1, linked speakers.
 3. Wide Post Content block renders the stored shortcode or VideoPress block, with no content rewrite or duplicated player.
 4. Native Jetpack Like and Sharing blocks below the player.
-5. Wide description/details columns, stacked on mobile. Full excerpt and presentation slides on the left; published date, event, speakers, tags, language, producer, available downloads/subtitles and CC BY-SA license on the right. Thin gray divider; compact Inter metadata.
+5. Wide description/details columns, stacked on mobile. Full excerpt and presentation slides on the left; published date, event, speakers, tags, language, producer, available downloads/subtitles and CC BY-SA license on the right. Thin gray divider; compact Inter metadata in label/value rows (1:2 columns, 1rem gutter, 0.5rem row spacing, regular-weight labels), matching wptv3. Multiple term links stay inline and wrap within the value column, including on mobile.
 6. Core comments, pagination and reply form at reading width; honor the existing discussion settings.
 7. Core previous/next post links, wrapping on mobile.
 8. Shared footer, unchanged.

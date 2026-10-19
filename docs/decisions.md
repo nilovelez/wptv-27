@@ -15,6 +15,13 @@ Template:
 
 ---
 
+## Phase 1b review: Video details use wptv3-style rows
+
+- **Decision:** use CSS-only label/value rows for published date, taxonomy terms, producer, downloads and subtitles: 1:2 columns, 1rem gutter, 0.5rem row spacing, regular-weight labels. Multiple term links remain inline and wrap within their value column, including on mobile.
+- **Reason:** stacked labels wasted the wider details column. The owner requested the compact wptv3 treatment.
+- **Affects:** `style.css` (version 0.3.1), [design.md](design.md). No PHP, block markup, content or route changes.
+- **Status:** accepted
+
 ## Phase 1b: Single-video pattern and guarded metadata blocks
 
 - **Decision:** `single.html` only references header, the hidden `wptv/single` PHP pattern, and footer. Follow functional `wptv3`: title/speakers, wide player, native Jetpack reactions, description/details columns, comments, previous/next and breadcrumbs. Core blocks handle everything except producer credit and VideoPress downloads/subtitles, registered in PHP with `supports.autoRegister` and no build step.

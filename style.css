@@ -4,7 +4,7 @@ Theme URI: https://github.com/nilovelez/wptv-27
 Description: Block theme for WordPress.tv. Replaces the legacy wptv2 theme while keeping every route unchanged.
 Author: WordPress.org
 Author URI: https://wordpress.org/
-Version: 0.3.0
+Version: 0.3.1
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
@@ -322,13 +322,40 @@ figure.is-style-video-frame {
 	margin-top: 0;
 }
 
-.wptv-single__label,
-.wptv-single__details .wp-block-post-terms__prefix {
-	font-weight: 600;
+/* Keep labels and values aligned with wptv3's 1:2 metadata rows. */
+.wptv-single__published,
+.wptv-single__details .wp-block-wptv-producer,
+.wptv-single__details .wp-block-wptv-video-downloads {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+	column-gap: 1rem;
+	row-gap: 0.5rem;
+	align-items: baseline;
+}
+
+.wptv-single__details > .wp-block-post-terms,
+.wptv-single__details > .wp-block-wptv-producer,
+.wptv-single__details > .wp-block-wptv-video-downloads {
+	margin-block-start: 0.5rem;
+}
+
+/* Preserve inline term links/separators, including multiple wrapped values. */
+.wptv-single__details > .wp-block-post-terms {
+	position: relative;
+	padding-inline-start: calc((100% - 1rem) / 3 + 1rem);
+	min-height: 1.6em;
 }
 
 .wptv-single__details .wp-block-post-terms__prefix {
-	display: block;
+	position: absolute;
+	inset-inline-start: 0;
+	inset-block-start: 0;
+	width: calc((100% - 1rem) / 3);
+}
+
+.wptv-single__label,
+.wptv-single__details .wp-block-post-terms__prefix {
+	font-weight: 400;
 }
 
 .wptv-single__published p,
@@ -337,12 +364,20 @@ figure.is-style-video-frame {
 	margin-block: 0;
 }
 
-.wp-block-wptv-producer h3,
-.wp-block-wptv-video-downloads h3 {
+.wptv-single__details .wp-block-wptv-producer h3,
+.wptv-single__details .wp-block-wptv-video-downloads h3 {
+	grid-column: 1;
 	font-family: var(--wp--preset--font-family--inter);
 	font-size: inherit;
-	font-weight: 600;
-	margin-block: var(--wp--preset--spacing--20) 0;
+	font-weight: 400;
+	line-height: inherit;
+	margin-block: 0;
+}
+
+.wptv-single__details .wp-block-wptv-producer p,
+.wptv-single__details .wp-block-wptv-video-downloads p {
+	grid-column: 2;
+	min-width: 0;
 }
 
 .wp-block-wptv-producer p,
