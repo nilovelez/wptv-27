@@ -105,9 +105,13 @@ Detailed after release 1 passes. Route changes are allowed only through [backlog
 
 ### 2a. Submission form that fills the real fields
 
-- The form writes each value to its real destination: title, `speakers` and `event` terms, language, categories (including the year category from the recording date), excerpt (description), slides URL meta, WordCampTV flag.
+Field-by-field specification: [submission-form.md](submission-form.md).
+
+- The form writes each value to its real destination: title (max 100 characters), `speakers`, `event`, `language` and `producer-username` terms, locations, categories, year, excerpt (description), slides URL meta, WordCampTV flag. All rules are validated server-side.
 - The uploaded video is embedded as a **VideoPress block**; its poster becomes the featured image.
-- **Autocomplete** for existing terms (speakers first, then events and other taxonomies) through an AJAX/REST lookup while typing, to avoid misspelled duplicates.
+- **Autocomplete** for speakers and events through the core REST API; new speakers and events are created when the moderator approves. Language, location and category only accept existing terms.
+- Producer username: optional, a single value, validated against WordPress.org.
+- Location and Year move out of categories (B5 in [backlog.md](backlog.md)), with 301 redirects.
 - Submitter data (name, email, IP, submission date) stays private for moderators.
 - The per-field Approve review box is replaced by a read-only submission summary. Moderators review, correct if needed, and publish.
 - Spam and abuse protection kept at least at the current level.

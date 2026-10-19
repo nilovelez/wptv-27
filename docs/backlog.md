@@ -32,7 +32,19 @@ Status legend: ⏳ pending · 🔄 in progress · ✅ done
   - Remove all theme usage: the sidebar producer credit (`wptv/producer` block in the Phase 1 plan), `/api/` filters, admin fields and any template references.
   - Term data: decide whether the terms and relationships are kept (harmless, invisible) or deleted. Deleting them on production needs a WordPress.com employee.
 - **Expected route test differences:** every `producer:` and `flavor:` URL becomes a 301 to its mapped target.
-- **Open points:** the redirect map (needs the production term list and, ideally, traffic data), and whether `producer-username` stays.
+- **Open points:** the redirect map (needs the production term list and, ideally, traffic data), `producer-username` stays (it becomes the validated producer field of the release 2 form), so it is a valid redirect target for `producer`.
+
+### B5. Move Location and Year out of categories ⏳
+
+- **Decision:** the children of category `location` move to their own taxonomy. Year (children of category `year`) also leaves the category tree: either its own taxonomy or derived from the recorded date (to be decided). Part of release 2; see [submission-form.md](submission-form.md).
+- **Current routes:** `/category/location/<slug>/` and `/category/year/<slug>/`, with `/page/N/` and `/feed/`. The location archives are not linked from anywhere today, but they exist and may be indexed.
+- **Scope:**
+  - Register the new taxonomy (or taxonomies) and migrate the terms and relationships with a batched, dry-run-capable script, run on the test site first.
+  - 301 every old URL variant (archive, pagination, feed) to its new equivalent.
+  - Update the submission form, the event name suggestion, `inc/query.php` (Year/Location per-page rules) and the front page category list exclusions.
+  - Decide whether the old category terms are deleted after migration (needs a WP.com employee on production).
+- **Expected route test differences:** every `location`/`year` category URL becomes a 301; new baseline for the new taxonomy archives.
+- **Open points:** new taxonomy slugs and URL bases; Year as taxonomy or derived from the date.
 
 ## Ideas (not yet agreed)
 
