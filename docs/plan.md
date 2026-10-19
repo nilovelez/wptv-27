@@ -52,7 +52,7 @@ Replace the legacy classic theme `wptv2` on WordPress.tv with a new block theme,
 
 ## Phase 2: Improvements ⏳
 
-To be detailed once Phase 1 is accepted. Candidates:
+To be detailed once Phase 1 is accepted. Agreed work is tracked in [backlog.md](backlog.md) (legacy bug fixes, retiring the `producer` and `flavor` taxonomies with 301s). Other candidates:
 
 - Adopt the WordPress.org visual language (documentation pending from the project owner).
 - Retire obsolete features (for example `/unisubs/`, if confirmed unused).

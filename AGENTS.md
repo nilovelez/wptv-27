@@ -36,6 +36,7 @@ WordPress.tv publishes community videos (WordCamps, meetups, workshops). It runs
 | File | Contents |
 |---|---|
 | [`docs/plan.md`](docs/plan.md) | Phases, tasks and current status |
+| [`docs/backlog.md`](docs/backlog.md) | Agreed work deferred until after Phase 1 (route-changing fixes and removals) |
 | [`docs/routes.md`](docs/routes.md) | Inventory of every route that must be preserved, plus the regression test URL list |
 | [`docs/legacy-wptv2.md`](docs/legacy-wptv2.md) | Analysis of the legacy theme and the `wptv2` to `wptv-27` replacement map |
 | [`docs/legacy-wptv3.md`](docs/legacy-wptv3.md) | Review of the `wptv3` proof of concept: what to reuse, what to avoid, its route test results |

@@ -94,4 +94,6 @@ Only run on 404 requests (`template_redirect`, priority 1):
 
 Known limitation: WordPress.com-only VideoPress helpers are stubbed with fake, deterministic data, so file URLs, thumbnails, downloads and subtitles can only be fully checked on the WordPress.com test site.
 
-Legacy quirks that are part of the contract (see [open-questions.md](open-questions.md)): `/api/videos.*` sends JSON as `text/html`, and the `/unisubs/` `permalink` field points to the latest post.
+Legacy quirks that are part of the Phase 1 contract and will be fixed later (see [backlog.md](backlog.md), B1 and B2): `/api/videos.*` sends JSON as `text/html`, and with `?guid=` the `/unisubs/` `permalink` field points to the latest post.
+
+The `producer` and `flavor` routes stay unchanged in Phase 1. They will be retired later with 301 redirects (backlog B3).

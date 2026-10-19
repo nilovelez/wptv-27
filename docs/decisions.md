@@ -55,7 +55,7 @@ Template:
 - **Decision:** the text domain stays `wptv`, as in `wptv2`.
 - **Reason:** existing translations keep working.
 - **Affects:** all translatable strings.
-- **Status:** proposed (pending confirmation, see open question 20)
+- **Status:** accepted
 
 ## Phase 0: Theme-agnostic route regression test
 
@@ -73,7 +73,14 @@ Template:
 
 ## Phase 0: Legacy quirks are part of the route contract
 
-- **Decision:** Phase 1 reproduces observable `wptv2` behavior even when it is a bug (for example, `/api/videos.*` sending JSON as `text/html`), unless the project owner decides otherwise. Each quirk is listed in `open-questions.md`, and a fix moves it to Phase 2 or into this log.
+- **Decision:** Phase 1 reproduces observable `wptv2` behavior even when it is a bug (for example, `/api/videos.*` sending JSON as `text/html`), unless the project owner decides otherwise. Each quirk is tracked in [backlog.md](backlog.md) and fixed after Phase 1.
 - **Reason:** external consumers may depend on the current behavior, and Phase 1 must not change routes.
 - **Affects:** endpoints, see [routes.md](routes.md).
 - **Status:** accepted
+
+## Phase 0: Retire the `producer` and `flavor` taxonomies after Phase 1
+
+- **Decision:** both taxonomies will be removed after Phase 1. Every existing URL (term archives, pagination, feeds, query vars) gets a 301 to a mapped replacement, never a 404. Phase 1 still registers them with the exact `wptv2` arguments.
+- **Reason:** decided by the project owner. Removing them in Phase 1 would break the no-route-changes rule.
+- **Affects:** taxonomy registration, `/producer/*`, `/flavor/*`, the producer credit, `/api/`. See B3 in [backlog.md](backlog.md).
+- **Status:** accepted (deferred)

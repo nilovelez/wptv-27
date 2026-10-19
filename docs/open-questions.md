@@ -34,16 +34,20 @@ Questions that need an answer from the project owner or a WordPress.com employee
 17. **Upload flows:** who publishes videos, and how? Are the anonymous upload (`/submit-video/`) and subtitle upload (`/subtitle/`) still in active use?
 18. **Footer:** keep the random "An Automattic Production / Joint / Medley…" word?
 19. **Prev/next links:** keep `<link rel="prev|next">` on archives? Search engines no longer use them, but removing them changes the `<head>` output.
-20. **Text domain:** keep `wptv` (same as `wptv2`, so existing translations keep working)? Proposed: yes.
-
-### Legacy quirks found by the baseline
-
-Phase 1 reproduces these by default, because they are part of the route contract. Should any of them be fixed in Phase 1 anyway?
-
-21. **`/api/videos.*` Content-Type:** the payload is JSON, but it is sent as `text/html`. The other `/api/` methods send `application/json`.
-22. **`/unisubs/` permalink:** the `permalink` field points to the most recent post, not to the requested video. `post_id`, `guid` and `title` are correct.
 
 ## Answered
+
+### Text domain (was question 20)
+
+- **Answer:** keep `wptv`, as in `wptv2`.
+
+### Legacy quirks found by the baseline (were questions 21 and 22)
+
+- **Answer:** keep them in Phase 1 and fix them later. Tracked as B1 (`/api/videos.*` Content-Type) and B2 (`/unisubs/` permalink) in [backlog.md](backlog.md).
+
+### `producer` and `flavor` taxonomies
+
+- **Answer:** both will be retired after Phase 1, with 301 redirects for every existing URL. Phase 1 keeps them unchanged. Tracked as B3 in [backlog.md](backlog.md).
 
 ### Phase 0 tooling
 
