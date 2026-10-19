@@ -126,7 +126,7 @@ The Training Team hopes that this project will help us better serve the wider Wo
 		
 		<post-id xmlns="com-wordpress:feed-additions:1">126177</post-id>	</item>
 		<item>
-		<title>Legal implications on use of AI&#160;tools</title>
+		<title>Legal implications on use of AI tools</title>
 		<link>/2024/04/10/legal-implications-on-use-of-ai-tools/</link>
 					<comments>/2024/04/10/legal-implications-on-use-of-ai-tools/#respond</comments>
 		
@@ -198,7 +198,7 @@ WordPress, a powerful open-source platform, offers enterprise companies a unique
 		
 		<post-id xmlns="com-wordpress:feed-additions:1">126162</post-id>	</item>
 		<item>
-		<title>Plugin Review – Top 10 mistakes plugin authors&#160;make!</title>
+		<title>Plugin Review – Top 10 mistakes plugin authors make!</title>
 		<link>/2024/04/09/plugin-review-top-10-mistakes-plugin-authors-make/</link>
 					<comments>/2024/04/09/plugin-review-top-10-mistakes-plugin-authors-make/#respond</comments>
 		
@@ -244,7 +244,7 @@ Blocks, patterns, templates and styles are the elements of WordPress. What does 
 		
 		<post-id xmlns="com-wordpress:feed-additions:1">126149</post-id>	</item>
 		<item>
-		<title>Website Accessibility – Why, When and&#160;How</title>
+		<title>Website Accessibility – Why, When and How</title>
 		<link>/2024/04/09/website-accessibility-why-when-and-how/</link>
 					<comments>/2024/04/09/website-accessibility-why-when-and-how/#respond</comments>
 		

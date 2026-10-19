@@ -62,7 +62,7 @@
 			</item>
 		<item>
 		<title>
-		Comment on Drew Strojny: Theme&#160;Workshop by OC WordCamp theme workshop video &#8211; &#8212; The Theme Foundry – WordPress themes for publishers		</title>
+		Comment on Drew Strojny: Theme Workshop by OC WordCamp theme workshop video &#8211; &#8212; The Theme Foundry – WordPress themes for publishers		</title>
 		<link>/2010/04/24/drew-strojny-theme-workshop-oc10/comment-page-1/#comment-3521</link>
 
 		<dc:creator><![CDATA[OC WordCamp theme workshop video &#8211; &#8212; The Theme Foundry – WordPress themes for publishers]]></dc:creator>
@@ -76,7 +76,7 @@
 			</item>
 		<item>
 		<title>
-		Comment on Matt Cutts: Straight from Google – SEO, What You Need to&#160;Know by 【初心者必見】WordPressのメリット・デメリットを徹底解説		</title>
+		Comment on Matt Cutts: Straight from Google – SEO, What You Need to Know by 【初心者必見】WordPressのメリット・デメリットを徹底解説		</title>
 		<link>/2009/05/30/matt-cutts-google-sf09/comment-page-2/#comment-2594</link>
 
 		<dc:creator><![CDATA[【初心者必見】WordPressのメリット・デメリットを徹底解説]]></dc:creator>
@@ -104,7 +104,7 @@
 			</item>
 		<item>
 		<title>
-		Comment on Mark Jaquith: Scaling, Servers, and Deploys &#8212; Oh&#160;My! by Improve The Deployment Of WordPress Websites &#124; word		</title>
+		Comment on Mark Jaquith: Scaling, Servers, and Deploys &#8212; Oh My! by Improve The Deployment Of WordPress Websites &#124; word		</title>
 		<link>/2011/08/20/mark-jaquith-scaling-servers-and-deploys-oh-my/comment-page-1/#comment-4048</link>
 
 		<dc:creator><![CDATA[Improve The Deployment Of WordPress Websites &#124; word]]></dc:creator>
@@ -118,7 +118,7 @@
 			</item>
 		<item>
 		<title>
-		Comment on Matt Cutts: Straight from Google – SEO, What You Need to&#160;Know by 正確認識SEO &#8211; RWD響應式網頁設計的專家		</title>
+		Comment on Matt Cutts: Straight from Google – SEO, What You Need to Know by 正確認識SEO &#8211; RWD響應式網頁設計的專家		</title>
 		<link>/2009/05/30/matt-cutts-google-sf09/comment-page-2/#comment-2593</link>
 
 		<dc:creator><![CDATA[正確認識SEO &#8211; RWD響應式網頁設計的專家]]></dc:creator>

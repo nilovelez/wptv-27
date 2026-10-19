@@ -20,7 +20,7 @@
 	1	</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=7.1.3</generator>
 	<item>
-		<title>Legal implications on use of AI&#160;tools</title>
+		<title>Legal implications on use of AI tools</title>
 		<link>/2024/04/10/legal-implications-on-use-of-ai-tools/</link>
 					<comments>/2024/04/10/legal-implications-on-use-of-ai-tools/#respond</comments>
 		
@@ -92,7 +92,7 @@ WordPress, a powerful open-source platform, offers enterprise companies a unique
 		
 		<post-id xmlns="com-wordpress:feed-additions:1">126162</post-id>	</item>
 		<item>
-		<title>Plugin Review – Top 10 mistakes plugin authors&#160;make!</title>
+		<title>Plugin Review – Top 10 mistakes plugin authors make!</title>
 		<link>/2024/04/09/plugin-review-top-10-mistakes-plugin-authors-make/</link>
 					<comments>/2024/04/09/plugin-review-top-10-mistakes-plugin-authors-make/#respond</comments>
 		
@@ -138,7 +138,7 @@ Blocks, patterns, templates and styles are the elements of WordPress. What does 
 		
 		<post-id xmlns="com-wordpress:feed-additions:1">126149</post-id>	</item>
 		<item>
-		<title>Website Accessibility – Why, When and&#160;How</title>
+		<title>Website Accessibility – Why, When and How</title>
 		<link>/2024/04/09/website-accessibility-why-when-and-how/</link>
 					<comments>/2024/04/09/website-accessibility-why-when-and-how/#respond</comments>
 		
@@ -164,7 +164,7 @@ Come with me on a journey to discover why it is important to build accessible we
 		
 		<post-id xmlns="com-wordpress:feed-additions:1">126137</post-id>	</item>
 		<item>
-		<title>You’ll never be alone anymore. Building and maintaining WordPress sites with&#160;AI</title>
+		<title>You’ll never be alone anymore. Building and maintaining WordPress sites with AI</title>
 		<link>/2024/04/09/youll-never-be-alone-anymore-building-and-maintaining-wordpress-sites-with-ai/</link>
 					<comments>/2024/04/09/youll-never-be-alone-anymore-building-and-maintaining-wordpress-sites-with-ai/#respond</comments>
 		
@@ -225,7 +225,7 @@ Take aways:
 		
 		<post-id xmlns="com-wordpress:feed-additions:1">126116</post-id>	</item>
 		<item>
-		<title>From FOMO to JOMO: Embrace the joy of missing&#160;out</title>
+		<title>From FOMO to JOMO: Embrace the joy of missing out</title>
 		<link>/2024/04/09/from-fomo-to-jomo-embrace-the-joy-of-missing-out/</link>
 					<comments>/2024/04/09/from-fomo-to-jomo-embrace-the-joy-of-missing-out/#respond</comments>
 		

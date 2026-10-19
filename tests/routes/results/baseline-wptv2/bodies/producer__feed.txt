@@ -59,7 +59,7 @@
 
 					<description><![CDATA[This topic will focus on finding the perfect balance between work life and real-life duties, so that a person can find joy in working with WordPress instead of being frustrated. The topic will cover the identifiable symptoms of a burnout, how to prioritize self-care to prevent getting burned out, and finding your own daily dose of inspiration for working with WordPress.]]></description>
 										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/REmW6xg2?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
-<p>&nbsp;</p>
+<p> </p>
 ]]></content:encoded>
 					
 					<wfw:commentRss>/2023/08/10/tanaz-masaba-how-to-avoid-burnout-when-working-with-wordpress/feed/</wfw:commentRss>
@@ -82,7 +82,7 @@
 
 					<description><![CDATA[Customer success is vital to the success of every business. That’s to say that you cannot succeed until you help your customers to succeed. But how can you help them succeed? The primary step is identifying the success gap and closing it with a robust content strategy. This presentation will define the success gap, its types, why you should care for it, and how it helps build a robust content strategy.]]></description>
 										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/7dDULXvM?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
-<p>&nbsp;</p>
+<p> </p>
 ]]></content:encoded>
 					
 					<wfw:commentRss>/2023/08/10/sunita-rai-how-success-gaps-help-you-build-a-robust-content-strategy/feed/</wfw:commentRss>
@@ -105,7 +105,7 @@
 
 					<description><![CDATA[The topic “How to Get Started With Content Marketing in WordPress” will include a definitive guide on content marketing in WordPress. It will showcase what it takes to get started, how to generate content ideas, and some proven content and SEO hacks to write content that ranks. The talk will discuss everything that beginners need to have a headstart in content marketing in WordPress.]]></description>
 										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/3Swq5l5W?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
-<p>&nbsp;</p>
+<p> </p>
 ]]></content:encoded>
 					
 					<wfw:commentRss>/2023/08/10/rayhan-arif-how-to-get-started-with-content-marketing-in-wordpress/feed/</wfw:commentRss>
@@ -114,7 +114,7 @@
 		
 		<post-id xmlns="com-wordpress:feed-additions:1">119416</post-id>	</item>
 		<item>
-		<title>Rahul D Sarker: Isn’t SEO&#160;dead?</title>
+		<title>Rahul D Sarker: Isn’t SEO dead?</title>
 		<link>/2023/08/10/rahul-d-sarker-isnt-seo-dead/</link>
 					<comments>/2023/08/10/rahul-d-sarker-isnt-seo-dead/#respond</comments>
 		
@@ -130,7 +130,7 @@
 
 In this presentation, I will share 10 techniques/best practices for improving content strategy for SEO along with a downloadable checklist.]]></description>
 										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/cB3YwxhF?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
-<p>&nbsp;</p>
+<p> </p>
 ]]></content:encoded>
 					
 					<wfw:commentRss>/2023/08/10/rahul-d-sarker-isnt-seo-dead/feed/</wfw:commentRss>
@@ -166,7 +166,7 @@ In this presentation, I will share 10 techniques/best practices for improving co
 		
 		<post-id xmlns="com-wordpress:feed-additions:1">119410</post-id>	</item>
 		<item>
-		<title>Anup Adhikari: RDFs in WordPress for Knowledge Representation of Blog&#160;Articles</title>
+		<title>Anup Adhikari: RDFs in WordPress for Knowledge Representation of Blog Articles</title>
 		<link>/2023/08/10/anup-adhikari-rdfs-in-wordpress-for-knowledge-representation-of-blog-articles/</link>
 					<comments>/2023/08/10/anup-adhikari-rdfs-in-wordpress-for-knowledge-representation-of-blog-articles/#respond</comments>
 		
@@ -182,7 +182,7 @@ In this presentation, I will share 10 techniques/best practices for improving co
 – Demonstration of creation of ontology based documents using Protege.
 – Integrating owl documents in WordPress site.]]></description>
 										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/zpu2zlSa?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
-<p>&nbsp;</p>
+<p> </p>
 ]]></content:encoded>
 					
 					<wfw:commentRss>/2023/08/10/anup-adhikari-rdfs-in-wordpress-for-knowledge-representation-of-blog-articles/feed/</wfw:commentRss>
@@ -207,7 +207,7 @@ In this presentation, I will share 10 techniques/best practices for improving co
 
 					<description><![CDATA[We shall be discussing what UI/UX is and how it has evolved in WordPress over years. Also we shall be touching base on major things WordPress developers should consider while developing website for great User experience.]]></description>
 										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/0AMwz9Kv?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
-<p>&nbsp;</p>
+<p> </p>
 ]]></content:encoded>
 					
 					<wfw:commentRss>/2023/08/10/eeda-rijal-the-evolution-of-ui-ux-in-wordpress/feed/</wfw:commentRss>

@@ -95,12 +95,15 @@ while IFS=$'\t' read -r label path; do
 		# Normalize: relative URLs, and strip per-request random values (oEmbed secrets, nonces).
 		safe=$(printf '%s' "$label" | tr -c 'A-Za-z0-9._-' '_')
 		# Note: [\]? (not \\?) matches an optional backslash portably, including Git Bash sed.
+		# Non-breaking spaces become plain spaces: wptv2's wptv_widont() typography filter is
+		# intentionally dropped (replaced by CSS text-wrap), see docs/decisions.md.
 		relativize < "$body" |
 			sed -E \
 				-e 's/(data-secret=[\]?")[A-Za-z0-9]+/\1SECRET/g' \
 				-e 's/(secret=)[A-Za-z0-9]+/\1SECRET/g' \
 				-e 's/("secret":")[A-Za-z0-9]+/\1SECRET/g' \
 				-e 's/(_wpnonce=|"nonce":")[a-f0-9]+/\1NONCE/g' \
+				-e 's/&#160;|&nbsp;|[\]u00a0/ /g' \
 			> "$OUT/bodies/$safe.txt"
 		sha=$(sha1sum "$OUT/bodies/$safe.txt" | cut -d' ' -f1)
 	fi

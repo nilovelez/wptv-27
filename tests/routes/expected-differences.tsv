@@ -1,0 +1,8 @@
+# Known, intended differences from a baseline, tied to the local DB.
+# Format: label<TAB>column<TAB>reason. Lines starting with # are ignored.
+# compare.sh reports these as EXPECTED and does not count them as failures.
+# Keep this list as short as possible, and document every entry in docs/decisions.md.
+api: videos.json	body_sha1	wptv2 hardcodes the production IDs of the year/location categories; locally they never match. wptv-27 looks them up by slug (same result on production).
+api: videos.json posts_per_page	body_sha1	Same as "api: videos.json".
+api: videos.json by event	body_sha1	Same as "api: videos.json".
+api: videos.json page 2	body_sha1	Same as "api: videos.json".

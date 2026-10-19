@@ -12,6 +12,9 @@
 # Compared per URL: status, Location, content type, X-WPTV-Route (main query data),
 # canonical, title, rel prev/next, and the normalized body of non-HTML responses.
 # Timings are never compared.
+#
+# Differences listed in expected-differences.tsv (label, column, reason) are reported
+# as EXPECTED and do not count as failures.
 
 set -u
 
@@ -31,8 +34,17 @@ for run in "$BASE" "$CURR"; do
 	fi
 done
 
+EXPECTED_FILE="$DIR/expected-differences.tsv"
+[ -f "$EXPECTED_FILE" ] || EXPECTED_FILE=/dev/null
+
 # Compare row by row, keyed by label. awk keeps empty tab-separated fields intact.
-report=$(awk -F'\t' -v curr_name="$2" '
+report=$(awk -F'\t' -v curr_name="$2" -v expected_file="$EXPECTED_FILE" '
+	BEGIN {
+		while ((getline line < expected_file) > 0) {
+			if (line ~ /^#/ || line == "") continue
+			split(line, e, "\t"); expected[e[1] SUBSEP e[2]] = e[3]
+		}
+	}
 	FNR == 1 { for (i = 1; i <= NF; i++) col[i] = $i; next }
 	NR == FNR { base[$1] = $0; order[++n] = $1; next }
 	{ curr[$1] = $0 }
@@ -43,21 +55,27 @@ report=$(awk -F'\t' -v curr_name="$2" '
 			if (!(label in curr)) { printf "MISSING  %s (not in %s)\n", label, curr_name; diffs++; continue }
 			nb = split(base[label], b, "\t"); nc = split(curr[label], c, "\t")
 			for (i = 3; i <= 11; i++) {
-				if (b[i] != c[i]) {
+				if (b[i] != c[i] && ((label SUBSEP col[i]) in expected)) {
+					printf "EXPECTED %s [%s]: %s\n", label, col[i], expected[label SUBSEP col[i]]
+					nexpected++
+				} else if (b[i] != c[i]) {
 					printf "DIFF     %s [%s]\n         - %s\n         + %s\n", label, col[i], b[i], c[i]
 					diffs++
 				}
 			}
 		}
 		print "__DIFFS__ " diffs
+		print "__EXPECTED__ " (nexpected + 0)
 	}
 ' "$BASE/results.tsv" "$CURR/results.tsv")
 
-printf '%s\n' "$report" | grep -v '^__DIFFS__ '
+printf '%s\n' "$report" | grep -v '^__\(DIFFS\|EXPECTED\)__ '
 differences=$(printf '%s\n' "$report" | sed -n 's/^__DIFFS__ //p')
+expected=$(printf '%s\n' "$report" | sed -n 's/^__EXPECTED__ //p')
 
-# Body diffs, for quick inspection of endpoint payload changes.
-if [ -d "$BASE/bodies" ] && [ -d "$CURR/bodies" ]; then
+# Body diffs, for quick inspection of endpoint payload changes. Shown only when
+# there are unexpected differences (expected body changes would only add noise).
+if [ "$differences" -gt 0 ] && [ -d "$BASE/bodies" ] && [ -d "$CURR/bodies" ]; then
 	if ! diff -rq "$BASE/bodies" "$CURR/bodies" > /dev/null; then
 		echo
 		echo "Body differences (diff -u):"
@@ -67,7 +85,7 @@ fi
 
 echo
 if [ "$differences" -eq 0 ]; then
-	echo "OK: $2 matches $1."
+	echo "OK: $2 matches $1 ($expected expected difference(s))."
 	exit 0
 fi
 echo "FAIL: $differences difference(s) between $1 and $2."

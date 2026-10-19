@@ -13,6 +13,7 @@ The test is theme-agnostic. It never parses theme markup to count posts. Instead
 | `urls.txt` | The fixed URL list (committed). |
 | `run.sh` | Requests every URL and writes `results/<run-name>/`. |
 | `compare.sh` | Compares two runs and lists every difference. |
+| `expected-differences.tsv` | Known, intended differences (label, column, reason), reported as EXPECTED. |
 | `results/baseline-wptv2/` | The reference run, captured with `wptv2` active (committed). |
 
 ## What is recorded per URL
@@ -55,7 +56,7 @@ bash wp-content/themes/wptv-27/tests/routes/run.sh http://localhost:8882 wptv-27
 bash wp-content/themes/wptv-27/tests/routes/compare.sh baseline-wptv2 wptv-27
 ```
 
-`compare.sh` exits with `0` when everything matches, and with `1` (plus a list of differences) otherwise.
+`compare.sh` exits with `0` when everything matches, and with `1` (plus a list of differences) otherwise. Differences listed in `expected-differences.tsv` are printed as `EXPECTED` and do not make the run fail; each entry must be backed by a decision in `docs/decisions.md`.
 
 ## Rules
 
