@@ -2,6 +2,10 @@
 
 The reference is the installed `wptv3` theme, read-only. This is not a new visual direction. `theme.json` is the versioned token source; the local site's `DESIGN.md` describes the same direction for Studio.
 
+## Current approval
+
+The owner explicitly chose to continue with this design while consulting the WordPress.org Design team. No new WordPress.org visual direction, parent theme, palette, typography or shared header/footer implementation is approved. Treat previously discussed official sources as research only; wait for new guidance before changing the look. This does not prevent separately requested editor usability changes or functional fixes.
+
 ## Tokens
 
 - Blue `blue`: #3858e9; coal `coal`: #1e1e1e; coal-2 `coal-2`: #23282d; orange `orange`: #d54e21; body text `ink`: #1a1919; gray `gray`: #edeff0; white `white`: #ffffff.

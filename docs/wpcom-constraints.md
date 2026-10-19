@@ -65,10 +65,18 @@ Consequences:
 
 - The local Studio site is a mirror of the test site. It uses SQLite and runs Jetpack and VideoPress, but without the WordPress.com internals listed above. Production downloads, subtitles, JSON-LD video data and Open Graph video tags cannot be fully tested locally.
 - Thumbnail lookup keeps `video_get_highest_resolution_image_url()` first on production. If it has no usable result, the theme calls the standalone plugin's public `Automattic\Jetpack\VideoPress\Inline_Player::get_poster_url()` when callable. That resolver owns block posters, GUID-matched attachment metadata, privacy and transient-cached public video details; the theme does not build image URLs or make its own remote requests. Plugin versions without this method degrade to the existing featured image/placeholder.
-- `get_guid()` supports `videopress/video` and the earlier `jetpack/videopress` name, including nested blocks. Legacy shortcodes retain precedence and last-shortcode behavior; otherwise the last valid block GUID wins. Stored content is not rewritten. Real local posters are verified, but built-in production serialization/API integration and the Atomic deployment still require separate checks.
+- `get_guid()` supports `videopress/video` and the earlier `jetpack/videopress` name, including nested blocks. Legacy shortcodes retain precedence and last-shortcode behavior; otherwise the last valid block GUID wins. Stored content is not rewritten. Real local posters are verified, and the owner subsequently confirmed that thumbnails work after synchronization to Atomic. Built-in production serialization/API integration and the broader Atomic rollout checklist still require separate checks.
 - The route-test MU-plugin is inert during normal browsing and WP-CLI. Only explicit Studio requests carrying `X-WPTV-Route-Test: 1` enable the deterministic APIs and disable real poster lookup.
 - The local and test site content was imported, so **IDs differ from production**. Never hardcode term, post or user IDs. Use slugs.
 - Classic menus are empty locally and the `/subtitle/` page does not exist locally.
+
+## Latest environment changes
+
+- Owner-reported: inactive Gutenberg was removed; Gravatar Enhanced, Layout Grid and Page Optimize were disabled. These are test/development environment changes, not changes to the confirmed production plugin inventory. Core's block editor remains available without the Gutenberg plugin.
+- The size audit measured about 418 MiB in `wp-content`, including about 230 MiB for Gutenberg and only 0.21 MiB in uploads after media cleanup. The owner reported Studio's sync estimate falling to about 183 MB after removing Gutenberg. Disk size and sync estimates are not identical measurements; do not treat these historical figures as a fresh inventory.
+- The owner removed test attachment 133523 locally and on Atomic. Its local 297,547,310-byte MP4 remained pending deletion/inaccessible until the site was stopped, then was confirmed absent after restart. Remote physical-file removal was not independently checked.
+- Retain attachment 133382, the VideoPress reference for the existing block fixture. It points to remote media rather than a duplicate large local file; the standalone plugin's deletion hook can request deletion of the remote video.
+- Studio can regenerate `99-studio-loader.php` and erase the locally added guard during development/CLI operations. That managed file is outside the theme repository and needs checking immediately before sync. The route helper's own runtime/request guards are versioned and independent.
 
 ## Open points
 

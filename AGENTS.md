@@ -2,7 +2,7 @@
 
 Instructions for AI coding agents (and humans) working on **wptv-27**, the new block theme for [WordPress.tv](https://wordpress.tv/).
 
-Read this file first, then the documents in [`docs/`](docs/) that are relevant to your task.
+Read this file first, then the current [session handoff](docs/handoff.md) and the documents in [`docs/`](docs/) that are relevant to your task. The owner confirmed Atomic thumbnails, but the last route regression is not green; do not mistake that confirmation for completed Phase 1c or production readiness. Keep the existing wptv3-based design pending guidance from the WordPress.org Design team.
 
 ## Project in one paragraph
 
@@ -35,6 +35,7 @@ WordPress.tv publishes community videos (WordCamps, meetups, workshops). It runs
 
 | File | Contents |
 |---|---|
+| [`docs/handoff.md`](docs/handoff.md) | Current resume point, owner confirmations, environment cleanup, verification limits and next steps |
 | [`docs/plan.md`](docs/plan.md) | Phases, tasks and current status |
 | [`docs/backlog.md`](docs/backlog.md) | Agreed work deferred until after Phase 1 (route-changing fixes and removals) |
 | [`docs/routes.md`](docs/routes.md) | Inventory of every route that must be preserved, plus the regression test URL list |

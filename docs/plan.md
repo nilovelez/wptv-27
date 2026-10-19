@@ -12,9 +12,13 @@ Replace the legacy classic theme `wptv2` on WordPress.tv with a new block theme,
 - moves video submission to VideoPress blocks and a front-end form that fills the real fields, so moderators only review and publish (Phase 2),
 - later adopts the WordPress.org visual language (Phase 2).
 
+## Session closeout
+
+See [handoff.md](handoff.md) for the resume point, verification limits and environment cleanup. The owner confirmed thumbnails on the synchronized Atomic test site. The current wptv3-based design remains approved; WordPress.org visual changes are on hold pending the owner's consultation with the Design team. Specific block-editor changes have not yet been supplied. Gutenberg was removed, three optional plugins were reported disabled and the sync estimate fell to about 183 MB. The latest regression is not green; no production readiness is implied.
+
 ## Local tooling safety
 
-✅ Both installed MU-plugins are guarded to run only in Studio, so a full test-site sync leaves them inert remotely. The route helper requires a loaded Studio runtime, not just `local`. Eight isolated negative checks pass; local bootstrap remains functional. Recheck the Studio-managed loader guard immediately before every sync: Studio was observed regenerating it during development/CLI operations, not only restarts/updates. The managed-file patch is not durable; the independent route-helper guard is. See [route test environment safety](../tests/routes/README.md#environment-safety). Thumbnail compatibility remains separate Phase 1c work.
+The route helper requires a loaded Studio runtime, the local environment and an explicit test-request header. Eight isolated negative checks last passed, including requests with the header outside Studio. Ordinary browsing does not use test doubles. The separate guard patched into the Studio-managed loader is **not durable**: Studio can regenerate it during development/CLI operations, not only restarts/updates. Recheck that file immediately before every sync; do not assume both installed files are still protected. See [route test environment safety](../tests/routes/README.md#environment-safety).
 
 ## Releases
 
@@ -39,7 +43,7 @@ Purpose: remove the manual copying that moderators do today. Starts only after r
 - Front-end submission form that writes values straight to their real fields (taxonomies, excerpt, meta) and embeds the video as a VideoPress block. Moderators only review and publish.
 - Field assistance to prevent inconsistent data, for example **AJAX autocomplete** of existing speakers as the user types.
 - **Migration script** that converts the existing `[wpvideo]` shortcodes to VideoPress blocks.
-- Fine design polish, WordPress.org visual language and the agreed [backlog](backlog.md) items.
+- Fine design polish and the agreed [backlog](backlog.md) items. WordPress.org visual-language work is on hold pending the owner's consultation with the Design team; keep the current wptv3-based design until new direction is approved.
 
 ## Phase 0: Discovery ✅ (open questions pending)
 
@@ -86,10 +90,10 @@ Design level: functional `wptv3` (structure and base styles; no fine polish).
 Posts may embed the video either as `[wpvideo <guid>]` or as a VideoPress block. Both must behave the same.
 
 - ✅ `get_guid()` reads the current `videopress/video` and earlier `jetpack/videopress` block names, including nested blocks; legacy last-shortcode behavior and shortcode precedence are preserved.
-- ✅ Thumbnail lookup retains the production API and falls through to the standalone plugin poster resolver on Atomic/Studio. Featured images and the placeholder remain fallbacks. 27 deterministic checks, 8 multisite simulations and a missing-plugin smoke check pass. All 12 real homepage posters return HTTP 200 with JPEG content; desktop/mobile DOM and screenshots reviewed. Atomic deployment and real multisite verification remain pending.
+- ✅ Thumbnail lookup retains the production API and falls through to the standalone plugin poster resolver on Atomic/Studio. Featured images and the placeholder remain fallbacks. 27 deterministic checks, 8 multisite simulations and a missing-plugin smoke check pass. All 12 real homepage posters return HTTP 200 with JPEG content; desktop/mobile DOM and screenshots reviewed. The owner subsequently synchronized the site and confirmed that thumbnails work on Atomic. Real multisite verification remains pending; this confirmation does not complete the broader Atomic rollout checklist.
 - ✅ Route-test APIs and thumbnail suppression now require an explicit request header from `run.sh`; ordinary Studio browsing uses real VideoPress data.
 - ⏳ Audit the remaining GUID consumers individually: JSON-LD, Open Graph, `/api/`, `/oembed/`, MRSS, downloads and subtitles. Some still parse/search shortcodes directly; updating the shared helper alone does not complete support.
-- **Regression warning:** the 145-URL run after the owner converted post 126193 reports 27 unaccepted field differences across 11 URLs (4 feed body hashes; oEmbed/unisubs/GUID redirect fields). Four pre-existing expected API differences remain. No PHP notices. The endpoints still require shortcodes, and feed content/build dates changed with the conversion; do not mark the run green, normalize these away or modify the baseline. Details in [decisions.md](decisions.md#phase-1c-first-step-guid-extraction-and-real-posters).
+- **Regression warning:** the last 145-URL run, after the owner converted post 126193 and before media cleanup, reports 27 unaccepted field differences across 11 URLs (4 feed body hashes; oEmbed/unisubs/GUID redirect fields). Four pre-existing expected API differences remain. No PHP notices. The endpoints still require shortcodes, and feed content/build dates changed with the conversion; do not mark the run green, normalize these away or modify the baseline. Details in [decisions.md](decisions.md#phase-1c-first-step-guid-extraction-and-real-posters).
 - The single template renders the player from post content in both cases; no duplicate player.
 - Shortcode posts keep producing exactly the same output (route test unchanged).
 - Local fixtures: two or three posts converted by hand to the block markup that WordPress.com saves. Checks in `tests/blocks/` comparing helper output for the shortcode and block versions of the same video.

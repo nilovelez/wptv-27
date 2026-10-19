@@ -4,7 +4,7 @@ Block theme for [WordPress.tv](https://wordpress.tv/), the WordPress community s
 
 wptv-27 replaces the legacy classic theme (`wptv2`). It is built with Full Site Editing (block templates, template parts, patterns and `theme.json`), and relies on WordPress core features instead of hand-written code wherever possible.
 
-> **Status:** in development. The theme files are not in place yet. The repository currently holds the project documentation only.
+> **Status:** in development, version 0.3.2. Foundation/routing, the homepage and the single-video template are implemented. VideoPress GUID extraction and thumbnail support work locally; the owner also confirmed thumbnails on the synchronized Atomic test site. Remaining templates, editor/admin work and full block integration are pending. The last route regression is **not green**; this is not a production-ready release. See the [session handoff](docs/handoff.md) and [project plan](docs/plan.md).
 
 ## Constraints
 
@@ -21,7 +21,8 @@ See [`docs/wpcom-constraints.md`](docs/wpcom-constraints.md) for details.
 | Path | Purpose | In theme zip |
 |---|---|---|
 | `AGENTS.md` | Entry point for AI coding agents: project rules and documentation index | No |
-| `docs/` | Project documentation: plan, route inventory, legacy analysis, decisions | No |
+| `docs/` | Project documentation: handoff, plan, route inventory, legacy analysis, decisions | No |
+| `tests/` | Local-only block/API checks and route regression tooling | No |
 | Everything else | The theme itself | Yes |
 
 ## Working on the theme
@@ -37,7 +38,7 @@ Read [`AGENTS.md`](AGENTS.md) and the [`docs/`](docs/) folder before making chan
 
 ## Building a clean theme zip
 
-Development-only files (`docs/`, `AGENTS.md`, `.gitattributes`, `.gitignore`, `.github/`) are marked `export-ignore` in [`.gitattributes`](.gitattributes), so `git archive` leaves them out.
+Development-only files (`docs/`, `tests/`, `AGENTS.md`, `.gitattributes`, `.gitignore`, `.github/`) are marked `export-ignore` in [`.gitattributes`](.gitattributes), so `git archive` leaves them out.
 
 From the repository root:
 

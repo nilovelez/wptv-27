@@ -15,6 +15,16 @@ Template:
 
 ---
 
+## Session closeout: Atomic verification, current design and environment cleanup
+
+- **Verification:** the owner completed synchronization and confirmed that thumbnails work on the Atomic test site. This closes the thumbnail-specific Atomic check, not the overall rollout checklist or production multisite verification.
+- **Design decision:** retain the current wptv3-based design. The owner will consult the WordPress.org Design team; do not begin a WordPress.org redesign or adopt suggested documentation/tokens as an approved new direction. This holds the earlier Phase 2 visual-language proposal pending new guidance.
+- **Editor:** the owner is reviewing the Classic-to-block editor transition and will provide specific adjustments. No editor implementation changes or workflow modernization were approved in this exchange.
+- **Environment:** the owner removed the large test attachment locally and on Atomic, retained the remote VideoPress reference, removed inactive Gutenberg and reported disabling Gravatar Enhanced, Layout Grid and Page Optimize. The local orphan MP4 disappeared when the site was stopped and remained absent after restart. Studio's reported sync estimate fell to about 183 MB after Gutenberg removal; remote physical-file removal was not independently verified.
+- **Safety:** do not delete remote VideoPress attachment records to save local file space; the plugin can delete the remote video. Studio's generated loader can overwrite its guard; the independent route helper remains opt-in and runtime-guarded. The previous route run predates media cleanup and is still not green; no baseline or expected differences were changed.
+- **Affects:** documentation only. See [handoff.md](handoff.md), [plan.md](plan.md), [open-questions.md](open-questions.md), [design.md](design.md) and [wpcom-constraints.md](wpcom-constraints.md).
+- **Status:** accepted
+
 ## Phase 1c first step: GUID extraction and real posters
 
 - **Decision:** the shared video helper recognizes saved `videopress/video` and earlier `jetpack/videopress` blocks, recursively. Existing shortcodes take precedence and retain last-shortcode behavior; without shortcodes the last valid eight-character alphanumeric block GUID wins. Ignore cached iframe HTML and do not rewrite stored content.
