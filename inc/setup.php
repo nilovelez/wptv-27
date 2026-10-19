@@ -22,6 +22,17 @@ function setup() {
 add_action( 'after_setup_theme', __NAMESPACE__ . '\setup' );
 
 /**
+ * Registers the recurring visual treatments used by theme patterns.
+ */
+function register_block_styles() {
+	foreach ( array( 'core/group', 'core/post-featured-image' ) as $block ) {
+		register_block_style( $block, array( 'name' => 'video-frame', 'label' => __( 'Video frame', 'wptv' ) ) );
+	}
+	register_block_style( 'core/group', array( 'name' => 'event-tile', 'label' => __( 'Event tile', 'wptv' ) ) );
+}
+add_action( 'init', __NAMESPACE__ . '\register_block_styles' );
+
+/**
  * Enqueues the theme stylesheet on the front end.
  */
 function enqueue_assets() {

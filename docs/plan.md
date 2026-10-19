@@ -8,7 +8,7 @@ Replace the legacy classic theme `wptv2` on WordPress.tv with a new block theme,
 
 - keeps every existing route working exactly as before (Phase 1),
 - replaces hand-written legacy code with WordPress core features, core blocks and small, well-scoped custom code,
-- is fully editable with the Site Editor,
+- keeps post/page content editable while the design is managed only in theme code (no Site Editor access),
 - later adopts the WordPress.org visual language (Phase 2).
 
 ## Phase 0: Discovery ✅ (open questions pending)
@@ -43,8 +43,11 @@ Replace the legacy classic theme `wptv2` on WordPress.tv with a new block theme,
 - Template parts: header, footer, video meta sidebar.
 - Core blocks first: `core/breadcrumbs`, `core/terms-query` + `core/term-template` (recent events, video categories), `core/query-total`.
 - PHP-only blocks (`supports.autoRegister`, no `block.json`, no build) only where core cannot do the job: producer credit, video downloads/subtitles.
-- Front page with the `wptv3` structure, without "Popular videos" (replaced by recent events and video categories).
-- Provisional Navigation block links in the header.
+- ✅ Front page with the `wptv3` structure, without "Popular videos": latest-video welcome, four Featured videos, twelve event terms by descending ID, all nonempty top-level categories, eight recent videos from the inherited main query with core pagination. Hidden theme pattern and thin template wrapper; scoped slug-to-ID query filter.
+- ✅ Provisional Navigation block links in the header; header and footer reference hidden theme patterns.
+- ✅ VideoPress thumbnail filter (brought forward for the front-page grids); existing attachment or bundled placeholder fallback. Shared support for block-only VideoPress posts still uses the placeholder when the legacy GUID helper has no data.
+- ✅ Visual tokens and bundled Inter/EB Garamond fonts; body-color preset renamed to `ink` to avoid the core `.has-text-color` collision.
+- Front-page checks: 49/49 pattern blocks and 3/3 template blocks valid; 11 read-only checks via `wp eval-file wp-content/themes/wptv-27/tests/blocks/front-page.php`. Desktop/mobile review completed; HTTP pagination boundaries checked. Full route regression at the end of 1b.
 - Design lockdown (`inc/lockdown.php`): no Site Editor access for anyone, theme files always win over database copies of templates and parts, user global styles and Additional CSS ignored, no custom design controls in `theme.json`. Templates are thin wrappers around theme patterns.
 - Design based on `wptv3` as an interim reference.
 

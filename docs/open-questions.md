@@ -37,6 +37,10 @@ Questions that need an answer from the project owner or a WordPress.com employee
 
 ## Answered
 
+### Phase 1b design ownership and front page
+
+- **Answer:** nobody, including administrators, may access the Site Editor. Editors and administrators still edit institutional page content; templates and visual structure live in theme patterns. The owner approved proceeding with the five-section front page: latest video, Featured, recent events, top-level video categories and paginated recent videos. No Popular videos. See [decisions.md](decisions.md).
+
 ### Text domain (was question 20)
 
 - **Answer:** keep `wptv`, as in `wptv2`.

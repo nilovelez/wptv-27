@@ -15,6 +15,16 @@ Template:
 
 ---
 
+## Phase 1b: Front-page query implementation and design safeguards
+
+- **Decision:** `front-page.html` references the hidden `wptv/front-page` pattern. The independent latest-video query requests one post; Featured requests four posts tagged `featured`, without a category constraint or offset. Recent videos use the inherited main query without a page-size override. Event terms use descending term IDs (not event dates); categories show all nonempty top-level terms, ordered by count.
+- **Implementation:** the query object's `wptvQuery` marker is provided to Post Template through core query context. `inc/block-queries.php` resolves only known theme markers (`wptv/featured`, `wptv/wordcamp`) to term IDs, leaves unmarked/inherited queries untouched, and fails closed when a term is missing. Empty native tax queries must not be nested inside an AND condition.
+- **Thumbnails:** brought forward from the later Phase 1b step because the front-page grids need them. `post_thumbnail_html` supplies VideoPress imagery through the existing guarded helper, preserves an existing attachment image as fallback, and uses the bundled placeholder when neither is available. Post queries and routes are unchanged.
+- **Design safeguards:** rename the body-color preset from `text` to `ink`; `text` generates a `.has-text-color` utility that collides with core's generic text-color marker and overrides other colors. Bump the theme version whenever the pattern file inventory changes, so core invalidates its cached pattern list on deployment.
+- **Verification:** 49/49 pattern blocks and 3/3 template blocks validated; 11 read-only checks in `tests/blocks/front-page.php`; desktop/mobile visual review. HTTP checks retain 8 posts on `/` and `/page/2/`, 2 on `/page/490/`, and a 404 on `/page/491/`. Full route regression remains scheduled for the end of Phase 1b.
+- **Affects:** `patterns/front-page.php`, `templates/front-page.html`, `inc/block-queries.php`, `inc/video.php`, `inc/setup.php`, `theme.json`, `style.css`, `tests/blocks/front-page.php`.
+- **Status:** accepted
+
 ## Phase 0: Project documentation lives in the theme repository
 
 - **Decision:** project documentation lives in `docs/` and `AGENTS.md` inside the theme repository. Both are excluded from theme zips with `export-ignore` in `.gitattributes`. Clean zips are built with `git archive` (see README).

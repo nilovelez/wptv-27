@@ -4,7 +4,7 @@ Theme URI: https://github.com/nilovelez/wptv-27
 Description: Block theme for WordPress.tv. Replaces the legacy wptv2 theme while keeping every route unchanged.
 Author: WordPress.org
 Author URI: https://wordpress.org/
-Version: 0.1.0
+Version: 0.2.0
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
@@ -60,7 +60,7 @@ h3,
 }
 
 .wptv-header .wp-block-site-title a {
-	color: var(--wp--preset--color--text);
+	color: var(--wp--preset--color--ink);
 }
 
 .wptv-header .wp-block-navigation {
@@ -69,7 +69,7 @@ h3,
 }
 
 .wptv-header .wp-block-navigation a {
-	color: var(--wp--preset--color--text);
+	color: var(--wp--preset--color--ink);
 	text-decoration: none;
 }
 
@@ -86,13 +86,13 @@ h3,
 
 .wptv-header .wp-block-search__button {
 	background: transparent;
-	color: var(--wp--preset--color--text);
+	color: var(--wp--preset--color--ink);
 }
 
 .wptv-header .wp-block-search__button:hover,
 .wptv-header .wp-block-search__button:focus {
 	background: var(--wp--preset--color--gray);
-	color: var(--wp--preset--color--text);
+	color: var(--wp--preset--color--ink);
 }
 
 .wptv-header__submit .wp-element-button {
@@ -145,6 +145,126 @@ h3,
 	border-top: 1px solid var(--wp--preset--color--coal-2);
 	margin-top: var(--wp--preset--spacing--40);
 	padding-top: var(--wp--preset--spacing--20);
+}
+
+/* === home page === */
+
+.wptv-home > .wp-block-group {
+	margin-block: 0;
+	padding-block: var(--wp--preset--spacing--50);
+}
+
+.wptv-home__welcome h1,
+.wptv-home__welcome p {
+	text-align: center;
+}
+
+.wptv-home__welcome .wp-block-post-content > :first-child {
+	margin-top: 0;
+}
+
+.wptv-home__welcome .wp-block-post-content > :last-child {
+	margin-bottom: 0;
+}
+
+.is-style-video-frame {
+	border: 8px solid var(--wp--preset--color--gray);
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+figure.is-style-video-frame {
+	box-sizing: border-box;
+}
+
+.wptv-home__featured .is-style-video-frame {
+	border-color: var(--wp--preset--color--coal);
+}
+
+.wptv-home__featured a,
+.wptv-home__lead-caption a {
+	color: var(--wp--preset--color--white);
+}
+
+.wptv-home__lead-caption .wp-block-post-title {
+	color: var(--wp--preset--color--white);
+}
+
+.wptv-home__lead-caption {
+	padding: var(--wp--preset--spacing--10);
+	margin-block-start: 0;
+}
+
+.wptv-home__lead-caption .wp-block-post-title {
+	font-family: var(--wp--preset--font-family--inter);
+	font-weight: 600;
+	margin-block: 0;
+}
+
+.wptv-home__videos .wp-block-post-title {
+	font-family: var(--wp--preset--font-family--inter);
+	font-weight: 600;
+	line-height: 1.5;
+	margin-block: 0;
+}
+
+.wptv-home__videos .wp-block-post-terms {
+	margin-block: var(--wp--preset--spacing--10) 0;
+	font-size: var(--wp--preset--font-size--small);
+}
+
+.wptv-home__videos .wp-block-post-featured-image {
+	margin: 0;
+}
+
+.wptv-home__videos,
+.wptv-home__events-grid,
+.wptv-home__categories-grid {
+	gap: var(--wp--preset--spacing--30);
+}
+
+.is-style-event-tile {
+	box-sizing: border-box;
+	padding: var(--wp--preset--spacing--40) var(--wp--preset--spacing--20) var(--wp--preset--spacing--20);
+	min-height: 8rem;
+	height: 100%;
+}
+
+.wptv-home__events-grid .wp-block-term-name {
+	margin: 0;
+	font-family: var(--wp--preset--font-family--inter);
+	font-weight: 600;
+}
+
+.wptv-home__categories-grid .wp-block-term-name {
+	font-family: var(--wp--preset--font-family--inter);
+	font-weight: 500;
+	margin: 0;
+}
+
+.wptv-home__categories-grid .wp-block-term-count {
+	font-size: var(--wp--preset--font-size--small);
+	flex-shrink: 0;
+}
+
+.wptv-home__recent .wp-block-query-pagination {
+	margin-top: var(--wp--preset--spacing--40);
+}
+
+@media (max-width: 900px) {
+	.wptv-home .wptv-home__videos,
+	.wptv-home .wptv-home__events-grid,
+	.wptv-home .wptv-home__categories-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 480px) {
+	.wptv-home .wptv-home__videos,
+	.wptv-home .wptv-home__events-grid,
+	.wptv-home .wptv-home__categories-grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
 }
 
 /* === motion === */

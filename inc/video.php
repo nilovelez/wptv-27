@@ -70,6 +70,46 @@ function get_image_url( $post = null ) {
 }
 
 /**
+ * Supplies VideoPress thumbnails to the core Featured Image block.
+ *
+ * Keeps core's image/link wrapper, accessibility attributes and aspect ratio.
+ * Existing featured images remain the fallback for non-video posts.
+ *
+ * @param string       $html          Existing thumbnail HTML.
+ * @param int          $post_id       Post ID.
+ * @param int          $thumbnail_id  Attachment ID (unused).
+ * @param string|int[] $size          Requested size (unused).
+ * @param string|array $attr          Image attributes from core.
+ * @return string
+ */
+function thumbnail_html( $html, $post_id, $thumbnail_id, $size, $attr ) {
+	if ( 'post' !== get_post_type( $post_id ) ) {
+		return $html;
+	}
+	$url = get_image_url( $post_id );
+	if ( ! $url && $html ) {
+		return $html;
+	}
+	$url = $url ?: get_theme_file_uri( 'assets/images/placeholder.png' );
+	$attributes = wp_parse_args( $attr, array(
+		'alt'      => '',
+		'loading'  => 'lazy',
+		'decoding' => 'async',
+	) );
+	$image = new \WP_HTML_Tag_Processor( '<img>' );
+	$image->next_tag();
+	$image->set_attribute( 'src', esc_url_raw( $url ) );
+	foreach ( array( 'alt', 'class', 'width', 'height', 'loading', 'decoding', 'style' ) as $name ) {
+		if ( isset( $attributes[ $name ] ) ) {
+			$value = 'style' === $name ? safecss_filter_attr( $attributes[ $name ] ) : $attributes[ $name ];
+			$image->set_attribute( $name, $value );
+		}
+	}
+	return $image->get_updated_html();
+}
+add_filter( 'post_thumbnail_html', __NAMESPACE__ . '\thumbnail_html', 10, 5 );
+
+/**
  * Returns the URLs of a post's transcoded video files, best quality first.
  *
  * @param int|\WP_Post|null $post Post. Defaults to the current post.
