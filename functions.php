@@ -17,6 +17,7 @@ define( 'WPTV_THEME_DIR', __DIR__ );
 require_once WPTV_THEME_DIR . '/inc/setup.php';
 require_once WPTV_THEME_DIR . '/inc/video.php';
 require_once WPTV_THEME_DIR . '/inc/head.php';
+require_once WPTV_THEME_DIR . '/inc/attachments.php';
 
 /*
  * WordPress.tv-only features. Same switch as wptv2: a site can disable them with
@@ -27,6 +28,7 @@ if ( apply_filters( 'wptv_setup_theme', true ) ) {
 	require_once WPTV_THEME_DIR . '/inc/taxonomies.php';
 	require_once WPTV_THEME_DIR . '/inc/query.php';
 	require_once WPTV_THEME_DIR . '/inc/content.php';
+	require_once WPTV_THEME_DIR . '/inc/publishing.php';
 	require_once WPTV_THEME_DIR . '/inc/open-graph.php';
 	require_once WPTV_THEME_DIR . '/inc/redirects.php';
 	require_once WPTV_THEME_DIR . '/inc/maintenance.php';

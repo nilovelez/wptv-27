@@ -25,7 +25,7 @@ Replace the legacy classic theme `wptv2` on WordPress.tv with a new block theme,
 
 ## Phase 1: Route-identical theme ⏳
 
-### 1a. Foundation and routing ⏳ (routing ✅)
+### 1a. Foundation and routing ✅
 
 - ✅ Theme skeleton: `style.css`, `theme.json`, minimal `functions.php` that only loads `inc/`, placeholder `index.html` with header/footer parts.
 - ✅ Taxonomies registered with the **exact** same arguments as `wptv2` (`inc/taxonomies.php`).
@@ -34,7 +34,7 @@ Replace the legacy classic theme `wptv2` on WordPress.tv with a new block theme,
 - ✅ Endpoints: `/oembed/`, `/api/`, `/unisubs/` (`inc/endpoints/`).
 - ✅ `<head>` output: title parts, MRSS filters and excerpt slides (`inc/content.php`), archive canonical, prev/next, JSON-LD (`inc/head.php`), Open Graph/Twitter tags (`inc/open-graph.php`), oEmbed discovery.
 - ✅ `?flush_rules=1` for super admins (`inc/maintenance.php`).
-- Publishing hooks: `wptv_post_views` initialization, stats bump, attachment title sync, upload space.
+- ✅ Publishing hooks: `wptv_post_views` initialization, stats bump, upload space (`inc/publishing.php`), attachment title sync (`inc/attachments.php`, loaded on every site as in `wptv2`). Checked with a one-off WP-CLI script (5/5 cases).
 - **Exit criterion:** the regression test passes against the `wptv2` baseline for all non-visual checks. ✅ Met: 141/145 identical, 4 expected differences (see `tests/routes/expected-differences.tsv`), no PHP notices.
 
 ### 1b. Templates and blocks
