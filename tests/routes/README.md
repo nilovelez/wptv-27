@@ -58,6 +58,13 @@ bash wp-content/themes/wptv-27/tests/routes/compare.sh baseline-wptv2 wptv-27
 
 `compare.sh` exits with `0` when everything matches, and with `1` (plus a list of differences) otherwise. Differences listed in `expected-differences.tsv` are printed as `EXPECTED` and do not make the run fail; each entry must be backed by a decision in `docs/decisions.md`.
 
+## When to run
+
+A full run is slow (several minutes) and needs a theme switch, so do not run it after every change.
+
+- **Run it:** at the end of each sub-phase (1a, 1b, 1c) and before a deploy; and after changes to routing code: `functions.php` loading, `inc/taxonomies.php`, `inc/query.php`, `inc/redirects.php`, `inc/endpoints/`, `inc/head.php`, or anything hooked to `init`, `pre_get_posts`, `template_redirect`, `query_vars` or `document_title_parts`. Batch several such changes into one run.
+- **Skip it:** for template, template-part, `theme.json`, CSS, pattern and block-rendering changes. For those, request the affected URLs once with `curl -sI` (status) or check the page in the browser, and watch `wp-content/wptv-route-test.log` for PHP notices.
+
 ## Rules
 
 - **Same data for every run.** The baseline is only valid for the database it was captured on. If the content changes (new posts, new import), regenerate `urls.txt` and capture a new baseline with `wptv2` before comparing.
