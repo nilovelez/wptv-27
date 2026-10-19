@@ -40,11 +40,19 @@ Status legend: ⏳ pending · 🔄 in progress · ✅ done
 - **Current routes:** `/category/location/<slug>/` and `/category/year/<slug>/`, with `/page/N/` and `/feed/`. The location archives are not linked from anywhere today, but they exist and may be indexed.
 - **Scope:**
   - Register the new taxonomy (or taxonomies) and migrate the terms and relationships with a batched, dry-run-capable script, run on the test site first.
-  - Handle every old URL variant (archive, pagination, feed). There is no new archive to point to, so the target is still open (see below).
+  - Every old URL variant (archive, pagination, feed, `?cat=` equivalents) returns a **301 to the home page**.
   - Update the submission form, the event name suggestion, `inc/query.php` (Year/Location per-page rules) and the front page category list exclusions.
   - Decide whether the old category terms are deleted after migration (needs a WP.com employee on production).
-- **Expected route test differences:** every `location`/`year` category URL changes according to the chosen handling. No new public routes.
-- **Open points:** what the old category URLs return (301 to the home page, 301 to a search, or 410 Gone); whether the taxonomies are exposed in the REST API, and to whom.
+  - Both taxonomies are exposed **publicly in the REST API** (`show_in_rest`), but have no public URLs (`publicly_queryable` false, `rewrite` false).
+- **Expected route test differences:** every `location`/`year` category URL becomes a 301 to `/`. New REST routes `/wp/v2/location` and `/wp/v2/year` (or the final REST bases). No new front-end routes.
+
+### B6. Video submission only for users signed in with WordPress.org SSO ⏳
+
+- **Current behavior:** anyone can submit a video anonymously (name and email typed in the form). If the user is logged in to WordPress.com, the account's display name and email are used instead.
+- **Goal:** only users authenticated through **WordPress.org SSO** can submit videos. Their WordPress.org identity replaces the typed name and email.
+- **Scope:** require login on `/submit-video/` and the upload handler (`admin_post_nopriv_wptv_video_upload` stops accepting submissions); store the WordPress.org username with the submission; drop the Uploaded by/Email fields; review spam protection.
+- **Open points:** which SSO mechanism is available on the WordPress.com multisite for wordpress.tv; what anonymous visitors see instead of the form; whether the subtitle form (`/subtitle/`) follows the same rule.
+- **Depends on:** release 2 form (see [submission-form.md](submission-form.md)). May ship with it or later.
 
 ## Ideas (not yet agreed)
 

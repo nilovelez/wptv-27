@@ -37,13 +37,17 @@ Questions that need an answer from the project owner or a WordPress.com employee
 
 ### VideoPress blocks and release 2
 
-20. **Block markup on WordPress.com:** what exact markup does the VideoPress block save on wordpress.tv (block name, `guid` attribute, poster/featured image settings)? A sample from one post converted by hand on the test site is enough. Release 1 (1c) depends on it.
-21. **Upload API:** in release 2, can the form handler create the VideoPress block from the uploaded attachment server-side (GUID available right after upload, as with `video_get_info_by_blogpostid()` today), or is processing asynchronous?
+20. **Block markup on WordPress.com:** what exact markup does the VideoPress block save on wordpress.tv (block name, `guid` attribute, poster/featured image settings)? Release 1 (1c) depends on it. **Status:** the project owner will prepare a test post on the test site when 1c starts.
+21. **Upload API:** in release 2, can the form handler create the VideoPress block from the uploaded attachment server-side (GUID available right after upload, as with `video_get_info_by_blogpostid()` today), or is processing asynchronous? **Status:** expected to be available immediately; to be tested on the test site.
 23. **Autocomplete endpoint:** `speakers`, `event` and `language` are already in the core REST API (`/wp/v2/speakers?search=`), so autocomplete can use core endpoints with no new routes. Confirm that anonymous lookups against them are acceptable on WordPress.com (rate limits, caching).
-24. **Migration run:** who runs the shortcode-to-block migration on production, and in what form (WP-CLI command in the theme, or a one-off script)?
-25. **Rollout window:** who switches the theme on the test site and production, when, and how long is the production observation period?
+24. **Migration run:** who runs the shortcode-to-block migration on production, and in what form (WP-CLI command in the theme, or a one-off script)? **Status:** not known yet.
+25. **Rollout window:** who switches the theme on the test site and production, when, and how long is the production observation period? **Status:** not known yet.
 
 ## Answered
+
+### Location and Year URLs (B5)
+
+- **Answer:** the old `/category/location/...` and `/category/year/...` URLs return a 301 to the home page. The new taxonomies are public in the REST API but have no front-end URLs.
 
 ### Submission form fields (release 2)
 

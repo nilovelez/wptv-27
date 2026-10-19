@@ -23,7 +23,7 @@ Order is provisional; some fields will move.
 | Field | Today | Release 2 |
 |---|---|---|
 | **This is a WordCamp video** | Checkbox. Assigns category `wordcamptv` (ID hardcoded) and changes how the event name is built. | Kept. Assigns `wordcamptv` by slug and drives the event suggestion. |
-| **Uploaded by**, **Email** | Text, required for logged-out users only. Logged-in users use their account. | Kept. Email validated as an email address. Private, shown only to moderators. |
+| **Uploaded by**, **Email** | Text, required for logged-out users only. Logged-in users use their account. | Kept. Email validated as an email address. Private, shown only to moderators. Later replaced by WordPress.org SSO (B6). |
 | **Video title** | Free text, no server limit. Post title is `<speakers>: <title>`. | Required, **max 100 characters**. |
 | **Language** | Free text. | **Selector of existing `language` terms** with search. No new terms: editors create them in the admin. |
 | **Date recorded** | Native `date` input. Adds the matching Year child category. | Kept as a native date. The `year` term is assigned automatically from it; Year is not a form field. |
@@ -52,8 +52,8 @@ Known issues: hardcoded production IDs, only the first location is used, and any
 
 - Location and Year stop being category trees and become two taxonomies, `location` and `year`.
 - Location is chosen in the form. Year is **not** in the form: it is assigned automatically from Date recorded.
-- **No public URLs:** both taxonomies are for internal queries and the API only (not publicly queryable, no rewrite rules, no archives).
-- Removing the old category archives (`/category/location/<slug>/`, `/category/year/<slug>/`, feeds, pagination) changes routes, so it is tracked as **B5** in [backlog.md](backlog.md) with a term migration.
+- **No public URLs:** both taxonomies are for internal queries and the public REST API only (not publicly queryable, no rewrite rules, no archives).
+- The old category archives (`/category/location/<slug>/`, `/category/year/<slug>/`, feeds, pagination) return a 301 to the home page. Tracked as **B5** in [backlog.md](backlog.md) with a term migration.
 
 ## Autocomplete
 
