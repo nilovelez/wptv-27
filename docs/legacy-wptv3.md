@@ -29,18 +29,18 @@
 
 ## Route regression results (vs `wptv2` baseline)
 
-Run on the local site: **45 differences**. See [routes.md](routes.md) and `tests/routes/`.
+Run on the local site: **45 differences**, measured with the first test setup, which still displayed PHP notices. Some of them (status codes, `/api/` payloads) were caused by notices printed before the headers and would not happen on production. See [routes.md](routes.md) and `tests/routes/`.
 
 | Problem | Routes affected |
 |---|---|
 | `producer` and `flavor` taxonomies are not registered, so their archives return 404 and their feeds are empty | `/producer/*`, `/flavor/*` |
-| Unknown terms trigger a PHP warning (`Attempt to read property "taxonomy" on null`, `includes/wptv3.php` line 324). The warning is printed before the headers, so the response is **200 instead of 404** and no other headers are sent | `/event/<unknown>/`, `/speakers/<unknown>/`, `/language/<unknown>/`, `/producer-username/<unknown>/` |
+| Unknown terms trigger a PHP warning (`Attempt to read property "taxonomy" on null`, `includes/wptv3.php` line 324). With notices displayed (local default), the warning is printed before the headers and the response becomes **200 instead of 404**. On production it is only logged | `/event/<unknown>/`, `/speakers/<unknown>/`, `/language/<unknown>/`, `/producer-username/<unknown>/` |
 | `/api/videos.json?event=<slug>` ignores the event filter and returns the front page query | `/api/videos.*` |
-| `/api/` payloads differ from `wptv2` | `/api/videos.*`, `/api/events.json` |
+| `/api/` payloads differ from `wptv2` (partly caused by displayed notices, not re-checked) | `/api/videos.*`, `/api/events.json` |
 
 ## Lessons for wptv-27
 
 - Register **all six** taxonomies with the exact `wptv2` arguments.
 - Never read properties of `get_queried_object()` without checking it (it is `null` on 404s).
-- Local sites display PHP warnings, and a warning printed before the headers silently changes the status code. Treat every notice and warning as a bug.
+- Local sites display PHP warnings, and a warning printed before the headers silently changes the status code. The route test now logs notices instead (`php-notices.txt`). Treat every notice and warning as a bug.
 - Use slugs, never IDs, in block queries and code.

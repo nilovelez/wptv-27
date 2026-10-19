@@ -40,6 +40,10 @@ fi
 rm -rf "$OUT"
 mkdir -p "$OUT/bodies"
 
+# PHP notices logged by the mu-plugin (wp-content/wptv-route-test.log). Cleared before the run.
+PHP_LOG="$DIR/../../../../wptv-route-test.log"
+: > "$PHP_LOG" 2> /dev/null
+
 printf 'label\tpath\tstatus\tlocation\tcontent_type\tx_wptv_route\tcanonical\ttitle\trel_prev\trel_next\tbody_sha1\n' > "$OUT/results.tsv"
 printf 'label\tseconds\n' > "$OUT/timings.tsv"
 
@@ -106,5 +110,13 @@ while IFS=$'\t' read -r label path; do
 		>> "$OUT/results.tsv"
 	printf '%s\t%s\n' "$label" "$seconds" >> "$OUT/timings.tsv"
 done < "$URLS"
+
+# Keep the PHP notices of this run, with absolute paths and timestamps removed.
+if [ -s "$PHP_LOG" ]; then
+	sed -E 's/^\[[^]]*\] //; s#[A-Za-z]:\\[^ ]*\\wp-content\\#wp-content/#g; s#\\#/#g' "$PHP_LOG" | sort | uniq -c | sort -rn > "$OUT/php-notices.txt"
+	echo "PHP notices: $(wc -l < "$OUT/php-notices.txt") distinct (see $OUT/php-notices.txt)" >&2
+else
+	echo "PHP notices: none" >&2
+fi
 
 echo "Done: $n URLs. Results in $OUT" >&2

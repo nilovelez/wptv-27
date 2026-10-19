@@ -13,14 +13,6 @@ Status legend: ⏳ pending · 🔄 in progress · ✅ done
 
 ## Pending
 
-### B1. `/api/videos.*` sends JSON as `text/html` ⏳
-
-- **Found by:** Phase 0 route baseline.
-- **Current behavior:** `/api/videos.json` and `/api/videos.array` return a JSON payload with `Content-Type: text/html; charset=UTF-8`. The other `/api/` methods (`events`, `speakers`, `languages`, `tags`, `categories`) send `application/json`.
-- **Fix:** send `Content-Type: application/json; charset=UTF-8` for every JSON response from `/api/`.
-- **Expected route test differences:** `content_type` for the 5 `api: videos.*` URLs. Bodies stay the same.
-- **Risk:** low. Check the known `/api/` consumers first (open question about who consumes `/api/`).
-
 ### B2. `/unisubs/` returns the wrong `permalink` ⏳
 
 - **Found by:** Phase 0 route baseline.
@@ -51,3 +43,9 @@ Status legend: ⏳ pending · 🔄 in progress · ✅ done
 ## Done
 
 _Nothing yet._
+
+## Withdrawn
+
+### B1. `/api/videos.*` sends JSON as `text/html`
+
+- **Withdrawn:** not a `wptv2` bug. It was an artifact of the first local test setup: the `video_get_single_response()` stub returned an empty array, PHP printed an "Undefined array key" warning before the headers, and that forced `text/html`. On production the real function returns the key and `display_errors` is off. The route test now stubs the full structure and logs notices instead of printing them. With the corrected baseline, `/api/videos.json` sends `application/json`.

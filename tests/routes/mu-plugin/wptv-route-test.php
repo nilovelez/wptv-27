@@ -14,6 +14,21 @@ if ( defined( 'IS_WPCOM' ) && IS_WPCOM ) {
 }
 
 /*
+ * Behave like production: never print PHP notices into responses.
+ *
+ * A notice printed before the headers changes the status code and Content-Type,
+ * which production (display_errors off) never does. Notices are logged instead,
+ * one line per notice, to wp-content/wptv-route-test.log. run.sh clears the log
+ * before a run and copies it into the results folder afterwards, so every new
+ * notice can still be reviewed (and treated as a bug in wptv-27).
+ */
+// phpcs:disable WordPress.PHP.IniSet -- Local development helper only.
+ini_set( 'display_errors', '0' );
+ini_set( 'log_errors', '1' );
+ini_set( 'error_log', WP_CONTENT_DIR . '/wptv-route-test.log' );
+// phpcs:enable
+
+/*
  * Stubs for WordPress.com-only VideoPress helpers.
  *
  * Video details are fake but deterministic (derived from the GUID only), so the
@@ -136,13 +151,18 @@ if ( ! function_exists( 'video_highest_resolution_ogg' ) ) {
 
 if ( ! function_exists( 'video_get_single_response' ) ) {
 	/**
-	 * Stub: no API data is available locally.
+	 * Stub: API data with the real structure, but no files or subtitles.
 	 *
 	 * @param object $info Video details.
 	 * @return array
 	 */
 	function video_get_single_response( $info ) {
-		return array();
+		return array(
+			'guid'      => $info->guid ?? '',
+			'original'  => '',
+			'files'     => array(),
+			'subtitles' => array(),
+		);
 	}
 }
 

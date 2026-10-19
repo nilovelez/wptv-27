@@ -73,7 +73,7 @@ Template:
 
 ## Phase 0: Legacy quirks are part of the route contract
 
-- **Decision:** Phase 1 reproduces observable `wptv2` behavior even when it is a bug (for example, `/api/videos.*` sending JSON as `text/html`), unless the project owner decides otherwise. Each quirk is tracked in [backlog.md](backlog.md) and fixed after Phase 1.
+- **Decision:** Phase 1 reproduces observable `wptv2` behavior even when it is a bug (for example, the wrong `permalink` in `/unisubs/?guid=`), unless the project owner decides otherwise. Each quirk is tracked in [backlog.md](backlog.md) and fixed after Phase 1.
 - **Reason:** external consumers may depend on the current behavior, and Phase 1 must not change routes.
 - **Affects:** endpoints, see [routes.md](routes.md).
 - **Status:** accepted

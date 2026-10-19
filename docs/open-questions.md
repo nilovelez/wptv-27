@@ -43,7 +43,7 @@ Questions that need an answer from the project owner or a WordPress.com employee
 
 ### Legacy quirks found by the baseline (were questions 21 and 22)
 
-- **Answer:** keep them in Phase 1 and fix them later. Tracked as B1 (`/api/videos.*` Content-Type) and B2 (`/unisubs/` permalink) in [backlog.md](backlog.md).
+- **Answer:** keep them in Phase 1 and fix them later. Tracked as B2 (`/unisubs/` permalink) in [backlog.md](backlog.md). B1 (`/api/videos.*` Content-Type) was withdrawn: it was an artifact of the local test setup, not a `wptv2` bug.
 
 ### `producer` and `flavor` taxonomies
 

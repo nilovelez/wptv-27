@@ -94,6 +94,11 @@ Only run on 404 requests (`template_redirect`, priority 1):
 
 Known limitation: WordPress.com-only VideoPress helpers are stubbed with fake, deterministic data, so file URLs, thumbnails, downloads and subtitles can only be fully checked on the WordPress.com test site.
 
-Legacy quirks that are part of the Phase 1 contract and will be fixed later (see [backlog.md](backlog.md), B1 and B2): `/api/videos.*` sends JSON as `text/html`, and with `?guid=` the `/unisubs/` `permalink` field points to the latest post.
+Legacy quirks that are part of the Phase 1 contract:
+
+- With `?guid=`, the `/unisubs/` `permalink` field points to the latest post. It will be fixed later (backlog B2).
+- `/api/*.array` returns an empty 200 response outside the WordPress.com sandbox (`WPCOM_SANDBOXED`).
+
+PHP notices are logged, not displayed, during test runs (as on production), and listed in `php-notices.txt` per run. A notice in `wptv-27` is a bug even when the routes match.
 
 The `producer` and `flavor` routes stay unchanged in Phase 1. They will be retired later with 301 redirects (backlog B3).

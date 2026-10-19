@@ -113,11 +113,11 @@ redirect: /upload	/upload	301	/submit-video/	text/html	404=1; found=0; count=0; 
 redirect: /upload/	/upload/	301	/submit-video/	text/html	404=1; found=0; count=0; pages=0; per_page=22; paged=1; queried=-					
 redirect: social-learning	/category/social-learning/	301	/category/learn-wordpress-online-workshops/	text/html	404=1; found=0; count=0; pages=0; per_page=22; paged=1; queried=-					
 redirect: social-learning page 2	/category/social-learning/page/2/	301	/category/learn-wordpress-online-workshops/page/2/	text/html	404=1; found=0; count=0; pages=0; per_page=22; paged=2; queried=-					
-api: videos.json	/api/videos.json	200		text/html	404=0; found=3914; count=8; pages=490; per_page=8; paged=1; queried=-					296f207db421f3efbb3f347c5c98876ea9d05c98
-api: videos.array	/api/videos.array	200		text/html	404=0; found=3914; count=8; pages=490; per_page=8; paged=1; queried=-					0f455c1b742a669737bac9837a1607fa6a877fab
-api: videos.json posts_per_page	/api/videos.json?posts_per_page=3	200		text/html	404=0; found=3914; count=8; pages=490; per_page=8; paged=1; queried=-					599d4ec8e142dd2819f90b1e0b67e0542e4c12e3
-api: videos.json by event	/api/videos.json?event=wordcamp-europe-2023	200		text/html	404=0; found=63; count=22; pages=3; per_page=22; paged=1; queried=term%3Aevent%3Awordcamp-europe-2023					9ef8f0bd0ab66109da0a9efaaac4c9e017835f16
-api: videos.json page 2	/api/videos.json?paged=2	200		text/html	404=0; found=3914; count=8; pages=490; per_page=8; paged=2; queried=-					c6bfe36e8aeb6d55fbb71e1e69c8f16c2be2bac5
+api: videos.json	/api/videos.json	200		application/json	404=0; found=3914; count=8; pages=490; per_page=8; paged=1; queried=-					a3be54921a6ec31ae379c9cdd9e073a1209e6ba0
+api: videos.array	/api/videos.array	200		text/html	404=0; found=3914; count=8; pages=490; per_page=8; paged=1; queried=-					
+api: videos.json posts_per_page	/api/videos.json?posts_per_page=3	200		application/json	404=0; found=3914; count=8; pages=490; per_page=8; paged=1; queried=-					f4f36f36e598ee68b7a026ac8c8b33f61316f382
+api: videos.json by event	/api/videos.json?event=wordcamp-europe-2023	200		application/json	404=0; found=63; count=22; pages=3; per_page=22; paged=1; queried=term%3Aevent%3Awordcamp-europe-2023					b384336504638fa25604cdbc8c184b2bf6bfd2b4
+api: videos.json page 2	/api/videos.json?paged=2	200		application/json	404=0; found=3914; count=8; pages=490; per_page=8; paged=2; queried=-					d1cfe5ccc76743a35cdeb41c2862e03908981fca
 api: events.json	/api/events.json	200		application/json	404=0; found=3914; count=8; pages=490; per_page=8; paged=1; queried=-					a5f83492da8ffc90d9837d1a3c6235d08168dc19
 api: speakers.json	/api/speakers.json	200		application/json	404=0; found=3914; count=8; pages=490; per_page=8; paged=1; queried=-					2a42227b4e4c747b2ada4de5046d38abff5ab80d
 api: languages.json	/api/languages.json	200		application/json	404=0; found=3914; count=8; pages=490; per_page=8; paged=1; queried=-					f2eecc325ce74fddd6e3bff9f7739913a9c6b483

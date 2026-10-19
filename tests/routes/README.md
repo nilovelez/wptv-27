@@ -21,7 +21,8 @@ The test is theme-agnostic. It never parses theme markup to count posts. Instead
 - Content type.
 - `X-WPTV-Route`: `404`, `found`, `count`, `pages`, `per_page`, `paged` and `queried` object of the main query.
 - For HTML documents: `<link rel="canonical">`, `<title>`, `rel="prev"` and `rel="next"`.
-- For everything else (JSON, XML, feeds, plain-text errors): the body, normalized (relative URLs, random secrets and nonces masked), stored in `bodies/`, plus its SHA-1. HTML is detected by content, not by `Content-Type`, because some legacy endpoints send JSON as `text/html`.
+- For everything else (JSON, XML, feeds, plain-text errors): the body, normalized (relative URLs, random secrets and nonces masked), stored in `bodies/`, plus its SHA-1. HTML is detected by content, not by `Content-Type`, so a wrong header never hides a body change.
+- PHP notices: the mu-plugin turns `display_errors` off (as on production) and logs notices to `wp-content/wptv-route-test.log`. `run.sh` clears the log before a run and saves the distinct notices to `php-notices.txt`. They are not compared, but any notice from `wptv-27` is a bug.
 - Response times go to `timings.tsv` and are never compared.
 
 ## Setup
