@@ -12,6 +12,10 @@ Replace the legacy classic theme `wptv2` on WordPress.tv with a new block theme,
 - moves video submission to VideoPress blocks and a front-end form that fills the real fields, so moderators only review and publish (Phase 2),
 - later adopts the WordPress.org visual language (Phase 2).
 
+## Local tooling safety
+
+✅ Both installed MU-plugins are guarded to run only in Studio, so a full test-site sync leaves them inert remotely. The route helper requires a loaded Studio runtime, not just `local`. Eight isolated negative checks pass; local bootstrap remains functional. Recheck the Studio-managed loader guard after restarts/updates because Studio may regenerate it. See [route test environment safety](../tests/routes/README.md#environment-safety). Thumbnail compatibility remains separate Phase 1c work.
+
 ## Releases
 
 The work ships in two releases. Phases below map to them.

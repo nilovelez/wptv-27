@@ -8,10 +8,30 @@
  * @package WordPressTV
  */
 
-// Safety net: do nothing on WordPress.com.
-if ( defined( 'IS_WPCOM' ) && IS_WPCOM ) {
+// Fail closed outside Studio, before changing logging or defining test doubles.
+if ( ( defined( 'IS_WPCOM' ) && IS_WPCOM ) || 'local' !== wp_get_environment_type() ) {
 	return;
 }
+
+// Require an actually loaded Studio runtime, not a synced loader or localhost URL.
+// Inspect loaded files so this still works when Studio regenerates its loader.
+$wptv_studio_runtime_loaded = false;
+$wptv_studio_runtime_prefix = trailingslashit( wp_normalize_path( sys_get_temp_dir() ) ) . 'studio-mu-plugins-';
+foreach ( get_included_files() as $wptv_loaded_file ) {
+	$wptv_loaded_file = wp_normalize_path( $wptv_loaded_file );
+	if (
+		str_starts_with( $wptv_loaded_file, $wptv_studio_runtime_prefix ) &&
+		'0-studio-admin-api.php' === basename( $wptv_loaded_file )
+	) {
+		$wptv_studio_runtime_loaded = true;
+		break;
+	}
+}
+unset( $wptv_studio_runtime_prefix, $wptv_loaded_file );
+if ( ! $wptv_studio_runtime_loaded ) {
+	return;
+}
+unset( $wptv_studio_runtime_loaded );
 
 /*
  * Behave like production: never print PHP notices into responses.

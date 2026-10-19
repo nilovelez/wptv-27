@@ -45,6 +45,8 @@ Questions that need an answer from the project owner or a WordPress.com employee
 
 ## Answered
 
+- **Local MU-plugins during test-site sync:** the owner confirmed that both must run only in Studio and remain inert outside it, rather than requiring selective syncs. Guards and eight isolated negative checks are in place. Studio may regenerate its managed loader; recheck that guard before syncing after restarts/updates. See [decisions.md](decisions.md#local-tooling-mu-plugins-fail-closed-outside-studio).
+
 ### Location and Year URLs (B5)
 
 - **Answer:** the old `/category/location/...` and `/category/year/...` URLs return a 301 to the home page. The new taxonomies are public in the REST API but have no front-end URLs.

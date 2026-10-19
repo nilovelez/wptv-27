@@ -15,6 +15,14 @@ Template:
 
 ---
 
+## Local tooling: MU-plugins fail closed outside Studio
+
+- **Decision:** allow full test-site syncs without manually excluding the two local MU-plugin files. The route helper requires both the local environment and an actually loaded Studio runtime. The Studio loader verifies its runtime directory before defining database/environment constants. Both return without side effects elsewhere, including Atomic and multisite.
+- **Reason:** the owner prefers automatic environment guards to repeated selective syncs. A copied loader must not label a remote site as local or enable deterministic VideoPress test doubles.
+- **Affects:** the installed MU-plugins, the versioned route helper and isolated environment checks. No theme behavior or public routes change. The Studio-managed loader is outside the repository and may be regenerated; recheck its guard after Studio restarts/updates. This does not fix thumbnails in Studio.
+- **Verification:** eight isolated negative checks (both files; local-without-Studio, staging, production and WordPress.com); local WordPress bootstrap still loads the test helper with `wptv-27` active.
+- **Status:** accepted
+
 ## Phase 1b review: Video details use wptv3-style rows
 
 - **Decision:** use CSS-only label/value rows for published date, taxonomy terms, producer, downloads and subtitles: 1:2 columns, 1rem gutter, 0.5rem row spacing, regular-weight labels. Multiple term links remain inline and wrap within their value column, including on mobile.

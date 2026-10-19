@@ -8,7 +8,7 @@ The test is theme-agnostic. It never parses theme markup to count posts. Instead
 
 | File | Purpose |
 |---|---|
-| `mu-plugin/wptv-route-test.php` | Local-only helper: stubs WordPress.com-only VideoPress functions and adds the `X-WPTV-Route` header. **Never deploy it.** It also bails out on WordPress.com as a safety net. |
+| `mu-plugin/wptv-route-test.php` | Local-only helper: stubs WordPress.com-only VideoPress functions and adds the `X-WPTV-Route` header. Runs only in a loaded Studio runtime with the `local` environment type; inert elsewhere, including if copied by a full sync. Still exclude it from production release packages. |
 | `generate-urls.php` | Builds `urls.txt` from real site data (WP-CLI `eval-file`). |
 | `urls.txt` | The fixed URL list (committed). |
 | `run.sh` | Requests every URL and writes `results/<run-name>/`. |
@@ -35,6 +35,23 @@ The test is theme-agnostic. It never parses theme markup to count posts. Instead
    ```
 
 2. All commands below run from the WordPress root. With WordPress Studio, run WP-CLI through Studio (`studio wp …`) or the Studio AI agent.
+
+## Environment safety
+
+The route helper checks both `wp_get_environment_type() === 'local'` and an already loaded Studio admin API file under the current machine's temporary `studio-mu-plugins-*` directory. A copied loader or a `local` setting alone is insufficient. It returns before changing logging, defining VideoPress test doubles or registering hooks outside Studio.
+
+The site's Studio-managed `99-studio-loader.php` also has a local guard before its database/environment constants: its configured runtime directory must belong to this machine's temporary directory and contain the Studio admin API file. This local file is not part of the theme repository. **Studio may regenerate the loader; recheck this guard after a Studio restart/update before syncing MU-plugins.** The route helper's own guard does not depend on that modification and survives loader regeneration.
+
+Isolated negative checks (direct PHP, not WP-CLI):
+
+```bash
+for environment in local staging production wpcom; do
+    php tests/routes/check-environment-guard.php route "$environment"
+    php -d sys_temp_dir=/non-studio-runtime tests/routes/check-environment-guard.php loader "$environment"
+done
+```
+
+The loader checks expect the site's sibling `wp-content/mu-plugins/99-studio-loader.php`. Use a nonexistent, non-Studio temporary path for the simulated remote environment. On Windows, use `-d sys_temp_dir=C:/non-studio-runtime`.
 
 ## Capturing the baseline
 
