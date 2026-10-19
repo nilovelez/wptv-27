@@ -41,8 +41,10 @@ Replace the legacy classic theme `wptv2` on WordPress.tv with a new block theme,
 
 - Templates: front page, single, page, archive, category, `category-wordcamptv`, taxonomy (event and the others), search, 404.
 - Template parts: header, footer, video meta sidebar.
-- Custom dynamic blocks only where core cannot do the job (breadcrumbs, producer credit, video downloads/subtitles).
-- Query Loop variation for "Popular Videos".
+- Core blocks first: `core/breadcrumbs`, `core/terms-query` + `core/term-template` (recent events, video categories), `core/query-total`.
+- PHP-only blocks (`supports.autoRegister`, no `block.json`, no build) only where core cannot do the job: producer credit, video downloads/subtitles.
+- Front page with the `wptv3` structure, without "Popular videos" (replaced by recent events and video categories).
+- Provisional Navigation block links in the header.
 - Design based on `wptv3` as an interim reference.
 
 ### 1c. Forms, admin and verification

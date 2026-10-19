@@ -88,16 +88,16 @@ Legend: **Core** = WordPress core / core block · **Keep** = same logic, cleaned
 | Header search form | Search block (`name="s"`, action `/`) | Core |
 | Front page: featured (sticky + tag `featured`) | Query Loop | Core |
 | Front page: WordCampTV featured, latest | Query Loops | Core |
-| Front page: popular (`wptv_post_views`, last 180 days) | Query Loop variation + `query_loop_block_query_vars` | Keep |
+| Front page: popular (`wptv_post_views`, last 180 days) | Dropped; replaced by recent events and video categories (`core/terms-query`) | Drop |
 | Category/event "hero" (first 6 posts, page 1 only) | Single inherited Query Loop, first items styled with CSS (keeps pagination intact) | Core |
 | `WordCampTV_Walker_Nav_Menu` | One Query Loop per event in `category-wordcamptv.html` | Core |
 | `archive.php` title switch | Query Title block | Core |
 | `the_video()` (strips `[wpvideo]` and renders it separately) | Post Content block (to be verified against real content) | Core |
 | `the_video_image()` / `get_the_video_image()` | `post_thumbnail_html` / `has_post_thumbnail` filters → Post Featured Image block | Keep |
-| Breadcrumbs (priority category + first event) | `wptv/breadcrumbs` | Block |
+| Breadcrumbs (priority category + first event) | `core/breadcrumbs`; check its trail against wptv2 and adjust with its filters if needed | Core |
 | Sidebar: date, excerpt, event, speakers, tags, language | Post Date, Post Excerpt, Post Terms | Core |
-| Sidebar: downloads and subtitles (VideoPress API) | `wptv/video-downloads` | Block |
-| Sidebar: producer credit | `wptv/producer` | Block |
+| Sidebar: downloads and subtitles (VideoPress API) | `wptv/video-downloads` (PHP-only block) | Block |
+| Sidebar: producer credit | `wptv/producer` (PHP-only block) | Block |
 | CC license widget, Resources (Links manager) | Pattern / template part | Core |
 | `comments.php` + `list_comments()` | Comment blocks | Core |
 | `pagination.php` | Query Pagination blocks | Core |

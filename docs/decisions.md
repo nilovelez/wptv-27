@@ -105,3 +105,24 @@ Template:
 - **Reason:** no hardcoded IDs. Anonymous behavior, which is the only part the route test sees, does not change. Whether the feature is still needed is an open question.
 - **Affects:** `inc/maintenance.php`.
 - **Status:** accepted (review with the project owner)
+
+## Phase 1b: No block.json blocks; core blocks and PHP-only blocks instead
+
+- **Decision:** the theme ships no `block.json` blocks and no build step. Breadcrumbs use `core/breadcrumbs`; term lists use `core/terms-query` + `core/term-template`. The few features core cannot cover (producer credit, video downloads and subtitles) are PHP-only blocks: `register_block_type()` with a `render_callback` and `supports.autoRegister` (WordPress 7.0+), which the editor previews with ServerSideRender. Replaces the earlier plan of `wptv/breadcrumbs` and other `block.json` blocks.
+- **Reason:** decided by the project owner until it is confirmed that a theme can register `block.json` blocks on WordPress.com. PHP-only blocks need no JavaScript, no build and no `build/` folder in the repo.
+- **Affects:** `inc/blocks/`, templates. Requires WordPress 7.0+ in production (open question on the production version).
+- **Status:** accepted
+
+## Phase 1b: Drop "Popular videos"; front page follows wptv3
+
+- **Decision:** the front page follows the `wptv3` structure, without a "Popular videos" section. More useful sections such as recent events and video categories take its place. The `wptv/popular` Query Loop variation is dropped. `wptv_post_views` is still initialized on publish (Phase 1 contract).
+- **Reason:** decided by the project owner.
+- **Affects:** `templates/front-page.html`.
+- **Status:** accepted
+
+## Phase 1b: Provisional navigation links
+
+- **Decision:** the header uses a Navigation block with provisional links based on the current wordpress.tv header, editable in the Site Editor, until the production menus are known.
+- **Reason:** local classic menus are empty and the production menu contents are unknown.
+- **Affects:** `parts/header.html`.
+- **Status:** accepted (provisional)
