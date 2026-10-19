@@ -26,7 +26,7 @@ Order is provisional; some fields will move.
 | **Uploaded by**, **Email** | Text, required for logged-out users only. Logged-in users use their account. | Kept. Email validated as an email address. Private, shown only to moderators. |
 | **Video title** | Free text, no server limit. Post title is `<speakers>: <title>`. | Required, **max 100 characters**. |
 | **Language** | Free text. | **Selector of existing `language` terms** with search. No new terms: editors create them in the admin. |
-| **Date recorded** | Native `date` input. Adds the matching Year child category. | Kept as a native date. Drives the year (see Location and Year). |
+| **Date recorded** | Native `date` input. Adds the matching Year child category. | Kept as a native date. The `year` term is assigned automatically from it; Year is not a form field. |
 | **Location** | Checkboxes of the children of category `location`. Multiple. | **Moved to its own taxonomy** (see below). Multiple selection of existing terms; no new terms from the form. |
 | **Category** | Checkboxes of top-level categories, excluding `location` and `year` trees. Multiple. | Same set and multiple selection. No new terms from the form. |
 | **Producer WordPress.org username** | Free text, no limit. | Optional. If filled, **exactly one** value, validated as an existing WordPress.org username. Assigned to `producer-username`. |
@@ -50,8 +50,10 @@ Known issues: hardcoded production IDs, only the first location is used, and any
 
 ## Location and Year taxonomies (release 2)
 
-- Location and Year stop being category trees. Location becomes its own taxonomy; Year becomes its own taxonomy or is derived from the recorded date (to be decided).
-- This changes routes (`/category/location/<slug>/`, `/category/year/<slug>/`, feeds, pagination), so it is tracked as **B5** in [backlog.md](backlog.md) with 301 redirects and a term migration.
+- Location and Year stop being category trees and become two taxonomies, `location` and `year`.
+- Location is chosen in the form. Year is **not** in the form: it is assigned automatically from Date recorded.
+- **No public URLs:** both taxonomies are for internal queries and the API only (not publicly queryable, no rewrite rules, no archives).
+- Removing the old category archives (`/category/location/<slug>/`, `/category/year/<slug>/`, feeds, pagination) changes routes, so it is tracked as **B5** in [backlog.md](backlog.md) with a term migration.
 
 ## Autocomplete
 

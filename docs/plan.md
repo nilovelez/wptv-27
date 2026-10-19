@@ -111,7 +111,7 @@ Field-by-field specification: [submission-form.md](submission-form.md).
 - The uploaded video is embedded as a **VideoPress block**; its poster becomes the featured image.
 - **Autocomplete** for speakers and events through the core REST API; new speakers and events are created when the moderator approves. Language, location and category only accept existing terms.
 - Producer username: optional, a single value, validated against WordPress.org.
-- Location and Year move out of categories (B5 in [backlog.md](backlog.md)), with 301 redirects.
+- Location and Year move out of categories into internal taxonomies with no public URLs; Year is assigned from Date recorded (B5 in [backlog.md](backlog.md)).
 - Submitter data (name, email, IP, submission date) stays private for moderators.
 - The per-field Approve review box is replaced by a read-only submission summary. Moderators review, correct if needed, and publish.
 - Spam and abuse protection kept at least at the current level.

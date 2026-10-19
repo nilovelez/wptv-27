@@ -36,15 +36,15 @@ Status legend: ⏳ pending · 🔄 in progress · ✅ done
 
 ### B5. Move Location and Year out of categories ⏳
 
-- **Decision:** the children of category `location` move to their own taxonomy. Year (children of category `year`) also leaves the category tree: either its own taxonomy or derived from the recorded date (to be decided). Part of release 2; see [submission-form.md](submission-form.md).
+- **Decision:** the children of categories `location` and `year` move to two new taxonomies, `location` and `year`. Location is picked in the submission form; Year is assigned automatically from Date recorded. Both are **internal only**: no public URLs (not publicly queryable, no rewrites), available to internal queries and the API. Part of release 2; see [submission-form.md](submission-form.md).
 - **Current routes:** `/category/location/<slug>/` and `/category/year/<slug>/`, with `/page/N/` and `/feed/`. The location archives are not linked from anywhere today, but they exist and may be indexed.
 - **Scope:**
   - Register the new taxonomy (or taxonomies) and migrate the terms and relationships with a batched, dry-run-capable script, run on the test site first.
-  - 301 every old URL variant (archive, pagination, feed) to its new equivalent.
+  - Handle every old URL variant (archive, pagination, feed). There is no new archive to point to, so the target is still open (see below).
   - Update the submission form, the event name suggestion, `inc/query.php` (Year/Location per-page rules) and the front page category list exclusions.
   - Decide whether the old category terms are deleted after migration (needs a WP.com employee on production).
-- **Expected route test differences:** every `location`/`year` category URL becomes a 301; new baseline for the new taxonomy archives.
-- **Open points:** new taxonomy slugs and URL bases; Year as taxonomy or derived from the date.
+- **Expected route test differences:** every `location`/`year` category URL changes according to the chosen handling. No new public routes.
+- **Open points:** what the old category URLs return (301 to the home page, 301 to a search, or 410 Gone); whether the taxonomies are exposed in the REST API, and to whom.
 
 ## Ideas (not yet agreed)
 

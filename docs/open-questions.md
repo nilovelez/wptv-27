@@ -47,7 +47,7 @@ Questions that need an answer from the project owner or a WordPress.com employee
 
 ### Submission form fields (release 2)
 
-- **Answer:** new speakers and events can be entered from the form; the terms are created when the moderator approves. Event uses autocomplete plus the composed name as a suggestion. Language becomes a selector of existing `language` terms. Location and Year both leave the category tree (B5). `producer-username` stays: optional, one value, validated against WordPress.org. Full spec in [submission-form.md](submission-form.md).
+- **Answer:** new speakers and events can be entered from the form; the terms are created when the moderator approves. Event uses autocomplete plus the composed name as a suggestion. Language becomes a selector of existing `language` terms. Location and Year both leave the category tree and become internal taxonomies with no public URLs; Year is not a form field and is assigned from Date recorded (B5). `producer-username` stays: optional, one value, validated against WordPress.org. Full spec in [submission-form.md](submission-form.md).
 
 ### Release 1 scope
 
