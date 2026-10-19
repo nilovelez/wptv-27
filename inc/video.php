@@ -4,7 +4,8 @@
  *
  * Ported from the wptv2 WordPressTV_Theme class. VideoPress data functions
  * (video_get_info_by_guid() and friends) only exist on WordPress.com, so every
- * call is guarded and degrades to "no data" elsewhere (docs/wpcom-constraints.md).
+ * call is guarded. Thumbnails also use the standalone plugin's guarded poster
+ * resolver on Atomic/Studio (docs/wpcom-constraints.md).
  *
  * @package WordPressTV
  */
@@ -16,9 +17,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Returns the VideoPress GUID of a post's [wpvideo] shortcode.
+ * Returns the VideoPress GUID from a legacy shortcode or VideoPress block.
  *
- * When there are several shortcodes, the last one wins (same as wptv2).
+ * Legacy shortcodes take precedence; the last one wins (same as wptv2).
+ * Without a shortcode, use the last valid VideoPress block, including nested blocks.
  *
  * @param int|\WP_Post|null $post Post. Defaults to the current post.
  * @return string|false
@@ -38,7 +40,42 @@ function get_guid( $post = null ) {
 		}
 	}
 
+	if ( ! $guid && has_blocks( $post ) ) {
+		$video = get_block_video( parse_blocks( $post->post_content ) );
+		$guid  = $video['guid'] ?? false;
+	}
+
 	return $guid;
+}
+
+/**
+ * Finds the last valid VideoPress block's attributes in document order.
+ *
+ * Supports the current saved block name and the earlier Jetpack block name.
+ * Does not inspect cached iframe HTML, resolve synced patterns or render content.
+ *
+ * @param array $blocks Parsed blocks.
+ * @return array Empty when no supported video block has a valid GUID.
+ */
+function get_block_video( array $blocks ) {
+	$video = array();
+	foreach ( $blocks as $block ) {
+		$attributes = $block['attrs'] ?? array();
+		if (
+			in_array( $block['blockName'] ?? '', array( 'videopress/video', 'jetpack/videopress' ), true ) &&
+			isset( $attributes['guid'] ) && is_string( $attributes['guid'] ) &&
+			preg_match( '/^[A-Za-z0-9]{8}$/D', $attributes['guid'] )
+		) {
+			$video = $attributes;
+		}
+		if ( ! empty( $block['innerBlocks'] ) ) {
+			$nested = get_block_video( $block['innerBlocks'] );
+			if ( $nested ) {
+				$video = $nested;
+			}
+		}
+	}
+	return $video;
 }
 
 /**
@@ -62,11 +99,43 @@ function get_details( $post = null ) {
  * @return string|false
  */
 function get_image_url( $post = null ) {
+	$post = get_post( $post );
 	$guid = get_guid( $post );
-	if ( ! $guid || ! function_exists( 'video_get_highest_resolution_image_url' ) ) {
+	if ( ! $post || ! $guid ) {
 		return false;
 	}
-	return video_get_highest_resolution_image_url( $guid );
+
+	/**
+	 * Short-circuits image lookup. Null continues; false means no image.
+	 * Used by opt-in local route tests to avoid real VideoPress data/network calls.
+	 *
+	 * @param string|false|null $image Image URL, false, or null to continue.
+	 * @param string           $guid  VideoPress GUID.
+	 * @param \WP_Post         $post  Video post.
+	 */
+	$image = apply_filters( 'wptv_pre_video_image_url', null, $guid, $post );
+	if ( null !== $image ) {
+		return is_string( $image ) && $image ? esc_url_raw( $image, array( 'http', 'https' ) ) : false;
+	}
+
+	// Keep the production multisite API first, unchanged for existing shortcodes.
+	if ( function_exists( 'video_get_highest_resolution_image_url' ) ) {
+		$image = video_get_highest_resolution_image_url( $guid );
+		if ( is_string( $image ) && $image ) {
+			return esc_url_raw( $image, array( 'http', 'https' ) );
+		}
+	}
+
+	// The standalone plugin owns attachment lookup, privacy checks and API caching.
+	$resolver = array( '\\Automattic\\Jetpack\\VideoPress\\Inline_Player', 'get_poster_url' );
+	if ( ! is_callable( $resolver ) ) {
+		return false;
+	}
+	$video = has_blocks( $post ) ? get_block_video( parse_blocks( $post->post_content ) ) : array();
+	// Never apply another video's poster, attachment ID or privacy to this GUID.
+	$attributes = ( $video['guid'] ?? '' ) === $guid ? $video : array();
+	$image      = call_user_func( $resolver, $guid, $attributes );
+	return is_string( $image ) && $image ? esc_url_raw( $image, array( 'http', 'https' ) ) : false;
 }
 
 /**

@@ -72,7 +72,7 @@ while IFS=$'\t' read -r label path; do
 
 	body="$TMP/body"
 	headers="$TMP/headers"
-	meta=$(curl -s -o "$body" -D "$headers" --max-time 120 \
+	meta=$(curl -s -o "$body" -D "$headers" --max-time 120 -H 'X-WPTV-Route-Test: 1' \
 		-w '%{http_code}\t%{content_type}\t%{time_total}' "${BASE_URL}${path}")
 
 	status=$(printf '%s' "$meta" | cut -f1)

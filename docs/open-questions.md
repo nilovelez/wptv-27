@@ -37,7 +37,7 @@ Questions that need an answer from the project owner or a WordPress.com employee
 
 ### VideoPress blocks and release 2
 
-20. **Block markup on WordPress.com:** what exact markup does the VideoPress block save on wordpress.tv (block name, `guid` attribute, poster/featured image settings)? Release 1 (1c) depends on it. **Status:** the project owner will prepare a test post on the test site when 1c starts. Phase 1b verifies that Post Content renders an existing local block-only video, but this does not settle production serialization or block GUID extraction for metadata.
+20. **Block markup on WordPress.com:** what exact markup does the VideoPress block save on wordpress.tv (block name, `guid` attribute, poster/featured image settings)? Release 1 (1c) depends on it. **Status:** the owner converted local post 126193 to a saved `videopress/video` block with a `guid` attribute. The shared extractor and real local thumbnail lookup now support it and existing block post 133522. The first manually converted production post is still needed to verify built-in VideoPress serialization/API behavior; Atomic deployment verification is also pending. Remaining shortcode-specific consumers (oEmbed, unisubs, GUID redirects, API, Open Graph, downloads/subtitles) must still be audited in 1c.
 21. **Upload API:** in release 2, can the form handler create the VideoPress block from the uploaded attachment server-side (GUID available right after upload, as with `video_get_info_by_blogpostid()` today), or is processing asynchronous? **Status:** expected to be available immediately. The test site is Atomic and cannot upload to VideoPress this way, so it can only be verified in production or on the multisite by a WP.com employee.
 23. **Autocomplete endpoint:** `speakers`, `event` and `language` are already in the core REST API (`/wp/v2/speakers?search=`), so autocomplete can use core endpoints with no new routes. Confirm that anonymous lookups against them are acceptable on WordPress.com (rate limits, caching).
 24. **Migration run:** who runs the shortcode-to-block migration on production, and in what form (WP-CLI command in the theme, or a one-off script)? **Status:** not known yet.
@@ -45,7 +45,9 @@ Questions that need an answer from the project owner or a WordPress.com employee
 
 ## Answered
 
-- **Local MU-plugins during test-site sync:** the owner confirmed that both must run only in Studio and remain inert outside it, rather than requiring selective syncs. Guards and eight isolated negative checks are in place. Studio may regenerate its managed loader; recheck that guard before syncing after restarts/updates. See [decisions.md](decisions.md#local-tooling-mu-plugins-fail-closed-outside-studio).
+- **Real thumbnails on Atomic/Studio:** preserve the internal production thumbnail API and fall through to the existing standalone VideoPress plugin's public poster resolver. Do not invent CDN paths, rewrite posts or set featured images automatically. Deterministic route-test doubles run only on explicit test requests, not during normal local browsing. See [decisions.md](decisions.md#phase-1c-first-step-guid-extraction-and-real-posters).
+
+- **Local MU-plugins during test-site sync:** the owner confirmed that both must run only in Studio and remain inert outside it, rather than requiring selective syncs. Guards and eight isolated negative checks are in place. Studio was observed regenerating its managed loader during development/CLI operations and removing the guard; it was reapplied, but must be checked immediately before syncing. The route helper's independent guard survives regeneration. See [decisions.md](decisions.md#local-tooling-mu-plugins-fail-closed-outside-studio).
 
 ### Location and Year URLs (B5)
 

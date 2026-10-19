@@ -63,7 +63,10 @@ Consequences:
 
 ## Local development caveats
 
-- The local Studio site is a mirror of the test site. It uses SQLite and runs Jetpack and VideoPress, but without the WordPress.com internals listed above. Thumbnails, downloads, subtitles, JSON-LD video data and Open Graph video tags cannot be fully tested locally.
+- The local Studio site is a mirror of the test site. It uses SQLite and runs Jetpack and VideoPress, but without the WordPress.com internals listed above. Production downloads, subtitles, JSON-LD video data and Open Graph video tags cannot be fully tested locally.
+- Thumbnail lookup keeps `video_get_highest_resolution_image_url()` first on production. If it has no usable result, the theme calls the standalone plugin's public `Automattic\Jetpack\VideoPress\Inline_Player::get_poster_url()` when callable. That resolver owns block posters, GUID-matched attachment metadata, privacy and transient-cached public video details; the theme does not build image URLs or make its own remote requests. Plugin versions without this method degrade to the existing featured image/placeholder.
+- `get_guid()` supports `videopress/video` and the earlier `jetpack/videopress` name, including nested blocks. Legacy shortcodes retain precedence and last-shortcode behavior; otherwise the last valid block GUID wins. Stored content is not rewritten. Real local posters are verified, but built-in production serialization/API integration and the Atomic deployment still require separate checks.
+- The route-test MU-plugin is inert during normal browsing and WP-CLI. Only explicit Studio requests carrying `X-WPTV-Route-Test: 1` enable the deterministic APIs and disable real poster lookup.
 - The local and test site content was imported, so **IDs differ from production**. Never hardcode term, post or user IDs. Use slugs.
 - Classic menus are empty locally and the `/subtitle/` page does not exist locally.
 

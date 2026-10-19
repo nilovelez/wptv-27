@@ -14,7 +14,7 @@ Replace the legacy classic theme `wptv2` on WordPress.tv with a new block theme,
 
 ## Local tooling safety
 
-✅ Both installed MU-plugins are guarded to run only in Studio, so a full test-site sync leaves them inert remotely. The route helper requires a loaded Studio runtime, not just `local`. Eight isolated negative checks pass; local bootstrap remains functional. Recheck the Studio-managed loader guard after restarts/updates because Studio may regenerate it. See [route test environment safety](../tests/routes/README.md#environment-safety). Thumbnail compatibility remains separate Phase 1c work.
+✅ Both installed MU-plugins are guarded to run only in Studio, so a full test-site sync leaves them inert remotely. The route helper requires a loaded Studio runtime, not just `local`. Eight isolated negative checks pass; local bootstrap remains functional. Recheck the Studio-managed loader guard immediately before every sync: Studio was observed regenerating it during development/CLI operations, not only restarts/updates. The managed-file patch is not durable; the independent route-helper guard is. See [route test environment safety](../tests/routes/README.md#environment-safety). Thumbnail compatibility remains separate Phase 1c work.
 
 ## Releases
 
@@ -81,11 +81,15 @@ Design level: functional `wptv3` (structure and base styles; no fine polish).
 - ✅ PHP-only `wptv/producer` and `wptv/video-downloads` (`supports.autoRegister`, `inc/video-blocks.php`). Legacy producer name/profile rules, MP4 quality labels, HLS exclusion, original/OGG fallback and TTML/subtitle contribution URLs; all multisite-only calls guarded. 18 checks in `tests/blocks/single.php` and 12 isolated API simulations in `tests/blocks/single-multisite.php --skip-wordpress`. These simulations do not replace production verification. Block GUID support remains Phase 1c.
 - ⏳ Desktop and mobile check of every template (functional, not pixel polish).
 
-### 1c. VideoPress block support ⏳
+### 1c. VideoPress block support 🔄
 
 Posts may embed the video either as `[wpvideo <guid>]` or as a VideoPress block. Both must behave the same.
 
-- Extend the video helpers (`inc/video.php`, `get_guid()`) to read the GUID from the VideoPress block as well as from the shortcode. Everything that depends on the GUID then works for both: thumbnails, JSON-LD, Open Graph, `/api/`, `/oembed/`, MRSS, downloads and subtitles.
+- ✅ `get_guid()` reads the current `videopress/video` and earlier `jetpack/videopress` block names, including nested blocks; legacy last-shortcode behavior and shortcode precedence are preserved.
+- ✅ Thumbnail lookup retains the production API and falls through to the standalone plugin poster resolver on Atomic/Studio. Featured images and the placeholder remain fallbacks. 27 deterministic checks, 8 multisite simulations and a missing-plugin smoke check pass. All 12 real homepage posters return HTTP 200 with JPEG content; desktop/mobile DOM and screenshots reviewed. Atomic deployment and real multisite verification remain pending.
+- ✅ Route-test APIs and thumbnail suppression now require an explicit request header from `run.sh`; ordinary Studio browsing uses real VideoPress data.
+- ⏳ Audit the remaining GUID consumers individually: JSON-LD, Open Graph, `/api/`, `/oembed/`, MRSS, downloads and subtitles. Some still parse/search shortcodes directly; updating the shared helper alone does not complete support.
+- **Regression warning:** the 145-URL run after the owner converted post 126193 reports 27 unaccepted field differences across 11 URLs (4 feed body hashes; oEmbed/unisubs/GUID redirect fields). Four pre-existing expected API differences remain. No PHP notices. The endpoints still require shortcodes, and feed content/build dates changed with the conversion; do not mark the run green, normalize these away or modify the baseline. Details in [decisions.md](decisions.md#phase-1c-first-step-guid-extraction-and-real-posters).
 - The single template renders the player from post content in both cases; no duplicate player.
 - Shortcode posts keep producing exactly the same output (route test unchanged).
 - Local fixtures: two or three posts converted by hand to the block markup that WordPress.com saves. Checks in `tests/blocks/` comparing helper output for the shortcode and block versions of the same video.

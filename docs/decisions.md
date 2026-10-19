@@ -15,6 +15,18 @@ Template:
 
 ---
 
+## Phase 1c first step: GUID extraction and real posters
+
+- **Decision:** the shared video helper recognizes saved `videopress/video` and earlier `jetpack/videopress` blocks, recursively. Existing shortcodes take precedence and retain last-shortcode behavior; without shortcodes the last valid eight-character alphanumeric block GUID wins. Ignore cached iframe HTML and do not rewrite stored content.
+- **Decision:** preserve the production thumbnail API first; when unavailable or empty, reuse the callable standalone plugin `Inline_Player::get_poster_url()` resolver. It owns poster attributes, GUID-matched attachment metadata, privacy and transient-cached public API details. Do not construct image paths, introduce a second HTTP/cache implementation or replace featured images. Missing dependencies/data retain the featured image or bundled placeholder.
+- **Decision:** local route-test logging, API doubles and response headers require `X-WPTV-Route-Test: 1`, sent by `run.sh`. Those requests additionally suppress real thumbnail resolution through `wptv_pre_video_image_url`. Ordinary Studio requests and WP-CLI use real plugin APIs. Environment guards remain mandatory before honoring the header.
+- **Verification:** 27 deterministic GUID/image checks and 8 simulated production image checks pass without HTTP; absent dependencies return false with plugins skipped. Existing 11 homepage, 18 single and 12 simulated download/subtitle checks pass. All 12 homepage poster URLs return HTTP 200/image/jpeg. Desktop/mobile DOM uses real image URLs with unchanged frames and lazy loading; full-page screenshots leave some offscreen lazy images unloaded. No block markup was changed or imported.
+- **Regression:** the 145-URL run is **not green**: 27 unaccepted field differences across 11 URLs, plus the same four expected API differences; no PHP notices. oEmbed JSON/XML/maxwidth and unisubs URL return 501 because they explicitly require `[wpvideo` in converted post 126193. Unisubs GUID lookup and both GUID redirects still search the shortcode text, producing 404/no redirect. Four feed body hashes differ after conversion (modified/build timestamps, player serialization and renderer markup/lazy attributes). The API body's already-expected differences also include the converted post losing shortcode-only video data. These are remaining 1c integration work, not a reason to change routes, baseline, content or expected-difference allowances in this thumbnail-only step.
+- **Managed loader warning:** a final negative check caught Studio regenerating `99-studio-loader.php` during development/CLI operations, removing the earlier environment guard. Reapplied the guard and reran all eight negative checks. It must be rechecked immediately before sync; the earlier managed-file patch is not durable. The route helper's independent runtime/header guards survive regeneration.
+- **Scope:** no template, CSS layout, route, endpoint or editorial workflow changes; theme version 0.3.2. Test on Atomic after sync; confirm the built-in multisite block/API separately. Phase 1c is not complete and deployment readiness is not established.
+- **Affects:** `inc/video.php`, the installed/versioned route helper, `tests/routes/run.sh`, image checks and environment/plan docs.
+- **Status:** accepted
+
 ## Local tooling: MU-plugins fail closed outside Studio
 
 - **Decision:** allow full test-site syncs without manually excluding the two local MU-plugin files. The route helper requires both the local environment and an actually loaded Studio runtime. The Studio loader verifies its runtime directory before defining database/environment constants. Both return without side effects elsewhere, including Atomic and multisite.

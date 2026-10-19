@@ -13,6 +13,8 @@ if ( defined( 'ABSPATH' ) ) {
 
 $target = $argv[1] ?? 'route';
 $environment = $argv[2] ?? 'production';
+// Even an explicit test request must not activate tooling outside Studio.
+$_SERVER['HTTP_X_WPTV_ROUTE_TEST'] = '1';
 if ( 'wpcom' === $environment ) {
 	define( 'IS_WPCOM', true );
 }

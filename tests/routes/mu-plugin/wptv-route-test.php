@@ -33,6 +33,13 @@ if ( ! $wptv_studio_runtime_loaded ) {
 }
 unset( $wptv_studio_runtime_loaded );
 
+// Ordinary Studio browsing must use real plugin APIs, never deterministic doubles.
+// run.sh explicitly opts in on every request, including endpoint and feed requests.
+if ( '1' !== ( $_SERVER['HTTP_X_WPTV_ROUTE_TEST'] ?? '' ) ) {
+	return;
+}
+add_filter( 'wptv_pre_video_image_url', '__return_false' );
+
 /*
  * Behave like production: never print PHP notices into responses.
  *

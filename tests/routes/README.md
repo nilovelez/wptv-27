@@ -8,7 +8,7 @@ The test is theme-agnostic. It never parses theme markup to count posts. Instead
 
 | File | Purpose |
 |---|---|
-| `mu-plugin/wptv-route-test.php` | Local-only helper: stubs WordPress.com-only VideoPress functions and adds the `X-WPTV-Route` header. Runs only in a loaded Studio runtime with the `local` environment type; inert elsewhere, including if copied by a full sync. Still exclude it from production release packages. |
+| `mu-plugin/wptv-route-test.php` | Local-only helper: stubs WordPress.com-only VideoPress functions and adds the `X-WPTV-Route` header. Requires a loaded Studio runtime, the `local` environment type and an explicit `X-WPTV-Route-Test: 1` request header; inert on ordinary local browsing and elsewhere, including if copied by a full sync. Still exclude it from production release packages. |
 | `generate-urls.php` | Builds `urls.txt` from real site data (WP-CLI `eval-file`). |
 | `urls.txt` | The fixed URL list (committed). |
 | `run.sh` | Requests every URL and writes `results/<run-name>/`. |
@@ -38,9 +38,11 @@ The test is theme-agnostic. It never parses theme markup to count posts. Instead
 
 ## Environment safety
 
+`run.sh` sends `X-WPTV-Route-Test: 1` on every request. Without that header the helper does nothing, including in Studio and ordinary WP-CLI commands. Test requests also install `wptv_pre_video_image_url => false`, preventing the standalone plugin from fetching real images and changing deterministic snapshots.
+
 The route helper checks both `wp_get_environment_type() === 'local'` and an already loaded Studio admin API file under the current machine's temporary `studio-mu-plugins-*` directory. A copied loader or a `local` setting alone is insufficient. It returns before changing logging, defining VideoPress test doubles or registering hooks outside Studio.
 
-The site's Studio-managed `99-studio-loader.php` also has a local guard before its database/environment constants: its configured runtime directory must belong to this machine's temporary directory and contain the Studio admin API file. This local file is not part of the theme repository. **Studio may regenerate the loader; recheck this guard after a Studio restart/update before syncing MU-plugins.** The route helper's own guard does not depend on that modification and survives loader regeneration.
+The site's Studio-managed `99-studio-loader.php` also has a local guard before its database/environment constants: its configured runtime directory must belong to this machine's temporary directory and contain the Studio admin API file. This local file is not part of the theme repository. **Studio regenerated this loader during development/CLI operations and removed its guard; the guard was reapplied. Recheck it immediately before syncing MU-plugins, not just after restarts/updates. Editing this managed file is not a durable fix.** The route helper's own guard does not depend on that modification and survives loader regeneration.
 
 Isolated negative checks (direct PHP, not WP-CLI):
 
