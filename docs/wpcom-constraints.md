@@ -53,6 +53,8 @@ WordPress.tv is a site on the **WordPress.com multisite**, not a standalone inst
 | **Test site** (https://wptv.nilovelez.com/) | WordPress.com **Atomic** site, outside the multisite. Much is the same as production, but multisite-only features do not work, for example the direct VideoPress upload from the submission form and the internal `video_*` helpers. | No |
 | **Local** (Studio, http://localhost:8882/) | Mirror of the test site. | No |
 
+VideoPress differs per environment: the local site and the test site run the standalone **Jetpack VideoPress** plugin, which provides some VideoPress features (block, player, uploads through Jetpack). Multisite sites have VideoPress built in, and that version is **not exactly the same** as the standalone plugin (different internals, helpers and possibly block behavior). Anything that works locally with the plugin must still be checked in production.
+
 Consequences:
 
 - Every multisite-only call stays behind `function_exists()` / `class_exists()`, so the theme runs without errors on the test site and locally, and with full behavior in production.
