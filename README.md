@@ -30,7 +30,7 @@ Clone the full repository into the `wp-content/themes/` directory of a local Wor
 
 ```bash
 cd wp-content/themes
-git clone <repository-url> wptv-27
+git clone https://github.com/nilovelez/wptv-27.git wptv-27
 ```
 
 Read [`AGENTS.md`](AGENTS.md) and the [`docs/`](docs/) folder before making changes. The most important rule: **existing URLs must not change**. See [`docs/routes.md`](docs/routes.md).
