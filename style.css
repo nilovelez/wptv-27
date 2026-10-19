@@ -1,0 +1,27 @@
+/*
+Theme Name: WordPress.tv 27
+Theme URI: https://github.com/nilovelez/wptv-27
+Description: Block theme for WordPress.tv. Replaces the legacy wptv2 theme while keeping every route unchanged.
+Author: WordPress.org
+Author URI: https://wordpress.org/
+Version: 0.1.0
+Requires at least: 6.6
+Tested up to: 7.1
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: wptv
+*/
+
+/*
+ * Global styles live in theme.json. This file holds only what theme.json
+ * cannot express (see AGENTS.md).
+ */
+
+/* Balanced line breaks for titles. Replaces wptv2's wptv_widont() filter. */
+h1,
+h2,
+h3,
+.wp-block-post-title {
+	text-wrap: pretty;
+}

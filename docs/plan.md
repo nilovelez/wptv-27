@@ -25,16 +25,17 @@ Replace the legacy classic theme `wptv2` on WordPress.tv with a new block theme,
 
 ## Phase 1: Route-identical theme ⏳
 
-### 1a. Foundation and routing
+### 1a. Foundation and routing ⏳ (routing ✅)
 
-- Theme skeleton: `style.css`, `theme.json`, minimal `functions.php` that only loads `inc/`.
-- Taxonomies registered with the **exact** same arguments as `wptv2` (`producer`, `producer-username`, `speakers`, `flavor`, `language`, `event`).
-- `pre_get_posts` with the same `posts_per_page` values per view.
-- Redirects (`/upload`, `/category/social-learning*`, `?guid=`).
-- Endpoints: `/oembed/`, `/api/`, `/unisubs/`.
-- `<head>` output: title parts, archive canonical, prev/next, JSON-LD, Open Graph/Twitter tags.
-- Publishing hooks: `wptv_post_views` initialization, stats bump, attachment title sync, MRSS filters, upload space.
-- **Exit criterion:** the regression test passes against the `wptv2` baseline for all non-visual checks.
+- ✅ Theme skeleton: `style.css`, `theme.json`, minimal `functions.php` that only loads `inc/`, placeholder `index.html` with header/footer parts.
+- ✅ Taxonomies registered with the **exact** same arguments as `wptv2` (`inc/taxonomies.php`).
+- ✅ `pre_get_posts` with the same `posts_per_page` values per view (`inc/query.php`).
+- ✅ Redirects: `/upload`, `/category/social-learning*` (`inc/redirects.php`), `?guid=` (`inc/endpoints/unisubs.php`).
+- ✅ Endpoints: `/oembed/`, `/api/`, `/unisubs/` (`inc/endpoints/`).
+- ✅ `<head>` output: title parts, MRSS filters and excerpt slides (`inc/content.php`), archive canonical, prev/next, JSON-LD (`inc/head.php`), Open Graph/Twitter tags (`inc/open-graph.php`), oEmbed discovery.
+- ✅ `?flush_rules=1` for super admins (`inc/maintenance.php`).
+- Publishing hooks: `wptv_post_views` initialization, stats bump, attachment title sync, upload space.
+- **Exit criterion:** the regression test passes against the `wptv2` baseline for all non-visual checks. ✅ Met: 141/145 identical, 4 expected differences (see `tests/routes/expected-differences.tsv`), no PHP notices.
 
 ### 1b. Templates and blocks
 

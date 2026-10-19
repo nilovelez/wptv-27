@@ -84,3 +84,24 @@ Template:
 - **Reason:** decided by the project owner. Removing them in Phase 1 would break the no-route-changes rule.
 - **Affects:** taxonomy registration, `/producer/*`, `/flavor/*`, the producer credit, `/api/`. See B3 in [backlog.md](backlog.md).
 - **Status:** accepted (deferred)
+
+## Phase 1a: Look up the year and location categories by slug
+
+- **Decision:** `/api/videos.*` finds the year and location category branches with `get_category_by_slug( 'year' | 'location' )` instead of the hardcoded production IDs 91093 and 6418. On 2025 production data, 91093 is `year` and 6418 is `location` (checked through the public `/api/categories.json`), so production output does not change.
+- **Reason:** the project rule is never to hardcode IDs. Locally the legacy IDs never match, so the local baseline differs on 4 URLs; these are listed in `tests/routes/expected-differences.tsv`.
+- **Affects:** `inc/endpoints/api.php`, the route test.
+- **Status:** accepted
+
+## Phase 1a: Expected differences in the route test
+
+- **Decision:** `compare.sh` reads `tests/routes/expected-differences.tsv` (label, column, reason) and reports those differences as EXPECTED, not as failures. Every entry needs a matching decision in this file.
+- **Reason:** some correct changes only show up locally because of local data (see above). The list must stay short.
+- **Affects:** `tests/routes/`.
+- **Status:** accepted
+
+## Phase 1a: Drop the hardcoded user from `?flush_rules=1`
+
+- **Decision:** only super admins can flush rewrite rules with `?flush_rules=1`. The extra hardcoded user ID 4637740 from `wptv2` is dropped.
+- **Reason:** no hardcoded IDs. Anonymous behavior, which is the only part the route test sees, does not change. Whether the feature is still needed is an open question.
+- **Affects:** `inc/maintenance.php`.
+- **Status:** accepted (review with the project owner)
