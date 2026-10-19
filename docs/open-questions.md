@@ -35,7 +35,20 @@ Questions that need an answer from the project owner or a WordPress.com employee
 18. **Footer:** keep the random "An Automattic Production / Joint / Medley…" word?
 19. **Prev/next links:** keep `<link rel="prev|next">` on archives? Search engines no longer use them, but removing them changes the `<head>` output.
 
+### VideoPress blocks and release 2
+
+20. **Block markup on WordPress.com:** what exact markup does the VideoPress block save on wordpress.tv (block name, `guid` attribute, poster/featured image settings)? A sample from one post converted by hand on the test site is enough. Release 1 (1c) depends on it.
+21. **Upload API:** in release 2, can the form handler create the VideoPress block from the uploaded attachment server-side (GUID available right after upload, as with `video_get_info_by_blogpostid()` today), or is processing asynchronous?
+22. **New terms from the form:** should submitters be able to add a speaker or event that does not exist yet, or only pick existing ones, with new ones added by moderators?
+23. **Autocomplete endpoint:** `speakers`, `event` and `language` are already in the core REST API (`/wp/v2/speakers?search=`), so autocomplete can use core endpoints with no new routes. Confirm that anonymous lookups against them are acceptable on WordPress.com (rate limits, caching).
+24. **Migration run:** who runs the shortcode-to-block migration on production, and in what form (WP-CLI command in the theme, or a one-off script)?
+25. **Rollout window:** who switches the theme on the test site and production, when, and how long is the production observation period?
+
 ## Answered
+
+### Release 1 scope
+
+- **Answer:** the form keeps the `[wpvideo]` shortcode in release 1. The VideoPress block is tested on a few existing posts converted by hand in production. There is a WordPress.com test site, used before production. Release 1 design level is functional `wptv3`. See [decisions.md](decisions.md).
 
 ### Phase 1b design ownership and front page
 

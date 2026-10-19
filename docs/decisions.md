@@ -15,6 +15,14 @@ Template:
 
 ---
 
+## Release split: parity test first, new submission workflow second
+
+- **Decision:** the project ships in two releases. **Release 1** (Phase 1) is the block theme with the current functionality and workflow, tested on the WordPress.com test site and then activated in production, with `wptv2` kept installed for immediate rollback. **Release 2** (Phase 2) replaces the per-field moderation workflow with a front-end form that fills the real fields, embeds videos as VideoPress blocks, adds autocomplete for existing terms, and ships a shortcode-to-block migration script.
+- **Release 1 details:** the submission form keeps saving `[wpvideo <guid>]` and the `_wptv_submitted_video` custom fields, and the Approve review box is kept. The theme supports VideoPress blocks as well as shortcodes; the block is tested in production on a few existing posts converted by hand. Design level is functional `wptv3`; fine polish moves to release 2.
+- **Reason:** VideoPress no longer supports the shortcode workflow, and the per-field Approve process is slow for moderators. A parity release first keeps the risk of the theme switch separate from the workflow change.
+- **Affects:** [plan.md](plan.md) (new 1c VideoPress block support, 1d forms and admin, 1e rollout; Phase 2a/2b), `inc/video.php`, submission and admin code.
+- **Status:** accepted
+
 ## Phase 1b: Front-page query implementation and design safeguards
 
 - **Decision:** `front-page.html` references the hidden `wptv/front-page` pattern. The independent latest-video query requests one post; Featured requests four posts tagged `featured`, without a category constraint or offset. Recent videos use the inherited main query without a page-size override. Event terms use descending term IDs (not event dates); categories show all nonempty top-level terms, ordered by count.
