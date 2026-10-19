@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments for WordPress.TV	</title>
+	<atom:link href="/comments/feed/" rel="self" type="application/rss+xml" />
+	<link></link>
+	<description>WordPress-related videos, curated and moderated by the WordPress community</description>
+	<lastBuildDate>Sat, 19 Apr 2025 23:45:05 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=7.1.3</generator>
+	<item>
+		<title>
+		Comment on Iliya Polihronov: High-performance WordPress by douglockyer64		</title>
+		<link>/2012/09/01/iliya-polihronov-high-performance-wordpress/comment-page-1/#comment-4406</link>
+
+		<dc:creator><![CDATA[douglockyer64]]></dc:creator>
+		<pubDate>Sat, 19 Apr 2025 23:45:05 +0000</pubDate>
+		<guid isPermaLink="false">http://wordpress.tv/?p=12952#comment-4406</guid>
+
+					<description><![CDATA[&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;I&#039;m on shared hosting at Bluehost. can I find and install nginx from wordpress, or do I need to use my cpanel?&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;also, how do I deploy the XtendWeb download from Github?&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;]]></description>
+			<content:encoded><![CDATA[<p><!-- wp:paragraph --></p>
+<p>I&#8217;m on shared hosting at Bluehost. can I find and install nginx from wordpress, or do I need to use my cpanel?</p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>also, how do I deploy the XtendWeb download from Github?</p>
+<p><!-- /wp:paragraph --></p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on How to Use the Image Galleries by Kathy Sabatino		</title>
+		<link>/2013/06/22/how-to-use-the-image-galleries/comment-page-1/#comment-4589</link>
+
+		<dc:creator><![CDATA[Kathy Sabatino]]></dc:creator>
+		<pubDate>Tue, 10 Dec 2024 22:51:32 +0000</pubDate>
+		<guid isPermaLink="false">http://wordpress.tv/?p=18324#comment-4589</guid>
+
+					<description><![CDATA[&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;How would I add a video in place of one of these images?&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;]]></description>
+			<content:encoded><![CDATA[<p><!-- wp:paragraph --></p>
+<p>How would I add a video in place of one of these images?</p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on Drew Strojny: Theme&#160;Workshop by OC WordCamp theme workshop video &#8211; &#8212; The Theme Foundry – WordPress themes for publishers		</title>
+		<link>/2010/04/24/drew-strojny-theme-workshop-oc10/comment-page-1/#comment-3521</link>
+
+		<dc:creator><![CDATA[OC WordCamp theme workshop video &#8211; &#8212; The Theme Foundry – WordPress themes for publishers]]></dc:creator>
+		<pubDate>Thu, 21 Nov 2024 13:36:37 +0000</pubDate>
+		<guid isPermaLink="false">http://wordpress.tv/?p=3856#comment-3521</guid>
+
+					<description><![CDATA[[&#8230;] Watch the video [&#8230;]]]></description>
+			<content:encoded><![CDATA[<p>[&#8230;] Watch the video [&#8230;]</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on Matt Cutts: Straight from Google – SEO, What You Need to&#160;Know by 【初心者必見】WordPressのメリット・デメリットを徹底解説		</title>
+		<link>/2009/05/30/matt-cutts-google-sf09/comment-page-2/#comment-2594</link>
+
+		<dc:creator><![CDATA[【初心者必見】WordPressのメリット・デメリットを徹底解説]]></dc:creator>
+		<pubDate>Wed, 13 Nov 2024 07:45:17 +0000</pubDate>
+		<guid isPermaLink="false">http://wordpress.tv/?p=2458#comment-2594</guid>
+
+					<description><![CDATA[[&#8230;] 出典：Matt Cutts: Straight from Google – SEO, What You Need to Know [&#8230;]]]></description>
+			<content:encoded><![CDATA[<p>[&#8230;] 出典：Matt Cutts: Straight from Google – SEO, What You Need to Know [&#8230;]</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on Ross Johnson: 10 things to speed up WordPress by Ross Johnson: 10 things to speed up WordPress		</title>
+		<link>/2012/06/13/ross-johnson-10-things-to-speed-up-wordpress/comment-page-1/#comment-4337</link>
+
+		<dc:creator><![CDATA[Ross Johnson: 10 things to speed up WordPress]]></dc:creator>
+		<pubDate>Wed, 09 Oct 2024 12:43:03 +0000</pubDate>
+		<guid isPermaLink="false">http://wordpress.tv/?p=10508#comment-4337</guid>
+
+					<description><![CDATA[[&#8230;] http://wordpress.tv/2012/06/13/ross-johnson-10-things-to-speed-up-wordpress/ [&#8230;]]]></description>
+			<content:encoded><![CDATA[<p>[&#8230;] <a href="http://wordpress.tv/2012/06/13/ross-johnson-10-things-to-speed-up-wordpress/" rel="nofollow ugc">http://wordpress.tv/2012/06/13/ross-johnson-10-things-to-speed-up-wordpress/</a> [&#8230;]</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on Mark Jaquith: Scaling, Servers, and Deploys &#8212; Oh&#160;My! by Improve The Deployment Of WordPress Websites &#124; word		</title>
+		<link>/2011/08/20/mark-jaquith-scaling-servers-and-deploys-oh-my/comment-page-1/#comment-4048</link>
+
+		<dc:creator><![CDATA[Improve The Deployment Of WordPress Websites &#124; word]]></dc:creator>
+		<pubDate>Mon, 13 May 2024 22:01:09 +0000</pubDate>
+		<guid isPermaLink="false">http://wordpress.tv/?p=7116#comment-4048</guid>
+
+					<description><![CDATA[[&#8230;] members of the WordPress community, such as core developer Mark Jaquith and Cristi Burca, have spoken on the topic and built tools such as WP-CLI and WP Stack to improve the professionalism of our administration [&#8230;]]]></description>
+			<content:encoded><![CDATA[<p>[&#8230;] members of the WordPress community, such as core developer Mark Jaquith and Cristi Burca, have spoken on the topic and built tools such as WP-CLI and WP Stack to improve the professionalism of our administration [&#8230;]</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on Matt Cutts: Straight from Google – SEO, What You Need to&#160;Know by 正確認識SEO &#8211; RWD響應式網頁設計的專家		</title>
+		<link>/2009/05/30/matt-cutts-google-sf09/comment-page-2/#comment-2593</link>
+
+		<dc:creator><![CDATA[正確認識SEO &#8211; RWD響應式網頁設計的專家]]></dc:creator>
+		<pubDate>Fri, 12 Apr 2024 01:53:54 +0000</pubDate>
+		<guid isPermaLink="false">http://wordpress.tv/?p=2458#comment-2593</guid>
+
+					<description><![CDATA[[&#8230;] Matt Cutts、「WordCamp San Francisco 2009」←有影片有真相 [&#8230;]]]></description>
+			<content:encoded><![CDATA[<p>[&#8230;] Matt Cutts、「WordCamp San Francisco 2009」←有影片有真相 [&#8230;]</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on Equipo de Marketing de WordPress España: ¿qué hacen y cómo se organizan? by Julio Cesar		</title>
+		<link>/2024/04/08/equipo-de-marketing-de-wordpress-espana-que-hacen-y-como-se-organizan/comment-page-1/#comment-5069</link>
+
+		<dc:creator><![CDATA[Julio Cesar]]></dc:creator>
+		<pubDate>Tue, 09 Apr 2024 03:45:57 +0000</pubDate>
+		<guid isPermaLink="false">https://wordpress.tv/?p=125964&#038;preview=true&#038;preview_id=125964#comment-5069</guid>
+
+					<description><![CDATA[&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Excelente charla, gracias Alvaro!&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;]]></description>
+			<content:encoded><![CDATA[<p><!-- wp:paragraph --></p>
+<p>Excelente charla, gracias Alvaro!</p>
+<p><!-- /wp:paragraph --></p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on Untangling Templates by Kathryn P.		</title>
+		<link>/2024/04/01/untangling-templates/comment-page-1/#comment-5067</link>
+
+		<dc:creator><![CDATA[Kathryn P.]]></dc:creator>
+		<pubDate>Tue, 02 Apr 2024 17:58:02 +0000</pubDate>
+		<guid isPermaLink="false">https://wordpress.tv/?p=125749&#038;preview=true&#038;preview_id=125749#comment-5067</guid>
+
+					<description><![CDATA[&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Links to related resources are below:&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;&lt;strong&gt;Documentation&lt;/strong&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Template Editor - &lt;a target=&quot;_blank&quot; href=&quot;https://wordpress.org/documentation/article/template-editor/&quot; rel=&quot;noreferrer noopener nofollow ugc&quot;&gt;https://wordpress.org/documentation/article/template-editor/&lt;/a&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Template Part block - &lt;a target=&quot;_blank&quot; href=&quot;https://wordpress.org/documentation/article/template-part-block/&quot; rel=&quot;noreferrer noopener nofollow ugc&quot;&gt;https://wordpress.org/documentation/article/template-part-block/&lt;/a&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Block Patterns - &lt;a target=&quot;_blank&quot; href=&quot;https://wordpress.org/documentation/article/block-pattern/&quot; rel=&quot;noreferrer noopener nofollow ugc&quot;&gt;https://wordpress.org/documentation/article/block-pattern/&lt;/a&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Comparing Patterns, Template Parts, and Synced Patterns (Reusable Blocks) - &lt;a href=&quot;https://wordpress.org/documentation/article/comparing-patterns-template-parts-and-reusable-blocks/&quot; target=&quot;_blank&quot; rel=&quot;noreferrer noopener nofollow ugc&quot;&gt;https://wordpress.org/documentation/article/comparing-patterns-template-parts-and-reusable-blocks/&lt;/a&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Template Hierarchy - &lt;a href=&quot;https://developer.wordpress.org/themes/basics/template-hierarchy/#visual-overview&quot; rel=&quot;nofollow ugc&quot;&gt;https://developer.wordpress.org/themes/basics/template-hierarchy/#visual-overview&lt;/a&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;&lt;strong&gt;Tutorials&lt;/strong&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Using Page Templates - &lt;a target=&quot;_blank&quot; href=&quot;https://learn.wordpress.org/tutorial/templates/&quot; rel=&quot;noreferrer noopener nofollow ugc&quot;&gt;https://learn.wordpress.org/tutorial/templates/&lt;/a&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Creating a custom template with the WordPress site editor - &lt;a target=&quot;_blank&quot; href=&quot;https://learn.wordpress.org/tutorial/creating-a-custom-template-with-the-wordpress-site-editor/&quot; rel=&quot;noreferrer noopener nofollow ugc&quot;&gt;https://learn.wordpress.org/tutorial/creating-a-custom-template-with-the-wordpress-site-editor/&lt;/a&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Personalizing your 404 Template - &lt;a target=&quot;_blank&quot; href=&quot;https://learn.wordpress.org/tutorial/personalizing-your-404-template/&quot; rel=&quot;noreferrer noopener nofollow ugc&quot;&gt;https://learn.wordpress.org/tutorial/personalizing-your-404-template/&lt;/a&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Using template parts - &lt;a target=&quot;_blank&quot; href=&quot;https://learn.wordpress.org/tutorial/using-template-parts/&quot; rel=&quot;noreferrer noopener nofollow ugc&quot;&gt;https://learn.wordpress.org/tutorial/using-template-parts/&lt;/a&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Differentiating between homepage display settings and various templates - &lt;a href=&quot;https://www.youtube.com/watch?v=8Wnlmi8v9vI&quot; target=&quot;_blank&quot; rel=&quot;noreferrer noopener nofollow ugc&quot;&gt;https://www.youtube.com/watch?v=8Wnlmi8v9vI&lt;/a&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Building a copyright block - &lt;a href=&quot;https://developer.wordpress.org/block-editor/getting-started/tutorial/&quot; rel=&quot;nofollow ugc&quot;&gt;https://developer.wordpress.org/block-editor/getting-started/tutorial/&lt;/a&gt; (this goes beyond the topic of the workshop but it came up in the Q&#038;A so am including here)&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;]]></description>
+			<content:encoded><![CDATA[<p><!-- wp:paragraph --></p>
+<p>Links to related resources are below:</p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p><strong>Documentation</strong></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Template Editor &#8211; <a target="_blank" href="https://wordpress.org/documentation/article/template-editor/" rel="noreferrer noopener nofollow ugc">https://wordpress.org/documentation/article/template-editor/</a></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Template Part block &#8211; <a target="_blank" href="https://wordpress.org/documentation/article/template-part-block/" rel="noreferrer noopener nofollow ugc">https://wordpress.org/documentation/article/template-part-block/</a></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Block Patterns &#8211; <a target="_blank" href="https://wordpress.org/documentation/article/block-pattern/" rel="noreferrer noopener nofollow ugc">https://wordpress.org/documentation/article/block-pattern/</a></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Comparing Patterns, Template Parts, and Synced Patterns (Reusable Blocks) &#8211; <a href="https://wordpress.org/documentation/article/comparing-patterns-template-parts-and-reusable-blocks/" target="_blank" rel="noreferrer noopener nofollow ugc">https://wordpress.org/documentation/article/comparing-patterns-template-parts-and-reusable-blocks/</a></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Template Hierarchy &#8211; <a href="https://developer.wordpress.org/themes/basics/template-hierarchy/#visual-overview" rel="nofollow ugc">https://developer.wordpress.org/themes/basics/template-hierarchy/#visual-overview</a></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p><strong>Tutorials</strong></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Using Page Templates &#8211; <a target="_blank" href="https://learn.wordpress.org/tutorial/templates/" rel="noreferrer noopener nofollow ugc">https://learn.wordpress.org/tutorial/templates/</a></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Creating a custom template with the WordPress site editor &#8211; <a target="_blank" href="https://learn.wordpress.org/tutorial/creating-a-custom-template-with-the-wordpress-site-editor/" rel="noreferrer noopener nofollow ugc">https://learn.wordpress.org/tutorial/creating-a-custom-template-with-the-wordpress-site-editor/</a></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Personalizing your 404 Template &#8211; <a target="_blank" href="https://learn.wordpress.org/tutorial/personalizing-your-404-template/" rel="noreferrer noopener nofollow ugc">https://learn.wordpress.org/tutorial/personalizing-your-404-template/</a></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Using template parts &#8211; <a target="_blank" href="https://learn.wordpress.org/tutorial/using-template-parts/" rel="noreferrer noopener nofollow ugc">https://learn.wordpress.org/tutorial/using-template-parts/</a></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Differentiating between homepage display settings and various templates &#8211; <a href="https://www.youtube.com/watch?v=8Wnlmi8v9vI" target="_blank" rel="noreferrer noopener nofollow ugc"><br />
+<iframe class="youtube-player" width="640" height="360" src="https://www.youtube.com/embed/8Wnlmi8v9vI?version=3&#038;rel=1&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;fs=1&#038;hl=en-US&#038;autohide=2&#038;wmode=transparent" allowfullscreen="true" style="border:0;" sandbox="allow-scripts allow-same-origin allow-popups allow-presentation allow-popups-to-escape-sandbox"></iframe><br />
+</a></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Building a copyright block &#8211; <a href="https://developer.wordpress.org/block-editor/getting-started/tutorial/" rel="nofollow ugc">https://developer.wordpress.org/block-editor/getting-started/tutorial/</a> (this goes beyond the topic of the workshop but it came up in the Q&amp;A so am including here)</p>
+<p><!-- /wp:paragraph --></p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on Untangling Templates by Kathryn P.		</title>
+		<link>/2024/04/01/untangling-templates/comment-page-1/#comment-5066</link>
+
+		<dc:creator><![CDATA[Kathryn P.]]></dc:creator>
+		<pubDate>Tue, 02 Apr 2024 17:58:02 +0000</pubDate>
+		<guid isPermaLink="false">https://wordpress.tv/?p=125749&#038;preview=true&#038;preview_id=125749#comment-5066</guid>
+
+					<description><![CDATA[&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Links to related resources are below:&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;&lt;strong&gt;Documentation&lt;/strong&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Template Editor - &lt;a target=&quot;_blank&quot; href=&quot;https://wordpress.org/documentation/article/template-editor/&quot; rel=&quot;noreferrer noopener nofollow ugc&quot;&gt;https://wordpress.org/documentation/article/template-editor/&lt;/a&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Template Part block - &lt;a target=&quot;_blank&quot; href=&quot;https://wordpress.org/documentation/article/template-part-block/&quot; rel=&quot;noreferrer noopener nofollow ugc&quot;&gt;https://wordpress.org/documentation/article/template-part-block/&lt;/a&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Block Patterns - &lt;a target=&quot;_blank&quot; href=&quot;https://wordpress.org/documentation/article/block-pattern/&quot; rel=&quot;noreferrer noopener nofollow ugc&quot;&gt;https://wordpress.org/documentation/article/block-pattern/&lt;/a&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Comparing Patterns, Template Parts, and Synced Patterns (Reusable Blocks) - &lt;a href=&quot;https://wordpress.org/documentation/article/comparing-patterns-template-parts-and-reusable-blocks/&quot; target=&quot;_blank&quot; rel=&quot;noreferrer noopener nofollow ugc&quot;&gt;https://wordpress.org/documentation/article/comparing-patterns-template-parts-and-reusable-blocks/&lt;/a&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Template Hierarchy - &lt;a href=&quot;https://developer.wordpress.org/themes/basics/template-hierarchy/#visual-overview&quot; rel=&quot;nofollow ugc&quot;&gt;https://developer.wordpress.org/themes/basics/template-hierarchy/#visual-overview&lt;/a&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;&lt;strong&gt;Tutorials&lt;/strong&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Using Page Templates - &lt;a target=&quot;_blank&quot; href=&quot;https://learn.wordpress.org/tutorial/templates/&quot; rel=&quot;noreferrer noopener nofollow ugc&quot;&gt;https://learn.wordpress.org/tutorial/templates/&lt;/a&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Creating a custom template with the WordPress site editor - &lt;a target=&quot;_blank&quot; href=&quot;https://learn.wordpress.org/tutorial/creating-a-custom-template-with-the-wordpress-site-editor/&quot; rel=&quot;noreferrer noopener nofollow ugc&quot;&gt;https://learn.wordpress.org/tutorial/creating-a-custom-template-with-the-wordpress-site-editor/&lt;/a&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Personalizing your 404 Template - &lt;a target=&quot;_blank&quot; href=&quot;https://learn.wordpress.org/tutorial/personalizing-your-404-template/&quot; rel=&quot;noreferrer noopener nofollow ugc&quot;&gt;https://learn.wordpress.org/tutorial/personalizing-your-404-template/&lt;/a&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Using template parts - &lt;a target=&quot;_blank&quot; href=&quot;https://learn.wordpress.org/tutorial/using-template-parts/&quot; rel=&quot;noreferrer noopener nofollow ugc&quot;&gt;https://learn.wordpress.org/tutorial/using-template-parts/&lt;/a&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Differentiating between homepage display settings and various templates - &lt;a href=&quot;https://www.youtube.com/watch?v=8Wnlmi8v9vI&quot; target=&quot;_blank&quot; rel=&quot;noreferrer noopener nofollow ugc&quot;&gt;https://www.youtube.com/watch?v=8Wnlmi8v9vI&lt;/a&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Building a copyright block - &lt;a href=&quot;https://developer.wordpress.org/block-editor/getting-started/tutorial/&quot; rel=&quot;nofollow ugc&quot;&gt;https://developer.wordpress.org/block-editor/getting-started/tutorial/&lt;/a&gt; (this goes beyond the topic of the workshop but it came up in the Q&#038;A so am including here)&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;]]></description>
+			<content:encoded><![CDATA[<p><!-- wp:paragraph --></p>
+<p>Links to related resources are below:</p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p><strong>Documentation</strong></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Template Editor &#8211; <a target="_blank" href="https://wordpress.org/documentation/article/template-editor/" rel="noreferrer noopener nofollow ugc">https://wordpress.org/documentation/article/template-editor/</a></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Template Part block &#8211; <a target="_blank" href="https://wordpress.org/documentation/article/template-part-block/" rel="noreferrer noopener nofollow ugc">https://wordpress.org/documentation/article/template-part-block/</a></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Block Patterns &#8211; <a target="_blank" href="https://wordpress.org/documentation/article/block-pattern/" rel="noreferrer noopener nofollow ugc">https://wordpress.org/documentation/article/block-pattern/</a></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Comparing Patterns, Template Parts, and Synced Patterns (Reusable Blocks) &#8211; <a href="https://wordpress.org/documentation/article/comparing-patterns-template-parts-and-reusable-blocks/" target="_blank" rel="noreferrer noopener nofollow ugc">https://wordpress.org/documentation/article/comparing-patterns-template-parts-and-reusable-blocks/</a></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Template Hierarchy &#8211; <a href="https://developer.wordpress.org/themes/basics/template-hierarchy/#visual-overview" rel="nofollow ugc">https://developer.wordpress.org/themes/basics/template-hierarchy/#visual-overview</a></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p><strong>Tutorials</strong></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Using Page Templates &#8211; <a target="_blank" href="https://learn.wordpress.org/tutorial/templates/" rel="noreferrer noopener nofollow ugc">https://learn.wordpress.org/tutorial/templates/</a></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Creating a custom template with the WordPress site editor &#8211; <a target="_blank" href="https://learn.wordpress.org/tutorial/creating-a-custom-template-with-the-wordpress-site-editor/" rel="noreferrer noopener nofollow ugc">https://learn.wordpress.org/tutorial/creating-a-custom-template-with-the-wordpress-site-editor/</a></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Personalizing your 404 Template &#8211; <a target="_blank" href="https://learn.wordpress.org/tutorial/personalizing-your-404-template/" rel="noreferrer noopener nofollow ugc">https://learn.wordpress.org/tutorial/personalizing-your-404-template/</a></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Using template parts &#8211; <a target="_blank" href="https://learn.wordpress.org/tutorial/using-template-parts/" rel="noreferrer noopener nofollow ugc">https://learn.wordpress.org/tutorial/using-template-parts/</a></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Differentiating between homepage display settings and various templates &#8211; <a href="https://www.youtube.com/watch?v=8Wnlmi8v9vI" target="_blank" rel="noreferrer noopener nofollow ugc"><br />
+<iframe class="youtube-player" width="640" height="360" src="https://www.youtube.com/embed/8Wnlmi8v9vI?version=3&#038;rel=1&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;fs=1&#038;hl=en-US&#038;autohide=2&#038;wmode=transparent" allowfullscreen="true" style="border:0;" sandbox="allow-scripts allow-same-origin allow-popups allow-presentation allow-popups-to-escape-sandbox"></iframe><br />
+</a></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Building a copyright block &#8211; <a href="https://developer.wordpress.org/block-editor/getting-started/tutorial/" rel="nofollow ugc">https://developer.wordpress.org/block-editor/getting-started/tutorial/</a> (this goes beyond the topic of the workshop but it came up in the Q&amp;A so am including here)</p>
+<p><!-- /wp:paragraph --></p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Videos from WordCamp Europe 2023 &#8211; WordPress.TV</title>
+	<atom:link href="/event/wordcamp-europe-2023/feed/" rel="self" type="application/rss+xml" />
+	<link></link>
+	<description>WordPress-related videos, curated and moderated by the WordPress community</description>
+	<lastBuildDate>Sun, 10 Dec 2023 09:50:55 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=7.1.3</generator>
+	<item>
+		<title>15 ways user experience impacts business&#160;success</title>
+		<link>/2023/12/10/15-ways-user-experience-impacts-business-success/</link>
+					<comments>/2023/12/10/15-ways-user-experience-impacts-business-success/#comments</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Sun, 10 Dec 2023 09:50:55 +0000</pubDate>
+				<category><![CDATA[2023]]></category>
+		<category><![CDATA[Athens (Αθήνα)]]></category>
+		<category><![CDATA[Europe]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<category><![CDATA[Featured]]></category>
+		<category><![CDATA[UX]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=120817&#038;preview=true&#038;preview_id=120817</guid>
+
+					<description><![CDATA[This talk explains why good User Experience (UX) is good business. 
+
+The examples in this presentation showcase some common business goals that great UX teams can positively impact with quantifiable results.
+]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/N6wLNtQb?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2023/12/10/15-ways-user-experience-impacts-business-success/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">120817</post-id>	</item>
+		<item>
+		<title>International appeal: making your themes and plugins translatable</title>
+		<link>/2023/12/10/international-appeal-making-your-themes-and-plugins-translatable/</link>
+					<comments>/2023/12/10/international-appeal-making-your-themes-and-plugins-translatable/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Sun, 10 Dec 2023 09:43:32 +0000</pubDate>
+				<category><![CDATA[2023]]></category>
+		<category><![CDATA[Athens (Αθήνα)]]></category>
+		<category><![CDATA[Europe]]></category>
+		<category><![CDATA[How To]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<category><![CDATA[Development]]></category>
+		<category><![CDATA[Internationalization]]></category>
+		<category><![CDATA[Plugin Development]]></category>
+		<category><![CDATA[Theme Development]]></category>
+		<category><![CDATA[Translation]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=120771&#038;preview=true&#038;preview_id=120771</guid>
+
+					<description><![CDATA[Learn the basics of internationalization and localization in WordPress. Find out how to apply these capabilities to themes and plugins. This talk covers the translation functions for PHP and JavaScript.
+]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/V5KSOmTT?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2023/12/10/international-appeal-making-your-themes-and-plugins-translatable/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">120771</post-id>	</item>
+		<item>
+		<title>AI in WordPress</title>
+		<link>/2023/11/30/ai-in-wordpress/</link>
+					<comments>/2023/11/30/ai-in-wordpress/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Thu, 30 Nov 2023 22:47:31 +0000</pubDate>
+				<category><![CDATA[2023]]></category>
+		<category><![CDATA[Athens (Αθήνα)]]></category>
+		<category><![CDATA[Europe]]></category>
+		<category><![CDATA[Panel Discussion]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<category><![CDATA[AI]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=120762&#038;preview=true&#038;preview_id=120762</guid>
+
+					<description><![CDATA[This panel discussion examines real and tangible examples of how AI is being used in WordPress today.
+
+Learn more about active use cases of AI in the WordPress and how you can leverage it to make a difference in your life, your daily work and for the community at large.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/qNAjkFCN?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2023/11/30/ai-in-wordpress/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">120762</post-id>	</item>
+		<item>
+		<title>WordPress extended: build unique websites on top of&#160;WP</title>
+		<link>/2023/11/18/wordpress-extended-build-unique-websites-on-top-of-wp/</link>
+					<comments>/2023/11/18/wordpress-extended-build-unique-websites-on-top-of-wp/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Sat, 18 Nov 2023 22:42:03 +0000</pubDate>
+				<category><![CDATA[2023]]></category>
+		<category><![CDATA[Athens (Αθήνα)]]></category>
+		<category><![CDATA[Europe]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<category><![CDATA[Development]]></category>
+		<category><![CDATA[WordPress Backend]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=120729&#038;preview=true&#038;preview_id=120729</guid>
+
+					<description><![CDATA[This talk explains how to use WordPress as a powerful foundation for creative and unique websites. ]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/TtLOzZt8?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2023/11/18/wordpress-extended-build-unique-websites-on-top-of-wp/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">120729</post-id>	</item>
+		<item>
+		<title>10 things that all WordPress plugin developers should&#160;avoid</title>
+		<link>/2023/10/15/10-things-that-all-wordpress-plugin-developers-should-avoid/</link>
+					<comments>/2023/10/15/10-things-that-all-wordpress-plugin-developers-should-avoid/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Sun, 15 Oct 2023 15:07:49 +0000</pubDate>
+				<category><![CDATA[2023]]></category>
+		<category><![CDATA[Athens (Αθήνα)]]></category>
+		<category><![CDATA[Europe]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<category><![CDATA[Plugin Development]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=120720&#038;preview=true&#038;preview_id=120720</guid>
+
+					<description><![CDATA[This technical talk is about WordPress plugins and the pitfalls to avoid building plugins.
+
+Each example will be punctuated with demonstrations of the “why”, along with relevant anecdotes from the speaker’s 30 year experience working within support.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/wIbbuYZP?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2023/10/15/10-things-that-all-wordpress-plugin-developers-should-avoid/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">120720</post-id>	</item>
+		<item>
+		<title>From shortcode to&#160;block</title>
+		<link>/2023/10/15/from-shortcode-to-block/</link>
+					<comments>/2023/10/15/from-shortcode-to-block/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Sun, 15 Oct 2023 15:02:56 +0000</pubDate>
+				<category><![CDATA[2023]]></category>
+		<category><![CDATA[Athens (Αθήνα)]]></category>
+		<category><![CDATA[Europe]]></category>
+		<category><![CDATA[How To]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<category><![CDATA[Workshop]]></category>
+		<category><![CDATA[Block Development]]></category>
+		<category><![CDATA[Development]]></category>
+		<category><![CDATA[Plugin Development]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=120794&#038;preview=true&#038;preview_id=120794</guid>
+
+					<description><![CDATA[In this workshop, learn how to adapt a shortcode-based plugin so that it also renders content in a custom block for use in the WordPress editor. The plugin will therefore no longer need to rely on the build-in Shortcode Block. 
+
+Starting with a scaffolded project, you will go on to build out a dynamic block that works with a CPT (Custom Post Type) and a CT (Custom Taxonomy). Learn how to use the hooks provided by the @wordpress/core-data package to pull content into the editor while also ensuring that the content is correctly rendered in the front-end. You will also learn how to use block attributes both in the editor and in the front-end.
+
+You will learn how a dynamic block differs from a static block and the use cases for each.
+
+If you already have, or are thinking of building, a plugin that uses a shortcode to render content, and would like to learn how to also render that content in a block, this workshop is for you.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/VTJbit9P?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2023/10/15/from-shortcode-to-block/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">120794</post-id>	</item>
+		<item>
+		<title>Should you raise capital for your WordPress business?</title>
+		<link>/2023/10/13/should-you-raise-capital-for-your-wordpress-business/</link>
+					<comments>/2023/10/13/should-you-raise-capital-for-your-wordpress-business/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Fri, 13 Oct 2023 15:21:07 +0000</pubDate>
+				<category><![CDATA[2023]]></category>
+		<category><![CDATA[Athens (Αθήνα)]]></category>
+		<category><![CDATA[Europe]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<category><![CDATA[Business]]></category>
+		<category><![CDATA[Entrepreneurship]]></category>
+		<category><![CDATA[Featured]]></category>
+		<category><![CDATA[Finance]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=120708&#038;preview=true&#038;preview_id=120708</guid>
+
+					<description><![CDATA[In the past couple of years, there has been an increase in the number of WordPress businesses raising capital. 
+
+This talk explains how to decide if raising capital is right for your business, what options you have, how to go about the process, and what to look out for. Hint: bringing on outside investors isn’t always right, but it can sometimes help accelerate your business and impact.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/gTbHlIf3?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2023/10/13/should-you-raise-capital-for-your-wordpress-business/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">120708</post-id>	</item>
+		<item>
+		<title>Take your WordPress website to another level using AI translation</title>
+		<link>/2023/10/13/take-your-wordpress-website-to-another-level-using-ai-translation/</link>
+					<comments>/2023/10/13/take-your-wordpress-website-to-another-level-using-ai-translation/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Fri, 13 Oct 2023 15:19:13 +0000</pubDate>
+				<category><![CDATA[2023]]></category>
+		<category><![CDATA[Athens (Αθήνα)]]></category>
+		<category><![CDATA[Europe]]></category>
+		<category><![CDATA[How To]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<category><![CDATA[AI]]></category>
+		<category><![CDATA[Lightning Talk]]></category>
+		<category><![CDATA[Translation]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=120765&#038;preview=true&#038;preview_id=120765</guid>
+
+					<description><![CDATA[This Lightning Talk shares how to easily translate your WordPress site using AI translation.
+
+People prefer reading, engaging, and buying in their own language. And you can easily reach them by translating your website. 
+
+Doing this used to be expensive and time-consuming but no more! Thanks to automatic translation using AI, it is now fast, affordable, and available to anyone. All you need are the right tools. 
+
+]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/pBumbqcU?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2023/10/13/take-your-wordpress-website-to-another-level-using-ai-translation/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">120765</post-id>	</item>
+		<item>
+		<title>WordPress and hooks: understanding and using&#160;them</title>
+		<link>/2023/10/13/wordpress-and-hooks-understanding-and-using-them/</link>
+					<comments>/2023/10/13/wordpress-and-hooks-understanding-and-using-them/#comments</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Fri, 13 Oct 2023 15:15:09 +0000</pubDate>
+				<category><![CDATA[2023]]></category>
+		<category><![CDATA[Athens (Αθήνα)]]></category>
+		<category><![CDATA[Europe]]></category>
+		<category><![CDATA[How To]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<category><![CDATA[Development]]></category>
+		<category><![CDATA[functions.php]]></category>
+		<category><![CDATA[hooks]]></category>
+		<category><![CDATA[PHP]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=120782&#038;preview=true&#038;preview_id=120782</guid>
+
+					<description><![CDATA[The workshop for WordPress developers offers an opportunity to understand and work-with hooks. Learn more about some of the hooks WordPress has to offer and find out how to create your own.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/aizcmVwU?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2023/10/13/wordpress-and-hooks-understanding-and-using-them/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">120782</post-id>	</item>
+		<item>
+		<title>How to ask for web design&#160;feedback</title>
+		<link>/2023/10/13/how-to-ask-for-web-design-feedback/</link>
+					<comments>/2023/10/13/how-to-ask-for-web-design-feedback/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Fri, 13 Oct 2023 15:09:39 +0000</pubDate>
+				<category><![CDATA[2023]]></category>
+		<category><![CDATA[Athens (Αθήνα)]]></category>
+		<category><![CDATA[Europe]]></category>
+		<category><![CDATA[How To]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<category><![CDATA[Design]]></category>
+		<category><![CDATA[Web Design]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=120697&#038;preview=true&#038;preview_id=120697</guid>
+
+					<description><![CDATA[This talk explores the best ways to ask for feedback in a manner that makes clients feel comfortable and secure.
+
+Learn about various online tools and advanced techniques that can be used to receive valuable, specific and constructive feedback on your designs.
+
+In order to avoid receiving vague or unhelpful feedback, it’s crucial to learn how to ask for it in the right way.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/XDWP71AX?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2023/10/13/how-to-ask-for-web-design-feedback/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">120697</post-id>	</item>
+	</channel>
+</rss>

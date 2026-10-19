@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>nilovelez &#8211; WordPress.TV</title>
+	<atom:link href="/producer-username/nilovelez/feed/" rel="self" type="application/rss+xml" />
+	<link></link>
+	<description>WordPress-related videos, curated and moderated by the WordPress community</description>
+	<lastBuildDate>Tue, 09 Apr 2024 09:12:32 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=7.1.3</generator>
+	<item>
+		<title>Interactivity API: Una nueva experiencia para hacer&#160;bloques</title>
+		<link>/2024/04/09/interactivity-api-una-nueva-experiencia-para-hacer-bloques/</link>
+					<comments>/2024/04/09/interactivity-api-una-nueva-experiencia-para-hacer-bloques/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 09 Apr 2024 09:12:32 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Chiclana]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=126010&#038;preview=true&#038;preview_id=126010</guid>
+
+					<description><![CDATA[En esta ponencia vamos a ver la nueva API Interactivity, disponible a partir de WordPress 6.5. Esta API nos va a permitir hacer bloques de Gutenberg de una nueva manera, facilitando el desarrollo y mejorando la experiencia de personas usuarias.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/rP9gOWs6?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/09/interactivity-api-una-nueva-experiencia-para-hacer-bloques/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">126010</post-id>	</item>
+		<item>
+		<title>Marketing de guerrilla para vender de forma disruptiva y barata sin acabar en el&#160;juzgado</title>
+		<link>/2024/04/09/marketing-de-guerrilla-para-vender-de-forma-disruptiva-y-barata-sin-acabar-en-el-juzgado/</link>
+					<comments>/2024/04/09/marketing-de-guerrilla-para-vender-de-forma-disruptiva-y-barata-sin-acabar-en-el-juzgado/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 09 Apr 2024 09:12:12 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Chiclana]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=126009&#038;preview=true&#038;preview_id=126009</guid>
+
+					<description><![CDATA[En esta ponencia hablaré de la importancia de destacar, ser diferentes e innovar para vender más, ya sea como freelance, empresa o startup. Todo ello a través del marketing de guerrilla sin necesidad de acabar en el juzgado, ni gastarte mucho dinero.
+El objetivo es mostrar diversas estrategias y acciones que han sido aplicadas en el mundo creativo que han tenido un alto impacto para las ventas de esa empresa sin haber gastado mucho dinero. Y que además no han acabado en el juzgado. Pero también hablaremos de aquellas que casi lo hacen y cómo evitarlo.
+Además, hablaremos de cómo hacer brainstormings que nos permitan adquirir ideas. Al principio de la charla se le pedirá a alguien del público que diga dos palabras, de forma que al final crearemos un primer boceto de campaña de marketing de guerrilla.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/mFI7iwgC?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/09/marketing-de-guerrilla-para-vender-de-forma-disruptiva-y-barata-sin-acabar-en-el-juzgado/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">126009</post-id>	</item>
+		<item>
+		<title>Optimiza tu Negocio en WordPress: Tendencias y Estrategias para Vender Más en&#160;2024</title>
+		<link>/2024/04/09/optimiza-tu-negocio-en-wordpress-tendencias-y-estrategias-para-vender-mas-en-2024/</link>
+					<comments>/2024/04/09/optimiza-tu-negocio-en-wordpress-tendencias-y-estrategias-para-vender-mas-en-2024/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 09 Apr 2024 09:11:44 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Chiclana]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=126008&#038;preview=true&#038;preview_id=126008</guid>
+
+					<description><![CDATA[«Optimiza tu Negocio en WordPress: Tendencias y Estrategias para Vender Más en 2024» es una ponencia dirigida a emprendedores y empresarios que buscan potenciar sus ventas a través de su sitio web en WordPress. Durante esta charla, se abordarán temas como el diseño web, autodiseño, SEO, inteligencia artificial, redes sociales y las tendencias más relevantes para el año 2024. Los asistentes, tanto principiantes como intermedios en el mundo digital, obtendrán conocimientos valiosos para maximizar el rendimiento de sus negocios en línea.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/5JamtIj4?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/09/optimiza-tu-negocio-en-wordpress-tendencias-y-estrategias-para-vender-mas-en-2024/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">126008</post-id>	</item>
+		<item>
+		<title>Los captchas en las webs con WordPress</title>
+		<link>/2024/04/09/los-captchas-en-las-webs-con-wordpress/</link>
+					<comments>/2024/04/09/los-captchas-en-las-webs-con-wordpress/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 09 Apr 2024 09:08:13 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Chiclana]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=126003&#038;preview=true&#038;preview_id=126003</guid>
+
+					<description><![CDATA[En esta charla, vengo a explicaros que son los catpchas, a nivel de accesibilidad en tus webs con WordPress.
+Y os explicaré, primero que son los catpchas, las ventajas y desventajas, que tienen al nivel de la accesibilidad web.
+Y luego algunos usos, que se pueden usar, y cuáles no se pueden usar a nivel de la web y la accesibilidad web, y también os explicaré algunos plugins para usar en tu sitio web con WordPress, a nivel de los captchas.
+Y luego en mitad de la charla, haremos una parada, para hacer preguntas, y una pregunta de tipo debate, para dinamizar la charla.
+Y la pregunta sería:
+¿Qué se piensa de los captchas, a nivel de la accesiblidad web vs a nivel de la seguridad web, y cuál sería mejor o peor, o ventajas o desventajas, que tengáis sobre los catpchas a estos 2 niveles?.
+Y luego finalizaremos la charla, con las conclusiones de la charla, sobre que podeis aportar algo más usando los captchas, o que no se debería usar en cada caso en los captchas, a nivel de la accesibilidad web con tu sitio web con WordPress.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/4chRATqK?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/09/los-captchas-en-las-webs-con-wordpress/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">126003</post-id>	</item>
+		<item>
+		<title>Más allá de los ‘Me gusta’: Cómo el blog fortalece tu presencia en la&#160;red.</title>
+		<link>/2024/04/09/mas-alla-de-los-me-gusta-como-el-blog-fortalece-tu-presencia-en-la-red/</link>
+					<comments>/2024/04/09/mas-alla-de-los-me-gusta-como-el-blog-fortalece-tu-presencia-en-la-red/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 09 Apr 2024 09:07:37 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Chiclana]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=126002&#038;preview=true&#038;preview_id=126002</guid>
+
+					<description><![CDATA[Las redes sociales son vistas como la única o más potente herramienta para llegar a más personas, y no se conocen todas las posibilidades que ofrece crear contenido en un blog para conseguir llegar a un público de calidad, además de fidelizarlo. Los «Me gusta» solo hacen crecer el ego, no las ventas. En mi ponencia mostraré cómo conseguir visibilidad con el contenido del blog en combinación con las redes sociales.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/C8fIvvG6?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/09/mas-alla-de-los-me-gusta-como-el-blog-fortalece-tu-presencia-en-la-red/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">126002</post-id>	</item>
+		<item>
+		<title>Comunicación positiva: el poder de lo que dices (y no&#160;dices)</title>
+		<link>/2024/04/09/comunicacion-positiva-el-poder-de-lo-que-dices-y-no-dices/</link>
+					<comments>/2024/04/09/comunicacion-positiva-el-poder-de-lo-que-dices-y-no-dices/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 09 Apr 2024 09:07:06 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Chiclana]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=125999&#038;preview=true&#038;preview_id=125999</guid>
+
+					<description><![CDATA[El escritor Paul J. Meyer decía que “la comunicación humana es la clave del éxito personal y profesional”. Sin duda, uno de los ingredientes clave de las relaciones.
+Durante esta ponencia hablaremos de los desafíos e importancia de la comunicación en cualquier relación profesional y laboral. Conoceremos algunos consejos sobre cómo comunicar de forma efectiva, incluso cuando lo hacemos sin palabras.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/eYorwta9?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/09/comunicacion-positiva-el-poder-de-lo-que-dices-y-no-dices/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">125999</post-id>	</item>
+		<item>
+		<title>«Think outside the box», diseños de «heros» para diferenciarte en el mundo&#160;web</title>
+		<link>/2024/04/09/think-outside-the-box-disenos-de-heros-para-diferenciarte-en-el-mundo-web/</link>
+					<comments>/2024/04/09/think-outside-the-box-disenos-de-heros-para-diferenciarte-en-el-mundo-web/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 09 Apr 2024 09:06:44 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Chiclana]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=125996&#038;preview=true&#038;preview_id=125996</guid>
+
+					<description><![CDATA[La sección «hero» de tu sitio web es la parte más importante de todas. Es la primera impresión y, a veces, la única oportunidad de impresionar a quienes visitan tu web.
+Seguro que alguna vez has tenido la sensación de que sueles diseñar estos «heros» muy parecidos en casi todos los sitios web que creas o incluso puede que te hayas quedado sin ideas.
+En esta charla te compartiré algunas variaciones de diseños para la sección «hero» que puedes crear en tu web y usar como inspiración para tus próximos proyecto.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/PYuIIY4k?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/09/think-outside-the-box-disenos-de-heros-para-diferenciarte-en-el-mundo-web/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">125996</post-id>	</item>
+		<item>
+		<title>Crear SIN tiempo (pero CON WordPress)</title>
+		<link>/2024/04/09/crear-sin-tiempo-pero-con-wordpress/</link>
+					<comments>/2024/04/09/crear-sin-tiempo-pero-con-wordpress/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 09 Apr 2024 09:06:23 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Chiclana]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=125992&#038;preview=true&#038;preview_id=125992</guid>
+
+					<description><![CDATA[¿De dónde sacas el tiempo para generar tanto contenido? ¿Cómo consigues mantener la constancia? Son preguntas que veo que se repiten constantemente a creadores de contenido de todo tipo.
+En esta charla quiero contar mi experiencia diseñando sistemas de trabajo en WordPress que me ayudan a generar contenido sin que me falten las fuerzas. Y cómo la automatización de tareas me ayuda a conseguirlo más rápido y con mejores resultados.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/jNQY2sST?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/09/crear-sin-tiempo-pero-con-wordpress/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">125992</post-id>	</item>
+		<item>
+		<title>Optimizando la Seguridad de WordPress: 10 Consejos Esenciales para Mantener tu Sitio Protegido</title>
+		<link>/2024/04/09/optimizando-la-seguridad-de-wordpress-10-consejos-esenciales-para-mantener-tu-sitio-protegido/</link>
+					<comments>/2024/04/09/optimizando-la-seguridad-de-wordpress-10-consejos-esenciales-para-mantener-tu-sitio-protegido/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 09 Apr 2024 09:06:01 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Chiclana]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=125990&#038;preview=true&#038;preview_id=125990</guid>
+
+					<description><![CDATA[Exploraremos estrategias clave para fortalecer la seguridad de tu sitio web. Practicas esenciales, tipos de ataques, como fortalecer tus formularios.
+Abordaremos los diez consejos fundamentales que todo propietario de un sitio web WordPress debe conocer.
+Aprenderás a salvaguardar tus datos, prevenir amenazas cibernéticas comunes y mantener la integridad de tu presencia en línea.
+
+Estás listo para adquirir conocimientos prácticos y asegurar la robustez de tu plataforma WordPress.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/zvlV5kw6?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/09/optimizando-la-seguridad-de-wordpress-10-consejos-esenciales-para-mantener-tu-sitio-protegido/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">125990</post-id>	</item>
+		<item>
+		<title>WordPress, composer y repositorios con&#160;Bedrock</title>
+		<link>/2024/04/09/wordpress-composer-y-repositorios-con-bedrock/</link>
+					<comments>/2024/04/09/wordpress-composer-y-repositorios-con-bedrock/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 09 Apr 2024 09:05:42 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Chiclana]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=125985&#038;preview=true&#038;preview_id=125985</guid>
+
+					<description><![CDATA[Hace poco renové mi página web y como me gusta tener todo organizado en mis repositorios privados de github intenté sin éxito hacer lo mismo con WordPress.
+Miré mil tutoriales y todo lo que encontraba eran soluciones con parches que no terminaban de convencerme hasta que encontré el proyecto Bedrock: https://roots.io/bedrock/
+Bedrock te permite instalar tanto WordPress, como plugins y temas usando composer. Su estructura de carpetas es diferente a la que nos da WordPress por defecto, podemos usar un archivo .env para configuraciones y nos facilita mucho el subir nuestro proyecto a un repositorio como Github para el mantenimiento.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/thpSXZ8w?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/09/wordpress-composer-y-repositorios-con-bedrock/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">125985</post-id>	</item>
+	</channel>
+</rss>

@@ -56,3 +56,24 @@ Template:
 - **Reason:** existing translations keep working.
 - **Affects:** all translatable strings.
 - **Status:** proposed (pending confirmation, see open question 20)
+
+## Phase 0: Theme-agnostic route regression test
+
+- **Decision:** routes are verified by `tests/routes/`: a fixed URL list generated from real data, a curl runner that does not follow redirects, and a compare script. Main query data comes from an `X-WPTV-Route` header added by a local-only mu-plugin, never from theme markup. The `wptv2` baseline is committed.
+- **Reason:** both themes render different markup, so counting posts in HTML would not compare. The header exposes exactly what decides a route (404 flag, found posts, pages, per page, queried object). Not following redirects makes redirect targets exact.
+- **Affects:** `tests/routes/` (export-ignored, never deployed).
+- **Status:** accepted
+
+## Phase 0: Deterministic stubs for WordPress.com-only VideoPress helpers
+
+- **Decision:** the local-only mu-plugin defines missing VideoPress helpers. `video_get_info_by_guid()` returns fake details derived from the GUID only, `videopress_2015_player_get_html()` returns fixed markup, and file, thumbnail and subtitle helpers return no data. The mu-plugin does nothing on WordPress.com (`IS_WPCOM`).
+- **Reason:** without stubs, `wptv2` singles and endpoints fail locally. Stubs that return "no data" only exercise error paths. Deterministic fake data exercises the full code paths and keeps runs identical.
+- **Affects:** `tests/routes/mu-plugin/wptv-route-test.php`. Real video output must be checked on the WordPress.com test site.
+- **Status:** accepted
+
+## Phase 0: Legacy quirks are part of the route contract
+
+- **Decision:** Phase 1 reproduces observable `wptv2` behavior even when it is a bug (for example, `/api/videos.*` sending JSON as `text/html`), unless the project owner decides otherwise. Each quirk is listed in `open-questions.md`, and a fix moves it to Phase 2 or into this log.
+- **Reason:** external consumers may depend on the current behavior, and Phase 1 must not change routes.
+- **Affects:** endpoints, see [routes.md](routes.md).
+- **Status:** accepted

@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>WordPress.TV</title>
+	<atom:link href="/feed/" rel="self" type="application/rss+xml" />
+	<link></link>
+	<description>WordPress-related videos, curated and moderated by the WordPress community</description>
+	<lastBuildDate>Sat, 09 May 2026 16:02:35 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=7.1.3</generator>
+	<item>
+		<title>How to upload videos to WordPressTV</title>
+		<link>/2026/05/09/nilo-velez-test/</link>
+					<comments>/2026/05/09/nilo-velez-test/#respond</comments>
+		
+		<dc:creator><![CDATA[]]></dc:creator>
+		<pubDate>Sat, 09 May 2026 15:59:59 +0000</pubDate>
+				<category><![CDATA[2009]]></category>
+		<category><![CDATA[2018]]></category>
+		<category><![CDATA[Austin]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[WordPress]]></category>
+		<guid isPermaLink="false">https://wptv.nilovelez.com/?p=133522</guid>
+
+					<description><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut leo sem. Phasellus condimentum nulla enim. Proin vitae libero nisl. Etiam efficitur sapien lorem, at tincidunt mauris aliquet sed.]]></description>
+										<content:encoded><![CDATA[
+		<figure class="wp-block-jetpack-videopress jetpack-videopress-player" style="" >
+			<div class="jetpack-videopress-player__wrapper"> <iframe title="VideoPress Video Player" aria-label='VideoPress Video Player' width='500' height='281' src='https://videopress.com/embed/HVQl3ZYz?cover=1&amp;autoPlay=0&amp;controls=1&amp;loop=0&amp;muted=0&amp;persistVolume=1&amp;playsinline=0&amp;preloadContent=metadata&amp;useAverageColor=1&amp;hd=0' frameborder='0' allowfullscreen data-resize-to-parent="true" allow='clipboard-write'></iframe><script src='https://v0.wordpress.com/js/next/videopress-iframe.js?m=1770107250'></script></div>
+			
+			
+		</figure>
+		]]></content:encoded>
+					
+					<wfw:commentRss>/2026/05/09/nilo-velez-test/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">133522</post-id>	</item>
+		<item>
+		<title>WP-CLI for PHP developers</title>
+		<link>/2024/04/10/wp-cli-for-php-developers-3/</link>
+					<comments>/2024/04/10/wp-cli-for-php-developers-3/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Wed, 10 Apr 2024 07:40:19 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=126193&#038;preview=true&#038;preview_id=126193</guid>
+
+					<description><![CDATA[When was the last time you tested code in production? Your own website doesn’t count.
+
+WP-CLI for PHP developers is the sequel of WordPress through the Terminal talk, focusing on a set of commands and tools useful for PHP developers.
+
+This is not just a live demo of WP-CLI commands. This is zooming out and seeing WP-CLI in collaboration with other tools in the context of PHP developer needs and everyday tasks. We’ll probably release the Kraken as well.]]></description>
+										<content:encoded><![CDATA[<p><figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/ob0EdJL3?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/10/wp-cli-for-php-developers-3/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">126193</post-id>	</item>
+		<item>
+		<title>Intentional Designing: Crafting Purposeful Digital Experiences</title>
+		<link>/2024/04/10/intentional-designing-crafting-purposeful-digital-experiences/</link>
+					<comments>/2024/04/10/intentional-designing-crafting-purposeful-digital-experiences/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Wed, 10 Apr 2024 07:22:09 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=126182&#038;preview=true&#038;preview_id=126182</guid>
+
+					<description><![CDATA[Have you ever used a website or an app that was so frustrating to use that you just gave up? Or maybe you’ve used one that was so well-designed that you couldn’t help but grin and sing its praises. What made the difference between these two experiences?
+
+In this presentation, we’ll talk about why it’s important to design digital experiences with purpose. We’ll cover the key principles of intentional design and how you can use them to create experiences that are both user-friendly and effective. We’ll also look at some examples of successful intentional design and discuss how you can apply them to your own work.]]></description>
+										<content:encoded><![CDATA[<p><figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/nWBDTHcn?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/10/intentional-designing-crafting-purposeful-digital-experiences/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">126182</post-id>	</item>
+		<item>
+		<title>From Meh to Memorable: Your Public Speaking Masterclass</title>
+		<link>/2024/04/10/from-meh-to-memorable-your-public-speaking-masterclass/</link>
+					<comments>/2024/04/10/from-meh-to-memorable-your-public-speaking-masterclass/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Wed, 10 Apr 2024 07:20:35 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=126181&#038;preview=true&#038;preview_id=126181</guid>
+
+					<description><![CDATA[Public speaking is a universal fear. If you’ve ever wished to speak to an audience, or improve your presentation and public speaking skills, this session will put you on a fast track to success.
+
+Here, we’ll tackle a range of common concerns:
+
+- How to deal with anxiety and butterflies?
+- How to craft stories people love?
+- How to avoid being a lousy speaker?
+- Should you move around on stage?
+
+You will learn these and many other secrets:
+
+- The 1.1.1.1 rule
+- What to do when you goof up
+- Dealing with all the um’s and ah’s and other filler words
+- Classic mistakes you will catch 90% speakers make (but you shouldn’t)
+
+While you won’t emerge as a naturally charismatic on-stage orator in this short span, you will shatter your biggest fears, paving the way for your stage debut. For those with prior stage experience, expect a significant boost in power and effectiveness during your next appearance.
+
+Noteworthy bonus: Brace yourself for an exceptionally interesting session! Make sure you attend it!
+
+Join us and transform your approach to public speaking.]]></description>
+										<content:encoded><![CDATA[<p><figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/NUGa4991?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/10/from-meh-to-memorable-your-public-speaking-masterclass/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">126181</post-id>	</item>
+		<item>
+		<title>Learning Pathways on Learn.WordPress.org</title>
+		<link>/2024/04/10/learning-pathways-on-learn-wordpress-org/</link>
+					<comments>/2024/04/10/learning-pathways-on-learn-wordpress-org/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Wed, 10 Apr 2024 07:14:06 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=126177&#038;preview=true&#038;preview_id=126177</guid>
+
+					<description><![CDATA[The WordPress Training Team recognizes the need for a clear, structured, and user-friendly approach to presenting Learn WordPress content. As a result, we aim to deploy an improved Learn WordPress website experience that provides an easy-to-navigate, goal-oriented learning environment that caters to learners of different roles and skill levels. In this talk I would like to talk about the Learning Pathways Project and also send out a call for volunteers to help support the project.
+
+This project will serve as a foundational start, establishing a framework and functionality that will allow for the expansion and growth of the learning system over time. To meet our objective, this project includes a website redesign that offers clear learning pathways to reach target Learners such as Developers, End Users, and Designers. We will also focus on making relevant content easier to find and the inclusion of a framework that classifies content by skill level. We believe this will enhance user engagement, improve learning outcomes, and increase user adoption of Learn WordPress resources.
+
+The Training Team hopes that this project will help us better serve the wider WordPress community by promoting knowledge transfer and ensuring a thriving community with diverse skills and abilities.]]></description>
+										<content:encoded><![CDATA[<p><figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/VhDEK5NL?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/10/learning-pathways-on-learn-wordpress-org/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">126177</post-id>	</item>
+		<item>
+		<title>Legal implications on use of AI&#160;tools</title>
+		<link>/2024/04/10/legal-implications-on-use-of-ai-tools/</link>
+					<comments>/2024/04/10/legal-implications-on-use-of-ai-tools/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Wed, 10 Apr 2024 07:06:01 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Asia]]></category>
+		<category><![CDATA[Taipei (台北)]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=126171&#038;preview=true&#038;preview_id=126171</guid>
+
+					<description><![CDATA[As we embrace multiple AI tools as we saw with the launch and storm of ChapGPT, Midjourney and plenty of others, as users we also need to be aware of possible legal implications, including data protection, and governance compliance. Other matters of interest includes intellectual property and how to best safeguard your interests as users.]]></description>
+										<content:encoded><![CDATA[<p><figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/9XAOjs3l?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/10/legal-implications-on-use-of-ai-tools/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">126171</post-id>	</item>
+		<item>
+		<title>Insights from WordPress Contribution: What Makes Us Impactful</title>
+		<link>/2024/04/09/insights-from-wordpress-contribution-what-makes-us-impactful/</link>
+					<comments>/2024/04/09/insights-from-wordpress-contribution-what-makes-us-impactful/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Wed, 10 Apr 2024 06:48:28 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Asia]]></category>
+		<category><![CDATA[Taipei (台北)]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=126167&#038;preview=true&#038;preview_id=126167</guid>
+
+					<description><![CDATA[Join me on a journey of exploration within the WordPress community as we uncover the qualities and practices that underlie impactful collaborations. Drawing from both data and the real-life stories of WordPress contributors, we’ll dive into the essence of meaningful contributions.
+
+This session isn’t just about gaining insights into the current state of WordPress contribution; it’s about going deeper. We’ll illuminate a broader understanding of how these insights can nurture impactful interactions in various collaborative settings.
+
+By the end of our time together, you’ll walk away with actionable strategies to enrich your collaborative efforts, whether they’re in the realms of work, community projects, or personal situations. This is an opportunity to broaden your horizons and harness the wisdom of WordPress contributors to make a difference that extends far beyond the WordPress community.]]></description>
+										<content:encoded><![CDATA[<p><figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/WmaQIWTP?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/09/insights-from-wordpress-contribution-what-makes-us-impactful/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">126167</post-id>	</item>
+		<item>
+		<title>How WordPress can better serve the needs of Enterprise</title>
+		<link>/2024/04/09/how-wordpress-can-better-serve-the-needs-of-enterprise/</link>
+					<comments>/2024/04/09/how-wordpress-can-better-serve-the-needs-of-enterprise/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Wed, 10 Apr 2024 06:15:52 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Asia]]></category>
+		<category><![CDATA[Taipei (台北)]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=126162&#038;preview=true&#038;preview_id=126162</guid>
+
+					<description><![CDATA[Witness the convergence of WordPress and enterprise innovation, where digital frontiers are pushed and customer experiences soar to new heights!
+
+WordPress, a powerful open-source platform, offers enterprise companies a unique opportunity to enhance their agility and deliver exceptional digital experiences for their customers. This panel discussion will focus on strategies for fostering greater enterprise adoption of WordPress, thereby unlocking investments that can fuel ecosystem growth. By addressing barriers, identifying opportunities, and outlining future steps, the panel will contribute to closing the gap between WordPress’s platform potential and the needs of enterprise customers. This, in turn, will create a virtuous cycle of growth for the WordPress community and enterprise WordPress as a whole.]]></description>
+										<content:encoded><![CDATA[<p><figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/XSwUl3vI?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/09/how-wordpress-can-better-serve-the-needs-of-enterprise/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">126162</post-id>	</item>
+		<item>
+		<title>Plugin Review – Top 10 mistakes plugin authors&#160;make!</title>
+		<link>/2024/04/09/plugin-review-top-10-mistakes-plugin-authors-make/</link>
+					<comments>/2024/04/09/plugin-review-top-10-mistakes-plugin-authors-make/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Wed, 10 Apr 2024 05:31:52 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Asia]]></category>
+		<category><![CDATA[Taipei (台北)]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=126153&#038;preview=true&#038;preview_id=126153</guid>
+
+					<description><![CDATA[The plugin review team handles hundreds of new plugin submissions every week. 90% of those plugins fall foul of the same mistakes, time and time again. In this talk we’ll walk through the most common pitfalls, so that your plugin submission goes as smoothly as possible.]]></description>
+										<content:encoded><![CDATA[<p><figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/cL67tn5U?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/09/plugin-review-top-10-mistakes-plugin-authors-make/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">126153</post-id>	</item>
+		<item>
+		<title>The elements of WordPress</title>
+		<link>/2024/04/09/the-elements-of-wordpress/</link>
+					<comments>/2024/04/09/the-elements-of-wordpress/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Wed, 10 Apr 2024 05:31:41 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Asia]]></category>
+		<category><![CDATA[Taipei (台北)]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=126149&#038;preview=true&#038;preview_id=126149</guid>
+
+					<description><![CDATA[WordPress is made of blocks, but that’s just the start. The system starts with blocks, that combine to form patterns, template parts, templates and then styling unites everything. This evolution is growing in pace and even more critical to understand not just for those creating designs, but those even looking to extend the interface and components.
+
+Blocks, patterns, templates and styles are the elements of WordPress. What does that mean today? How can you take that knowledge and use it? What does it mean for the concept of themes or the experience of using WordPress itself? In this talk let’s explore a little the history to give context, the present and then the future of the elements of WordPress.]]></description>
+										<content:encoded><![CDATA[<p><figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/6vHySP3x?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/09/the-elements-of-wordpress/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">126149</post-id>	</item>
+	</channel>
+</rss>

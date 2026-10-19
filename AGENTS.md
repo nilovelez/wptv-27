@@ -38,6 +38,8 @@ WordPress.tv publishes community videos (WordCamps, meetups, workshops). It runs
 | [`docs/plan.md`](docs/plan.md) | Phases, tasks and current status |
 | [`docs/routes.md`](docs/routes.md) | Inventory of every route that must be preserved, plus the regression test URL list |
 | [`docs/legacy-wptv2.md`](docs/legacy-wptv2.md) | Analysis of the legacy theme and the `wptv2` to `wptv-27` replacement map |
+| [`docs/legacy-wptv3.md`](docs/legacy-wptv3.md) | Review of the `wptv3` proof of concept: what to reuse, what to avoid, its route test results |
+| [`tests/routes/README.md`](tests/routes/README.md) | Route regression test: how to run it against the `wptv2` baseline |
 | [`docs/wpcom-constraints.md`](docs/wpcom-constraints.md) | WordPress.com platform limits, wpcom-only functions, available plugins |
 | [`docs/decisions.md`](docs/decisions.md) | Decision log (what was decided, when and why) |
 | [`docs/open-questions.md`](docs/open-questions.md) | Questions waiting for an answer, and answered questions |
@@ -50,4 +52,4 @@ WordPress.tv publishes community videos (WordCamps, meetups, workshops). It runs
 
 ## Repository
 
-`docs/` and this file are excluded from theme zips through `export-ignore` in `.gitattributes`. See the README for how to build a clean zip with `git archive`.
+`docs/`, `tests/` and this file are excluded from theme zips through `export-ignore` in `.gitattributes`. See the README for how to build a clean zip with `git archive`.

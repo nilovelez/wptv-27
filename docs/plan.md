@@ -11,17 +11,17 @@ Replace the legacy classic theme `wptv2` on WordPress.tv with a new block theme,
 - is fully editable with the Site Editor,
 - later adopts the WordPress.org visual language (Phase 2).
 
-## Phase 0: Discovery 🔄
+## Phase 0: Discovery ✅ (open questions pending)
 
 | Task | Status |
 |---|---|
 | Inventory the local site (themes, plugins, taxonomies, permalinks, content counts) | ✅ |
 | Analyze `wptv2` (templates, `functions.php`, bundled "plugins", page templates) | ✅ See [legacy-wptv2.md](legacy-wptv2.md) |
 | Build the route inventory | ✅ See [routes.md](routes.md) |
-| Review `wptv3` (proof of concept) for reusable parts | ⏳ |
-| Set up the project documentation and repository | 🔄 |
+| Review `wptv3` (proof of concept) for reusable parts | ✅ See [legacy-wptv3.md](legacy-wptv3.md) |
+| Set up the project documentation and repository | ✅ |
 | Resolve the open questions that block Phase 1 | ⏳ See [open-questions.md](open-questions.md) |
-| Write the regression test URL list and capture the `wptv2` baseline locally (HTTP status, final URL, canonical, `<title>`, result counts, endpoint payloads) | ⏳ Needs approval to switch the local site to `wptv2` temporarily |
+| Write the regression test URL list and capture the `wptv2` baseline locally (HTTP status, final URL, canonical, `<title>`, result counts, endpoint payloads) | ✅ 145 URLs, deterministic (two `wptv2` runs match). See [`tests/routes/`](../tests/routes/README.md) |
 
 ## Phase 1: Route-identical theme ⏳
 

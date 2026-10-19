@@ -12,6 +12,7 @@
 # Development-only files, excluded from `git archive` exports.
 # See README.md ("Building a clean theme zip").
 /docs export-ignore
+/tests export-ignore
 /AGENTS.md export-ignore
 /.gitattributes export-ignore
 /.gitignore export-ignore

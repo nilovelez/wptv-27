@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>WordCampTV Videos &#8211; WordPress.TV</title>
+	<atom:link href="/category/wordcamptv/feed/" rel="self" type="application/rss+xml" />
+	<link></link>
+	<description>WordPress-related videos, curated and moderated by the WordPress community</description>
+	<lastBuildDate>Wed, 10 Apr 2024 07:06:01 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=7.1.3</generator>
+	<item>
+		<title>Legal implications on use of AI&#160;tools</title>
+		<link>/2024/04/10/legal-implications-on-use-of-ai-tools/</link>
+					<comments>/2024/04/10/legal-implications-on-use-of-ai-tools/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Wed, 10 Apr 2024 07:06:01 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Asia]]></category>
+		<category><![CDATA[Taipei (台北)]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=126171&#038;preview=true&#038;preview_id=126171</guid>
+
+					<description><![CDATA[As we embrace multiple AI tools as we saw with the launch and storm of ChapGPT, Midjourney and plenty of others, as users we also need to be aware of possible legal implications, including data protection, and governance compliance. Other matters of interest includes intellectual property and how to best safeguard your interests as users.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/9XAOjs3l?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/10/legal-implications-on-use-of-ai-tools/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">126171</post-id>	</item>
+		<item>
+		<title>Insights from WordPress Contribution: What Makes Us Impactful</title>
+		<link>/2024/04/09/insights-from-wordpress-contribution-what-makes-us-impactful/</link>
+					<comments>/2024/04/09/insights-from-wordpress-contribution-what-makes-us-impactful/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Wed, 10 Apr 2024 06:48:28 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Asia]]></category>
+		<category><![CDATA[Taipei (台北)]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=126167&#038;preview=true&#038;preview_id=126167</guid>
+
+					<description><![CDATA[Join me on a journey of exploration within the WordPress community as we uncover the qualities and practices that underlie impactful collaborations. Drawing from both data and the real-life stories of WordPress contributors, we’ll dive into the essence of meaningful contributions.
+
+This session isn’t just about gaining insights into the current state of WordPress contribution; it’s about going deeper. We’ll illuminate a broader understanding of how these insights can nurture impactful interactions in various collaborative settings.
+
+By the end of our time together, you’ll walk away with actionable strategies to enrich your collaborative efforts, whether they’re in the realms of work, community projects, or personal situations. This is an opportunity to broaden your horizons and harness the wisdom of WordPress contributors to make a difference that extends far beyond the WordPress community.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/WmaQIWTP?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/09/insights-from-wordpress-contribution-what-makes-us-impactful/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">126167</post-id>	</item>
+		<item>
+		<title>How WordPress can better serve the needs of Enterprise</title>
+		<link>/2024/04/09/how-wordpress-can-better-serve-the-needs-of-enterprise/</link>
+					<comments>/2024/04/09/how-wordpress-can-better-serve-the-needs-of-enterprise/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Wed, 10 Apr 2024 06:15:52 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Asia]]></category>
+		<category><![CDATA[Taipei (台北)]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=126162&#038;preview=true&#038;preview_id=126162</guid>
+
+					<description><![CDATA[Witness the convergence of WordPress and enterprise innovation, where digital frontiers are pushed and customer experiences soar to new heights!
+
+WordPress, a powerful open-source platform, offers enterprise companies a unique opportunity to enhance their agility and deliver exceptional digital experiences for their customers. This panel discussion will focus on strategies for fostering greater enterprise adoption of WordPress, thereby unlocking investments that can fuel ecosystem growth. By addressing barriers, identifying opportunities, and outlining future steps, the panel will contribute to closing the gap between WordPress’s platform potential and the needs of enterprise customers. This, in turn, will create a virtuous cycle of growth for the WordPress community and enterprise WordPress as a whole.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/XSwUl3vI?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/09/how-wordpress-can-better-serve-the-needs-of-enterprise/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">126162</post-id>	</item>
+		<item>
+		<title>Plugin Review – Top 10 mistakes plugin authors&#160;make!</title>
+		<link>/2024/04/09/plugin-review-top-10-mistakes-plugin-authors-make/</link>
+					<comments>/2024/04/09/plugin-review-top-10-mistakes-plugin-authors-make/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Wed, 10 Apr 2024 05:31:52 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Asia]]></category>
+		<category><![CDATA[Taipei (台北)]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=126153&#038;preview=true&#038;preview_id=126153</guid>
+
+					<description><![CDATA[The plugin review team handles hundreds of new plugin submissions every week. 90% of those plugins fall foul of the same mistakes, time and time again. In this talk we’ll walk through the most common pitfalls, so that your plugin submission goes as smoothly as possible.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/cL67tn5U?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/09/plugin-review-top-10-mistakes-plugin-authors-make/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">126153</post-id>	</item>
+		<item>
+		<title>The elements of WordPress</title>
+		<link>/2024/04/09/the-elements-of-wordpress/</link>
+					<comments>/2024/04/09/the-elements-of-wordpress/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Wed, 10 Apr 2024 05:31:41 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Asia]]></category>
+		<category><![CDATA[Taipei (台北)]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=126149&#038;preview=true&#038;preview_id=126149</guid>
+
+					<description><![CDATA[WordPress is made of blocks, but that’s just the start. The system starts with blocks, that combine to form patterns, template parts, templates and then styling unites everything. This evolution is growing in pace and even more critical to understand not just for those creating designs, but those even looking to extend the interface and components.
+
+Blocks, patterns, templates and styles are the elements of WordPress. What does that mean today? How can you take that knowledge and use it? What does it mean for the concept of themes or the experience of using WordPress itself? In this talk let’s explore a little the history to give context, the present and then the future of the elements of WordPress.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/6vHySP3x?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/09/the-elements-of-wordpress/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">126149</post-id>	</item>
+		<item>
+		<title>Website Accessibility – Why, When and&#160;How</title>
+		<link>/2024/04/09/website-accessibility-why-when-and-how/</link>
+					<comments>/2024/04/09/website-accessibility-why-when-and-how/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 09 Apr 2024 21:15:12 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Asia]]></category>
+		<category><![CDATA[Taipei (台北)]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=126137&#038;preview=true&#038;preview_id=126137</guid>
+
+					<description><![CDATA[Website accessibility is often the last thing we think about when creating a website, and sometimes it is not considered at all, but it is more than just ticking a box for compliance.
+
+Studies show one in six people in the Asia-Pacific region lives with disability, and that this is likely to increase, so it is vitally important we are taking steps to give maximum accessibility to our web presence.
+
+Come with me on a journey to discover why it is important to build accessible websites, when you should be implementing and thinking about it, and how to engage best practices going forward to make sure as many people as possible can see, interact and enjoy the beautiful sites you create.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/fdxrpaUT?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/09/website-accessibility-why-when-and-how/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">126137</post-id>	</item>
+		<item>
+		<title>You’ll never be alone anymore. Building and maintaining WordPress sites with&#160;AI</title>
+		<link>/2024/04/09/youll-never-be-alone-anymore-building-and-maintaining-wordpress-sites-with-ai/</link>
+					<comments>/2024/04/09/youll-never-be-alone-anymore-building-and-maintaining-wordpress-sites-with-ai/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 09 Apr 2024 21:02:03 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Asia]]></category>
+		<category><![CDATA[Taipei (台北)]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=126133&#038;preview=true&#038;preview_id=126133</guid>
+
+					<description><![CDATA[This would be a tale of a one-year journey to bring the power of AI assistants to WordPress site builders and owners, focusing on helping them become better at what they are passionate about.
+
+Many raise concerns about AI-generated content potentially eroding the fabric of the web.
+
+Instead, I want to offer the tale of an optimistic approach, where Ai removes all the tedious parts of our work so we can hone our craft and become better designers, better developers, and better writers.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/CXW5Qncr?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/09/youll-never-be-alone-anymore-building-and-maintaining-wordpress-sites-with-ai/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">126133</post-id>	</item>
+		<item>
+		<title>How to counter arguments from developers, designers and managers against accessibility</title>
+		<link>/2024/04/09/how-to-counter-arguments-from-developers-designers-and-managers-against-accessibility/</link>
+					<comments>/2024/04/09/how-to-counter-arguments-from-developers-designers-and-managers-against-accessibility/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 09 Apr 2024 20:44:20 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Asia]]></category>
+		<category><![CDATA[Taipei (台北)]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=126116&#038;preview=true&#038;preview_id=126116</guid>
+
+					<description><![CDATA[Do you get an aggressive, dismissive or defensive reaction from your design or development colleagues, your marketing department, your managers, or even from your full-service advertising agency as soon as you start talking about accessibility? Want to learn how to counter and motivate? Come to my talk, and you will go home with some great techniques and tactics to turn them around!
+
+This talk is aimed at anyone already working in digital accessibility, in a leading / inspiring role. It’s a peer to peer boost, so to speak.
+
+One of the worst things that can happen to people in creative professions is for them to feel castrated in their creativity, their tools, and their toys. Whether it’s in graphic design, content or code, it results in unproductive resentment.
+
+But the reality is that it’s really not the rules and guidelines for digital accessibility that cause the resentment. It’s the assumptions and misconceptions around it.
+
+In this session, I will share how I guide and inspire designers, developers, and content creators to want to rock accessibility.
+
+Take aways:
+1. You will take home some smashing analogies that will help you to win over your colleagues.
+2. You will know how to calculate and present the hidden / unexpected and usually substantial financial consequences to stake holders who are financially driven.
+3. You will get a list of ways to talk to your peers all over the world about this topic.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/VOeVXP3U?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/09/how-to-counter-arguments-from-developers-designers-and-managers-against-accessibility/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">126116</post-id>	</item>
+		<item>
+		<title>From FOMO to JOMO: Embrace the joy of missing&#160;out</title>
+		<link>/2024/04/09/from-fomo-to-jomo-embrace-the-joy-of-missing-out/</link>
+					<comments>/2024/04/09/from-fomo-to-jomo-embrace-the-joy-of-missing-out/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 09 Apr 2024 20:36:35 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Asia]]></category>
+		<category><![CDATA[Taipei (台北)]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=126125&#038;preview=true&#038;preview_id=126125</guid>
+
+					<description><![CDATA[In the whirlwind of our hyperconnected society, we’ve all been there – the incessant Fear of Missing Out (FOMO) that lures us into adding one more Slack channel, diving into yet another online discussion, or racing to attend one more event, all in the quest to catch that elusive something important or thrilling.
+
+But what if we could flip the script and turn FOMO into the empowering Joy of Missing Out (JOMO)? Imagine a life where you relish moments of solitude, prioritize genuine connections, and savor the present without being tethered to the never-ending pursuit of the “next big thing.”
+
+Join me in this whirlwind 10-minute journey at WordCamp as we unravel the FOMO-JOMO phenomenon in the context of remote work and beyond. Discover practical tips and strategies to strike the right balance between staying informed and finding tranquility in the digital chaos.
+
+The talking points will be in this direction:
+
+- Our community culture is often centered around FOMO (fear of missing out)
+- FOMO is often not sustainable – we have limited time in our lives and need to prioritize.
+- Create space to focus on what really matters to you by switching to JOMO (joy of missing out)
+- What do you want to prioritize in your life? How do you figure that out?]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/Q40zOYWN?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/09/from-fomo-to-jomo-embrace-the-joy-of-missing-out/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">126125</post-id>	</item>
+		<item>
+		<title>Catching Big Fish: How to catch and retain a WordPress enterprise client</title>
+		<link>/2024/04/09/catching-big-fish-how-to-catch-and-retain-a-wordpress-enterprise-client/</link>
+					<comments>/2024/04/09/catching-big-fish-how-to-catch-and-retain-a-wordpress-enterprise-client/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 09 Apr 2024 20:34:33 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Asia]]></category>
+		<category><![CDATA[Taipei (台北)]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=126108&#038;preview=true&#038;preview_id=126108</guid>
+
+					<description><![CDATA[WordPress is used by 42% of the web, that means there is a lot of fishies out there using WordPress. Some of them are krill, some of them are clown fish, some of them are barracuda and some of them are sharks, but some of them aren’t even fish at all: some of them are whales.
+
+In this presentation I’ll talk about some of the tactics that you can use to net yourself a whale. These are tactics that anyone can use, whether you’re a freelancer, an agency, or a big company. All you need is a small hook and the right technique and you could be netting your first enterprise client, where you’ll deliver WordPress at scale for some of the biggest companies in the world.
+
+I’ll be sharing our experience at Human Made as well as the experiences of other people who have been catching big fish in the WordPress space.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/yxJj6kza?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/09/catching-big-fish-how-to-catch-and-retain-a-wordpress-enterprise-client/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">126108</post-id>	</item>
+	</channel>
+</rss>

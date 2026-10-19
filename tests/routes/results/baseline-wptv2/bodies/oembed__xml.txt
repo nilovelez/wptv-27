@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<oembed>
+	<type>video</type>
+	<version>1.0</version>
+	<title>Stub video ob0EdJL3</title>
+	<width>400</width>
+	<height>225</height>
+	<html>&lt;iframe class=&quot;wptv-stub-player&quot; data-guid=&quot;ob0EdJL3&quot; width=&quot;400&quot; height=&quot;225&quot;&gt;&lt;/iframe&gt;</html>
+</oembed>

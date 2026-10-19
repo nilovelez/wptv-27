@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Videos of Jonathan Bossenger &#8211; WordPress.TV</title>
+	<atom:link href="/speakers/jonathan-bossenger/feed/" rel="self" type="application/rss+xml" />
+	<link></link>
+	<description>WordPress-related videos, curated and moderated by the WordPress community</description>
+	<lastBuildDate>Mon, 08 Apr 2024 03:23:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=7.1.3</generator>
+	<item>
+		<title>Extending the WordPress REST&#160;API</title>
+		<link>/2024/04/07/extending-the-wordpress-rest-api/</link>
+					<comments>/2024/04/07/extending-the-wordpress-rest-api/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Mon, 08 Apr 2024 03:23:12 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Learn WordPress]]></category>
+		<category><![CDATA[World Wide Web]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=125953&#038;preview=true&#038;preview_id=125953</guid>
+
+					<description><![CDATA[The WordPress REST API provides an interface for fetching, adding, updating, and deleting data from a WordPress site in a uniform way.
+
+While the schema for the data types that are available in the REST API is quite extensive, there may be times when you need to store additional data that is not part of the core schema. 
+
+In this lesson, you will learn about two methods of adding fields to your REST API requests, either by enabling custom fields in the REST API route, or by making custom fields available as top-level fields.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/wagZAyAs?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/07/extending-the-wordpress-rest-api/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">125953</post-id>	</item>
+		<item>
+		<title>Interacting with the WordPress REST&#160;API</title>
+		<link>/2024/04/07/interacting-with-the-wordpress-rest-api/</link>
+					<comments>/2024/04/07/interacting-with-the-wordpress-rest-api/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Mon, 08 Apr 2024 03:18:48 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Learn WordPress]]></category>
+		<category><![CDATA[World Wide Web]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=125950&#038;preview=true&#038;preview_id=125950</guid>
+
+					<description><![CDATA[While the WP REST API is commonly used to fetch data from WordPress, it can also be used to perform other actions.
+
+The REST API also allows you to create, update, and delete various WordPress data types.
+
+In this lesson, you'll learn about the WP REST API schema, methods to authenticate a WP REST API request, tools to test WP REST API requests, as well as a couple of ways to add, edit or delete data via the WP REST API.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/5hIPu3sw?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/07/interacting-with-the-wordpress-rest-api/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">125950</post-id>	</item>
+		<item>
+		<title>Using the WordPress REST&#160;API</title>
+		<link>/2024/04/07/using-the-wordpress-rest-api-lesson/</link>
+					<comments>/2024/04/07/using-the-wordpress-rest-api-lesson/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Mon, 08 Apr 2024 03:16:42 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Learn WordPress]]></category>
+		<category><![CDATA[World Wide Web]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=125898&#038;preview=true&#038;preview_id=125898</guid>
+
+					<description><![CDATA[The WordPress REST API provides a uniform interface for interacting with the data in a WordPress site.
+
+In this lesson, you'll learn how to use the WP REST API to fetch data from your WordPress site. 
+
+You'll discover three internal options for making REST API requests, and then use them to perform a GET request to fetch some public custom post type data.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/nTA59oxE?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/07/using-the-wordpress-rest-api-lesson/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">125898</post-id>	</item>
+		<item>
+		<title>The WordPress REST&#160;API</title>
+		<link>/2024/04/07/the-wordpress-rest-api/</link>
+					<comments>/2024/04/07/the-wordpress-rest-api/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Mon, 08 Apr 2024 03:14:10 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Learn WordPress]]></category>
+		<category><![CDATA[World Wide Web]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=125895&#038;preview=true&#038;preview_id=125895</guid>
+
+					<description><![CDATA[When you're developing for WordPress, there are a number of APIs that you can use to interact with your site data. One of the most important of these is the REST API.
+
+This lesson serves as an introduction to the WordPress REST API. 
+
+You will learn what the REST API is, as well as some key REST API concepts like routes, endpoints and global parameters, through a series of example requests you can perform in a browser.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/NnU9GtaM?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/07/the-wordpress-rest-api/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">125895</post-id>	</item>
+		<item>
+		<title>Testing WP Playground with&#160;wp-now</title>
+		<link>/2024/04/04/testing-wp-playground-with-wp-now/</link>
+					<comments>/2024/04/04/testing-wp-playground-with-wp-now/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Thu, 04 Apr 2024 13:31:33 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Learn WordPress]]></category>
+		<category><![CDATA[Learn WordPress Online Workshops]]></category>
+		<category><![CDATA[World Wide Web]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=125872&#038;preview=true&#038;preview_id=125872</guid>
+
+					<description><![CDATA[Join me as I dive deeply into WordPress Playground and all its different permutations, to see what they are capable of. 
+
+This week I am looking into wp-now, to see whether I could replace my own custom local development environment with a version of WordPress Playground.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/2nCYCVDQ?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/04/testing-wp-playground-with-wp-now/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">125872</post-id>	</item>
+		<item>
+		<title>Enqueuing CSS and JavaScript</title>
+		<link>/2024/04/03/enqueuing-css-and-javascript/</link>
+					<comments>/2024/04/03/enqueuing-css-and-javascript/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Wed, 03 Apr 2024 10:44:12 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Learn WordPress]]></category>
+		<category><![CDATA[World Wide Web]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=125845&#038;preview=true&#038;preview_id=125845</guid>
+
+					<description><![CDATA[In order to add custom CSS or JavaScript, a WordPress plugin needs a way to add script or style tags to the HTML being rendered at any time.
+
+Fortunately, WordPress allows plugin developers to enqueue their plugin CSS or JavaScript, so that it is added in the right place in the HTML of any post or page request.
+
+In this lesson you'll learn how to enqueue custom CSS and JavaScript, on either the front end, or the admin dashboard.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/30hTXF1h?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/04/03/enqueuing-css-and-javascript/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">125845</post-id>	</item>
+		<item>
+		<title>Static vs dynamic&#160;blocks</title>
+		<link>/2024/03/28/static-vs-dynamic-blocks/</link>
+					<comments>/2024/03/28/static-vs-dynamic-blocks/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Thu, 28 Mar 2024 14:28:39 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Learn WordPress]]></category>
+		<category><![CDATA[World Wide Web]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=125622&#038;preview=true&#038;preview_id=125622</guid>
+
+					<description><![CDATA[When developing WordPress blocks, you'll need to consider the functionality of your block, and whether it needs to change based on external factors.
+
+Fortunately, it is possible to create blocks that are either static or dynamic, depending on your requirements.
+
+Let's look at what the difference is between static and dynamic blocks, how to determine which is right for your needs, and the different approaches for development.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/DyoU97Ds?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/03/28/static-vs-dynamic-blocks/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">125622</post-id>	</item>
+		<item>
+		<title>Block supports and Block&#160;styles</title>
+		<link>/2024/03/28/block-supports-and-block-styles/</link>
+					<comments>/2024/03/28/block-supports-and-block-styles/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Thu, 28 Mar 2024 14:27:57 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Learn WordPress]]></category>
+		<category><![CDATA[World Wide Web]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=125619&#038;preview=true&#038;preview_id=125619</guid>
+
+					<description><![CDATA[One of the benefits of blocks is the ability to control the block's appearance on a per-block level. 
+
+To do this, you can use something called block supports, as well as define the block's styles.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/qF9IPy2u?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/03/28/block-supports-and-block-styles/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">125619</post-id>	</item>
+		<item>
+		<title>Block Attributes</title>
+		<link>/2024/03/28/block-attributes/</link>
+					<comments>/2024/03/28/block-attributes/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Thu, 28 Mar 2024 14:26:34 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Learn WordPress]]></category>
+		<category><![CDATA[World Wide Web]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=125616&#038;preview=true&#038;preview_id=125616</guid>
+
+					<description><![CDATA[One of the benefits of building blocks is the ability to allow users to control the block's appearance and behavior via block attributes.
+
+Let's learn how to add attributes to a block, and how to add controls to your block to allow users to change those attributes.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/RZQL6LWy?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/03/28/block-attributes/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">125616</post-id>	</item>
+		<item>
+		<title>Block Functionality</title>
+		<link>/2024/03/28/block-functionality/</link>
+					<comments>/2024/03/28/block-functionality/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Thu, 28 Mar 2024 14:25:43 +0000</pubDate>
+				<category><![CDATA[2024]]></category>
+		<category><![CDATA[Learn WordPress]]></category>
+		<category><![CDATA[World Wide Web]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=125613&#038;preview=true&#038;preview_id=125613</guid>
+
+					<description><![CDATA[After making any changes to your plugin file and block metadata, you can start adding the block's core functionality.
+
+This is usually a case of adding the block's functionality in the editor, via the Edit component and adding how the block stores it's output, via the save function.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/O5WV3HSt?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/03/28/block-functionality/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">125613</post-id>	</item>
+	</channel>
+</rss>

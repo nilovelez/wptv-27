@@ -1,0 +1,1 @@
+{"type":"video","version":"1.0","title":"Stub video ob0EdJL3","width":400,"height":225,"html":"<iframe class=\"wptv-stub-player\" data-guid=\"ob0EdJL3\" width=\"400\" height=\"225\"><\/iframe>"}

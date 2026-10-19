@@ -85,8 +85,13 @@ Only run on 404 requests (`template_redirect`, priority 1):
 
 ## Regression test
 
-⏳ To do in Phase 0. The test will request a fixed list of representative URLs (at least one per row above, including paginated and edge cases) with `wptv2` active, store the results as the baseline, and compare `wptv-27` against it.
+✅ Baseline captured in Phase 0. Tooling and instructions: [`tests/routes/`](../tests/routes/README.md).
 
-Checks for each URL: HTTP status, final URL after redirects, `<link rel="canonical">`, `<title>`, `rel="prev"` / `rel="next"`, number of posts listed, and the response body for JSON/XML endpoints.
+- 145 URLs generated from real data. They cover every row above, plus pagination boundaries (page 2, last page, last page + 1), terms just over the page size, non-ASCII slugs, unknown terms, feeds, redirects, endpoints with valid and invalid input, and the core REST and oEmbed routes.
+- Checks for each URL: HTTP status, `Location` (redirects are not followed), content type, main query data (`X-WPTV-Route` header from a local-only mu-plugin: 404 flag, found posts, page count, per page, paged, queried object), canonical, `<title>`, `rel="prev"` / `rel="next"`, and the normalized body of non-HTML responses.
+- Baseline: `tests/routes/results/baseline-wptv2/` (103 × 200, 5 × 301, 2 × 302, 35 × 404). Two consecutive `wptv2` runs match exactly.
+- The baseline belongs to the local database it was captured on. If the content changes, regenerate the URL list and capture it again.
 
-Known limitation: WordPress.com-only VideoPress functions are not available locally, so video-dependent output (thumbnails, downloads, subtitles, JSON-LD video data, Open Graph video tags) can only be fully checked on the WordPress.com test site.
+Known limitation: WordPress.com-only VideoPress helpers are stubbed with fake, deterministic data, so file URLs, thumbnails, downloads and subtitles can only be fully checked on the WordPress.com test site.
+
+Legacy quirks that are part of the contract (see [open-questions.md](open-questions.md)): `/api/videos.*` sends JSON as `text/html`, and the `/unisubs/` `permalink` field points to the latest post.

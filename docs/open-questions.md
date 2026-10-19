@@ -36,11 +36,18 @@ Questions that need an answer from the project owner or a WordPress.com employee
 19. **Prev/next links:** keep `<link rel="prev|next">` on archives? Search engines no longer use them, but removing them changes the `<head>` output.
 20. **Text domain:** keep `wptv` (same as `wptv2`, so existing translations keep working)? Proposed: yes.
 
-### Phase 0 tooling
+### Legacy quirks found by the baseline
 
-21. **Baseline capture:** approval to switch the local site to `wptv2` temporarily to capture the regression baseline, then switch back to `wptv3`.
+Phase 1 reproduces these by default, because they are part of the route contract. Should any of them be fixed in Phase 1 anyway?
+
+21. **`/api/videos.*` Content-Type:** the payload is JSON, but it is sent as `text/html`. The other `/api/` methods send `application/json`.
+22. **`/unisubs/` permalink:** the `permalink` field points to the most recent post, not to the requested video. `post_id`, `guid` and `title` are correct.
 
 ## Answered
+
+### Phase 0 tooling
+
+- **Answer (stubs, tooling location, baseline):** approved. VideoPress helpers are stubbed by a local-only mu-plugin, the tooling lives in `tests/routes/` (export-ignored), and the `wptv2` baseline was captured by switching the local site to `wptv2` temporarily (`wptv3` was reactivated afterwards).
 
 ### GitHub repository for the theme
 
