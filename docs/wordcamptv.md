@@ -8,7 +8,7 @@ The new `templates/category-wordcamptv.html` is an approved exception to the gen
 
 ## Page structure
 
-1. Shared category title, description and breadcrumbs.
+1. Shared category title and description, without breadcrumbs. The owner's subsequent breadcrumb decision removes them from every taxonomy archive; see the Breadcrumbs section in [design.md](design.md).
 2. Landing video introduction: the native category spotlight, one latest video player plus the next five small rows. No Recent videos heading, 22-video grid or video pagination on the landing. The underlying 22-post main query is unchanged; existing later-page URLs keep their inherited grids.
 3. First page only: Latest WordCamps, selected from recorded dates in the past twelve months, with an event heading, four videos and a View all link to the existing event archive.
 4. First page only: All WordCamp videos, grouped under descending year headings, with three-column event lists (two below 960px, one below 600px).

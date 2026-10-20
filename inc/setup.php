@@ -137,3 +137,67 @@ function render_home_lead_title( $content, $parsed, $block ) {
 	}, $content, 1 );
 }
 add_filter( 'render_block_core/post-title', __NAMESPACE__ . '\render_home_lead_title', 20, 3 );
+
+/**
+ * Selects navigation terms without following structural category hierarchies.
+ *
+ * Events suppress categories except WordCampTV. Without an event, select just
+ * Education, How To or WordCampTV, in that order. Preserve core's first-event
+ * ordering, matching the legacy helper when a video has multiple events.
+ *
+ * @param \WP_Term[] $categories Assigned categories, not their ancestors.
+ * @param \WP_Term[] $events     Assigned events in native term order.
+ * @return \WP_Term[]
+ */
+function breadcrumb_terms( $categories, $events ) {
+	$by_slug = array();
+	foreach ( $categories as $category ) {
+		$by_slug[ $category->slug ] = $category;
+	}
+	if ( $events ) {
+		$terms = isset( $by_slug['wordcamptv'] ) ? array( $by_slug['wordcamptv'] ) : array();
+		$terms[] = reset( $events );
+		return $terms;
+	}
+	foreach ( array( 'education', 'how-to', 'wordcamptv' ) as $slug ) {
+		if ( isset( $by_slug[ $slug ] ) ) {
+			return array( $by_slug[ $slug ] );
+		}
+	}
+	return array();
+}
+
+/**
+ * Supplies the owner's video navigation rules to the native Breadcrumbs block.
+ *
+ * Taxonomy archives deliberately have no trail. Singles use the queried video,
+ * never a nested loop's current post. Core retains markup, escaping and styles;
+ * no routes, term relationships, main-query arguments or stored content change.
+ *
+ * @param array[] $items Native breadcrumb items.
+ * @return array[]
+ */
+function filter_breadcrumb_items( $items ) {
+	if ( is_category() || is_tag() || is_tax() ) {
+		return array();
+	}
+	if ( ! is_singular( 'post' ) ) {
+		return $items;
+	}
+	$post_id    = get_queried_object_id();
+	$categories = get_the_terms( $post_id, 'category' );
+	$events     = get_the_terms( $post_id, 'event' );
+	$items      = array( array( 'label' => __( 'Home', 'wptv' ), 'url' => home_url( '/' ) ) );
+	$terms      = breadcrumb_terms(
+		is_array( $categories ) ? $categories : array(),
+		is_array( $events ) ? $events : array()
+	);
+	foreach ( $terms as $term ) {
+		$url = get_term_link( $term );
+		if ( ! is_wp_error( $url ) ) {
+			$items[] = array( 'label' => $term->name, 'url' => $url );
+		}
+	}
+	return $items;
+}
+add_filter( 'block_core_breadcrumbs_items', __NAMESPACE__ . '\filter_breadcrumb_items' );

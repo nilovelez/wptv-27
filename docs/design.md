@@ -241,7 +241,22 @@ The parent's `is-style-two-column-display`: from 1080px, a left column of 460px 
 
 ### Breadcrumbs
 
-Core Breadcrumbs, `small`, Charcoal 4, "/" separators, links not underlined (hover: Blueberry 1, underlined).
+Core Breadcrumbs on video singles only: `small`, Charcoal 4, "/" separators, links not underlined (hover: Blueberry 1, underlined). The owner explicitly removed breadcrumbs from every taxonomy archive, including categories, WordCampTV, events, tags and custom taxonomies. This supersedes archive breadcrumb references elsewhere in the design history.
+
+The owner-approved single-video selection replaces the generic core hierarchy and deliberately differs from the legacy `wptv2` helpers:
+
+| Assigned navigation terms | Trail after Home |
+|---|---|
+| Event and `wordcamptv` | WordCampTV, then the first event |
+| Event, without `wordcamptv` | First event only; omit all categories |
+| No event | One category, in priority order `education`, `how-to`, `wordcamptv` |
+| No event or recognized category | Nothing; retain Home only |
+
+Use only directly assigned terms, not category ancestors. Never introduce Year, Location, their children, arbitrary categories, the video title or pagination items. Preserve native term order when several events are assigned. Resolve terms from the queried video, not a nested loop's current post. Missing/error term results are treated as absent, and invalid term links are omitted.
+
+Implementation: `WordPressTV\Setup\breadcrumb_terms()` holds the selection policy; `filter_breadcrumb_items()` supplies structured items through `block_core_breadcrumbs_items`. Core keeps ownership of markup, label/URL escaping and accessibility. The three taxonomy templates no longer contain the block; the filter also returns an empty trail for any taxonomy archive. No routes, queries, stored content or relationships change. Unlike `wptv2`, archive trails no longer depend on the first video in an event listing.
+
+Focused, read-only policy checks: `wp eval-file wp-content/themes/wptv-27/tests/blocks/breadcrumbs.php` (use the Studio WP-CLI tool). The 18 cases cover category precedence, structural-category exclusion, event suppression/WordCampTV exception, first-event order and unchanged input terms.
 
 ### Separators and rules
 
@@ -348,7 +363,7 @@ See [wordcamptv.md](wordcamptv.md) for data/date rules, transients and invalidat
 ### Category and event archives (0.3.4 structure kept except WordCampTV)
 
 1. Header.
-2. **Title band:** full-width `light-grey-2` band with breadcrumbs and the term title h1 (`heading-2`), left-aligned on the wide grid. Categories show the term description in `large` below the title at reading width; events keep omitting it.
+2. **Title band:** full-width `light-grey-2` band with the term title h1 (`heading-2`), left-aligned on the wide grid, without breadcrumbs. Categories show the term description in `large` below the title at reading width; events keep omitting it.
 3. **Spotlight** (page one, more than six results; unchanged rules): white section, two columns (larger left) stacked below 782px. Lead: the interactive player with a `charcoal-1` caption block below it (plain speakers in `small` Blueberry 2, then linked title in white Inter 600 `large`), 2px radius on the caption, no 8px frame. Only the caption participates in expanded card navigation, never the player. Secondary list: five rows, each an unlinked 16:9 thumbnail (about 40% width), plain speakers in `small` Charcoal 4, then the linked title (Inter 600 `normal`), separated by `light-grey-1` rules. Both caption sizes show all speakers separated by commas followed by a colon, omit absent speakers and never display event terms. No dates in the spotlight.
 4. **Remaining videos:** cards grid in four columns, pagination.
 5. Footer.
