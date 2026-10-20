@@ -15,6 +15,14 @@ Template:
 
 ---
 
+## Design direction: WordPress.org visual language
+
+- **Decision:** replace the interim wptv3 look with the visual language of the current WordPress.org sites, as specified in [design.md](design.md) and the site-root `DESIGN.md`. Tokens copy the `wporg-parent-2021` slugs and values; components are rebuilt with core blocks because WordPress.tv has no access to `wporg-mu-plugins`. White local navigation bar with the WordPress W mark on every page; no copy of the .org global header. Single-video player on a full-width `charcoal-1` band holding only the player. Front page: recent videos before categories and events, two hero buttons and a closing "Get involved" band. Local fonts only; no RTL support for now.
+- **Reason:** WordPress.tv is a WordPress.org community site. The owner reviewed the proposal and the mockups in `docs/mockups/` and approved them.
+- **Limits:** owner approval, not WordPress.org Design team approval. Presentation only: templates, queries, the spotlight split, page sizes, pagination, routes and the editorial flow stay as accepted for 0.3.4. Input borders use `charcoal-4` instead of the parent's `charcoal-5` to meet WCAG 2.2 AA. Pending owner confirmations are listed in [design-handoff.md](design-handoff.md#decisions-needing-owner-confirmation).
+- **Affects:** documentation only in this change (`docs/design.md`, `docs/design-handoff.md`, `docs/mockups/`, site-root `DESIGN.md`, `AGENTS.md`). Implementation follows [design-handoff.md](design-handoff.md).
+- **Status:** accepted; implementation pending.
+
 ## Version 0.3.4 Git checkpoint and design handoff
 
 - **Decision:** the owner accepted the current category/event presentation for this version; restructuring is deferred. Commit and publish all pending theme work to GitHub before design collaboration. This is a Git checkpoint, not a site sync, deployment or declaration that regression is green.
