@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WordPress.tv design specification</title>
+<meta name="description" content="The wptv-27 design specification, rendered live from docs/design.md on the trunk branch.">
+<!--
+	Renders docs/design.md live: the page fetches the Markdown from the trunk
+	branch on GitHub when it opens and converts it in the browser, so every
+	push to docs/design.md shows up here without republishing (GitHub's raw
+	file cache can delay it by up to five minutes). Published with the mockups
+	by .github/workflows/mockups.yml. Not theme code.
+-->
+<style>
+@font-face { font-family: "Inter"; src: url("../../assets/fonts/inter/inter-100-900-normal.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "EB Garamond"; src: url("../../assets/fonts/eb-garamond/eb-garamond-400-800-normal.woff2") format("woff2"); font-weight: 400 800; font-display: swap; }
+:root {
+	--charcoal-1: #1e1e1e;
+	--charcoal-4: #656a71;
+	--charcoal-5: #979aa1;
+	--light-grey-1: #d9d9d9;
+	--light-grey-2: #f6f6f6;
+	--blueberry-1: #3858e9;
+	--purple-1: #5300be;
+	--white: #ffffff;
+	--edge: 80px;
+	--inter: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	--garamond: "EB Garamond", Georgia, serif;
+}
+@media (max-width: 889px) { :root { --edge: 20px; } }
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-padding-top: 77px; }
+body { margin: 0; background: var(--white); color: var(--charcoal-1); font: 16px/1.875 var(--inter); -webkit-font-smoothing: antialiased; }
+a { color: var(--blueberry-1); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.15em; }
+a:hover { text-decoration: none; }
+:focus-visible { outline: 1.5px solid var(--blueberry-1); outline-offset: 2px; }
+
+.bar { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 57px; padding: 10px var(--edge); border-bottom: 1px solid var(--light-grey-1); background: var(--white); font-size: 14px; line-height: 1.71; }
+.bar a { color: var(--charcoal-1); text-decoration: none; }
+.bar a:hover { text-decoration: underline; }
+.bar__title { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; }
+.bar__title svg { width: 28px; height: 28px; fill: currentColor; }
+.bar__title:hover { text-decoration: none !important; }
+.bar__title:hover span { text-decoration: underline; }
+.bar nav { display: flex; gap: 24px; }
+
+.layout { display: grid; gap: 0 60px; max-width: calc(1160px + 2 * var(--edge)); margin: 0 auto; padding: clamp(30px, 5vw, 50px) var(--edge) clamp(40px, calc(5vw + 10px), 60px); }
+@media (min-width: 1080px) { .layout { grid-template-columns: 240px minmax(0, 1fr); } }
+.layout > main { min-width: 0; }
+.toc { display: none; }
+@media (min-width: 1080px) {
+	.toc { display: block; position: sticky; top: 87px; align-self: start; max-height: calc(100vh - 107px); overflow: auto; font-size: 14px; line-height: 1.71; }
+	.toc h2 { margin: 0 0 10px; font: 600 14px/1.71 var(--inter); }
+	.toc ol { margin: 0; padding: 0; list-style: none; border-left: 1px solid var(--light-grey-1); }
+	.toc a { display: block; padding: 3px 0 3px 12px; margin-left: -1px; border-left: 1px solid transparent; color: var(--charcoal-4); text-decoration: none; }
+	.toc a:hover { color: var(--blueberry-1); text-decoration: underline; }
+	.toc a[aria-current="true"] { border-left-color: var(--blueberry-1); color: var(--charcoal-1); }
+}
+
+.meta { margin: 0 0 30px; padding: 12px 16px; border: 1px solid var(--light-grey-1); border-radius: 2px; background: var(--light-grey-2); font-size: 14px; line-height: 1.71; color: var(--charcoal-4); }
+
+/* Rendered Markdown. */
+.doc { max-width: 860px; min-width: 0; }
+.doc > :first-child { margin-top: 0; }
+.doc h1, .doc h2, .doc h3, .doc h4 { font-family: var(--garamond); font-weight: 400; text-wrap: balance; }
+.doc h1 { margin: 0 0 20px; font-size: clamp(30px, 6vw, 50px); line-height: 1.2; }
+.doc h2 { margin: clamp(30px, 5vw, 50px) 0 20px; padding-top: 20px; border-top: 1px solid var(--light-grey-1); font-size: 30px; line-height: 1.33; }
+.doc h3 { margin: 30px 0 10px; font-size: 26px; line-height: 1.3; }
+.doc h4 { margin: 20px 0 10px; font-size: 22px; line-height: 1.27; }
+.doc p, .doc ul, .doc ol { margin: 0 0 16px; text-wrap: pretty; }
+.doc ul, .doc ol { padding-left: 30px; }
+.doc li + li { margin-top: 4px; }
+.doc blockquote { margin: 0 0 20px; padding: 2px 0 2px 20px; border-left: 2px solid var(--blueberry-1); color: var(--charcoal-4); }
+.doc code { padding: 1px 5px; border-radius: 2px; background: var(--light-grey-2); font: 0.875em/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.doc pre { overflow-x: auto; padding: 16px; border-radius: 2px; background: var(--light-grey-2); }
+.doc pre code { padding: 0; background: none; }
+.doc td code { white-space: nowrap; }
+.doc hr { margin: 30px 0; border: 0; border-top: 1px solid var(--light-grey-1); }
+.doc .table-wrap { margin: 0 0 20px; overflow-x: auto; }
+.doc table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.71; }
+.doc th, .doc td { padding: 8px 12px 8px 0; border-bottom: 1px solid var(--light-grey-1); text-align: left; vertical-align: top; }
+.doc th { font-weight: 600; border-bottom-color: var(--charcoal-1); }
+.doc a.anchor { margin-left: 8px; color: var(--charcoal-5); text-decoration: none; opacity: 0; }
+.doc :is(h2, h3, h4):hover a.anchor, .doc a.anchor:focus-visible { opacity: 1; }
+
+/* Token previews added to the rendered tables. */
+.swatch { display: inline-block; width: 1.1em; height: 1.1em; margin-right: 6px; vertical-align: -0.2em; border: 1px solid #00000026; border-radius: 2px; }
+.type-sample { display: block; margin-top: 4px; line-height: 1.1; white-space: nowrap; }
+
+.status { padding: 40px 0; color: var(--charcoal-4); }
+.status.is-error { color: #b32d2e; }
+footer { padding: 20px var(--edge); border-top: 1px solid var(--light-grey-1); font-size: 14px; line-height: 1.71; color: var(--charcoal-4); }
+footer a { color: inherit; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+<header class="bar">
+	<a class="bar__title" href="index.html"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M4.548 31.999c0 10.9 6.3 20.3 15.5 24.706L6.925 20.827C5.402 24.2 4.5 28 4.5 31.999z M50.531 30.614c0-3.394-1.219-5.742-2.264-7.57c-1.391-2.263-2.695-4.177-2.695-6.439c0-2.523 1.912-4.872 4.609-4.872 c0.121 0 0.2 0 0.4 0.022C45.653 7.3 39.1 4.5 32 4.548c-9.591 0-18.027 4.921-22.936 12.4 c0.645 0 1.3 0 1.8 0.033c2.871 0 7.316-0.349 7.316-0.349c1.479-0.086 1.7 2.1 0.2 2.3 c0 0-1.487 0.174-3.142 0.261l9.997 29.735l6.008-18.017l-4.276-11.718c-1.479-0.087-2.879-0.261-2.879-0.261 c-1.48-0.087-1.306-2.349 0.174-2.262c0 0 4.5 0.3 7.2 0.349c2.87 0 7.317-0.349 7.317-0.349 c1.479-0.086 1.7 2.1 0.2 2.262c0 0-1.489 0.174-3.142 0.261l9.92 29.508l2.739-9.148 C49.628 35.7 50.5 33 50.5 30.614z M32.481 34.4l-8.237 23.934c2.46 0.7 5.1 1.1 7.8 1.1 c3.197 0 6.262-0.552 9.116-1.556c-0.072-0.118-0.141-0.243-0.196-0.379L32.481 34.4z M56.088 18.8 c0.119 0.9 0.2 1.8 0.2 2.823c0 2.785-0.521 5.916-2.088 9.832l-8.385 24.242c8.161-4.758 13.65-13.6 13.65-23.728 C59.451 27.2 58.2 22.7 56.1 18.83z M32 0c-17.645 0-32 14.355-32 32C0 49.6 14.4 64 32 64s32-14.355 32-32.001 C64 14.4 49.6 0 32 0z M32 62.533c-16.835 0-30.533-13.698-30.533-30.534C1.467 15.2 15.2 1.5 32 1.5 s30.534 13.7 30.5 30.532C62.533 48.8 48.8 62.5 32 62.533z"/></svg><span>WordPress.tv</span></a>
+	<nav aria-label="Mockups">
+		<a href="index.html">Mockups</a>
+		<a href="https://github.com/nilovelez/wptv-27/blob/trunk/docs/design.md">Source</a>
+	</nav>
+</header>
+
+<div class="layout">
+	<nav class="toc" aria-labelledby="toc-title" hidden>
+		<h2 id="toc-title">On this page</h2>
+		<ol id="toc-list"></ol>
+	</nav>
+	<main>
+		<p class="meta" id="meta">Rendered live from <a href="https://github.com/nilovelez/wptv-27/blob/trunk/docs/design.md"><code>docs/design.md</code></a> on the <code>trunk</code> branch.</p>
+		<article class="doc" id="doc" aria-live="polite">
+			<p class="status" id="status">Loading the design specification…</p>
+			<noscript><p class="status">This page needs JavaScript to render the specification. Read it on <a href="https://github.com/nilovelez/wptv-27/blob/trunk/docs/design.md">GitHub</a>.</p></noscript>
+		</article>
+	</main>
+</div>
+
+<footer>wptv-27 is in development. Source and status: <a href="https://github.com/nilovelez/wptv-27">github.com/nilovelez/wptv-27</a>.</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+<script>
+( function () {
+	var REPO = 'nilovelez/wptv-27';
+	var BRANCH = 'trunk';
+	var PATH = 'docs/design.md';
+	var RAW = 'https://raw.githubusercontent.com/' + REPO + '/' + BRANCH + '/' + PATH;
+	var BLOB = 'https://github.com/' + REPO + '/blob/' + BRANCH + '/docs/';
+	var TREE = 'https://github.com/' + REPO + '/tree/' + BRANCH + '/docs/';
+
+	var doc = document.getElementById( 'doc' );
+
+	function fail( message ) {
+		doc.innerHTML = '';
+		var p = document.createElement( 'p' );
+		p.className = 'status is-error';
+		p.textContent = message + ' ';
+		var a = document.createElement( 'a' );
+		a.href = BLOB + 'design.md';
+		a.textContent = 'Read it on GitHub.';
+		p.appendChild( a );
+		doc.appendChild( p );
+	}
+
+	if ( ! window.marked || ! window.DOMPurify ) {
+		fail( 'The Markdown renderer could not be loaded.' );
+		return;
+	}
+
+	// GitHub-style heading slugs, so links such as #forms-and-search keep working.
+	function slugify( text, used ) {
+		var base = text.trim().toLowerCase().replace( /[^\p{L}\p{N}\s_-]/gu, '' ).replace( /\s/g, '-' );
+		var slug = base;
+		var n = 1;
+		while ( used[ slug ] ) {
+			slug = base + '-' + n++;
+		}
+		used[ slug ] = true;
+		return slug;
+	}
+
+	// Mockup links stay on this site; other relative links open the file on GitHub.
+	function rewriteLink( href ) {
+		if ( ! href || /^(#|[a-z][a-z0-9+.-]*:)/i.test( href ) ) {
+			return href;
+		}
+		var mockup = href.match( /^(?:\.\/)?mockups\/?(.*)$/ );
+		if ( mockup ) {
+			return mockup[ 1 ] || 'index.html';
+		}
+		var resolved = new URL( href, BLOB );
+		if ( /\/$/.test( resolved.pathname ) ) {
+			resolved = new URL( href, TREE );
+		}
+		return resolved.href;
+	}
+
+	function enhance() {
+		var used = {};
+		var toc = document.getElementById( 'toc-list' );
+		doc.querySelectorAll( 'h1, h2, h3, h4' ).forEach( function ( heading ) {
+			heading.id = slugify( heading.textContent, used );
+			if ( 'H1' === heading.tagName ) {
+				return;
+			}
+			var anchor = document.createElement( 'a' );
+			anchor.className = 'anchor';
+			anchor.href = '#' + heading.id;
+			anchor.setAttribute( 'aria-label', 'Link to this section' );
+			anchor.textContent = '#';
+			heading.appendChild( anchor );
+			if ( 'H2' === heading.tagName ) {
+				var li = document.createElement( 'li' );
+				var link = document.createElement( 'a' );
+				link.href = '#' + heading.id;
+				link.textContent = heading.firstChild.textContent;
+				li.appendChild( link );
+				toc.appendChild( li );
+			}
+		} );
+		if ( toc.children.length ) {
+			toc.parentElement.hidden = false;
+		}
+
+		doc.querySelectorAll( 'a[href]' ).forEach( function ( a ) {
+			if ( a.classList.contains( 'anchor' ) ) {
+				return;
+			}
+			a.setAttribute( 'href', rewriteLink( a.getAttribute( 'href' ) ) );
+		} );
+
+		doc.querySelectorAll( 'table' ).forEach( function ( table ) {
+			var wrap = document.createElement( 'div' );
+			wrap.className = 'table-wrap';
+			table.parentNode.insertBefore( wrap, table );
+			wrap.appendChild( table );
+
+			// Color swatches next to every hex value.
+			table.querySelectorAll( 'td code' ).forEach( function ( code ) {
+				if ( /^#[0-9a-f]{6}([0-9a-f]{2})?$/i.test( code.textContent.trim() ) ) {
+					var swatch = document.createElement( 'span' );
+					swatch.className = 'swatch';
+					swatch.style.backgroundColor = code.textContent.trim();
+					swatch.setAttribute( 'aria-hidden', 'true' );
+					code.parentNode.insertBefore( swatch, code );
+				}
+			} );
+
+			// Type samples in the font size table ("Size / line height" column).
+			var headers = Array.prototype.map.call( table.querySelectorAll( 'th' ), function ( th ) {
+				return th.textContent.trim().toLowerCase();
+			} );
+			var sizeColumn = headers.indexOf( 'size / line height' );
+			if ( sizeColumn > 0 ) {
+				table.querySelectorAll( 'tbody tr' ).forEach( function ( row ) {
+					var cells = row.children;
+					var size = ( cells[ sizeColumn ].textContent.match( /(\d+)px\s*\/\s*([\d.]+)/ ) || [] );
+					if ( ! size.length ) {
+						return;
+					}
+					var sample = document.createElement( 'span' );
+					sample.className = 'type-sample';
+					sample.textContent = 'WordPress.tv';
+					sample.style.fontSize = Math.min( parseInt( size[ 1 ], 10 ), 50 ) + 'px';
+					sample.style.fontFamily = /heading/.test( cells[ 0 ].textContent ) ? 'var(--garamond)' : 'var(--inter)';
+					sample.setAttribute( 'aria-hidden', 'true' );
+					cells[ 0 ].appendChild( sample );
+				} );
+			}
+		} );
+
+		// Highlight the current section in the table of contents.
+		if ( 'IntersectionObserver' in window ) {
+			var links = {};
+			toc.querySelectorAll( 'a' ).forEach( function ( a ) {
+				links[ a.getAttribute( 'href' ).slice( 1 ) ] = a;
+			} );
+			var observer = new IntersectionObserver( function ( entries ) {
+				entries.forEach( function ( entry ) {
+					if ( entry.isIntersecting && links[ entry.target.id ] ) {
+						toc.querySelectorAll( '[aria-current]' ).forEach( function ( a ) {
+							a.removeAttribute( 'aria-current' );
+						} );
+						links[ entry.target.id ].setAttribute( 'aria-current', 'true' );
+					}
+				} );
+			}, { rootMargin: '-80px 0px -70% 0px' } );
+			doc.querySelectorAll( 'h2' ).forEach( function ( h ) {
+				observer.observe( h );
+			} );
+		}
+
+		if ( location.hash ) {
+			var target = document.getElementById( decodeURIComponent( location.hash.slice( 1 ) ) );
+			if ( target ) {
+				target.scrollIntoView();
+			}
+		}
+	}
+
+	function showLastCommit() {
+		fetch( 'https://api.github.com/repos/' + REPO + '/commits?path=' + encodeURIComponent( PATH ) + '&sha=' + BRANCH + '&per_page=1' )
+			.then( function ( response ) {
+				return response.ok ? response.json() : [];
+			} )
+			.then( function ( commits ) {
+				if ( ! commits.length ) {
+					return;
+				}
+				var commit = commits[ 0 ];
+				var date = new Date( commit.commit.committer.date );
+				var meta = document.getElementById( 'meta' );
+				meta.appendChild( document.createTextNode( ' Last changed ' + date.toLocaleDateString( 'en-US', { year: 'numeric', month: 'long', day: 'numeric' } ) + ' in ' ) );
+				var a = document.createElement( 'a' );
+				a.href = commit.html_url;
+				a.textContent = commit.sha.slice( 0, 7 );
+				meta.appendChild( a );
+				meta.appendChild( document.createTextNode( '.' ) );
+			} )
+			.catch( function () {} );
+	}
+
+	fetch( RAW, { cache: 'no-cache' } )
+		.then( function ( response ) {
+			if ( ! response.ok ) {
+				throw new Error( response.status );
+			}
+			return response.text();
+		} )
+		.then( function ( markdown ) {
+			doc.innerHTML = DOMPurify.sanitize( marked.parse( markdown, { gfm: true } ) );
+			var title = doc.querySelector( 'h1' );
+			if ( title ) {
+				document.title = title.textContent + ' · WordPress.tv';
+			}
+			enhance();
+			showLastCommit();
+		} )
+		.catch( function () {
+			fail( 'The specification could not be loaded from GitHub.' );
+		} );
+} )();
+</script>
+</body>
+</html>
