@@ -1,0 +1,65 @@
+# Publishes the static design mockups in docs/mockups to GitHub Pages.
+#
+# Only the mockups and the theme assets they load (fonts and the CC BY-SA
+# badge) are published; the rest of docs/ stays in the repository. The site
+# keeps the repository layout (docs/mockups/ next to assets/) so the mockups'
+# relative ../../assets paths work unchanged. The site root redirects to the
+# mockups index.
+name: Mockups
+
+on:
+  push:
+    branches: [trunk]
+    paths:
+      - 'docs/mockups/**'
+      - 'assets/fonts/**'
+      - 'assets/images/cc-by-sa.png'
+      - '.github/workflows/mockups.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}docs/mockups/
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Assemble the site
+        run: |
+          mkdir -p _site/docs _site/assets/images
+          cp -r docs/mockups _site/docs/mockups
+          cp -r assets/fonts _site/assets/fonts
+          cp assets/images/cc-by-sa.png _site/assets/images/
+          cat > _site/index.html <<'HTML'
+          <!doctype html>
+          <html lang="en">
+          <head>
+          <meta charset="utf-8">
+          <title>WordPress.tv design mockups</title>
+          <meta http-equiv="refresh" content="0; url=docs/mockups/">
+          <link rel="canonical" href="docs/mockups/">
+          </head>
+          <body><p><a href="docs/mockups/">WordPress.tv design mockups</a></p></body>
+          </html>
+          HTML
+          touch _site/.nojekyll
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

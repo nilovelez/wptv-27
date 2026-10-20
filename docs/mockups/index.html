@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WordPress.tv design mockups</title>
+<meta name="description" content="Static design mockups for wptv-27, the block theme that will replace the WordPress.tv theme.">
+<!--
+	Index of the static mockups in docs/mockups. Published with GitHub Pages
+	by .github/workflows/mockups.yml. Not theme code.
+-->
+<style>
+@font-face { font-family: "Inter"; src: url("../../assets/fonts/inter/inter-100-900-normal.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "EB Garamond"; src: url("../../assets/fonts/eb-garamond/eb-garamond-400-800-normal.woff2") format("woff2"); font-weight: 400 800; font-display: swap; }
+:root {
+	--charcoal-1: #1e1e1e;
+	--charcoal-4: #656a71;
+	--light-grey-1: #d9d9d9;
+	--light-grey-2: #f6f6f6;
+	--blueberry-1: #3858e9;
+	--white: #ffffff;
+	--edge: 80px;
+}
+@media (max-width: 889px) { :root { --edge: 20px; } }
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--white); color: var(--charcoal-1); font: 16px/1.875 "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2 { margin: 0; font-family: "EB Garamond", Georgia, serif; font-weight: 400; text-wrap: balance; }
+p { margin: 0; text-wrap: pretty; }
+a { color: var(--blueberry-1); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.15em; }
+a:hover { text-decoration: none; }
+:focus-visible { outline: 1.5px solid var(--blueberry-1); outline-offset: 2px; }
+.bar { display: flex; align-items: center; min-height: 57px; padding: 10px var(--edge); border-bottom: 1px solid var(--light-grey-1); font-size: 14px; line-height: 1.71; }
+.bar span { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; }
+.bar svg { width: 28px; height: 28px; fill: currentColor; }
+main { max-width: calc(1160px + 2 * var(--edge)); margin: 0 auto; padding: clamp(30px, 5vw, 50px) var(--edge) clamp(40px, calc(5vw + 10px), 60px); }
+h1 { font-size: clamp(30px, 6vw, 50px); line-height: 1.2; }
+.intro { max-width: 680px; margin-top: 20px; font-size: 20px; line-height: 1.7; }
+.note { max-width: 680px; margin-top: 10px; font-size: 14px; line-height: 1.71; color: var(--charcoal-4); }
+.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: clamp(30px, 5vw, 50px) 0 0; padding: 0; list-style: none; }
+@media (max-width: 599px) { .cards { grid-template-columns: 1fr; } }
+.card { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 20px; border: 1px solid var(--light-grey-1); border-radius: 2px; }
+.card:hover { background: var(--light-grey-2); }
+.card:focus-within { outline: 1.5px solid var(--blueberry-1); outline-offset: 2px; }
+.card h2 { font-size: 30px; line-height: 1.33; }
+.card h2 a { text-decoration: none; }
+.card h2 a::after { content: ""; position: absolute; inset: 0; }
+.card h2 a:focus-visible { outline: none; }
+.card:hover h2 a { text-decoration: underline; }
+.card p { font-size: 16px; line-height: 1.625; }
+.docs { margin-top: clamp(30px, 5vw, 50px); padding-top: 20px; border-top: 1px solid var(--light-grey-1); max-width: 680px; }
+.docs h2 { font-size: 26px; line-height: 1.3; margin-bottom: 10px; }
+footer { padding: 20px var(--edge); border-top: 1px solid var(--light-grey-1); font-size: 14px; line-height: 1.71; color: var(--charcoal-4); }
+footer a { color: inherit; }
+</style>
+</head>
+<body>
+<header class="bar"><span><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M4.548 31.999c0 10.9 6.3 20.3 15.5 24.706L6.925 20.827C5.402 24.2 4.5 28 4.5 31.999z M50.531 30.614c0-3.394-1.219-5.742-2.264-7.57c-1.391-2.263-2.695-4.177-2.695-6.439c0-2.523 1.912-4.872 4.609-4.872 c0.121 0 0.2 0 0.4 0.022C45.653 7.3 39.1 4.5 32 4.548c-9.591 0-18.027 4.921-22.936 12.4 c0.645 0 1.3 0 1.8 0.033c2.871 0 7.316-0.349 7.316-0.349c1.479-0.086 1.7 2.1 0.2 2.3 c0 0-1.487 0.174-3.142 0.261l9.997 29.735l6.008-18.017l-4.276-11.718c-1.479-0.087-2.879-0.261-2.879-0.261 c-1.48-0.087-1.306-2.349 0.174-2.262c0 0 4.5 0.3 7.2 0.349c2.87 0 7.317-0.349 7.317-0.349 c1.479-0.086 1.7 2.1 0.2 2.262c0 0-1.489 0.174-3.142 0.261l9.92 29.508l2.739-9.148 C49.628 35.7 50.5 33 50.5 30.614z M32.481 34.4l-8.237 23.934c2.46 0.7 5.1 1.1 7.8 1.1 c3.197 0 6.262-0.552 9.116-1.556c-0.072-0.118-0.141-0.243-0.196-0.379L32.481 34.4z M56.088 18.8 c0.119 0.9 0.2 1.8 0.2 2.823c0 2.785-0.521 5.916-2.088 9.832l-8.385 24.242c8.161-4.758 13.65-13.6 13.65-23.728 C59.451 27.2 58.2 22.7 56.1 18.83z M32 0c-17.645 0-32 14.355-32 32C0 49.6 14.4 64 32 64s32-14.355 32-32.001 C64 14.4 49.6 0 32 0z M32 62.533c-16.835 0-30.533-13.698-30.533-30.534C1.467 15.2 15.2 1.5 32 1.5 s30.534 13.7 30.5 30.532C62.533 48.8 48.8 62.5 32 62.533z"/></svg><span>WordPress.tv</span></span></header>
+<main>
+	<h1>WordPress.tv design mockups</h1>
+	<p class="intro">Static mockups of wptv-27, the new block theme for WordPress.tv, in the visual language of the current WordPress.org sites.</p>
+	<p class="note">These pages are design references, not the live site. Videos, speakers, events and comments are copied from public WordPress.tv content; links inside the mockups only move between these pages.</p>
+	<ul class="cards">
+		<li class="card">
+			<h2><a href="front-page.html">Front page <span aria-hidden="true">→</span></a></h2>
+			<p>Hero with the latest video, featured videos, recent videos, categories, recent events and the Get involved band.</p>
+		</li>
+		<li class="card">
+			<h2><a href="single-video.html">Single video <span aria-hidden="true">→</span></a></h2>
+			<p>Video page with the player on a full-width dark band, video details, comments and previous/next links.</p>
+		</li>
+	</ul>
+	<section class="docs" aria-labelledby="docs-title">
+		<h2 id="docs-title">Project documentation</h2>
+		<p>The design specification, implementation handoff and the rest of the project documentation live in the repository: <a href="https://github.com/nilovelez/wptv-27/tree/trunk/docs">github.com/nilovelez/wptv-27/docs</a>.</p>
+	</section>
+</main>
+<footer>wptv-27 is in development. Source and status: <a href="https://github.com/nilovelez/wptv-27">github.com/nilovelez/wptv-27</a>.</footer>
+</body>
+</html>
