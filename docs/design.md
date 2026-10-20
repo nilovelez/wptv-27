@@ -292,7 +292,7 @@ This is a design-only change. Routes, queries and content do not change.
 | `inc/setup.php` | Register the parent block style names. Retire `video-frame` and `event-tile`. |
 | `patterns/*.php`, `parts/` | Rename slugs in block attributes (`coal-2` → `charcoal-2`, `gray` → `light-grey-2`, `x-large` → `heading-3`, and so on). Rebuild the header and footer as described above. Bump the theme version, because the pattern inventory changes. |
 | `tests/blocks/` | Update checks that assert class names or slugs. |
-| Site `DESIGN.md` (Studio) | Rewrite to match this document once approved, so the Studio agent follows the new direction. |
+| Site `DESIGN.md` (Studio) | The new version is drafted in [studio/DESIGN.md](studio/DESIGN.md). After this branch is merged, copy it to the root of the local site so the Studio agent follows the new direction. |
 
 ## Open questions
 
