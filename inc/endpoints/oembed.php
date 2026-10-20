@@ -11,6 +11,8 @@
 
 namespace WordPressTV\Endpoints\Oembed;
 
+use WordPressTV\Video;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -82,13 +84,15 @@ function handle_request() {
 	// phpcs:enable
 
 	// Only VideoPress videos are supported.
-	if ( false === stristr( $post->post_content, '[wpvideo' ) ) {
+	$has_shortcode = false !== stristr( $post->post_content, '[wpvideo' );
+	if ( ! $has_shortcode && ! Video\get_guid( $post ) ) {
 		status_header( 501 );
 		exit( 'Support has not been added for this non-VideoPress type video yet.' );
 	}
 
+	// Preserve the endpoint's first-shortcode parser, including malformed input.
 	preg_match( '#\[wpvideo ([a-zA-Z0-9]+)#i', $post->post_content, $guid );
-	$guid = $guid[1] ?? '';
+	$guid = $has_shortcode ? ( $guid[1] ?? '' ) : Video\get_guid( $post );
 	$info = ( $guid && function_exists( 'video_get_info_by_guid' ) ) ? video_get_info_by_guid( $guid ) : false;
 	if ( ! $info ) {
 		status_header( 500 );
@@ -140,7 +144,7 @@ add_action( 'template_redirect', __NAMESPACE__ . '\handle_request', 2 );
  * Prints oEmbed discovery links on single posts that embed a VideoPress video.
  */
 function discovery_links() {
-	if ( ! is_single() || false === stristr( get_post()->post_content, '[wpvideo' ) ) {
+	if ( ! is_single() || ( false === stristr( get_post()->post_content, '[wpvideo' ) && ! Video\get_guid() ) ) {
 		return;
 	}
 

@@ -60,22 +60,21 @@ function render_producer( $attributes, $content, $block ) {
 }
 
 /**
- * Finds the video used by the legacy download sidebar (the first shortcode).
+ * Finds the sidebar video: first legacy shortcode, otherwise the block fallback.
  *
  * @param int $post_id Post ID.
  * @return object|false
  */
 function download_video( $post_id ) {
 	$post = $post_id ? get_post( $post_id ) : null;
-	if ( ! $post || post_password_required( $post ) || ! function_exists( 'find_all_videopress_shortcodes' ) || ! function_exists( 'video_get_info_by_guid' ) ) {
+	if ( ! $post || post_password_required( $post ) || ! function_exists( 'video_get_info_by_guid' ) ) {
 		return false;
 	}
-	$shortcodes = find_all_videopress_shortcodes( $post->post_content );
-	if ( ! is_array( $shortcodes ) || ! $shortcodes ) {
+	$guid = Video\get_integration_guid( $post );
+	if ( ! $guid ) {
 		return false;
 	}
-	$guids = array_keys( $shortcodes );
-	$video = video_get_info_by_guid( $guids[0] );
+	$video = video_get_info_by_guid( $guid );
 	return is_object( $video ) ? $video : false;
 }
 

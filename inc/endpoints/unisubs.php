@@ -11,6 +11,8 @@
 
 namespace WordPressTV\Endpoints\Unisubs;
 
+use WordPressTV\Video;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -57,7 +59,32 @@ function get_post_by_guid( $guid ) {
 			'post_status' => 'publish',
 		)
 	);
-	return $posts ? $posts[0] : false;
+	if ( $posts ) {
+		return $posts[0];
+	}
+
+	// Keep the legacy search first. Only valid block GUIDs enter the fallback.
+	if ( ! is_string( $guid ) || ! preg_match( '/^[A-Za-z0-9]{8}$/D', $guid ) ) {
+		return false;
+	}
+	$page = 1;
+	do {
+		$candidates = get_posts(
+			array(
+				's'              => $guid,
+				'post_status'    => 'publish',
+				'posts_per_page' => 100,
+				'paged'          => $page++,
+			)
+		);
+		foreach ( $candidates as $candidate ) {
+			// A textual mention, cached iframe or shortcode is not a block match.
+			if ( false === stristr( $candidate->post_content, '[wpvideo' ) && Video\get_guid( $candidate ) === $guid ) {
+				return $candidate;
+			}
+		}
+	} while ( 100 === count( $candidates ) );
+	return false;
 }
 
 /**
@@ -112,7 +139,8 @@ function handle_request() {
 	// phpcs:enable
 
 	// Only VideoPress videos are supported.
-	if ( false === stristr( $post->post_content, '[wpvideo' ) ) {
+	$has_shortcode = false !== stristr( $post->post_content, '[wpvideo' );
+	if ( ! $has_shortcode && ! Video\get_guid( $post ) ) {
 		status_header( 501 );
 		exit( 'Support has not been added for this non-VideoPress type video yet.' );
 	}
@@ -125,8 +153,9 @@ function handle_request() {
 		'permalink' => esc_url_raw( get_permalink( $post_id ) ),
 	);
 
+	// Preserve the endpoint's first-shortcode parser for existing content.
 	preg_match( '#\[wpvideo ([a-zA-Z0-9]+)#i', $post->post_content, $guid );
-	$guid = $guid[1] ?? '';
+	$guid = $has_shortcode ? ( $guid[1] ?? '' ) : Video\get_guid( $post );
 	$info = ( $guid && function_exists( 'video_get_info_by_guid' ) ) ? video_get_info_by_guid( $guid ) : false;
 	if ( ! $info ) {
 		status_header( 500 );

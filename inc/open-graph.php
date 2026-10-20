@@ -9,6 +9,8 @@
 
 namespace WordPressTV\OpenGraph;
 
+use WordPressTV\Video;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -23,22 +25,25 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function customize_tags( $tags ) {
 	$post = get_post();
-	if ( ! $post instanceof \WP_Post || ! function_exists( 'find_all_videopress_shortcodes' ) || ! function_exists( 'video_get_info_by_guid' ) ) {
+	if ( ! $post instanceof \WP_Post || ! function_exists( 'video_get_info_by_guid' ) ) {
 		return $tags;
 	}
 
-	$guids = array_keys( find_all_videopress_shortcodes( $post->post_content ) );
-	if ( ! $guids ) {
+	$guid = Video\get_integration_guid( $post );
+	if ( ! $guid ) {
 		return $tags;
 	}
 
-	$info                   = video_get_info_by_guid( $guids[0] );
+	$info = video_get_info_by_guid( $guid );
+	if ( ! is_object( $info ) ) {
+		return $tags;
+	}
 	list( $width, $height ) = wp_expand_dimensions( $info->width ?? null, $info->height ?? null, 560, 315 );
 	$mp4_url                = set_url_scheme( wp_get_attachment_url( $info->post_id ?? null ), 'https' );
 
 	// Twitter player card.
 	$tags['twitter:card']                       = 'player';
-	$tags['twitter:player']                     = sprintf( 'https://videopress.com/v/%s?autoplay=0', $guids[0] );
+	$tags['twitter:player']                     = sprintf( 'https://videopress.com/v/%s?autoplay=0', $guid );
 	$tags['twitter:player:width']               = $width;
 	$tags['twitter:player:height']              = $height;
 	$tags['twitter:player:stream']              = $mp4_url;

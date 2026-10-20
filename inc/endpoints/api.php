@@ -232,16 +232,19 @@ function get_video_item( $post ) {
  * @return array
  */
 function add_videopress_files( $video, $post ) {
-	if ( ! function_exists( 'find_all_videopress_shortcodes' ) || ! function_exists( 'video_get_info_by_guid' ) ) {
+	if ( ! function_exists( 'video_get_info_by_guid' ) ) {
 		return $video;
 	}
 
-	$guids = array_keys( find_all_videopress_shortcodes( $post->post_content ) );
-	if ( ! $guids ) {
+	$guid = Video\get_integration_guid( $post );
+	if ( ! $guid ) {
 		return $video;
 	}
 
-	$info     = video_get_info_by_guid( $guids[0] );
+	$info = video_get_info_by_guid( $guid );
+	if ( ! is_object( $info ) ) {
+		return $video;
+	}
 	$api_data = function_exists( 'video_get_single_response' ) ? video_get_single_response( $info ) : array();
 
 	// Original uploaded file, may vary in format.

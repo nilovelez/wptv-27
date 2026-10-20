@@ -79,6 +79,31 @@ function get_block_video( array $blocks ) {
 }
 
 /**
+ * Resolves the first legacy shortcode for integrations, or the block fallback.
+ *
+ * Unlike get_guid(), these legacy consumers used the production shortcode API's
+ * first result. Never replace that behavior with the general last-shortcode rule.
+ * A legacy marker without that API/data must not fall through to a block.
+ *
+ * @param int|\WP_Post|null $post Post.
+ * @return string|false
+ */
+function get_integration_guid( $post = null ) {
+	$post = get_post( $post );
+	if ( ! $post ) {
+		return false;
+	}
+	if ( function_exists( 'find_all_videopress_shortcodes' ) ) {
+		$shortcodes = find_all_videopress_shortcodes( $post->post_content );
+		if ( is_array( $shortcodes ) && $shortcodes ) {
+			$guids = array_keys( $shortcodes );
+			return (string) $guids[0];
+		}
+	}
+	return false === stristr( $post->post_content, '[wpvideo' ) ? get_guid( $post ) : false;
+}
+
+/**
  * Returns the VideoPress details of a post's video.
  *
  * @param int|\WP_Post|null $post Post. Defaults to the current post.
