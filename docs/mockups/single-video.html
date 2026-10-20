@@ -6,10 +6,10 @@
 <title>WordPress.tv single video: mockup</title>
 <!--
 	Static mockup of the wptv-27 single-video page in the WordPress.org visual
-	language, built to study the dark band behind the player (docs/design.md,
-	open question 1). Content is a snapshot of the local Studio site
-	(http://localhost:8882/). Not theme code. The "Study" panel is not part of
-	the design.
+	language. The player sits on a full-width charcoal-1 band; the title stays
+	on white above it and the reactions on white below it (docs/design.md).
+	Content is a snapshot of the local Studio site (http://localhost:8882/).
+	Not theme code.
 -->
 <style>
 @font-face { font-family: "Inter"; src: url("../../assets/fonts/inter/inter-100-900-normal.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
@@ -90,41 +90,38 @@ a:hover { text-decoration: none; }
 .button.is-style-fill-on-dark { background: var(--wp--preset--color--white); border-color: var(--wp--preset--color--white); color: var(--wp--preset--color--charcoal-1); }
 .button.is-style-fill-on-dark:hover { background: var(--wp--preset--color--blueberry-2); border-color: var(--wp--preset--color--blueberry-2); }
 
-/* Local navigation bar: dark by default, white style on request. */
+/*
+ * Local navigation bar (approximation of wporg/local-navigation-bar), white
+ * with a grey rule. There is no .org global header above it, so the W mark
+ * sits before the site title.
+ */
 .local-nav {
-	--nav-bg: var(--wp--preset--color--charcoal-2);
-	--nav-text: var(--wp--preset--color--white);
-	--nav-search-bg: var(--wp--preset--color--charcoal-3);
-	--nav-search-text: var(--wp--preset--color--light-grey-1);
-	--nav-rule: var(--wp--preset--color--white-opacity-15);
 	position: sticky; top: 0; z-index: 50;
 	display: flex; align-items: center; justify-content: space-between; gap: var(--block-gap);
 	min-height: 57px;
 	padding: 10px var(--wp--preset--spacing--edge-space);
-	background: var(--nav-bg);
-	color: var(--nav-text);
+	border-bottom: 1px solid var(--wp--preset--color--light-grey-1);
+	background: var(--wp--preset--color--white);
+	color: var(--wp--preset--color--charcoal-1);
 	font-size: var(--wp--preset--font-size--small);
 	line-height: 1.71;
 }
-.local-nav.is-light {
-	--nav-bg: var(--wp--preset--color--white);
-	--nav-text: var(--wp--preset--color--charcoal-1);
-	--nav-search-bg: var(--wp--preset--color--light-grey-2);
-	--nav-search-text: var(--wp--preset--color--charcoal-4);
-	--nav-rule: var(--wp--preset--color--light-grey-1);
-	border-bottom: 1px solid var(--wp--preset--color--light-grey-1);
-}
-.local-nav a { color: var(--nav-text); text-decoration: none; }
+.local-nav a { color: var(--wp--preset--color--charcoal-1); text-decoration: none; }
 .local-nav a:hover { text-decoration: underline; }
-.local-nav__title { font-weight: 600; white-space: nowrap; }
+.local-nav__title { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; white-space: nowrap; }
+.local-nav__title svg { flex: none; width: 28px; height: 28px; fill: currentColor; }
+.local-nav__title:hover { text-decoration: none !important; }
+.local-nav__title:hover span { text-decoration: underline; }
 .local-nav__menu { display: flex; align-items: center; gap: 24px; }
 .local-nav__links { display: flex; gap: 24px; margin: 0; padding: 0; list-style: none; white-space: nowrap; }
 .local-nav__toggle { display: none; }
-.local-nav.is-light .button { background: var(--wp--preset--color--blueberry-1); border-color: var(--wp--preset--color--blueberry-1); color: var(--wp--preset--color--white); }
-.search { display: flex; align-items: center; width: 180px; border-radius: 2px; background: var(--nav-search-bg); }
-.search input { flex: 1; min-width: 0; padding: 7px 0 7px 12px; border: 0; background: transparent; color: var(--nav-text); font: inherit; }
-.search input::placeholder { color: var(--nav-search-text); opacity: 1; }
-.search button { display: grid; place-items: center; width: 36px; height: 36px; border: 0; background: transparent; color: var(--nav-text); cursor: pointer; }
+.local-nav .button { color: var(--wp--preset--color--white); }
+.local-nav .button:hover { text-decoration: none; }
+.search { display: flex; align-items: center; width: 180px; border-radius: 2px; background: var(--wp--preset--color--light-grey-2); }
+.search input { flex: 1; min-width: 0; padding: 7px 0 7px 12px; border: 0; background: transparent; color: var(--wp--preset--color--charcoal-1); font: inherit; }
+.search input::placeholder { color: var(--wp--preset--color--charcoal-4); opacity: 1; }
+.search button { display: grid; place-items: center; width: 36px; height: 36px; border: 0; border-radius: 0 2px 2px 0; background: transparent; color: var(--wp--preset--color--charcoal-1); cursor: pointer; }
+.search button:hover { background: var(--wp--preset--color--light-grey-1); }
 .search:focus-within { box-shadow: inset 0 0 0 1.5px var(--wp--preset--color--blueberry-1); }
 .search input:focus-visible, .search button:focus-visible { outline: none; }
 @media (max-width: 1079px) {
@@ -133,7 +130,7 @@ a:hover { text-decoration: none; }
 	.local-nav__menu { display: none; flex-basis: 100%; flex-direction: column; align-items: stretch; gap: var(--wp--preset--spacing--20); padding-bottom: var(--wp--preset--spacing--20); }
 	.local-nav.is-open .local-nav__menu { display: flex; }
 	.local-nav__links { flex-direction: column; gap: 0; }
-	.local-nav__links a { display: block; padding: 10px 0; border-bottom: 1px solid var(--nav-rule); }
+	.local-nav__links a { display: block; padding: 10px 0; border-bottom: 1px solid var(--wp--preset--color--light-grey-1); }
 	.search { width: 100%; }
 	.local-nav__menu .button { align-self: flex-start; }
 }
@@ -151,25 +148,21 @@ a:hover { text-decoration: none; }
 .speakers a:hover { text-decoration: underline; }
 
 /* Player stage. */
-.stage { padding-bottom: var(--wp--preset--spacing--30); }
 .player { position: relative; aspect-ratio: 16 / 9; background: #000; }
 .player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
 /* Reactions: simplified stand-ins for the Jetpack Like and Sharing blocks. */
-.reactions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--wp--preset--spacing--10) var(--block-gap); margin-top: var(--wp--preset--spacing--20); font-size: var(--wp--preset--font-size--small); line-height: 1.71; }
+.reactions { padding-top: var(--wp--preset--spacing--20); }
+.reactions .wide { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--wp--preset--spacing--10) var(--block-gap); font-size: var(--wp--preset--font-size--small); line-height: 1.71; }
 .chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--wp--preset--color--light-grey-1); border-radius: 2px; background: transparent; color: inherit; font: inherit; text-decoration: none; cursor: pointer; }
 .chip:hover { background: var(--wp--preset--color--light-grey-2); }
 .chip svg { width: 16px; height: 16px; fill: currentColor; }
 .share { display: flex; flex-wrap: wrap; gap: 8px; }
 .likes { display: flex; align-items: center; gap: var(--wp--preset--spacing--10); color: var(--wp--preset--color--charcoal-4); }
 
-/* Dark band surfaces (variants A and B). */
-.on-dark { background: var(--band-bg, var(--wp--preset--color--charcoal-1)); color: var(--wp--preset--color--white); }
-.on-dark .breadcrumbs, .on-dark .likes { color: var(--wp--preset--color--charcoal-5); }
-.on-dark .breadcrumbs a:hover { color: var(--wp--preset--color--blueberry-2); }
-.on-dark .speakers a { color: var(--wp--preset--color--blueberry-2); }
-.on-dark .chip { border-color: var(--wp--preset--color--white-opacity-15); }
-.on-dark .chip:hover { background: var(--wp--preset--color--charcoal-3); }
+/* Player band: charcoal-1, full width, player only. */
+.player-band { padding-block: var(--wp--preset--spacing--30); background: var(--wp--preset--color--charcoal-1); }
+@media (max-width: 599px) { .player-band { padding-inline: 0; padding-block: 0; } }
 
 /* Two-column display ("Shifted content"), from 1080px. */
 .two-col { display: grid; gap: var(--wp--preset--spacing--20); padding-block: var(--wp--preset--spacing--50); }
@@ -232,50 +225,15 @@ a:hover { text-decoration: none; }
 .footer-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--wp--preset--spacing--20); margin-top: var(--wp--preset--spacing--40); padding-top: var(--wp--preset--spacing--20); border-top: 1px solid var(--wp--preset--color--white-opacity-15); color: var(--wp--preset--color--charcoal-5); }
 .footer-bottom .brand { font-family: var(--wp--preset--font-family--eb-garamond); font-size: var(--wp--preset--font-size--large); color: var(--wp--preset--color--white); }
 
-/*
- * Variants. A: band behind the player only. B: band holds the title and the
- * player. C: no band.
- */
-.variant-b-only, .variant-ac-only { display: contents; }
-body[data-variant="a"] .variant-b-only, body[data-variant="c"] .variant-b-only { display: none; }
-body[data-variant="b"] .variant-ac-only { display: none; }
-body[data-variant="b"] .hero { --band-bg: var(--wp--preset--color--charcoal-1); }
-body[data-variant="c"] .stage-wrap { background: transparent; color: inherit; }
-body[data-variant="c"] .stage-wrap .chip { border-color: var(--wp--preset--color--light-grey-1); }
-body[data-variant="c"] .stage-wrap .chip:hover { background: var(--wp--preset--color--light-grey-2); }
-body[data-variant="c"] .stage-wrap .likes { color: var(--wp--preset--color--charcoal-4); }
-body[data-variant="a"] .stage { padding-top: var(--wp--preset--spacing--30); }
-body[data-variant="a"] .band-a-top { padding-top: 0; }
-body[data-variant="b"] .stage { padding-top: 0; }
-body[data-band="2"] .on-dark { --band-bg: var(--wp--preset--color--charcoal-2); }
 
-/* Study panel: review aid, not part of the design. */
-.study {
-	position: fixed; right: 16px; bottom: 16px; z-index: 100;
-	width: min(340px, calc(100vw - 32px));
-	padding: 14px 16px;
-	border: 2px dashed #b26200; border-radius: 4px;
-	background: #fffbe6; color: #3a2a00;
-	font: 13px/1.5 var(--wp--preset--font-family--inter);
-	box-shadow: 0 4px 16px rgb(0 0 0 / 0.2);
-}
-.study[data-collapsed="true"] .study__body { display: none; }
-.study__head { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-weight: 700; }
-.study__head button { border: 0; background: none; font: inherit; color: inherit; cursor: pointer; text-decoration: underline; }
-.study fieldset { margin: 10px 0 0; padding: 0; border: 0; }
-.study legend { font-weight: 600; margin-bottom: 4px; }
-.study label { display: block; cursor: pointer; }
-.study__notes { margin: 10px 0 0; padding-left: 18px; }
-.study__notes li + li { margin-top: 4px; }
-@media (max-width: 599px) { .study { bottom: 8px; right: 8px; } }
 
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
 </style>
 </head>
-<body data-variant="a" data-band="1">
+<body>
 
 <header class="local-nav" id="local-nav">
-	<a class="local-nav__title" href="http://localhost:8882/">WordPress.tv</a>
+	<a class="local-nav__title" href="http://localhost:8882/"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M4.548 31.999c0 10.9 6.3 20.3 15.5 24.706L6.925 20.827C5.402 24.2 4.5 28 4.5 31.999z M50.531 30.614c0-3.394-1.219-5.742-2.264-7.57c-1.391-2.263-2.695-4.177-2.695-6.439c0-2.523 1.912-4.872 4.609-4.872 c0.121 0 0.2 0 0.4 0.022C45.653 7.3 39.1 4.5 32 4.548c-9.591 0-18.027 4.921-22.936 12.4 c0.645 0 1.3 0 1.8 0.033c2.871 0 7.316-0.349 7.316-0.349c1.479-0.086 1.7 2.1 0.2 2.3 c0 0-1.487 0.174-3.142 0.261l9.997 29.735l6.008-18.017l-4.276-11.718c-1.479-0.087-2.879-0.261-2.879-0.261 c-1.48-0.087-1.306-2.349 0.174-2.262c0 0 4.5 0.3 7.2 0.349c2.87 0 7.317-0.349 7.317-0.349 c1.479-0.086 1.7 2.1 0.2 2.262c0 0-1.489 0.174-3.142 0.261l9.92 29.508l2.739-9.148 C49.628 35.7 50.5 33 50.5 30.614z M32.481 34.4l-8.237 23.934c2.46 0.7 5.1 1.1 7.8 1.1 c3.197 0 6.262-0.552 9.116-1.556c-0.072-0.118-0.141-0.243-0.196-0.379L32.481 34.4z M56.088 18.8 c0.119 0.9 0.2 1.8 0.2 2.823c0 2.785-0.521 5.916-2.088 9.832l-8.385 24.242c8.161-4.758 13.65-13.6 13.65-23.728 C59.451 27.2 58.2 22.7 56.1 18.83z M32 0c-17.645 0-32 14.355-32 32C0 49.6 14.4 64 32 64s32-14.355 32-32.001 C64 14.4 49.6 0 32 0z M32 62.533c-16.835 0-30.533-13.698-30.533-30.534C1.467 15.2 15.2 1.5 32 1.5 s30.534 13.7 30.5 30.532C62.533 48.8 48.8 62.5 32 62.533z"/></svg><span>WordPress.tv</span></a>
 	<button class="local-nav__toggle" type="button" aria-expanded="false" aria-controls="local-nav-menu">Menu <span aria-hidden="true">▾</span></button>
 	<div class="local-nav__menu" id="local-nav-menu">
 		<nav aria-label="Main">
@@ -292,58 +250,44 @@ body[data-band="2"] .on-dark { --band-bg: var(--wp--preset--color--charcoal-2); 
 			<input id="s" name="s" type="search" placeholder="Search videos">
 			<button type="submit" aria-label="Search"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5c-3.3 0-6 2.7-6 6 0 1.4.5 2.7 1.3 3.7l-3.8 3.8 1.1 1.1 3.8-3.8c1 .8 2.3 1.3 3.7 1.3 3.3 0 6-2.7 6-6S16.3 5 13 5zm0 10.5c-2.5 0-4.5-2-4.5-4.5s2-4.5 4.5-4.5 4.5 2 4.5 4.5-2 4.5-4.5 4.5z"/></svg></button>
 		</form>
-		<a class="button is-small is-style-fill-on-dark" href="http://localhost:8882/submit-video/">Submit a video</a>
+		<a class="button is-small" href="http://localhost:8882/submit-video/">Submit a video</a>
 	</div>
 </header>
 
 <main>
-	<!-- Variants A and C: title on white, above the player. -->
-	<div class="variant-ac-only">
-		<div class="edge">
-			<div class="wide intro">
-				<ol class="breadcrumbs" aria-label="Breadcrumbs">
-					<li><a href="http://localhost:8882/">Home</a></li>
-					<li><a href="http://localhost:8882/category/year/">Year</a></li>
-					<li><a href="http://localhost:8882/category/year/2024/">2024</a></li>
-				</ol>
-				<h1>Developer Hours: How to build modern web layouts with WordPress blocks</h1>
-				<p class="speakers"><a href="http://localhost:8882/speakers/justin-tadlock/">Justin Tadlock</a>, <a href="http://localhost:8882/speakers/ryan-welcher/">Ryan Welcher</a></p>
-			</div>
+	<div class="edge">
+		<div class="wide intro">
+			<ol class="breadcrumbs" aria-label="Breadcrumbs">
+				<li><a href="http://localhost:8882/">Home</a></li>
+				<li><a href="http://localhost:8882/category/year/">Year</a></li>
+				<li><a href="http://localhost:8882/category/year/2024/">2024</a></li>
+			</ol>
+			<h1>Developer Hours: How to build modern web layouts with WordPress blocks</h1>
+			<p class="speakers"><a href="http://localhost:8882/speakers/justin-tadlock/">Justin Tadlock</a>, <a href="http://localhost:8882/speakers/ryan-welcher/">Ryan Welcher</a></p>
 		</div>
 	</div>
 
-	<!-- The band: in variant B it also holds the title. -->
-	<section class="edge on-dark stage-wrap hero" aria-label="Video">
-		<div class="variant-b-only">
-			<div class="wide intro">
-				<ol class="breadcrumbs" aria-label="Breadcrumbs">
-					<li><a href="http://localhost:8882/">Home</a></li>
-					<li><a href="http://localhost:8882/category/year/">Year</a></li>
-					<li><a href="http://localhost:8882/category/year/2024/">2024</a></li>
-				</ol>
-				<h1>Developer Hours: How to build modern web layouts with WordPress blocks</h1>
-				<p class="speakers"><a href="http://localhost:8882/speakers/justin-tadlock/">Justin Tadlock</a>, <a href="http://localhost:8882/speakers/ryan-welcher/">Ryan Welcher</a></p>
-			</div>
-		</div>
-		<div class="wide stage">
-			<div class="player">
-				<iframe title="VideoPress Video Player" src="https://videopress.com/embed/NjPt7W8z?at=0&amp;controls=1&amp;preloadContent=metadata" allowfullscreen allow="clipboard-write; presentation"></iframe>
-			</div>
-			<div class="reactions">
-				<div class="likes">
-					<button class="chip" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.5l7.1-.6z"/></svg>Like</button>
-					<span>Be the first to like this.</span>
-				</div>
-				<div class="share" aria-label="Share">
-					<a class="chip" href="#">X</a>
-					<a class="chip" href="#">Facebook</a>
-					<a class="chip" href="#">LinkedIn</a>
-					<a class="chip" href="#">Mail</a>
-					<a class="chip" href="#">Share</a>
-				</div>
-			</div>
+	<section class="edge player-band" aria-label="Video">
+		<div class="wide player">
+			<iframe title="VideoPress Video Player" src="https://videopress.com/embed/NjPt7W8z?at=0&amp;controls=1&amp;preloadContent=metadata" allowfullscreen allow="clipboard-write; presentation"></iframe>
 		</div>
 	</section>
+
+	<div class="edge reactions">
+		<div class="wide">
+			<div class="likes">
+				<button class="chip" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.5l7.1-.6z"/></svg>Like</button>
+				<span>Be the first to like this.</span>
+			</div>
+			<div class="share" aria-label="Share">
+				<a class="chip" href="#">X</a>
+				<a class="chip" href="#">Facebook</a>
+				<a class="chip" href="#">LinkedIn</a>
+				<a class="chip" href="#">Mail</a>
+				<a class="chip" href="#">Share</a>
+			</div>
+		</div>
+	</div>
 
 	<div class="edge">
 		<div class="wide two-col">
@@ -455,32 +399,6 @@ body[data-band="2"] .on-dark { --band-bg: var(--wp--preset--color--charcoal-2); 
 	</div>
 </footer>
 
-<aside class="study" id="study" aria-label="Study controls" data-collapsed="false">
-	<div class="study__head">
-		<span>Study: player band</span>
-		<button type="button" id="study-toggle" aria-expanded="true">Hide</button>
-	</div>
-	<div class="study__body">
-		<fieldset>
-			<legend>Layout</legend>
-			<label><input type="radio" name="variant" value="a" checked> A. Band behind the player only</label>
-			<label><input type="radio" name="variant" value="b"> B. Band holds title and player</label>
-			<label><input type="radio" name="variant" value="c"> C. No band (baseline)</label>
-		</fieldset>
-		<fieldset>
-			<legend>Band color</legend>
-			<label><input type="radio" name="band" value="1" checked> charcoal-1 (#1e1e1e)</label>
-			<label><input type="radio" name="band" value="2"> charcoal-2 (#23282d)</label>
-		</fieldset>
-		<fieldset>
-			<legend>Navigation bar</legend>
-			<label><input type="radio" name="nav" value="dark" checked> Dark (charcoal-2)</label>
-			<label><input type="radio" name="nav" value="light"> White with rule</label>
-		</fieldset>
-		<ul class="study__notes" id="study-notes"></ul>
-	</div>
-</aside>
-
 <script>
 	( function () {
 		var nav = document.getElementById( 'local-nav' );
@@ -489,50 +407,6 @@ body[data-band="2"] .on-dark { --band-bg: var(--wp--preset--color--charcoal-2); 
 			var open = nav.classList.toggle( 'is-open' );
 			toggle.setAttribute( 'aria-expanded', open ? 'true' : 'false' );
 		} );
-
-		var notes = {
-			a: [
-				'Title stays on white, so the page reads like other .org pages; the band frames only the video.',
-				'At 1440×900 the player starts below the fold because the title block sits above it.',
-				'Dark band right under a dark navigation bar merges with it; compare with the white bar.'
-			],
-			b: [
-				'Title and player share one dark surface: a cinema-like hero, and the player is visible sooner.',
-				'Jetpack Like/Sharing must be legible on dark; check the real blocks support it.',
-				'The hero is very tall on mobile: title, speakers and player before any details.'
-			],
-			c: [
-				'Baseline without a band: closest to the .org parent single template.',
-				'The player floats on white; the letterboxing of 4:3 or vertical videos becomes visible.'
-			]
-		};
-		var body = document.body;
-		var list = document.getElementById( 'study-notes' );
-		function render() {
-			list.innerHTML = '';
-			notes[ body.dataset.variant ].forEach( function ( text ) {
-				var li = document.createElement( 'li' );
-				li.textContent = text;
-				list.appendChild( li );
-			} );
-		}
-		document.querySelectorAll( '.study input' ).forEach( function ( input ) {
-			input.addEventListener( 'change', function () {
-				if ( 'variant' === input.name ) { body.dataset.variant = input.value; }
-				if ( 'band' === input.name ) { body.dataset.band = input.value; }
-				if ( 'nav' === input.name ) { nav.classList.toggle( 'is-light', 'light' === input.value ); }
-				render();
-			} );
-		} );
-		var study = document.getElementById( 'study' );
-		var studyToggle = document.getElementById( 'study-toggle' );
-		studyToggle.addEventListener( 'click', function () {
-			var collapsed = 'true' !== study.dataset.collapsed;
-			study.dataset.collapsed = collapsed ? 'true' : 'false';
-			studyToggle.textContent = collapsed ? 'Show' : 'Hide';
-			studyToggle.setAttribute( 'aria-expanded', collapsed ? 'false' : 'true' );
-		} );
-		render();
 	} )();
 </script>
 </body>

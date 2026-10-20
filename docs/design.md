@@ -35,7 +35,7 @@ Register this subset of the parent palette. Slugs and values are identical to `w
 |---|---|---|---|
 | `charcoal-0` | Charcoal 0 | `#1a1919` | Reserved (equals the current `ink`) |
 | `charcoal-1` | Charcoal | `#1e1e1e` | Body text, dark bands, active button state |
-| `charcoal-2` | Charcoal 2 | `#23282d` | Local navigation bar, featured video band |
+| `charcoal-2` | Charcoal 2 | `#23282d` | Featured video band |
 | `charcoal-3` | Charcoal 3 | `#40464d` | Search field on dark backgrounds |
 | `charcoal-4` | Charcoal 4 | `#656a71` | Secondary text: dates, captions, counts, labels |
 | `charcoal-5` | Charcoal 5 | `#979aa1` | Form field borders |
@@ -152,7 +152,7 @@ Every new .org site has two layers of chrome:
 
 These blocks come from `wporg-mu-plugins`, which WordPress.tv cannot use. wptv-27 replicates the chrome with core blocks:
 
-- **Header part:** a local navigation bar built with core blocks. Site title "WordPress.tv" on the left, Navigation on the right (existing wordpress.tv links), a Search block (`is-style-on-dark` style), and "Submit a video" as a small `fill-on-dark` button. `charcoal-2` background, sticky from 890px, dropdown menu below 890px.
+- **Header part:** a local navigation bar built with core blocks, the same on every page. White background with a 1px `light-grey-1` bottom rule, `charcoal-1` text. On the left, the WordPress "W" mark (28px, `currentColor`, the core `w-logo` artwork) followed by the site title "WordPress.tv"; both link to the home page. Because there is no global header above the bar, the mark is what ties the site to WordPress.org. On the right: Navigation (existing wordpress.tv links), a Search block (default light style: `light-grey-2` field) and "Submit a video" as a small fill button. Sticky from 890px; dropdown menu below 1080px, where the links no longer fit.
 - **Global header:** do not copy the WordPress.org global header (logo, .org menu, "Get WordPress"). The local navigation bar is the only header. It follows the .org look without pretending to be wordpress.org.
 - **Footer part:** a `charcoal-1` band in the global-footer layout (columns of links, small Inter text, `white-opacity-15` rules), plus the CC BY-SA notice.
 
@@ -181,7 +181,7 @@ Block styles to register, with the same names as the parent: `outline`, `fill-on
 ### Forms and search
 
 - Inputs: white, 1px Charcoal 5 border, 2px radius, `small` text, padding 15px × 8px.
-- Search: Light Grey 2 field without a border, icon button inside. Use the `on-dark` style (Charcoal 3 field, light text) in the dark navigation bar.
+- Search: Light Grey 2 field without a border, icon button inside. The navigation bar uses this default light style. The `on-dark` style (Charcoal 3 field, light text) is only for search fields placed on dark bands.
 - These rules also apply to the submit-video and subtitle forms.
 
 ### Cards grid (video and term grids)
@@ -223,7 +223,7 @@ Avatar 40px, round. Author name Inter 600, not underlined. Date `small`, Charcoa
 
 Use these sparingly, and only for calls to action:
 
-- **Heading with arrow** (`is-style-with-arrow`): a large Inter light heading link with a drawn arrow, on a Blueberry 1 band (for example "Submit a video").
+- **Heading with arrow** (`is-style-with-arrow`): a large Inter light heading link with a drawn arrow, on a Blueberry 1 band (for example "Get involved" at the end of the front page).
 - **Dots spacer** (`is-style-dots-background`): a decorative dotted band between sections.
 - **Brush stroke** (`is-style-brush-stroke`): a painted bottom edge on a Blueberry subnav bar.
 
@@ -231,7 +231,7 @@ Use these sparingly, and only for calls to action:
 
 Neither repository has a video-library design, so these rules extend the language.
 
-- **Player:** wide width (1160px), 16:9, no border, no radius (the VideoPress iframe cannot be styled). On the single-video page, the preferred direction is a full-width `charcoal-1` band behind the player (the owner likes it; it still needs a design study, see below). The front-page hero keeps the player on white.
+- **Player:** wide width (1160px), 16:9, no border, no radius (the VideoPress iframe cannot be styled). On the single-video page, the player sits on a full-width `charcoal-1` band that holds only the player (padding `30` above and below; no padding on phones, so the video is edge to edge). Title, speakers and breadcrumbs stay on white above the band; Like and Sharing stay on white below it. The front-page hero keeps the player on white.
 - **Thumbnails:** 16:9, radius 2px (matching cards), no frame. Real VideoPress posters only, with the bundled placeholder as the explicit fallback.
 - **Metadata:** compact `small` Inter text, labels in Charcoal 4, values as links. Use label/value rows inside the left column of a two-column display.
 - **Duration, counts:** `extra-small` or `small`, Charcoal 4. Never invent data that is missing.
@@ -239,24 +239,25 @@ Neither repository has a video-library design, so these rules extend the languag
 
 ## Page maps
 
-The section order and query behavior approved for Phase 1b stay the same (see [decisions.md](decisions.md)). Only the presentation changes.
+The query behavior approved for Phase 1b stays the same (see [decisions.md](decisions.md)). The owner changed the front-page section order (recent videos now come before recent events) and added a closing "Get involved" band; otherwise only the presentation changes.
 
 ### Front page
 
-1. **Header:** local navigation bar (`charcoal-2`).
+1. **Header:** local navigation bar (white with a grey rule, W mark and title).
 2. **Hero:** wide two columns. On the left, an `h1` in `heading-1` and a short intro (`is-style-short-text`). On the right, the latest video player. Stacks below 782px.
 3. **Featured:** full-width `charcoal-2` band, white `h2`, four videos as cards (white borders at 15% on dark, or white cards).
-4. **Recent events:** white section, `h2` plus a "See all →" link, cards grid in three columns, no invented artwork or dates.
+4. **Recent videos:** white section, inherited main query, cards grid in four columns, .org pagination. Moving it up does not change the query or `posts_per_page`; `/page/N/` keeps the same posts.
 5. **Video categories:** `light-grey-2` band, cards grid in four columns, counts in Charcoal 4.
-6. **Recent videos:** white section, inherited main query, cards grid in four columns, .org pagination.
-7. **Footer.**
+6. **Recent events:** white section, `h2` plus a "See all →" link, cards grid in three columns, no invented artwork or dates.
+7. **Get involved:** full-width `blueberry-1` band with a heading-with-arrow link to `/get-involved/` and one sentence that presents WordPress.tv as a volunteer, collaborative project (reviewing submissions, subtitles, sharing local event recordings). It is not a call for speakers.
+8. **Footer.**
 
 ### Single video
 
-1. **Header:** local navigation bar (white style, sticky).
+1. **Header:** local navigation bar (white with a grey rule, W mark and title, sticky).
 2. **Title area:** breadcrumbs in `small`, post title as `h1` (`heading-2` on video pages, so the player stays visible above the fold), speakers as links.
-3. **Player:** wide, preferably on a full-width `charcoal-1` band (pending study).
-4. **Reactions:** Jetpack Like and Sharing, aligned with the player edges.
+3. **Player:** wide, on a full-width `charcoal-1` band that contains only the player.
+4. **Reactions:** Jetpack Like and Sharing on white, below the band, aligned with the player edges.
 5. **Details:** a two-column display. The left column holds published date, event, speakers, tags, language, producer, downloads and subtitles, and the license (label/value rows). The right column holds the full description and the slides link at reading width.
 6. **Comments:** in the reading column.
 7. **Previous/next:** the .org post-navigation pattern, full width with a top rule.
@@ -295,9 +296,12 @@ This is a design-only change. Routes, queries and content do not change.
 
 ## Open questions
 
-1. **Single-video player band:** the owner prefers a full-width dark band behind the player. Study it with a single-video mockup before adopting it: band color (`charcoal-1` or `charcoal-2`), where the title and reactions sit (on the band or below it), how the band meets the sticky navigation bar, and how it behaves on mobile.
+None at the moment.
 
 ## Answered
+
+- **Header:** white local navigation bar with a grey bottom rule on every page, front page included. With no global header above it, the WordPress "W" mark goes before "WordPress.tv". See [Global chrome](#global-chrome) and `mockups/`.
+- **Single-video player band:** studied with `mockups/single-video.html`. Chosen: a full-width `charcoal-1` band containing only the player; title above and sharing buttons below stay on white.
 
 - **wporg-mu-plugins:** WordPress.tv has no access to them. Replicate the design with core blocks and theme code.
 - **Global header:** the site does not have to be identical to a wordpress.org site, but it must follow the same visual language. Do not copy the .org global header; use the local navigation bar.
