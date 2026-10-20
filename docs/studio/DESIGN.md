@@ -1,6 +1,6 @@
 ---
 name: WordPress.TV
-description: Community-curated WordPress videos, in the WordPress.org visual language.
+description: Community-curated WordPress videos.
 colors:
   charcoal-1: "#1e1e1e"
   charcoal-2: "#23282d"
@@ -18,84 +18,75 @@ colors:
   purple-1: "#5300be"
   pomegrade-1: "#e26f56"
 typography:
-  heading-1: {fontFamily: EB Garamond, fontSize: 70px, fontWeight: 400, lineHeight: 1.05}
-  heading-2: {fontFamily: EB Garamond, fontSize: 50px, fontWeight: 400, lineHeight: 1.2}
-  heading-4: {fontFamily: EB Garamond, fontSize: 30px, fontWeight: 400, lineHeight: 1.33}
+  display: {fontFamily: EB Garamond, fontSize: 70px, fontWeight: 400, lineHeight: 1.05}
+  headline: {fontFamily: EB Garamond, fontSize: 50px, fontWeight: 400, lineHeight: 1.2}
   body: {fontFamily: Inter, fontSize: 16px, fontWeight: 400, lineHeight: 1.875}
-  card-title: {fontFamily: Inter, fontSize: 16px, fontWeight: 600, lineHeight: 1.4}
-  small: {fontFamily: Inter, fontSize: 14px, fontWeight: 400, lineHeight: 1.71}
-rounded: {default: 2px, avatar: 50%}
-spacing: {"10": 10px, "20": 20px, "30": 30px, "40": "clamp(30px, 5vw, 50px)", "50": "clamp(40px, calc(5vw + 10px), 60px)", "60": "clamp(20px, calc(10vw - 40px), 80px)", edge-space: "80px; 20px below 890px"}
-layout: {contentSize: 680px, wideSize: 1160px, blockGap: 20px}
+  label: {fontFamily: Inter, fontSize: 14px, fontWeight: 400, lineHeight: 1.71}
+rounded: {sm: 2px, frame: 2px}
+spacing: {sm: 20px, md: 50px, lg: 80px, xl: 120px}
 components:
   button-primary:
     backgroundColor: "{colors.blueberry-1}"
-    hoverBackgroundColor: "{colors.deep-blueberry}"
     textColor: "{colors.white}"
-    rounded: "{rounded.default}"
+    rounded: "{rounded.sm}"
     padding: 14px 32px
-  button-small:
-    padding: 7px 12px
-    fontSize: 14px
-  card:
-    border: "1px solid {colors.light-grey-1}"
-    rounded: "{rounded.default}"
-    hoverBackgroundColor: "{colors.light-grey-2}"
 imagery: {}
 ---
 
 ## Overview
-WordPress.tv is a WordPress.org community site. Follow the visual language of the new WordPress.org sites (wporg-parent-2021 and wporg-main-2022): EB Garamond headings, Inter text, Charcoal on white, Blueberry as the only accent, 1px grey rules, 2px radii, no shadows. It does not copy any wordpress.org page or its global header; it uses the same language. The full specification, with sources and the migration plan, is the versioned theme document `docs/design.md`. Reference mockups: `docs/mockups/front-page.html` and `docs/mockups/single-video.html`. Design is maintained in theme code, not the Site Editor.
+Follow the WordPress.org visual language, not the interim wptv3 look. WordPress.tv is a WordPress.org community site, so it uses the language of the new .org sites (wporg-parent-2021, wporg-main-2022): EB Garamond headings, Inter text, Charcoal on white, Blueberry as the only accent, thin grey rules and 2px radii. It does not copy any wordpress.org page or its global header. Design is maintained in theme code, not the Site Editor.
+
+## Current approval
+The owner approved the WordPress.org visual language on the `design/wporg-visual-language` branch; it replaces the wptv3-based design. The versioned theme document docs/design.md holds the full specification, sources and migration plan. Reference mockups: docs/mockups/front-page.html and docs/mockups/single-video.html. WordPress.tv has no access to wporg-mu-plugins, so every .org component is replicated with core blocks and theme code.
 
 ## Colors
-Use the WordPress.org preset slugs exactly as listed (`charcoal-1`, `blueberry-1`, `light-grey-1`, and so on) so the generated CSS variables match the .org sites. White is the page background and Charcoal 1 the body text. Blueberry 1 marks links, primary buttons, focus and the closing "Get involved" band. Charcoal 2 is the featured-video band; Charcoal 1 is the single-video player band and the footer; Light Grey 2 is the categories band and card hover; Light Grey 1 draws every rule and card border. Charcoal 4 is for secondary text (dates, counts, labels). Purple 1 is only for visited links in post content; Pomegranate 1 only for errors. Never name a color slug `text`.
+Use the WordPress.org preset slugs exactly (charcoal-1, blueberry-1, light-grey-1…), so CSS variables match the .org sites. White is the default ground and charcoal-1 the body text. Blueberry-1 identifies links, primary buttons, focus and the closing Get involved band; deep-blueberry is button hover; blueberry-2 is links on dark. Charcoal-2 identifies the featured-video band; charcoal-1 the single-video player band and the footer; light-grey-2 the categories band, search fields and card hover. Light-grey-1 draws every rule and card border. Charcoal-4 is secondary text (dates, counts, labels); charcoal-5 form borders. Purple-1 only for visited links in post content; pomegrade-1 only for errors. All values come from theme.json presets. The current slugs map as coal → charcoal-1, coal-2 → charcoal-2, blue → blueberry-1, gray → light-grey-2, ink → charcoal-1; orange is dropped. Never use text as a color slug: its generated class collides with core's generic has-text-color class.
 
 ## Typography
-Bundled local WOFF2 files only (Inter 100–900, EB Garamond 400–800); no font CDN. Headings use EB Garamond 400 with balanced wrapping; body uses Inter 16px/1.875 with pretty wrapping. Font size slugs follow the parent theme: `extra-small` 12, `small` 14, `normal` 16, `large` 20, `extra-large` 24, `huge` 32, `heading-6` 22 … `heading-1` 70, `heading-cta` 120 (px), with smaller values below 600px. Video titles on cards are Inter 600, not serif. Metadata, dates and terms use `small`.
+Bundle the existing Inter and EB Garamond WOFF2 files; local fonts only, no CDN. Serif headings (EB Garamond 400, balanced wrapping); sans-serif body, video titles and metadata (Inter, pretty wrapping). Body 16px with line height 1.875. Use the parent font size slugs: extra-small 12px, small 14px, normal 16px, large 20px, extra-large 24px, huge 32px, heading-6 22px, heading-5 26px, heading-4 30px, heading-3 36px, heading-2 50px, heading-1 70px, heading-cta 120px; below 600px heading-1 is 52px, heading-2 30px, heading-3 26px, heading-4 22px. Video titles on cards are Inter 600 at normal size, not serif and not marketing-sized. Metadata, dates and terms use small.
 
 ## Layout
-Content width 680px, wide width 1160px, block gap 20px, horizontal edge spacing 80px (20px below 890px). Breakpoints: 600, 782, 960, 1080px.
+Content width 680px; wide width 1160px; block gap 20px. Edge spacing (edge-space) 80px, 20px below 890px. Spacing slugs follow the parent: 10 = 10px, 20 = 20px, 30 = 30px, 40 = clamp(30px, 5vw, 50px), 50 = clamp(40px, calc(5vw + 10px), 60px), 60 = clamp(20px, calc(10vw - 40px), 80px), 70 = 100px, 80 = clamp(80px, calc(6.67vw + 40px), 120px). Breakpoints: 600, 782, 960, 1080px. Homepage layout map, in order:
+- Header: white local navigation bar with a 1px light-grey-1 bottom rule, sticky. Left: the WordPress W mark (28px, current color) then "WordPress.tv", both linking home. Right: existing navigation links, a light-grey-2 search field and a small Submit a video button. Collapses into a menu below 1080px.
+- Hero: white wide two-column composition; display h1 "Welcome to WordPress.tv", short intro and two buttons (fill and outline) on the left, the latest video player and a small caption on the right. Stacks below 782px.
+- Featured: charcoal-2 full-width band, white heading with an "All featured videos →" link, four videos tagged featured as cards on the wide grid; no fixed term IDs or offset.
+- Recent videos: white band, inherited main query, four-column video cards and .org pagination; eight posts per page controlled by existing query logic.
+- Video categories: light-grey-2 band, all nonempty top-level categories as compact cards with counts, four columns.
+- Recent events: white band, twelve nonempty event terms by descending term ID as cards with video counts, three columns; not a popularity ranking.
+- Get involved: blueberry-1 full-width band, large Inter light "Get involved →" link to /get-involved/ and one sentence presenting WordPress.tv as a volunteer, collaborative project. Not a call for speakers.
+- Footer: charcoal-1 band, four columns of links, white-opacity-15 rule, brand and CC BY-SA notice.
+At narrow widths, grids reduce to two columns below 960px and one below 600px. All bands remain square at the viewport edge. Do not add Popular videos or invent directory routes.
 
-Header (every page): white local navigation bar with a 1px Light Grey 1 bottom rule, sticky. Left: the WordPress W mark (28px, current color) followed by "WordPress.tv", both linking home. Right: existing navigation links, a Light Grey 2 search field and a small "Submit a video" button. Below 1080px the links, search and button collapse into a menu.
+Single-video layout map:
+- Header: reuse the shared header unchanged.
+- Introduction: on white, small core breadcrumbs in charcoal-4, one h1 post title at heading-2, linked speaker terms underneath at large size.
+- Player: wide post content on a full-width charcoal-1 band that contains only the player, rendering the stored shortcode or VideoPress block without rewriting it; no second player. No band padding on phones, so the video runs edge to edge.
+- Reactions: native Jetpack Like and Sharing blocks on white below the band, aligned with the player edges; no replacement controls.
+- Description/details: two-column display from 1080px. Metadata and Creative Commons license in the left column, complete stored excerpt with the presentation slides link in the right column at reading width. Stacks below 1080px with the description first.
+- Discussion: comments heading in the left column; core comments, pagination and reply form in the right column. Honor existing comment settings.
+- Navigation: previous/next post links with a top light-grey-1 rule, label in small charcoal-4 and title in blueberry-1.
+- Footer: reuse the shared footer unchanged.
+Metadata and downloads use small Inter text in label/value rows: 1:2 columns, labels in charcoal-4, a light-grey-1 rule between rows. Keep multiple term links inline in the value column and allow long values to wrap there, including on mobile. Unavailable multisite data (downloads, subtitles) is omitted rather than fabricated.
 
-Front page, in order:
-- Hero: wide two columns, `h1` "Welcome to WordPress.tv" with a short intro and two buttons on the left, the latest video player on the right (on white). Stacks below 782px.
-- Featured: Charcoal 2 full-width band, four featured videos as cards with 15% white borders.
-- Recent videos: white, inherited main query, four-column cards, .org pagination (centered, middots). Eight posts per page are controlled by existing query logic.
-- Video categories: Light Grey 2 band, compact cards in four columns with counts.
-- Recent events: white, twelve event cards in three columns with video counts and a "See all →" link.
-- Get involved: Blueberry 1 band, large Inter light "Get involved →" link to `/get-involved/` and one sentence presenting WordPress.tv as a volunteer project. Not a call for speakers.
-- Footer.
-
-Single video, in order:
-- Header.
-- Breadcrumbs (`small`, Charcoal 4), title `h1` at `heading-2`, linked speakers, all on white.
-- Player on a full-width Charcoal 1 band that contains only the player (no band padding on phones).
-- Jetpack Like and Sharing on white below the band, aligned with the player edges.
-- Two-column display: metadata on the left (label/value rows with grey rules: published, event, speakers, tags, language, producer, downloads, subtitles, license), full description and slides link on the right at reading width. Stacks below 1080px with the description first.
-- Comments: heading on the left, comments and form on the right.
-- Previous/next links with a top rule.
-- Footer.
-
-Archives: two-column header (query title left, description and filters right), four-column video cards, pagination. Pages: reading column at 680px.
+Archives: two-column header (query title at heading-2 on the left, description and filters on the right), four-column video cards and pagination. Pages: h1 and content in the 680px reading column.
 
 ## Elevation & Depth
-No shadows or gradients. Structure comes from 1px rules, card borders and full-width dark bands.
+No shadows or gradients. Thin rules, card borders and full-width dark bands provide structure.
 
 ## Shapes
-2px radius for buttons, inputs, cards and thumbnails; avatars are round. Full-width bands are square. Thumbnails are 16:9.
+2px radius for buttons, inputs, cards and video thumbnails; avatars are round. Full-width bands stay square. Thumbnails are 16:9 and flush with the top of their card.
 
 ## Components
-Recreate .org components with core blocks and same-named block styles: cards grid (`is-style-cards-grid`), two-column display (`is-style-two-column-display`), buttons (`fill`, `outline`, `fill-on-dark`, `outline-on-dark`, `text`, `toggle`), search, query pagination, post navigation and heading with arrow (`is-style-with-arrow`). WordPress.tv has no access to wporg-mu-plugins: do not use `wporg/*` blocks. Links are underlined and lose the underline on hover; title links work the other way round. Wrap arrows (→) in `aria-hidden` spans. Templates reference hidden PHP theme patterns. Resolve taxonomy slugs at render time.
+Use core Query, Post Template, Terms Query and Term Template blocks. Templates reference hidden PHP theme patterns. The latest-video query is independent; recent videos inherit the main query unchanged. Resolve theme-owned taxonomy slugs at render time. Register .org block styles under the same names: cards grid (1px light-grey-1 border, 2px radius, 20px padding, light-grey-2 hover, linked title in blueberry-1), two-column display, buttons (fill, outline, fill-on-dark, outline-on-dark, text, toggle; Inter 600, 14px 32px padding, small 7px 12px), search, pagination (centered, middots between previous, numbers and next), post navigation and heading with arrow. Retire the wptv3 video-frame and event-tile styles. Do not use wporg/* blocks. Links are underlined and lose the underline on hover; title links work the other way round. Wrap arrows (→) in aria-hidden spans.
 
 ## Do's and Don'ts
-Do preserve existing routes, page sizes and content. Do keep logic in `inc/`. Do use the .org preset slugs. Do not copy the WordPress.org global header or footer. Do not edit the reference themes, hardcode IDs, invent event dates or missing video data, add RTL stylesheets (the site is English only), or use Additional CSS or global style database copies.
+Do preserve existing routes, page sizes and content. Do keep logic in inc/. Do use the .org preset slugs. Do not copy the WordPress.org global header or footer. Do not edit reference themes, hardcode IDs, invent event dates or missing video data, add RTL stylesheets (the site is English only), or use Additional CSS/global style database copies.
 
 ## Imagery
-Real VideoPress posters and players only, never synthetic conference or speaker photos. The bundled placeholder is an explicit fallback. No cosmetic filters.
+Use actual VideoPress imagery and players, never synthetic conference or speaker photos. The bundled legacy placeholder is an explicit local fallback, not a replacement for production thumbnails. No cosmetic filters.
 
 ## Motion
-No decorative animation. Hover changes color and underline only. Respect reduced-motion preferences.
+No new animation. Hover changes color and underline only. Respect reduced-motion preferences.
 
 ## Voice
 US English in code and interface. Community-focused, factual, concise; no promotional claims. Present WordPress.tv as a collaborative, volunteer-run project. Preserve editable institutional page content separately from the design.
