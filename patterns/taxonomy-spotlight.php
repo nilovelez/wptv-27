@@ -13,11 +13,11 @@
 <div class="wp-block-columns alignwide wptv-taxonomy__columns"><!-- wp:column -->
 <div class="wp-block-column"><!-- wp:query {"query":{"inherit":true}} -->
 <div class="wp-block-query"><!-- wp:post-template {"className":"wptv-taxonomy__lead"} -->
-<!-- wp:group {"className":"is-style-video-frame","backgroundColor":"coal-2","textColor":"white","layout":{"type":"default"}} -->
-<div class="wp-block-group is-style-video-frame has-white-color has-coal-2-background-color has-text-color has-background"><!-- wp:post-content {"layout":{"type":"default"}} /-->
-<!-- wp:group {"className":"wptv-home__lead-caption","layout":{"type":"default"}} -->
-<div class="wp-block-group wptv-home__lead-caption"><!-- wp:post-title {"level":2,"isLink":true,"fontSize":"medium"} /-->
-<!-- wp:post-terms {"term":"event","className":"wptv-taxonomy__category-events"} /--></div>
+<!-- wp:group {"layout":{"type":"default"}} -->
+<div class="wp-block-group"><!-- wp:post-content {"layout":{"type":"default"}} /-->
+<!-- wp:group {"className":"wptv-taxonomy__caption","backgroundColor":"charcoal-1","textColor":"white","layout":{"type":"default"}} -->
+<div class="wp-block-group wptv-taxonomy__caption has-white-color has-charcoal-1-background-color has-text-color has-background"><!-- wp:post-terms {"term":"speakers","suffix":":","className":"wptv-card__speakers","fontSize":"small"} /-->
+<!-- wp:post-title {"level":2,"isLink":true,"fontSize":"large"} /--></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 <!-- /wp:post-template --></div>
@@ -26,10 +26,10 @@
 <!-- wp:column -->
 <div class="wp-block-column"><!-- wp:query {"query":{"inherit":true}} -->
 <div class="wp-block-query"><!-- wp:post-template {"className":"wptv-taxonomy__secondary"} -->
-<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"16/9","className":"is-style-video-frame"} /-->
+<!-- wp:post-featured-image {"aspectRatio":"16/9","className":"wptv-card__thumbnail"} /-->
 <!-- wp:group {"layout":{"type":"default"}} -->
-<div class="wp-block-group"><!-- wp:post-title {"level":2,"isLink":true,"fontSize":"small"} /-->
-<!-- wp:post-terms {"term":"event","className":"wptv-taxonomy__category-events"} /--></div>
+<div class="wp-block-group"><!-- wp:post-terms {"term":"speakers","suffix":":","className":"wptv-card__speakers","fontSize":"small"} /-->
+<!-- wp:post-title {"level":2,"isLink":true,"fontSize":"normal"} /--></div>
 <!-- /wp:group -->
 <!-- /wp:post-template --></div>
 <!-- /wp:query --></div>

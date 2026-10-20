@@ -56,3 +56,55 @@ function resolve_terms( $query, $block ) {
 	return $query;
 }
 add_filter( 'query_loop_block_query_vars', __NAMESPACE__ . '\resolve_terms', 10, 2 );
+
+/**
+ * Excludes structural categories only while core renders the homepage cards.
+ *
+ * Core Term Template does not forward an exclude argument from termQuery.
+ * Delegate to its registered renderer with a temporary, slug-resolved filter.
+ *
+ * @param array  $args Block registration arguments.
+ * @param string $name Block name.
+ * @return array
+ */
+function register_category_card_renderer( $args, $name ) {
+	if ( 'core/term-template' !== $name || ! is_callable( $args['render_callback'] ?? null ) ) {
+		return $args;
+	}
+
+	$render = $args['render_callback'];
+	$args['render_callback'] = static function ( $attributes, $content, $block ) use ( $render ) {
+		$classes = preg_split( '/\s+/', $attributes['className'] ?? '' );
+		$query   = $block->context['termQuery'] ?? array();
+		if ( ! in_array( 'wptv-home__categories-grid', $classes, true )
+			|| 'category' !== ( $query['taxonomy'] ?? '' ) || ! empty( $query['inherit'] ) ) {
+			return call_user_func( $render, $attributes, $content, $block );
+		}
+
+		$excluded = array();
+		foreach ( array( 'year', 'location' ) as $slug ) {
+			$term = get_term_by( 'slug', $slug, 'category' );
+			if ( $term instanceof \WP_Term ) {
+				$excluded[] = $term->term_id;
+			}
+		}
+		$exclude = static function ( $term_args, $taxonomies ) use ( $excluded ) {
+			if ( array( 'category' ) === (array) $taxonomies ) {
+				$term_args['exclude'] = array_unique( array_merge(
+					wp_parse_id_list( $term_args['exclude'] ?? array() ),
+					$excluded
+				) );
+			}
+			return $term_args;
+		};
+
+		add_filter( 'get_terms_args', $exclude, 10, 2 );
+		try {
+			return call_user_func( $render, $attributes, $content, $block );
+		} finally {
+			remove_filter( 'get_terms_args', $exclude, 10 );
+		}
+	};
+	return $args;
+}
+add_filter( 'register_block_type_args', __NAMESPACE__ . '\register_category_card_renderer', 10, 2 );

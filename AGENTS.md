@@ -2,7 +2,7 @@
 
 Instructions for AI coding agents (and humans) working on **wptv-27**, the new block theme for [WordPress.tv](https://wordpress.tv/).
 
-Read this file first, then the current [session handoff](docs/handoff.md) and the documents in [`docs/`](docs/) that are relevant to your task. The owner confirmed Atomic thumbnails, but the last route regression is not green; do not mistake that confirmation for completed Phase 1c or production readiness. The owner accepted the current category/event structure for this version and prioritized design before further functional work. The design handoff has arrived: implement the WordPress.org visual language from the site-root DESIGN.md, [docs/design.md](docs/design.md) and [docs/design-handoff.md](docs/design-handoff.md), never restoring the historical 0.3.4 snapshot. Do not claim official Design team approval has already been obtained.
+Read this file first, then the current [session handoff](docs/handoff.md) and the documents in [`docs/`](docs/) that are relevant to your task. The owner confirmed Atomic thumbnails, but the last route regression is not green; do not mistake that confirmation for completed Phase 1c or production readiness. The owner accepted the current category/event structure for this version and prioritized design before further functional work. The WordPress.org visual language and follow-up card/header/footer refinements are implemented in 0.4.0 and approved by the project owner for Git publication. Site upload/deployment is a separate owner action; the remaining functional and verification gaps are not closed by visual approval. Preserve that work and follow the site-root DESIGN.md, [docs/design.md](docs/design.md) and [docs/design-handoff.md](docs/design-handoff.md), including the owner-confirmed tablet adaptation; never restore the historical 0.3.4 snapshot. Do not claim official Design team approval has already been obtained.
 
 ## Project in one paragraph
 
@@ -44,7 +44,7 @@ WordPress.tv publishes community videos (WordCamps, meetups, workshops). It runs
 | [`tests/routes/README.md`](tests/routes/README.md) | Route regression test: how to run it against the `wptv2` baseline |
 | [`docs/wpcom-constraints.md`](docs/wpcom-constraints.md) | WordPress.com platform limits, wpcom-only functions, available plugins |
 | [`docs/design.md`](docs/design.md) | Approved design direction: WordPress.org visual language, tokens, components, page layouts, sources |
-| [`docs/design-handoff.md`](docs/design-handoff.md) | Design implementation order, file list, verification criteria and pending owner decisions |
+| [`docs/design-handoff.md`](docs/design-handoff.md) | Design implementation order, file list, verification criteria and confirmed owner decisions |
 | [`docs/mockups/`](docs/mockups/) | Static HTML reference mockups of the front page and single video |
 | [`docs/decisions.md`](docs/decisions.md) | Decision log (what was decided, when and why) |
 | [`docs/open-questions.md`](docs/open-questions.md) | Questions waiting for an answer, and answered questions |

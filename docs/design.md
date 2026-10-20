@@ -4,9 +4,11 @@ WordPress.tv is a WordPress.org community site. wptv-27 adopts the visual langua
 
 ## Status
 
+Owner follow-up after the local 0.4.0 review: exclude `year` and `location` by slug only from the homepage category cards; retain all other cards and their native ordering. Keep the categories and archives themselves unchanged. Single-video titles use the full introduction width, and the footer site name uses Inter like the header, retaining its existing size and weight. These refinements supersede conflicting earlier mockup details.
+
 - **Owner-approved direction.** The project owner reviewed the proposal and the mockups in [`mockups/`](mockups/) and approved them, including the header, player band and front-page order decisions below.
 - **Not official Design team approval.** This is research by the project, based on public WordPress.org code and guidelines. The WordPress.org Design team has not reviewed or endorsed it.
-- **Not implemented yet.** Theme version 0.3.4 still uses the interim wptv3 tokens. Its pre-design site-root `DESIGN.md` is preserved in [design-baseline-0.3.4.md](design-baseline-0.3.4.md) as a historical snapshot; do not edit it or restore it over this direction.
+- **Implemented and owner-approved in 0.4.0.** Theme tokens, chrome, card behavior and page layouts follow this direction, including the owner's subsequent header/footer refinements. The owner requested Git publication of all theme changes. Implementation and verification are recorded in [handoff.md](handoff.md); Git publication is not site synchronization or deployment. The pre-design site-root `DESIGN.md` is preserved in [design-baseline-0.3.4.md](design-baseline-0.3.4.md) as a historical snapshot; do not edit it or restore it over this direction.
 - **Structure is kept.** The functional structure accepted for this version (templates, queries, the category/event spotlight split, page sizes, pagination, routes and editorial flow) does not change. The redesign changes presentation, plus three owner-requested front-page changes listed in [What changes](#what-stays-and-what-changes).
 
 ## Sources
@@ -168,7 +170,7 @@ Typical use: `60` for vertical padding of full-width sections, `40` before an h2
 Breakpoints (the `@wordpress/base-styles` values used by the parent, plus its 890px edge-spacing step): 600px, 782px, 890px, 960px, 1080px.
 
 - Video and term grids: 4 columns (3 for events) on wide screens, 2 below 960px, 1 below 600px.
-- Two-column layouts (hero, spotlight, single details): stacked below 782px (hero, spotlight) or 1080px (two-column display).
+- Two-column layouts (hero, spotlight, single details): stacked below 782px (hero, spotlight) or 1080px (two-column display). **(WPTV, owner-confirmed during implementation):** at 782–1079px, the hero uses equal columns and a fluid 50–59px title; from 1080px it retains 5:7 columns and 70px. Below 600px the title remains 52px. Do not split the WordPress.tv name to preserve the desktop size.
 - Header links collapse into a menu below 1080px.
 - No horizontal scrolling at 320px width.
 
@@ -180,15 +182,16 @@ WordPress.org sites have a global header (`wporg/global-header`) and footer (`wp
 
 - Same on every page. White background, 1px `light-grey-1` bottom rule, `charcoal-1` text, min height 57px, horizontal padding `edge-space`, sticky from 890px.
 - Left: the WordPress "W" mark (28px, `currentColor`, the core `w-logo` artwork, `aria-hidden`) followed by the site title "WordPress.tv" in `small` weight 600. Both link to the home page. With no global header above, the mark ties the site to WordPress.org.
-- Right: Navigation (existing links: WordCamp.tv, How-To, Learn WordPress, Get Involved, About) in `small`, a Search block with the light style, and "Submit a video" as a small fill button.
+- Right: Navigation (existing links: WordCamp.tv, How-To, Learn WordPress, Get Involved) in `small`, a Search block with the light style, and "Submit a video" as a small fill button.
 - Below 1080px: the title stays on the left with a "Menu" toggle on the right; the menu opens below with links as rows separated by `light-grey-1` rules, a full-width search field and the button.
 - Do not copy the WordPress.org global header (its menu, "Get WordPress" button or layout).
 
 ### Footer
 
 - `charcoal-1` full-width band, white text in `small`, padding `50` top and `30` bottom.
-- Four link columns (WordPress.tv, Watch, Community, Legal or the existing equivalents) with Inter 600 `small` headings, then a `white-opacity-15` rule and a bottom row with the site name (EB Garamond `large`) and the CC BY-SA badge and notice in `charcoal-5`.
-- Two columns below 782px.
+- Three columns in a 2:1:1 ratio (50%/25%/25% after gutters): text-only WordPress.TV Site Title (Inter 600 `large`) and the existing community description; Contribute (Submit a video, Get involved, Make WordPress); About (About WordPress.tv, Powered by VideoPress linking to https://videopress.com/, Privacy). Link-column headings remain Inter 600 `small`. No Watch section or separate WordPress column. Add decorative aria-hidden ↗ indicators to Make WordPress, Powered by VideoPress and Privacy without changing their destinations or targets.
+- Below a `white-opacity-15` rule, show the owner's supplied WordPress.org wordmark linking to https://wordpress.org/, followed by "The WordPress® trademark is the intellectual property of the WordPress Foundation." in `small` `charcoal-5` text. The local white SVG is an editable Image block with WordPress.org alt text, 27px high with proportional automatic width. The paragraphs directly following the footer Site Title and the subfooter wordmark have zero top margin; other spacing is unchanged. This owner-requested subfooter is a scoped exception to not copying the global footer, not an official design or trademark approval. No Creative Commons badge or license notice in the footer; retain them in each video's details.
+- Below 782px, place the brand/description across the full width, followed by the two link columns.
 
 ## Components
 
@@ -224,8 +227,8 @@ Register the parent style names: `outline`, `fill-on-dark`, `outline-on-dark`, `
 Based on the parent's `is-style-cards-grid` (Post Template or grid Group):
 
 - Each card: 1px `light-grey-1` border, 2px radius, Charcoal 1 text; equal row heights; one column below 600px.
-- Linked cards: the whole card is the link target (title link stretched over the card); the title is Blueberry 1; hover sets a `light-grey-2` background and underlines the title.
-- Video card **(WPTV)**: 16:9 thumbnail flush with the top edge, then speakers (`small`, Charcoal 4, each a link), title (Inter 600 `normal`), and date (`extra-small`, Charcoal 4) when shown. Padding `20` below the image.
+- Linked cards: category/event term cards retain their native stretched title link. Video cards have exactly one native link, on the title; frontend JavaScript expands pointer activation to the card using that URL, without overlays, extra roles or tab stops. Preserve text selection, controls, modified/middle clicks and keyboard use of the native title. Without JavaScript, the title still navigates. Hover retains the existing card background.
+- Video card **(WPTV)**: unlinked decorative 16:9 thumbnail flush with the top edge, then all speakers (`small`, Charcoal 4, plain text separated by commas with one trailing colon), linked title (Inter 600 `normal`), and unlinked date (`extra-small`, Charcoal 4), aligned at the bottom of each row. Omit absent speakers without an author fallback. Featured retains its existing undated presentation. Padding `20` below the image.
 - Term card **(WPTV)**: title in EB Garamond 22px (events) or Inter 600 `normal` (compact category cards), count in `small` Charcoal 4.
 - On dark bands: transparent background, `white-opacity-15` borders, white titles, Charcoal 5 secondary text, Charcoal 1 hover.
 - Replaces the 0.3.4 `video-frame` and `event-tile` styles (8px frames, tinted tiles).
@@ -313,11 +316,11 @@ Not allowed for text or required component boundaries: `charcoal-5` on white (2.
 Order changed by the owner (recent videos before categories and events; "Get involved" added).
 
 1. Header.
-2. **Hero:** white, wide two columns (5:7). Left: h1 "Welcome to WordPress.tv" (`heading-1`), intro in `large`, two buttons: fill "Browse WordCamp talks" (`/category/wordcamptv/`) and outline "Submit a video". Right: the latest video player on white with a `small` caption (label, linked title, speakers). Stacks below 782px.
+2. **Hero:** white, wide two columns (5:7 from 1080px; 1:1 with a smaller 50–59px heading at 782–1079px, as confirmed by the owner). Left: h1 "Welcome to WordPress.tv" (`heading-1`), intro in `large`, two buttons: fill "Browse WordCamp talks" (`/category/wordcamptv/`) and outline "Submit a video". Right: the latest video player on white with a `small` caption (label, linked title, speakers). Stacks below 782px.
 3. **Featured videos:** `charcoal-2` band, h2 with "All featured videos →" (tag archive), four featured cards on dark.
 4. **Recent videos:** white, h2, inherited main query, four-column video cards with dates, pagination. Eight posts per page, controlled by existing query logic.
 5. **Video categories:** `light-grey-2` band, h2, compact term cards in four columns with counts.
-6. **Recent events:** white, h2 with "See all →", twelve event cards in three columns with video counts.
+6. **Recent events:** white, h2 with "All WordCamp Videos →" linking to `/category/wordcamptv/`, twelve event cards in three columns with video counts. The owner confirmed this temporary label and destination; they may change later.
 7. **Get involved:** Blueberry 1 call-to-action band linking to `/get-involved/`, one sentence presenting WordPress.tv as a volunteer, collaborative project. Not a call for speakers.
 8. Footer.
 
@@ -326,7 +329,7 @@ Mockup: [`mockups/front-page.html`](mockups/front-page.html).
 ### Single video
 
 1. Header.
-2. **Introduction (white):** breadcrumbs, h1 (`heading-2`, limited to about 22ch so long titles wrap into a readable block), linked speakers in `large`.
+2. **Introduction (white):** breadcrumbs, h1 (`heading-2`, using the full available wide-grid introduction width without a 22ch cap), linked speakers in `large`.
 3. **Player band:** full-width `charcoal-1`, player only, wide width.
 4. **Reactions (white):** Jetpack Like and Sharing below the band, aligned with the player edges.
 5. **Details:** two-column display. Left: metadata rows (published, event, speakers, tags, language, producer, downloads, subtitles) and the CC BY-SA license. Right: full description with the slides link, `large` text. Stacks below 1080px with the description first.
@@ -340,7 +343,7 @@ Mockup: [`mockups/single-video.html`](mockups/single-video.html) (downloads and 
 
 1. Header.
 2. **Title band:** full-width `light-grey-2` band with breadcrumbs and the term title h1 (`heading-2`), left-aligned on the wide grid. Categories show the term description in `large` below the title at reading width; events keep omitting it.
-3. **Spotlight** (page one, more than six results; unchanged rules): white section, two columns (larger left) stacked below 782px. Lead: the player with a `charcoal-1` caption block below it (title in white Inter 600 `large`, event terms in Blueberry 2), 2px radius on the caption, no 8px frame. Secondary list: five rows, each a 16:9 thumbnail (about 40% width) and the title (Inter 600 `normal`) with event terms in `small` Charcoal 4, separated by `light-grey-1` rules.
+3. **Spotlight** (page one, more than six results; unchanged rules): white section, two columns (larger left) stacked below 782px. Lead: the interactive player with a `charcoal-1` caption block below it (plain speakers in `small` Blueberry 2, then linked title in white Inter 600 `large`), 2px radius on the caption, no 8px frame. Only the caption participates in expanded card navigation, never the player. Secondary list: five rows, each an unlinked 16:9 thumbnail (about 40% width), plain speakers in `small` Charcoal 4, then the linked title (Inter 600 `normal`), separated by `light-grey-1` rules. Both caption sizes show all speakers separated by commas followed by a colon, omit absent speakers and never display event terms. No dates in the spotlight.
 4. **Remaining videos:** cards grid in four columns, pagination.
 5. Footer.
 
@@ -384,6 +387,8 @@ The special WordCampTV featured/event-menu landing page and the forms/admin scre
 
 Templates reference hidden PHP theme patterns. Design is maintained in code and cannot be changed through the Site Editor, user global styles or Additional CSS. Institutional page content stays editable. Keep PHP logic in `inc/`. Bump the theme version when adding or removing pattern files so core refreshes its cached pattern inventory.
 
-## Pending decisions
+## Owner follow-up confirmations
 
-See [design-handoff.md](design-handoff.md#decisions-needing-owner-confirmation).
+The owner confirmed the official W mark in `charcoal-1`, `charcoal-4` borders on ordinary inputs, and borderless search fields on `light-grey-2`. Keep visible focus and verify accessibility rather than treating preference as proof of conformance. "All featured videos →" links to the `featured` tag archive; Recent events uses "All WordCamp Videos →" linking to `/category/wordcamptv/` for now. Decorative arrows remain hidden from assistive technology.
+
+No Design team review is requested for now. Owner approval is not official endorsement or evidence of separate trademark permission. Keep the existing title-band structure; WordCampTV and forms/admin remain outside this design handoff's defined layouts. See [design-handoff.md](design-handoff.md#decisions-needing-owner-confirmation). These follow-up decisions take precedence over differing mockup labels.

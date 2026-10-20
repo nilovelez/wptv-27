@@ -15,6 +15,55 @@ Template:
 
 ---
 
+## 2026-10-20: Owner approval and Git publication of 0.4.0
+
+- **Decision:** the owner approved the completed visual implementation and all subsequent refinements and requested publication of all accumulated theme changes to GitHub. Keep version 0.4.0 for this first publication of the implementation. Commit/push to `origin/trunk`; do not synchronize or deploy the site. The owner will handle the upload.
+- **Scope:** include implementation, local assets, tests and documentation. Footer refinements now specify 2:1:1 desktop columns, a full-width brand above two equal mobile link columns, a 27px-high WordPress.org wordmark, decorative external-link arrows and zero top margin on the two brand paragraphs. About is removed only from main navigation.
+- **Limits:** visual approval and Git publication do not close the four known feed mismatches, real multisite/accessibility verification or unfinished functional work. Existing scoped verification remains the evidence; no broad suite or full regression is repeated merely for publishing.
+- **Status:** approved by the project owner for Git publication, not official Design team approval or deployment authorization.
+
+## 2026-10-20: Three-column footer and WordPress.org subfooter
+
+- **Decision:** use the owner's exact three-column link structure: text-only WordPress.TV and description, Contribute, About. Remove Watch and the separate WordPress column. Use the supplied WordPress.org wordmark and existing trademark notice in the subfooter, not a new copyright claim.
+- **Implementation:** core blocks throughout; the supplied SVG is a local white image linked to WordPress.org. Below 782px the brand spans the width above the two link columns. This is a scoped owner-requested exception to the previous global-footer restriction, not trademark or official design approval.
+- **Verification:** 20 valid blocks; footer-only checks at 320/375/1440px verify columns, exact links, logo loading, notice and no overflow. Desktop/mobile screenshots reviewed. No broad suites, route tests, commit, push or sync.
+- **Status:** implemented locally; supersedes the earlier four-column footer and text-brand subfooter.
+
+## 2026-10-20: Video card fields and progressive pointer activation
+
+- **Decision:** spotlight captions show all speakers (comma-separated, trailing colon) then title, never event terms. Ordinary video grids show thumbnail, speakers, title and date; Featured retains its existing undated presentation. Omit absent speakers without an author fallback. Only titles are native links.
+- **Implementation:** core blocks remain editable. Marked Post Terms output drops anchor tags because core has no unlinked-display option; other term blocks are untouched. Unlinked thumbnails retain empty alt text. Frontend-only `assets/js/cards.js` activates each card using its title URL, preserving selection, controls, native keyboard links, modified/middle clicks and the no-JavaScript fallback. Cancel middle mousedown on noninteractive card areas to prevent browser autoscroll. The player is never part of the clickable caption. Term cards retain their existing treatment. Keep the dormant legacy category-event hook for compatibility; no partition/query code changed.
+- **Verification:** the three edited patterns validate (59/12/17 blocks); 48 partition checks and 88 focused card browser checks pass, plus read-only zero/one/multiple-speaker and unmarked-block checks. The archive caption assertion intentionally follows the new owner-approved fields. Desktop/mobile visual checks cover home and category; browser checks also cover events and page two. No broad browser suite or full route run, baseline changes, new dependencies, commit, push or sync.
+- **Status:** implemented locally after the owner's confirmations. Supersedes earlier linked-speaker/stretched-video-link and event-caption presentation decisions, not archive partition behavior.
+
+## 2026-10-20: Owner visual-review refinements
+
+- **Decision:** exclude the structural `year` and `location` categories only from the homepage category cards; let single-video titles use the full introduction width instead of 22ch; use Inter for the footer site name while retaining its size and weight.
+- **Implementation:** CSS changes are scoped to the single introduction and footer brand. Core Term Template does not forward an exclusion argument, so `inc/block-queries.php` delegates to the original registered renderer for the marked homepage category template with a temporary `get_terms_args` filter. Resolve excluded IDs by slug and remove the filter in `finally`, including on exceptions. Other term templates, ordinary category queries and archive routes remain unchanged. No block markup or stored content changes.
+- **Verification:** the original 165 PHP assertions pass again, plus eight new read-only category-card checks (exclusion, native ordering, ordinary/unmarked query isolation and exception cleanup). The browser suite now passes 196 assertions, adding footer font, category omission and full-width single-title checks. Desktop/mobile screenshots reviewed; the sample long title goes from three desktop lines to two without reducing its size. PHP lint and whitespace checks pass.
+- **Limits:** no new full route run for these scoped refinements; `design-0.4.0` remains the latest milestone run, with four unresolved feed hashes. No baseline/allowance changes, commit, push, sync or deployment.
+- **Status:** implemented locally at the owner's request.
+
+## 2026-10-20: Local WordPress.org visual implementation (0.4.0)
+
+- **Decision:** implement the owner-approved direction in the existing standalone theme: .org preset slugs and values, local Inter/EB Garamond, 680px/1160px widths, white W-mark navigation, charcoal footer, video/term cards, reordered homepage and Get involved band, single player band, two-column details/comments, and recolored title bands. Remove migrated preset aliases and retire the interim frame/tile styles. No parent theme, plugins, content migration or build step.
+- **Tablet clarification:** the owner confirmed a combined adaptation: hero columns become 1:1 and the heading reduces to a fluid 50–59px at 782–1079px. Large screens retain 5:7 and 70px; the existing mobile size/stack remain. This prevents breaking the WordPress.tv name at intermediate widths. Current docs override the older static mockups here.
+- **Small scoped code:** core Navigation still owns its dialog, keyboard behavior and focus. A frontend-only MutationObserver mirrors its state into `aria-expanded` and `aria-controls`; it does not implement another menu. A featured-image render filter only affects `wptv-card__thumbnail`: redundant thumbnail links leave the tab order/accessibility tree and their images get empty alt text; the adjacent title supplies the accessible card link. Editorial images are untouched. A stretched Site Title link includes the decorative W without duplicate anchors.
+- **Style detail:** button states remain declared in `theme.json`. Variation-scoped nested CSS there repeats the state colors after variation defaults because WordPress 7.1 emits those defaults after the zero-specificity element state rules; browser inspection caught the resulting outline-hover override. This avoids a separate stylesheet or an editor/frontend mismatch.
+- **Preservation:** existing template inventory, inherited/independent query definitions, taxonomy queries, spotlight markers/split, ordering, page sizes, route code, feeds, endpoint handlers and editorial workflow stay unchanged. No edits to reference themes, historical design snapshot, route baseline, inventory or expected allowances.
+- **Verification:** all 165 existing checks pass unchanged. Changed templates and evaluated PHP patterns pass editor validation without serialization fixes. The new read-only browser script passes 188 assertions: ten homepage widths (320–1440px), tablet ratios/type, local fonts, button hover, menu/search/focus and thumbnail semantics, plus 15 paths at 375px/1440px including shortcode/block singles, listings/page two, empty search, a page and 404. Desktop/mobile screenshots and DOM inspection complement those assertions; these are not a complete WCAG audit or a production playback test.
+- **Regression:** `design-0.4.0` requests all 145 fixed URLs. It has **zero recorded field differences from `phase-1c-integrations`**, no PHP notices, and the same four unaccepted feed hashes plus four expected API hashes against the untouched wptv2 baseline. The suite is still **not green**. No new routing differences were found; existing release blockers remain.
+- **Affects:** presentation files, `inc/setup.php`, `assets/js/navigation.js`, a browser test, screenshot, live design docs and handoff. Version 0.4.0 is local and uncommitted at this closeout; no push, remote sync or deployment.
+- **Status:** implemented locally, ready for owner visual review; WordCampTV/forms/admin parity, feed review and actual multisite verification remain open.
+
+## Owner follow-up: design details confirmed
+
+- **Decision:** use the official W mark in `charcoal-1`; keep `charcoal-4` borders on ordinary fields and borderless search fields on `light-grey-2`. "All featured videos →" links to the `featured` tag archive. Recent events uses the exact label "All WordCamp Videos →" linking to `/category/wordcamptv/` temporarily; this may change later. No Design team review is requested for now.
+- **Reason:** the owner answered the handoff's confirmation questions before implementation.
+- **Limits:** owner approval does not establish trademark permission, official endorsement or accessibility conformance. Verify rendered focus and search usability. Existing title-band scope, functional gaps and regression warnings remain unchanged.
+- **Affects:** design specification, site-root `DESIGN.md`, handoff, plan and questions; documentation only. Mockups predate these confirmations and do not override the final events-link label.
+- **Status:** accepted; implementation pending.
+
 ## Design direction: WordPress.org visual language
 
 - **Decision:** replace the interim wptv3 look with the visual language of the current WordPress.org sites, as specified in [design.md](design.md) and the site-root `DESIGN.md`. Tokens copy the `wporg-parent-2021` slugs and values; components are rebuilt with core blocks because WordPress.tv has no access to `wporg-mu-plugins`. White local navigation bar with the WordPress W mark on every page; no copy of the .org global header. Single-video player on a full-width `charcoal-1` band holding only the player. Front page: recent videos before categories and events, two hero buttons and a closing "Get involved" band. Local fonts only; no RTL support for now.

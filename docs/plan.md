@@ -10,17 +10,31 @@ Replace the legacy classic theme `wptv2` on WordPress.tv with a new block theme,
 - replaces hand-written legacy code with WordPress core features, core blocks and small, well-scoped custom code,
 - keeps post/page content editable while the design is managed only in theme code (no Site Editor access),
 - moves video submission to VideoPress blocks and a front-end form that fills the real fields, so moderators only review and publish (Phase 2),
-- later adopts the WordPress.org visual language (Phase 2).
+- adopts the owner-approved WordPress.org visual language for the current design checkpoint, before further functional work.
 
 ## Current owner priority: design checkpoint
 
-The owner accepted the current category/event presentation for this version and deferred restructuring. Commit and publish the pending version 0.3.4 work to GitHub, then pause further functional implementation. Claude Code is researching WordPress/WordPress.org guidance and will update the design document and provide instructions; design work is next once that handoff arrives. Do not infer that official Design team guidance is already approved or implement a new look before reading the supplied handoff. WordCampTV/forms/admin gaps and the four residual feed hashes remain open. Git publication is not deployment or site synchronization. The site-root design baseline is archived in [design-baseline-0.3.4.md](design-baseline-0.3.4.md); it is historical, not a replacement for forthcoming guidance.
+The version 0.3.4 checkpoint is published to GitHub, and the design handoff is integrated in `d02cbfd`. The owner accepted the existing category/event structure and deferred restructuring. **The completed 0.4.0 visual implementation is owner-approved for Git publication**, ahead of further functional work. Follow [design.md](design.md), [design-handoff.md](design-handoff.md) and the site-root `DESIGN.md`. Follow-up confirmations: official W mark in `charcoal-1`, `charcoal-4` ordinary input borders, borderless light search, featured tag archive link, and "All WordCamp Videos →" linking temporarily to `/category/wordcamptv/`. No Design team review is requested for now; do not claim official endorsement. During implementation the owner also approved 1:1 hero columns and reduced 50–59px title text at 782–1079px, retaining 5:7/70px on large screens. The implementation and prior follow-up docs remain uncommitted/unpushed at this closeout. WordCampTV/forms/admin gaps and the four residual feed hashes remain open. Git publication is not deployment or site synchronization. [design-baseline-0.3.4.md](design-baseline-0.3.4.md) is historical, not a replacement for the approved direction.
 
 ## Session closeout
 
-See [handoff.md](handoff.md) for the resume point, verification limits and environment cleanup. The owner confirmed thumbnails on the synchronized Atomic test site. The current wptv3-based design remains approved; WordPress.org visual changes are on hold pending the owner's consultation with the Design team. Specific block-editor changes have not yet been supplied. Gutenberg was removed, three optional plugins were reported disabled and the sync estimate fell to about 183 MB. The latest regression is not green; no production readiness is implied.
+See [handoff.md](handoff.md) for the resume point, verification limits and environment cleanup. The owner confirmed thumbnails on the synchronized Atomic test site. The local implementation now uses the approved WordPress.org tokens, chrome and presentation, including the owner's tablet adaptation, without an official Design team review. Specific block-editor changes have not yet been supplied. Gutenberg was removed, three optional plugins were reported disabled and the sync estimate fell to about 183 MB. The latest regression is not green; no production readiness is implied.
 
 ## Latest implementation milestone
+
+**Git publication checkpoint:** the owner approved all visual refinements and requested commit/push of the accumulated 0.4.0 theme changes. This includes the code, assets, scoped tests and current documentation, not a site sync or deployment; the owner will handle the upload. No unrelated test suite is rerun merely for publishing. Existing functional and regression gaps remain open.
+
+**Footer follow-up:** implemented the owner's three-column footer and supplied WordPress.org wordmark/trademark subfooter. Core blocks validate; footer-only checks cover 320/375/1440px, with desktop/mobile visual review. No query, route, plugin or stored-content changes; no broad-suite rerun or publication.
+
+**Video-card follow-up:** implemented the owner-confirmed speaker/title spotlight captions, dated ordinary grids, unchanged undated Featured presentation and single native title links with progressive JavaScript card activation. Queries and the 1 + 5 + rest split are unchanged. Verification is scoped to the three patterns, 48 partition checks, 88 card browser checks and speaker rendering; the earlier broad-suite/full-route results below are historical, not rerun for this change. See the newest decision and site-root DESIGN.md.
+
+**Owner review refinements (local 0.4.0):** exclude `year`/`location` only from homepage category cards by slug, expand single titles to their full introduction width, and switch the footer brand to Inter. The original 165 tests plus eight new category-card tests pass (173 total); the extended browser suite passes 196 assertions. No block markup, post query, archive route or editorial changes. The full milestone run below was not repeated for these scoped refinements.
+
+Theme version **0.4.0 locally** implements the approved visual direction without changing stored content, template inventory, query settings, routes, pagination or editorial workflow. Native Navigation remains responsible for its dialog/focus; a small state-attribute supplement and a marked-thumbnail accessibility filter are scoped to presentation. All 165 existing checks pass unchanged, plus 188 browser assertions across ten homepage widths and 15 paths at mobile/desktop sizes. Changed templates/evaluated patterns pass editor validation; screenshots and DOM checks cover the main layouts. This is not a comprehensive WCAG conformance audit or production player verification.
+
+The full **145-URL `design-0.4.0`** run has zero recorded field differences from `phase-1c-integrations`, no PHP notices, and the same four unaccepted feed hashes plus four expected API hashes against the untouched baseline. It is still **not green**. Those measurements preceded the current owner-approved Git publication checkpoint. No site synchronization or deployment was performed by the agent.
+
+### Earlier 0.3.4 milestone (historical)
 
 Theme version **0.3.4** adds category/event title bands and the legacy first-page spotlight split through core blocks and in-memory slices of the existing results. Forty-eight archive checks and the previous 117 checks pass (165 total); 14 targeted HTTP samples retain baseline status/query contracts, rendered video counts and the normalized event-feed body. No new full route run was performed for this presentation-only milestone. Version 0.3.3 added block fallback to the remaining theme-owned GUID consumers and general archive/page/search/404 templates. The 145-URL `phase-1c-integrations` run reduces unaccepted differences from 27 to **4 feed body hashes**, plus the same four expected API hashes; no PHP notices. Endpoint responses and GUID redirects now match the original baseline. API payload review also records block file data and removal of the deleted local MP4 reference. The baseline and expected allowances are unchanged, so regression remains **not green**. General templates and the new category/event layouts received targeted HTTP and desktop/mobile checks after that full run; special WordCampTV featured/event-menu parity and forms/admin remain unfinished. No stored content, plugins, remote site or current wptv3 tokens changed.
 
@@ -41,7 +55,7 @@ The local site mirrors the test site, an Atomic site outside the multisite where
 - Functional parity: every route, endpoint, feed, form and admin tool keeps working as today.
 - The submission form keeps creating `pending` posts with a `[wpvideo <guid>]` shortcode and the `_wptv_submitted_video` custom fields; moderators keep the per-field **Approve** review box. No workflow changes.
 - **Block video test:** the theme supports posts whose video is a VideoPress block, in addition to shortcode posts. In production a moderator converts **a few existing posts by hand** (shortcode → block) and checks them. The form is not switched to blocks in this release.
-- Design: **functional `wptv3`**. Every template has the `wptv3` structure and base styles; fine visual polish moves to release 2.
+- Design: keep the accepted functional structure; replace the interim wptv3 presentation with the owner-approved WordPress.org visual language under the current design priority.
 - Rollout: WordPress.com **test site first**, then production. `wptv2` stays installed so production can switch back immediately.
 
 ### Release 2: new submission workflow and migration (Phase 2)
@@ -51,7 +65,7 @@ Purpose: remove the manual copying that moderators do today. Starts only after r
 - Front-end submission form that writes values straight to their real fields (taxonomies, excerpt, meta) and embeds the video as a VideoPress block. Moderators only review and publish.
 - Field assistance to prevent inconsistent data, for example **AJAX autocomplete** of existing speakers as the user types.
 - **Migration script** that converts the existing `[wpvideo]` shortcodes to VideoPress blocks.
-- Fine design polish and the agreed [backlog](backlog.md) items. WordPress.org visual-language work is on hold pending the owner's consultation with the Design team; keep the current wptv3-based design until new direction is approved.
+- Further design polish and the agreed [backlog](backlog.md) items. The initial WordPress.org visual-language implementation is now the current owner priority, not blocked on Design team consultation.
 
 ## Phase 0: Discovery ✅ (open questions pending)
 
@@ -81,12 +95,12 @@ Purpose: remove the manual copying that moderators do today. Starts only after r
 
 ### 1b. Templates and blocks 🔄
 
-Design level: functional `wptv3` (structure and base styles; no fine polish).
+Design level: accepted 0.3.4 functional structure with the owner-approved WordPress.org presentation implemented locally in 0.4.0; owner visual review and production checks remain.
 
-- ✅ Visual tokens and bundled Inter/EB Garamond fonts; body-color preset `ink`.
+- ✅ WordPress.org palette/type/spacing presets and bundled Inter/EB Garamond; body-color preset `charcoal-1`. The old `ink` preset and temporary migration aliases are retired.
 - ✅ Header and footer as hidden theme patterns; provisional Navigation links.
 - ✅ Design lockdown (`inc/lockdown.php`): no Site Editor for anyone, theme files win over database copies, user global styles and Additional CSS ignored, no custom design controls.
-- ✅ Front page: latest video, Featured, recent events, video categories, paginated recent videos (`patterns/front-page.php`, `inc/block-queries.php`). 11 checks in `tests/blocks/front-page.php`.
+- ✅ Front page: latest video with two hero buttons → Featured → inherited recent videos → categories → events → Get involved (`patterns/front-page.php`, `inc/block-queries.php`). Existing query contracts and 11 checks in `tests/blocks/front-page.php` remain unchanged; tablet 1:1 adaptation is owner-confirmed.
 - ✅ VideoPress thumbnail filter with attachment and placeholder fallbacks.
 - ✅ Single video: hidden `wptv/single` pattern and thin `single.html` wrapper. Core title, speakers, player, full description with slides link, published date and terms, native Jetpack likes/sharing, comments and reply form, previous/next, breadcrumbs, CC BY-SA. 52/52 pattern blocks and 3/3 template blocks valid; desktop/mobile review on shortcode and block posts, existing comment thread checked. No stored post content changed.
 - ✅ General page, archive, search and 404 templates, with a shared inherited core video grid. 19 read-only checks; templates and rendered patterns validated; desktop/mobile review and nine HTTP samples preserve statuses and query page sizes. Other taxonomies retain the general archive fallback.

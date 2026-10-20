@@ -8,10 +8,16 @@ wptv-27 moves from the interim wptv3 look to the visual language of the current 
 
 This is the project owner's approved direction, based on research of public WordPress.org code and guidelines. It is **not** an official WordPress.org Design team approval.
 
+### Owner-approved implementation checkpoint: 0.4.0
+
+**Owner review follow-up:** homepage category cards exclude `year` and `location` by slug while other cards retain native ordering; archive routes remain intact. Single titles use the full introduction width (no 22ch cap). The footer site name is Inter, retaining its previous size/weight. The scoped core-renderer supplement is in `inc/block-queries.php`; no block markup changed. After these refinements, 173 PHP checks and 196 browser assertions pass. The milestone counts below are historical; no additional full route run was needed for this follow-up.
+
+The owner has approved the completed implementation and requested Git publication of all theme changes; site upload/deployment remains a separate owner action. The live card/header/footer refinements in [design.md](design.md) supersede the older mockup details and implementation checklist below. See [handoff.md](handoff.md) for current evidence and limits. The initial implementation passed 165 existing tests and 188 browser assertions; subsequent scoped checks are recorded in the handoff. Changed templates/evaluated patterns pass editor validation. The 145-URL `design-0.4.0` run records zero field changes from `phase-1c-integrations`, with no PHP notices; the four existing unaccepted feed hashes and four expected API hashes remain. This is not a green regression or a complete accessibility audit. Unchecked criteria below remain the broader acceptance checklist, not a claim that each item was exhaustively verified.
+
 ### Limits
 
 - Presentation only. Keep the 0.3.4 template inventory, inherited queries, the category/event spotlight split (1 + 5 + rest on page one with more than six results), `posts_per_page`, pagination, routes, feeds and the editorial workflow.
-- The only structural changes are the three owner-requested front-page changes: section order, the "Get involved" band and the two hero buttons.
+- Approved presentation changes include the three front-page changes (section order, Get involved band and two hero buttons), the revised card fields/interactions, removal of About from main navigation, and the three-column footer/subfooter. They do not change inherited post queries or archive partitions.
 - Do not edit `wptv2`, `wptv3` or [design-baseline-0.3.4.md](design-baseline-0.3.4.md).
 - No plugins, no `wporg/*` blocks, no build step, no font CDN, no RTL stylesheet.
 - Keep the design lockdown (`inc/lockdown.php`, `theme.json` custom controls disabled).
@@ -77,11 +83,11 @@ Search the whole theme for each old slug before removing it: `grep -rn "coal-2\|
 ### Front page (`patterns/front-page.php`)
 
 - New order: hero, featured, **recent videos**, categories, **events**, **Get involved**.
-- Hero: two columns 5:7 on the wide grid; h1 `heading-1`; intro `large`; buttons "Browse WordCamp talks" (fill, `/category/wordcamptv/`) and "Submit a video" (outline). The latest-video query and its Post Content player stay as they are; replace the dark caption frame with a `small` caption on white.
+- Hero: two columns 5:7 from 1080px; at 782–1079px use 1:1 columns and a fluid 50–59px heading, as confirmed by the owner during implementation; below 782px stack as before and retain 52px below 600px. Keep WordPress.tv intact. On large screens h1 `heading-1`; intro `large`; buttons "Browse WordCamp talks" (fill, `/category/wordcamptv/`) and "Submit a video" (outline). The latest-video query and its Post Content player stay as they are; replace the dark caption frame with a `small` caption on white.
 - Featured: `charcoal-2` band, h2 `heading-4` with an "All featured videos →" link to the `featured` tag archive, Post Template with the cards-grid style on dark.
 - Recent videos: unchanged inherited query, cards grid, date added to each card, pagination. Moving the section must not change `queryId`, `inherit` or page size.
 - Categories: `light-grey-2` band, compact term cards in four columns with counts.
-- Events: white, term cards in three columns with counts and a "See all →" link (target: the WordCamp.tv category, as in the mockup, until a better archive exists).
+- Events: white, term cards in three columns with counts and an "All WordCamp Videos →" link to `/category/wordcamptv/`. The owner confirmed this temporary label and destination; they may change later.
 - Get involved: Blueberry 1 band, heading-with-arrow link to `/get-involved/`, one sentence. All strings translatable with the `wptv` text domain.
 
 ### Single video (`patterns/single.php`)
@@ -112,7 +118,9 @@ Search the whole theme for each old slug before removing it: `grep -rn "coal-2\|
 |---|---|
 | `theme.json` | Palette, font sizes, spacing, layout widths, element and block styles |
 | `style.css` | Base and component CSS; remove replaced wptv3 rules; version bump |
-| `inc/setup.php` | Block style registration (parent names); retire `video-frame`, `event-tile` |
+| `inc/setup.php` | Block style registration (parent names); retire `video-frame`, `event-tile`; scoped decorative card-thumbnail rendering and frontend script enqueue |
+| `assets/js/navigation.js` | Mirror core Navigation dialog state into disclosure attributes; no custom menu/focus implementation |
+| `tests/blocks/design-browser.cjs` | Read-only browser checks using an existing Playwright installation; no theme build/dependency |
 | `patterns/header.php`, `patterns/footer.php` | New chrome |
 | `patterns/front-page.php` | Order, hero buttons, cards, Get involved band |
 | `patterns/single.php` | Player band, reactions, two-column details and comments |
@@ -164,15 +172,23 @@ Check each template at **1440px** and **375px**, and the breakpoints 600, 782, 8
 
 ### Regression
 
-- [ ] All `tests/blocks/` checks pass.
-- [ ] Full route regression at the end: no new differences beyond the four known feed hashes already documented.
+- [x] All 165 existing PHP block checks pass unchanged; 188 new browser assertions also pass.
+- [x] Full route regression at the end: no new differences beyond the four known feed hashes already documented (`design-0.4.0`, 145 URLs, no PHP notices, zero field differences from the previous full run). Still not green against the baseline.
 
 ## Decisions needing owner confirmation
 
-1. **W mark usage.** WordPress.tv is an official WordPress project site, but the [trademark policy](https://wordpressfoundation.org/trademark-policy/) asks for permission for uses of the logo in project branding. Confirm that the W mark in the header is acceptable (and in which color: the mockups use `charcoal-1`, close to the official black version).
-2. **Input borders.** The .org parent uses `charcoal-5` borders (2.8:1). This design uses `charcoal-4` (5.5:1) to meet WCAG 2.2 AA. Confirm the deviation.
-3. **Borderless search field.** The .org light search field has no border (its boundary relies on the `light-grey-2` fill). Confirm, or add a 1px `charcoal-4` border for a stricter reading of WCAG 1.4.11.
-4. **Featured link target.** "All featured videos →" points to the `featured` tag archive; "See all →" under events points to the WordCamp.tv category. Confirm both, or name better destinations (no new routes).
-5. **Design team review.** Whether and when to ask the WordPress.org Design team to review this direction before release.
-6. **Title band.** The 0.3.4 grey title bands are kept (recolored, left-aligned). The .org parent archives use a white two-column header instead; switching would be a structural change and is not part of this version.
-7. **WordCampTV landing page and forms/admin.** Not designed here; they use these tokens and components when implemented.
+The owner answered the five design confirmation questions after reviewing this handoff. They are resolved for implementation:
+
+1. **W mark:** use the official artwork in `charcoal-1` before the site title. Owner approval does not establish separate trademark permission or official Design team approval; follow the [trademark policy](https://wordpressfoundation.org/trademark-policy/).
+2. **Input borders:** use `charcoal-4` borders on ordinary form fields, as proposed.
+3. **Search:** keep the proposed borderless search field on `light-grey-2`. Still verify focus visibility and accessibility in the rendered implementation; owner preference is not a conformance test.
+4. **Front-page links:** "All featured videos →" links to the `featured` tag archive. The Recent events link must read **"All WordCamp Videos →"** and link to `/category/wordcamptv/`. The events label and destination are temporary and may change later. Hide decorative arrows from assistive technology.
+5. **Design team review:** no review requested for now. Continue under owner approval without claiming official endorsement.
+6. **Tablet hero (confirmed during implementation):** reduce the title and use equal columns at 782–1079px; keep 5:7 and 70px on large screens. The implementation uses `clamp(50px, 5.5vw, 59px)` for the tablet title. Do not break the site name to preserve 70px.
+
+Remaining scope notes, not unanswered design confirmation questions:
+
+- **Title bands:** keep the recolored, left-aligned 0.3.4 title bands. The white two-column .org archive header remains outside this version's scope.
+- **WordCampTV landing page and forms/admin:** no layout is defined here. Their unfinished functionality remains tracked separately; use these tokens and components when implemented.
+
+The static mockups predate the follow-up confirmations. If their events link differs, the exact label and destination above take precedence.

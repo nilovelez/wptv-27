@@ -43,9 +43,19 @@ Questions that need an answer from the project owner or a WordPress.com employee
 24. **Migration run:** who runs the shortcode-to-block migration on production, and in what form (WP-CLI command in the theme, or a one-off script)? **Status:** not known yet.
 25. **Rollout window:** who switches the theme on the test site and production, when, and how long is the production observation period? **Status:** not known yet.
 
-26. **WordPress.org design guidance:** which current design references/components should WordPress.TV adopt? The owner has now prioritized design before further functional work. Claude Code is studying WordPress/WordPress.org guidance and will update the design document and provide instructions after the version 0.3.4 Git checkpoint. Wait for that handoff before implementing a new look; do not claim official Design team approval has already been obtained.
-
 ## Answered
+
+- **Visual review and publication:** the owner approved the final 0.4.0 presentation, including all card/header/footer refinements, and requested publication of all theme changes. This authorizes Git commit/push; the owner will handle the site upload. No remaining visual-review question blocks this checkpoint. Functional, feed-regression and production-verification questions remain open.
+
+- **Footer structure:** the owner specified three columns (WordPress.TV/description, Contribute, About) and supplied the WordPress.org wordmark/trademark subfooter. Implemented with the exact requested links; no open question remains. See DESIGN.md and the newest footer decision.
+
+- **Video-card fields and behavior:** confirmed all speakers, comma-separated with a trailing colon; omit absent speakers, with no author fallback. Apply progressive full-card pointer activation to Featured too, keeping only titles as native links. Both large and secondary spotlight captions show speakers followed by title, never event terms; keep the player interactive. Implemented locally; no remaining question for this change.
+
+- **Minor visual-review changes (2026-10-20):** the owner requested excluding `year` and `location` only from the homepage category cards, allowing single-video titles more width, and using Inter for the footer site name. All three are implemented locally; no terms or archive routes were removed, and no post-query or editorial behavior changed.
+
+- **Tablet hero (2026-10-20, implementation clarification):** the owner requested both a smaller hero title and equal 1:1 columns on tablets, retaining 5:7 on large screens. Implemented at 782–1079px with `clamp(50px, 5.5vw, 59px)`; 70px resumes at 1080px, with the existing mobile size/stack preserved. Ten viewport checks confirm the site name remains intact. No unanswered design confirmation blocks the local 0.4.0 implementation.
+
+- **WordPress.org design guidance and follow-up confirmations (post-`d02cbfd` owner review):** the handoff has arrived and replaces the interim wptv3 direction. Follow `docs/design.md`, `docs/design-handoff.md` and the site-root `DESIGN.md`. The owner confirmed the official W mark in `charcoal-1`, `charcoal-4` borders on ordinary fields, borderless search fields on `light-grey-2`, and the featured link to the `featured` tag archive. Recent events must use "All WordCamp Videos →" linking to `/category/wordcamptv/` temporarily. No Design team review is requested for now. These preferences do not establish trademark permission, official endorsement or accessibility conformance. Existing title bands stay; WordCampTV/forms/admin remain unfinished. The approved presentation is implemented locally in 0.4.0 and awaits owner visual review; see the handoff for verification and release limits.
 
 - **Version 0.3.4 presentation and next priority:** the owner accepted the current category/event structure for this version and deferred restructuring. Publish all pending theme changes to GitHub before collaboration, then work on design from Claude Code's forthcoming document/instructions rather than continuing WordCampTV/forms/admin immediately. This acceptance does not resolve the four feed hashes or production-verification gaps.
 
@@ -66,7 +76,7 @@ Questions that need an answer from the project owner or a WordPress.com employee
 
 ### Release 1 scope
 
-- **Answer:** the form keeps the `[wpvideo]` shortcode in release 1. The VideoPress block is tested on a few existing posts converted by hand in production. There is a WordPress.com test site, used before production. Release 1 design level is functional `wptv3`. See [decisions.md](decisions.md).
+- **Answer:** the form keeps the `[wpvideo]` shortcode in release 1. The VideoPress block is tested on a few existing posts converted by hand in production. There is a WordPress.com test site, used before production. The original functional `wptv3` design level was subsequently replaced by the owner-approved WordPress.org visual checkpoint; the release's workflow and functional scope remain unchanged. See [decisions.md](decisions.md).
 
 ### Phase 1b design ownership and front page
 
@@ -94,7 +104,7 @@ Questions that need an answer from the project owner or a WordPress.com employee
 
 ### Design reference
 
-- **Answer:** use `wptv3` as the interim design reference. WordPress.org visual language documentation will follow.
+- **Historical answer, superseded for presentation:** `wptv3` was the interim reference. The approved WordPress.org documentation and the local 0.4.0 implementation now replace that look; keep the accepted functional structure.
 
 ### Project language
 

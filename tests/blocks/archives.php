@@ -72,7 +72,7 @@ try {
 			preg_match( '/<ul\b[^>]*wptv-taxonomy__' . $section . '[^>]*>(.*?)<\/ul>/s', $html, $list );
 			$assert( isset( $list[1] ) && $count === substr_count( $list[1], '<li ' ), $slug . ' renders ' . $count . ' videos in ' . $section . '.' );
 		}
-		$assert( ( 'category_name' === $key ) === ( false !== strpos( $html, 'wptv-taxonomy__category-events' ) ), $slug . ' retains event captions only for categories.' );
+		$assert( false !== strpos( $html, 'taxonomy-speakers' ) && false === strpos( $html, 'taxonomy-event ' ) && false === strpos( $html, 'wptv-taxonomy__category-events' ), $slug . ' displays speaker captions without event terms.' );
 
 		foreach ( array( 0, 1, 6, 7 ) as $total ) {
 			$query->found_posts = $total;
