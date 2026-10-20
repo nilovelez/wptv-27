@@ -30,6 +30,7 @@ function resolve_terms( $query, $block ) {
 	$constraints = array(
 		'wptv/featured' => array( 'post_tag' => 'featured' ),
 		'wptv/wordcamp' => array( 'category' => 'wordcamptv' ),
+		'wptv/wordcamp-event' => array( 'category' => 'wordcamptv' ),
 	);
 	// Core provides the query object as context, but not the namespace attribute.
 	$namespace = $context['wptvQuery'] ?? '';
@@ -49,6 +50,19 @@ function resolve_terms( $query, $block ) {
 			'field'    => 'term_id',
 			'terms'    => array( $term->term_id ),
 		);
+	}
+	// Independent landing-page cards must match BOTH the category and this event.
+	// Never fall back to all category videos when the prototype has no event ID.
+	if ( 'wptv/wordcamp-event' === $namespace ) {
+		$event_id = absint( $context['wptvEvent'] ?? 0 );
+		if ( ! $event_id ) {
+			$query['post__in'] = array( 0 );
+			return $query;
+		}
+		$tax_query[] = array( 'taxonomy' => 'event', 'field' => 'term_id', 'terms' => array( $event_id ) );
+		$query['posts_per_page'] = 4;
+		$query['orderby'] = array( 'date' => 'DESC', 'ID' => 'DESC' );
+		$query['ignore_sticky_posts'] = true;
 	}
 	$query['tax_query'] = ! empty( $query['tax_query'] )
 		? array( 'relation' => 'AND', $query['tax_query'], $tax_query )

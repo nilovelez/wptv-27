@@ -31,8 +31,7 @@
 <div class="wp-block-query"><!-- wp:post-template -->
 <!-- wp:post-content {"layout":{"type":"default"}} /-->
 <!-- wp:group {"className":"wptv-home__lead-caption","layout":{"type":"default"}} -->
-<div class="wp-block-group wptv-home__lead-caption"><!-- wp:post-terms {"term":"speakers","suffix":":"} /-->
-<!-- wp:post-title {"level":2,"isLink":true,"fontSize":"small"} /--></div>
+<div class="wp-block-group wptv-home__lead-caption"><!-- wp:post-title {"level":2,"isLink":true,"fontSize":"small","className":"wptv-home__lead-title"} /--></div>
 <!-- /wp:group -->
 <!-- /wp:post-template --></div>
 <!-- /wp:query --></div>

@@ -45,6 +45,10 @@ Questions that need an answer from the project owner or a WordPress.com employee
 
 ## Answered
 
+- **WordCampTV introduction correction:** the owner requires the native one-large/five-small category spotlight, not the 22-video Recent videos grid. The next heading is Latest WordCamps. Both event sections show all qualifying events without pagination. This overrides the earlier interpretation of retaining a full recent-video grid on the landing; existing later-page URLs remain preserved.
+
+- **WordCampTV replacement (local 0.4.1):** the owner approved retaining recent category videos, dropping the entire legacy sidebar/manual `featured_wordcamps` dependency, and adding automatic recent event sections plus a complete year-grouped directory. Recent selection uses the problematic but best-available recorded field without guessed dates. The complete directory instead extracts one distinct 2000–2099 year from WordCamp event names. Two data-only transients and documented change-driven invalidation are approved. The implementation is local; see [wordcamptv.md](wordcamptv.md). Obtaining the old manual menu is no longer a prerequisite. Language filters/year navigation are backlog B7/B8. Production cold-cache cost and recorded coverage remain verification needs, not answered platform questions.
+
 - **Visual review and publication:** the owner approved the final 0.4.0 presentation, including all card/header/footer refinements, and requested publication of all theme changes. This authorizes Git commit/push; the owner will handle the site upload. No remaining visual-review question blocks this checkpoint. Functional, feed-regression and production-verification questions remain open.
 
 - **Footer structure:** the owner specified three columns (WordPress.TV/description, Contribute, About) and supplied the WordPress.org wordmark/trademark subfooter. Implemented with the exact requested links; no open question remains. See DESIGN.md and the newest footer decision.

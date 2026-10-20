@@ -15,6 +15,23 @@ Template:
 
 ---
 
+## 2026-10-20: Correct the WordCampTV video introduction
+
+- **Owner correction:** the landing must start with one latest video player and the next five small videos, like other categories, not 22 Recent videos cards. Remove that heading/grid/pagination from the landing; rename the next section Latest WordCamps. Both automatic event sections remain complete and unpaginated.
+- **Implementation:** reuse the native spotlight and in-memory partitions; suppress the inherited remaining-video grid only on WordCampTV page one. Preserve the 22-post main query and existing later-page URLs. Small nonempty WordCampTV archives show one lead and up to five secondary videos rather than an empty introduction. Other category/event thresholds are unchanged.
+- **Evidence:** the corrected template (10 blocks) and section pattern (8) validate. 75 updated browser checks pass, including exactly one lead/five secondary videos, original first-six ordering, no landing grid/Recent videos heading, renamed section, complete directories and preserved page-two results. Desktop/mobile screenshots confirm the shared category presentation. No new full regression, publication or site sync.
+- **Supersedes:** the earlier unpartitioned 22-card landing assumption in this implementation checkpoint. The earlier evidence below describes that earlier version, not the corrected layout.
+
+## 2026-10-20: Automatic WordCampTV landing and data-only transients
+
+- **Decision:** the owner replaces, rather than restores, the old WordCampTV page. Keep recent category videos and pagination; discard the entire legacy left sidebar and dependence on `featured_wordcamps`. Add automatically selected recent event sections and a complete year-grouped event directory. No menu/content data is deleted.
+- **Dates:** recent events use valid `_wptv_submitted_video['recorded']` dates within twelve calendar months, newest first, without publication-date fallback. Their four category videos use stored publication dates. The owner acknowledges that both fields have historical limitations. The complete directory instead requires WordCamp plus one distinct 2000–2099 year in the event name; year groups descend and names sort alphabetically.
+- **Caching:** approve two site-local data-only transients: recent event IDs/dates for at most one hour (capped at local midnight), directory year/ID groups for 24 hours. Rebuild on demand, including empty results; no cron, extra table, HTML cache or cached private submission data. Standard publication, metadata, category/event relationship and term changes invalidate the appropriate indexes. Departures and direct removals are explicitly covered.
+- **Implementation:** local 0.4.1 adds `category-wordcamptv.html` and three hidden core-block patterns, with selection/invalidation in `inc/wordcamps.php` and core-block composition in `inc/wordcamp-blocks.php`. This is an approved exception to the previous template inventory and generic category spotlight. Existing routes, 22-post main query and other category/event layouts stay intact. Extra event sections appear only on page one.
+- **Evidence:** 43 focused PHP checks, 60 browser checks and the 48 existing archive checks pass. Three patterns (10/5/8 blocks), the new template (11) and populated generated core blocks (35) validate. Desktop/mobile visual checks include the mobile page tail. Synthetic date selection and populated-section previews are isolated test mechanisms, never published data.
+- **Limits:** the local recent window has no qualifying data; the directory has 58 events across five years. Cold recent lookup still scans eligible serialized metadata with SQL year prefiltering and 500-row cursor batches. Real production cost/data coverage and multisite behavior need verification. Four unresolved feed differences remain; no baseline, route inventory or allowance was changed. No new full regression, commit, push or site sync for this feature.
+- **Documentation:** [wordcamptv.md](wordcamptv.md) records payloads, expiry, exact hook coverage, SQL costs, diagnostics, failure behavior and test instructions. Language filters and year navigation are backlog B7/B8, not part of this landing implementation.
+
 ## 2026-10-20: Owner approval and Git publication of 0.4.0
 
 - **Decision:** the owner approved the completed visual implementation and all subsequent refinements and requested publication of all accumulated theme changes to GitHub. Keep version 0.4.0 for this first publication of the implementation. Commit/push to `origin/trunk`; do not synchronize or deploy the site. The owner will handle the upload.

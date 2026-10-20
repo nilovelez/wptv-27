@@ -4,6 +4,8 @@ WordPress.tv is a WordPress.org community site. wptv-27 adopts the visual langua
 
 ## Status
 
+Owner follow-up in 0.4.1: the homepage lead caption combines all speakers, a trailing colon and the video title inside one native link to the video single. Category descriptions retain the 680px reading width but align with the left edge of the wide breadcrumbs/title, including on large screens. The five secondary category/event spotlight titles use small (14px), down from normal (16px), with 2px rather than 8px between speakers and title. These rules supersede conflicting descriptions below. Focused checks passed at 1440px and 390px, with event title sizing checked separately; both changed patterns passed block validation. No new broad regression was run for these presentation corrections.
+
 Owner follow-up after the local 0.4.0 review: exclude `year` and `location` by slug only from the homepage category cards; retain all other cards and their native ordering. Keep the categories and archives themselves unchanged. Single-video titles use the full introduction width, and the footer site name uses Inter like the header, retaining its existing size and weight. These refinements supersede conflicting earlier mockup details.
 
 - **Owner-approved direction.** The project owner reviewed the proposal and the mockups in [`mockups/`](mockups/) and approved them, including the header, player band and front-page order decisions below.
@@ -339,7 +341,11 @@ Mockup: [`mockups/front-page.html`](mockups/front-page.html).
 
 Mockup: [`mockups/single-video.html`](mockups/single-video.html) (downloads and subtitles appear as labeled placeholders only in the mockup).
 
-### Category and event archives (0.3.4 structure kept)
+### WordCampTV (owner-approved replacement, local 0.4.1)
+
+See [wordcamptv.md](wordcamptv.md) for data/date rules, transients and invalidation. Reuse the shared title band, header and footer. The landing uses the native category spotlight: one latest video player plus the next five small rows, without a Recent videos heading, remaining-video grid or video pagination. The underlying 22-post query and existing later-page URLs are preserved. On page one only, append a white Latest WordCamps band: h2, then an h3 per event with View all alongside, followed by four dated cards with h4 titles. Append a light-grey-2 All WordCamp videos band: h2, descending h3 year headings, three-column linked event lists in Inter normal (two columns below 960px, one below 600px). Retain 1160px wide alignment, normal edge gutters and spacing-50 band padding. Use explicit empty states rather than invented dates or events. No manual event menu or legacy left sidebar; language filters and year navigation remain deferred.
+
+### Category and event archives (0.3.4 structure kept except WordCampTV)
 
 1. Header.
 2. **Title band:** full-width `light-grey-2` band with breadcrumbs and the term title h1 (`heading-2`), left-aligned on the wide grid. Categories show the term description in `large` below the title at reading width; events keep omitting it.
@@ -365,17 +371,17 @@ h1 (`heading-2`) at reading width, one short explanation and the search field. K
 
 ### Not covered
 
-The special WordCampTV featured/event-menu landing page and the forms/admin screens are not implemented yet. They follow these tokens and components when built; no layout is defined for them here.
+The forms/admin screens remain unimplemented. WordCampTV is now defined and implemented as the owner-approved replacement above, not the legacy featured/event-menu page.
 
 ## What stays and what changes
 
 | Area | Stays | Changes |
 |---|---|---|
-| Routes, queries, page sizes, pagination, editorial flow | All | Nothing |
-| Templates and template structure | All 0.3.4 templates, the spotlight split, inherited queries | Presentation only |
+| Routes, main queries, page sizes, pagination, editorial flow | All | Nothing |
+| Templates and template structure | Existing templates, generic spotlight split and inherited queries | Presentation plus the explicitly approved WordCampTV category override and independent event sections |
 | Front page | Hero, featured, categories, events, recent videos, queries | Recent videos move up; "Get involved" band added; hero gets two buttons **(owner)** |
 | Header | Links, search, "Submit a video" | White .org-style bar with the W mark; collapses below 1080px |
-| Footer | Links and CC BY-SA notice | .org footer layout, `charcoal-1` |
+| Footer | Owner-approved current links and trademark notice | Three columns and the supplied WordPress.org subfooter mark on `charcoal-1`; no footer CC notice |
 | Palette | Values of blue, coal, coal-2, white | .org slugs; text `#1e1e1e`; gray becomes `#f6f6f6`; orange removed; new greys and accents |
 | Typography | Inter and EB Garamond, bundled | .org size scale; body 16px/1.875 |
 | Layout | Full-width bands, wide grids | 680px / 1160px widths, edge spacing, new breakpoints |
@@ -391,4 +397,4 @@ Templates reference hidden PHP theme patterns. Design is maintained in code and 
 
 The owner confirmed the official W mark in `charcoal-1`, `charcoal-4` borders on ordinary inputs, and borderless search fields on `light-grey-2`. Keep visible focus and verify accessibility rather than treating preference as proof of conformance. "All featured videos →" links to the `featured` tag archive; Recent events uses "All WordCamp Videos →" linking to `/category/wordcamptv/` for now. Decorative arrows remain hidden from assistive technology.
 
-No Design team review is requested for now. Owner approval is not official endorsement or evidence of separate trademark permission. Keep the existing title-band structure; WordCampTV and forms/admin remain outside this design handoff's defined layouts. See [design-handoff.md](design-handoff.md#decisions-needing-owner-confirmation). These follow-up decisions take precedence over differing mockup labels.
+No Design team review is requested for now. Owner approval is not official endorsement or evidence of separate trademark permission. Keep the existing title-band structure. WordCampTV now follows the explicitly approved replacement above; forms/admin remain outside this design handoff's defined layouts. See [design-handoff.md](design-handoff.md#decisions-needing-owner-confirmation). These follow-up decisions take precedence over differing mockup labels.

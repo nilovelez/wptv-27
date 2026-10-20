@@ -4,7 +4,7 @@ Theme URI: https://github.com/nilovelez/wptv-27
 Description: Block theme for WordPress.tv. Replaces the legacy wptv2 theme while keeping every route unchanged.
 Author: WordPress.org
 Author URI: https://wordpress.org/
-Version: 0.4.0
+Version: 0.4.1
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
@@ -177,7 +177,8 @@ img, video, iframe { max-width: 100%; }
 .wptv-taxonomy__spotlight { padding-block: var(--wp--preset--spacing--40); }
 .wptv-taxonomy__spotlight + .wptv-listing__query { padding-block-start: 0; }
 .wptv-taxonomy__heading .wp-block-breadcrumbs { margin-bottom: 20px; }
-.wptv-taxonomy__heading .wp-block-term-description { max-width: 680px; margin-inline-start: 0; }
+/* Keep reading width, aligned with the centered wide title even on large screens. */
+.wptv-taxonomy__heading .wp-block-term-description { max-width: 680px; margin-inline-start: max(0px, calc((100% - var(--wp--style--global--wide-size)) / 2)) !important; }
 .wptv-taxonomy__lead .wp-block-post-title, .wptv-taxonomy__secondary .wp-block-post-title { font-family: var(--wp--preset--font-family--inter); font-weight: 600; line-height: 1.4; margin-block: 0; }
 .wptv-taxonomy__caption { padding: 20px; border-radius: 0 0 2px 2px; margin-block-start: 0; }
 .wptv-taxonomy__caption a { color: var(--wp--preset--color--white); }
@@ -188,9 +189,17 @@ img, video, iframe { max-width: 100%; }
 .wptv-taxonomy__secondary .wp-block-post-featured-image { margin: 0; }
 .wptv-taxonomy__lead .wp-block-post-content iframe { display: block; }
 .wptv-taxonomy__secondary img { border-radius: 2px; }
-.wptv-taxonomy__secondary .wp-block-post-terms { margin-block: 0 8px; color: var(--wp--preset--color--charcoal-4); }
+.wptv-taxonomy__secondary .wp-block-post-terms { margin-block: 0 2px; color: var(--wp--preset--color--charcoal-4); }
 .wptv-taxonomy__secondary .wp-block-post-terms a { color: inherit; }
 .wptv-taxonomy__secondary .wp-block-post-title { overflow-wrap: anywhere; }
+/* === automatic WordCampTV landing === */
+.wptv-wordcamps > :where(.wptv-wordcamps__latest, .wptv-wordcamps__recent, .wptv-wordcamps__directory) { margin-block: 0; padding-block: var(--wp--preset--spacing--50); }
+.wptv-wordcamps__latest .wptv-listing__query { padding-block: 0; }
+.wptv-wordcamps__event + .wptv-wordcamps__event { margin-block-start: var(--wp--preset--spacing--50); padding-block-start: var(--wp--preset--spacing--50); border-top: 1px solid var(--wp--preset--color--light-grey-1); }
+.wptv-wordcamps__event .wptv-home__section-heading h3 { margin: 0; }
+.wptv-wordcamps__year + .wptv-wordcamps__year { margin-block-start: var(--wp--preset--spacing--40); }
+.wptv-wordcamps__directory-list { gap: 12px 30px; }
+.wptv-wordcamps__directory-list .wp-block-term-name { margin: 0; font: 400 var(--wp--preset--font-size--normal)/1.625 var(--wp--preset--font-family--inter); overflow-wrap: anywhere; }
 /* === responsive === */
 @media (min-width: 782px) {
 	.wptv-taxonomy__columns > .wp-block-column:first-child { flex-grow: 2; }
@@ -214,7 +223,7 @@ img, video, iframe { max-width: 100%; }
 	.wptv-header .wp-block-navigation__responsive-container:not(.is-menu-open) { display: none; }
 }
 @media (max-width: 959px) {
-	.wptv-home .is-style-cards-grid, .wptv-listing .is-style-cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.wptv-home .is-style-cards-grid, .wptv-listing .is-style-cards-grid, .wptv-wordcamps .wptv-wordcamps__directory-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 889px) {
 	:root { --wptv-edge-space: 20px; }
@@ -227,7 +236,7 @@ img, video, iframe { max-width: 100%; }
 }
 @media (max-width: 599px) {
 	:root { --wptv-heading-1: 52px; --wptv-heading-2: 30px; --wptv-heading-3: 26px; --wptv-heading-4: 22px; --wptv-heading-5: 20px; --wptv-heading-6: 18px; --wptv-heading-cta: 52px; --wptv-extra-large: 20px; }
-	.wptv-home .is-style-cards-grid, .wptv-listing .is-style-cards-grid { grid-template-columns: minmax(0, 1fr); }
+	.wptv-home .is-style-cards-grid, .wptv-listing .is-style-cards-grid, .wptv-wordcamps .wptv-wordcamps__directory-list { grid-template-columns: minmax(0, 1fr); }
 	.wptv-single > .wptv-single__player-band { padding: 0; }
 	.wptv-single__player-band > .wptv-single__player { max-width: none; }
 	.wp-block-query-pagination { flex-direction: column; }

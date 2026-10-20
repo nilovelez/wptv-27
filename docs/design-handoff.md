@@ -2,6 +2,10 @@
 
 Implementation instructions for applying [design.md](design.md) to wptv-27. Read [AGENTS.md](../AGENTS.md), [handoff.md](handoff.md) and [design.md](design.md) first. The site-root `DESIGN.md` (Studio) is the working summary of the same direction.
 
+## WordCampTV follow-up (local 0.4.1)
+
+The owner approved a replacement rather than restoration of the old featured/tag/menu landing page. See [wordcamptv.md](wordcamptv.md) for the implemented product/data/cache contract and [design.md](design.md#wordcamptv-owner-approved-replacement-local-041) for its layout. It is local and not yet published. The extra category template and three core-block patterns are explicit exceptions to the older inventory constraints below. Generic category/event spotlights and all inherited query/page-size/route contracts remain unchanged.
+
 ## Summary
 
 wptv-27 moves from the interim wptv3 look to the visual language of the current WordPress.org sites: the `wporg-parent-2021` palette and type scale (same preset slugs), 680px/1160px widths with 80px edge spacing, Inter text with EB Garamond headings, 1px grey rules and 2px radii, cards grids for every video and term listing, and a white local navigation bar with the WordPress W mark. The single-video player sits on a full-width `charcoal-1` band. The front page moves recent videos up and ends with a "Get involved" band.
@@ -16,7 +20,7 @@ The owner has approved the completed implementation and requested Git publicatio
 
 ### Limits
 
-- Presentation only. Keep the 0.3.4 template inventory, inherited queries, the category/event spotlight split (1 + 5 + rest on page one with more than six results), `posts_per_page`, pagination, routes, feeds and the editorial workflow.
+- Preserve inherited queries, `posts_per_page`, pagination, routes, feeds and the editorial workflow. Retain the generic 0.3.4 category/event spotlight split (1 + 5 + rest on page one with more than six results). The owner's WordCampTV replacement above explicitly adds a category-specific template with the native 1 + 5 introduction and independent, unpaginated event sections. The owner corrected the earlier 22-card landing assumption; no Recent videos grid/heading/pagination belongs on the landing.
 - Approved presentation changes include the three front-page changes (section order, Get involved band and two hero buttons), the revised card fields/interactions, removal of About from main navigation, and the three-column footer/subfooter. They do not change inherited post queries or archive partitions.
 - Do not edit `wptv2`, `wptv3` or [design-baseline-0.3.4.md](design-baseline-0.3.4.md).
 - No plugins, no `wporg/*` blocks, no build step, no font CDN, no RTL stylesheet.

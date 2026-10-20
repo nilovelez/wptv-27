@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Matches the legacy first-page, more-than-six-results spotlight condition.
+ * Matches the legacy spotlight; WordCampTV also previews archives of 1–6 posts.
  *
  * @param \WP_Query $query Archive query.
  * @return bool
@@ -22,7 +22,8 @@ function has_spotlight( $query ) {
 		&& ! $query->is_feed()
 		&& ( $query->is_category() || $query->is_tax( 'event' ) )
 		&& (int) $query->get( 'paged' ) < 2
-		&& (int) $query->found_posts > 6;
+		&& ( (int) $query->found_posts > 6
+			|| ( $query->is_category( 'wordcamptv' ) && (int) $query->found_posts > 0 ) );
 }
 
 /**

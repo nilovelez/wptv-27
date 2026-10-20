@@ -1,8 +1,8 @@
 # Backlog
 
-Work that is agreed but deferred until after Phase 1. Nothing here may be done during Phase 1, because every item changes observable route behavior. The Phase 1 regression test must still pass against the unchanged `wptv2` baseline.
+Agreed work deferred until after Phase 1, including route changes and product/navigation improvements. Listing an item here does not authorize implementation. The Phase 1 regression test must still pass against the unchanged `wptv2` baseline.
 
-When an item is picked up:
+When a route-changing item is picked up:
 
 1. Record the decision in [decisions.md](decisions.md).
 2. Update [routes.md](routes.md) with the new behavior.
@@ -11,7 +11,22 @@ When an item is picked up:
 
 Status legend: ⏳ pending · 🔄 in progress · ✅ done
 
-## Pending
+## Deferred product/navigation improvements
+
+### B7. Add language filters across the site ⏳
+
+- **Owner request:** add language filtering to the site using the existing language data.
+- **Open points:** placement, exact coverage and interaction/URL behavior remain undecided. Do not restore the legacy WordCampTV language sidebar as an assumed solution.
+- **Status:** backlog only; implementation is not approved yet.
+
+### B8. Add year navigation to WordCampTV ⏳
+
+- **Owner request:** add year navigation to the WordCampTV page.
+- **Scope:** deferred navigation/filtering beyond the proposed all-events directory grouped by year. Do not restore the legacy Browse by year sidebar automatically.
+- **Open points:** placement, interaction and any URL behavior remain undecided. Coordinate the data source with the future Year taxonomy work in B5.
+- **Status:** backlog only; implementation is not approved yet.
+
+## Pending route changes
 
 ### B2. `/unisubs/` returns the wrong `permalink` ⏳
 

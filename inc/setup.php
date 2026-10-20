@@ -112,3 +112,28 @@ function enqueue_assets() {
 	);
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_assets' );
+
+/**
+ * Keep the homepage player's speaker/title caption inside one native video link.
+ * Only the marked Post Title changes; other speaker terms and titles are intact.
+ *
+ * @param string    $content Rendered title.
+ * @param array     $parsed  Parsed block.
+ * @param \WP_Block $block   Block with its video context.
+ * @return string
+ */
+function render_home_lead_title( $content, $parsed, $block ) {
+	$classes = preg_split( '/\s+/', $parsed['attrs']['className'] ?? '' );
+	if ( ! in_array( 'wptv-home__lead-title', $classes, true ) || empty( $block->context['postId'] ) ) {
+		return $content;
+	}
+	$speakers = get_the_terms( $block->context['postId'], 'speakers' );
+	if ( ! $speakers || is_wp_error( $speakers ) ) {
+		return $content;
+	}
+	$prefix = esc_html( implode( ', ', wp_list_pluck( $speakers, 'name' ) ) . ': ' );
+	return preg_replace_callback( '/<a\b[^>]*>/', static function ( $match ) use ( $prefix ) {
+		return $match[0] . $prefix;
+	}, $content, 1 );
+}
+add_filter( 'render_block_core/post-title', __NAMESPACE__ . '\render_home_lead_title', 20, 3 );

@@ -1,5 +1,19 @@
 # Block checks (local development only)
 
+## WordCampTV (local 0.4.1)
+
+43 focused PHP checks and 75 browser checks cover the owner-approved replacement. Run only on the local development site. The PHP suite writes/rebuilds the two disposable theme transients, never content/metadata/terms; the optional flag exports two temporary HTML/JSON browser fixtures. The populated recent-section preview is injected into one browser response only, not saved or cached as public recording data. See [the technical contract](../../docs/wordcamptv.md).
+
+```sh
+wp eval-file wp-content/themes/wptv-27/tests/blocks/wordcamps.php prepare-browser
+node wp-content/themes/wptv-27/tests/blocks/wordcamps-browser.cjs
+rm wp-content/wptv-wordcamps-expected.json wp-content/wptv-wordcamp-preview.html
+```
+
+Set `WPTV_PLAYWRIGHT_PATH` to the existing Studio Playwright module if normal Node resolution cannot find it; do not install another dependency. `WPTV_TEST_URL` optionally overrides localhost:8882. Browser checks cover the first/second category pages at 320/782/1440px, the native one-large/five-small spotlight without the 22-card landing grid, ordered first-six/later-page main-query IDs, the Latest WordCamps label, directory membership/year order, responsive columns, feed exclusion and existing card behavior with a real-event preview. The 48 existing archive checks also pass unchanged. No full route regression was repeated and its four known feed differences remain open.
+
+## Existing suites
+
 Run from the site root through WP-CLI with `wptv-27` active:
 
 ```sh
@@ -16,7 +30,7 @@ wp eval-file wp-content/themes/wptv-27/tests/blocks/video-images-multisite.php -
 
 - `front-page.php`: 11 checks of scoped slug constraints and independent/inherited query settings.
 - `category-cards.php`: eight read-only checks of the homepage-only `year`/`location` exclusions, remaining card order, untouched ordinary/unmarked category queries and filter cleanup after a renderer exception. IDs resolve from the current site's slugs, without changing stored terms.
-- `listings.php`: 19 read-only checks for the general archive/page/search/404 files, registered hidden patterns, translated content, inherited queries and native pagination/empty states. Dedicated category/event coverage is in `archives.php`; the special WordCampTV featured/tag/menu layout is still unfinished.
+- `listings.php`: 19 read-only checks for the general archive/page/search/404 files, registered hidden patterns, translated content, inherited queries and native pagination/empty states. Dedicated category/event coverage is in `archives.php`; the owner-approved automatic WordCampTV replacement has its own `wordcamps.php` coverage.
 - `archives.php`: 48 read-only category/event checks. Covers hidden pattern/core markup, inherited-only queries, ordered unique 1 + 5 + 16 partitioning, unchanged original query/loop/totals, global-post restoration, zero/one/six/seven-result boundaries, later pages, feed exclusion, independent queries and existing short-circuits. Reproduces core's by-reference global posts array; a shallow clone alone does not isolate that array. Player rendering and remote thumbnails are suppressed in-process to avoid network requests. Tests complement the 14 targeted HTTP samples and desktop/mobile review; they do not prove real production descriptions/player content or complete the WordCampTV landing page.
 - `video-integrations.php`: 22 process-isolated simulations of first-shortcode compatibility, nested/mixed block fallback, API files/subtitles/HLS, social tags, download and JSON-LD helper data, missing details, legacy-first GUID lookup and batched candidate verification. Uses in-memory posts/cache and temporary query filters, not database writes. Requires `--skip-wordpress`; never run on production. HTTP endpoint responses are covered separately by the milestone route suite.
 - `single.php`: 18 checks of registered blocks, pattern structure, producer variants, complete excerpts/slides and missing video/subtitle data. Uses temporary in-process filters, never database writes.

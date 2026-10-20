@@ -29,7 +29,7 @@
 <!-- wp:post-featured-image {"aspectRatio":"16/9","className":"wptv-card__thumbnail"} /-->
 <!-- wp:group {"layout":{"type":"default"}} -->
 <div class="wp-block-group"><!-- wp:post-terms {"term":"speakers","suffix":":","className":"wptv-card__speakers","fontSize":"small"} /-->
-<!-- wp:post-title {"level":2,"isLink":true,"fontSize":"normal"} /--></div>
+<!-- wp:post-title {"level":2,"isLink":true,"fontSize":"small"} /--></div>
 <!-- /wp:group -->
 <!-- /wp:post-template --></div>
 <!-- /wp:query --></div>

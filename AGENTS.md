@@ -2,7 +2,9 @@
 
 Instructions for AI coding agents (and humans) working on **wptv-27**, the new block theme for [WordPress.tv](https://wordpress.tv/).
 
-Read this file first, then the current [session handoff](docs/handoff.md) and the documents in [`docs/`](docs/) that are relevant to your task. The owner confirmed Atomic thumbnails, but the last route regression is not green; do not mistake that confirmation for completed Phase 1c or production readiness. The owner accepted the current category/event structure for this version and prioritized design before further functional work. The WordPress.org visual language and follow-up card/header/footer refinements are implemented in 0.4.0 and approved by the project owner for Git publication. Site upload/deployment is a separate owner action; the remaining functional and verification gaps are not closed by visual approval. Preserve that work and follow the site-root DESIGN.md, [docs/design.md](docs/design.md) and [docs/design-handoff.md](docs/design-handoff.md), including the owner-confirmed tablet adaptation; never restore the historical 0.3.4 snapshot. Do not claim official Design team approval has already been obtained.
+Read this file first. At the start of a new or resumed session, consult the current [session handoff](docs/handoff.md); otherwise reuse the context already established. Read only the documents in [`docs/`](docs/) relevant to the task, and do not reread unchanged documents for every small adjustment. The owner confirmed Atomic thumbnails, but the last route regression is not green; do not mistake that confirmation for completed Phase 1c or production readiness. The owner accepted the current category/event structure for this version and prioritized design before further functional work. The WordPress.org visual language and follow-up card/header/footer refinements are implemented in 0.4.0 and approved by the project owner for Git publication. Site upload/deployment is a separate owner action; the remaining functional and verification gaps are not closed by visual approval. Preserve that work and follow the site-root DESIGN.md, [docs/design.md](docs/design.md) and [docs/design-handoff.md](docs/design-handoff.md), including the owner-confirmed tablet adaptation; never restore the historical 0.3.4 snapshot. Do not claim official Design team approval has already been obtained.
+
+This **0.4.1** checkpoint contains the owner-approved automatic WordCampTV replacement, the follow-up caption/archive refinements and the proportional-workflow rules. The owner authorized its Git publication after 0.4.0 (`14a9b88`); that authorization is not a site deployment or blanket permission to publish subsequent work. Follow [docs/wordcamptv.md](docs/wordcamptv.md): recorded-based recent events, name/year-based directory, two data-only transients with documented invalidation. This explicitly supersedes the old manual featured-event menu/sidebar requirement and adds the approved `category-wordcamptv.html` exception; do not restore legacy parity for that page. Language filters and year navigation stay in backlog B7/B8.
 
 ## Project in one paragraph
 
@@ -18,8 +20,21 @@ WordPress.tv publishes community videos (WordCamps, meetups, workshops). It runs
 6. **No logic in templates.** Templates and parts are block HTML. PHP goes in `inc/` (hooks and helpers) or in dynamic blocks under `blocks/`.
 7. **Guard WordPress.com-only functions.** VideoPress internals such as `video_get_info_by_guid()` or `bump_stats_extras()` only exist on WordPress.com. Always wrap them in `function_exists()` / `class_exists()` checks and degrade gracefully.
 8. **Local data is not a clone of production.** The local site was built from an import, so term IDs, post IDs and menus differ from production. Never hardcode IDs. Use slugs.
-9. **Record decisions.** When you choose an approach, keep or drop a legacy feature, or answer an open question, update [`docs/decisions.md`](docs/decisions.md), [`docs/open-questions.md`](docs/open-questions.md) and [`docs/plan.md`](docs/plan.md) in the same change.
+9. **Record decisions proportionally.** Record substantive product or technical decisions in the appropriate canonical document. Update [`docs/decisions.md`](docs/decisions.md), [`docs/open-questions.md`](docs/open-questions.md) or [`docs/plan.md`](docs/plan.md) only when their decision history, question status or project status actually changes; cross-reference rather than duplicate explanations. Minor presentation corrections do not require entries in every log. Keep the site-root DESIGN.md current when the look changes.
 10. **No secrets.** Do not commit credentials, tokens, personal data or private URLs.
+
+## Owner-required workflow: proportional small changes
+
+This is a standing instruction, not a preference limited to the conversation in which it was agreed.
+
+- For small, localized corrections, identify the affected files and prepare the edits together before changing them. Read only the source and guidance needed; reuse established context.
+- Group all ready changes to each file into one edit. Do not add unrelated cleanup, refactoring or review.
+- Complete mandatory validation, then use one focused verification pass covering the affected behavior and relevant viewport sizes. Do not repeat equivalent evidence through several test suites, DOM inspections and screenshots. Required checks still apply; this rule removes redundant checks, not safety requirements.
+- Diagnose and fix a failed check, then repeat only the affected check, not the entire verification process.
+- Do not run broad regressions or full-page audits for a typography, spacing or link correction. Broader checks belong to milestones and changes that affect routes, queries, data, shared behavior or publication risk.
+- Update only documentation whose meaning changed. Do not propagate every minor correction through handoffs, plans, decision logs and test summaries. More extensive documentation remains appropriate when the owner explicitly requests it, as for WordCampTV selection and cache behavior.
+- Stop when the requested correction and its required checks are complete. If an unexpected issue requires broader work, explain the reason before expanding scope; ask the owner when it changes the agreed work.
+- Report the result briefly and distinguish local changes from Git publication or deployment. Do not promise an exact duration that cannot be guaranteed.
 
 ## Coding standards
 
@@ -43,6 +58,7 @@ WordPress.tv publishes community videos (WordCamps, meetups, workshops). It runs
 | [`docs/legacy-wptv3.md`](docs/legacy-wptv3.md) | Review of the `wptv3` proof of concept: what to reuse, what to avoid, its route test results |
 | [`tests/routes/README.md`](tests/routes/README.md) | Route regression test: how to run it against the `wptv2` baseline |
 | [`docs/wpcom-constraints.md`](docs/wpcom-constraints.md) | WordPress.com platform limits, wpcom-only functions, available plugins |
+| [`docs/wordcamptv.md`](docs/wordcamptv.md) | Automatic WordCampTV product rules, core-block composition, transient payloads/expiry/invalidation, query costs and diagnostics |
 | [`docs/design.md`](docs/design.md) | Approved design direction: WordPress.org visual language, tokens, components, page layouts, sources |
 | [`docs/design-handoff.md`](docs/design-handoff.md) | Design implementation order, file list, verification criteria and confirmed owner decisions |
 | [`docs/mockups/`](docs/mockups/) | Static HTML reference mockups of the front page and single video |
