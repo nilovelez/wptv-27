@@ -17,10 +17,11 @@ Key files in the parent theme: `theme.json`, `readme.md` (design token tables), 
 
 ## How wptv-27 adopts it
 
-1. **Copy the tokens, do not inherit the theme.** `wporg-parent-2021` is not available on the WordPress.com multisite, and it depends on `wporg-mu-plugins` (global fonts, `wporg/global-header`, `wporg/global-footer`, `wporg/local-navigation-bar`), which only run on WordPress.org infrastructure. wptv-27 stays a standalone block theme and reproduces the language with its own `theme.json`, core blocks and `style.css`.
-2. **Use the same preset slugs as WordPress.org.** Colors, font sizes and spacing use the parent slugs (`charcoal-1`, `blueberry-1`, `heading-2`, `edge-space`, and so on). The generated CSS variables then match the other .org sites, and block markup can move between projects without translation.
-3. **Keep the design lockdown.** The parent theme enables `appearanceTools` and custom spacing. wptv-27 keeps the current lockdown (no custom colors, sizes or spacing in the editor, no Site Editor). Only the token values change; editors still pick from presets.
-4. **Recreate .org components with core blocks.** Where the parent uses a block style (cards grid, two-column display, button variants), register the same style name in `inc/setup.php` and style it in `style.css`. Where .org uses a `wporg/*` block, approximate it with core blocks (see [Global chrome](#global-chrome)).
+1. **Copy the tokens, do not inherit the theme.** `wporg-parent-2021` is not available on the WordPress.com multisite, and it depends on `wporg-mu-plugins` (global fonts, `wporg/global-header`, `wporg/global-footer`, `wporg/local-navigation-bar`), which only run on WordPress.org infrastructure. The owner confirmed that WordPress.tv has no access to them. wptv-27 stays a standalone block theme and reproduces the language with its own `theme.json`, core blocks and `style.css`.
+2. **Follow the language, not a copy of a site.** WordPress.tv does not have to look identical to any wordpress.org page. It must use the same visual language: tokens, typography, components and the restraint of the .org sites.
+3. **Use the same preset slugs as WordPress.org.** Colors, font sizes and spacing use the parent slugs (`charcoal-1`, `blueberry-1`, `heading-2`, `edge-space`, and so on). The generated CSS variables then match the other .org sites, and block markup can move between projects without translation.
+4. **Keep the design lockdown.** The parent theme enables `appearanceTools` and custom spacing. wptv-27 keeps the current lockdown (no custom colors, sizes or spacing in the editor, no Site Editor). Only the token values change; editors still pick from presets.
+5. **Recreate .org components with core blocks.** Where the parent uses a block style (cards grid, two-column display, button variants), register the same style name in `inc/setup.php` and style it in `style.css`. Where .org uses a `wporg/*` block, approximate it with core blocks (see [Global chrome](#global-chrome)).
 
 ## Color
 
@@ -81,7 +82,7 @@ wptv3 was already derived from the .org palette, so most values stay the same. T
 - Headings: EB Garamond, weight 400, `text-wrap: balance`. Body: `text-wrap: pretty`.
 - Body text is 16px with line height 1.875. Short UI text (cards, captions, lists) uses 1.625 (the parent `is-style-short-text`).
 - When a heading is set in Inter (for example a video title on a card), use weight 600 and line height 1.3–1.4.
-- WordPress.org loads fonts through its global fonts mu-plugin. wptv-27 keeps bundling the variable WOFF2 files it already has (Inter 100–900, EB Garamond 400–800) and declares them in `theme.json`. Add IBM Plex Mono only if code blocks appear in content.
+- WordPress.org loads fonts through its global fonts mu-plugin. wptv-27 uses local fonts only (confirmed by the owner): it keeps bundling the variable WOFF2 files it already has (Inter 100–900, EB Garamond 400–800) and declares them in `theme.json`. No font CDN. Add IBM Plex Mono only if code blocks appear in content.
 - Speaker names, titles and descriptions come in many scripts. EB Garamond covers Latin, Cyrillic and Greek. Other scripts fall back to the system serif, which is acceptable for headings.
 
 ### Font sizes
@@ -149,10 +150,10 @@ Every new .org site has two layers of chrome:
 1. **Global header** (`wporg/global-header`): the WordPress.org bar with the W logo, the .org menu, search and the "Get WordPress" button. Dark by default; white with a `black-opacity-15` bottom border on some pages. The **global footer** (`wporg/global-footer`) closes the page, with "white-on-black" and "black-on-white" styles.
 2. **Local navigation bar** (`wporg/local-navigation-bar`): a 57px bar under the global header. The site title is on the left, in `small`, and links to the site home. The local menu is on the right. It is sticky from 890px, either `charcoal-2` with white text or white with a `light-grey-1` bottom border. On mobile, the menu collapses into a dropdown (`is-style-dropdown-on-mobile`).
 
-These blocks come from `wporg-mu-plugins` and are not available on WordPress.com (open question below). The proposal for wptv-27:
+These blocks come from `wporg-mu-plugins`, which WordPress.tv cannot use. wptv-27 replicates the chrome with core blocks:
 
 - **Header part:** a local navigation bar built with core blocks. Site title "WordPress.tv" on the left, Navigation on the right (existing wordpress.tv links), a Search block (`is-style-on-dark` style), and "Submit a video" as a small `fill-on-dark` button. `charcoal-2` background, sticky from 890px, dropdown menu below 890px.
-- **Global header:** do not imitate the WordPress.org global header until the Meta/Design team confirms how .org-family sites outside .org infrastructure should present it.
+- **Global header:** do not copy the WordPress.org global header (logo, .org menu, "Get WordPress"). The local navigation bar is the only header. It follows the .org look without pretending to be wordpress.org.
 - **Footer part:** a `charcoal-1` band in the global-footer layout (columns of links, small Inter text, `white-opacity-15` rules), plus the CC BY-SA notice.
 
 ## Components
@@ -230,7 +231,7 @@ Use these sparingly, and only for calls to action:
 
 Neither repository has a video-library design, so these rules extend the language.
 
-- **Player:** wide width (1160px), 16:9, no border, no radius (the VideoPress iframe cannot be styled). The player sits on white, or on a full-width `charcoal-1` band on the single-video page (to be decided).
+- **Player:** wide width (1160px), 16:9, no border, no radius (the VideoPress iframe cannot be styled). On the single-video page, the preferred direction is a full-width `charcoal-1` band behind the player (the owner likes it; it still needs a design study, see below). The front-page hero keeps the player on white.
 - **Thumbnails:** 16:9, radius 2px (matching cards), no frame. Real VideoPress posters only, with the bundled placeholder as the explicit fallback.
 - **Metadata:** compact `small` Inter text, labels in Charcoal 4, values as links. Use label/value rows inside the left column of a two-column display.
 - **Duration, counts:** `extra-small` or `small`, Charcoal 4. Never invent data that is missing.
@@ -254,7 +255,7 @@ The section order and query behavior approved for Phase 1b stay the same (see [d
 
 1. **Header:** local navigation bar (white style, sticky).
 2. **Title area:** breadcrumbs in `small`, post title as `h1` (`heading-2` on video pages, so the player stays visible above the fold), speakers as links.
-3. **Player:** wide.
+3. **Player:** wide, preferably on a full-width `charcoal-1` band (pending study).
 4. **Reactions:** Jetpack Like and Sharing, aligned with the player edges.
 5. **Details:** a two-column display. The left column holds published date, event, speakers, tags, language, producer, downloads and subtitles, and the license (label/value rows). The right column holds the full description and the slides link at reading width.
 6. **Comments:** in the reading column.
@@ -294,8 +295,11 @@ This is a design-only change. Routes, queries and content do not change.
 
 ## Open questions
 
-1. **wporg-mu-plugins on WordPress.com:** are the global header, global footer, local navigation bar and global fonts available on the WordPress.com multisite in any form? If so, wptv-27 should use them instead of copies.
-2. **Global header:** should a .org-family site hosted on WordPress.com show the WordPress.org global header? The Meta/Design team should decide this.
-3. **Font loading:** keep bundled WOFF2 files, or load from the .org fonts CDN (`s.w.org`) like the other sites?
-4. **Single-video player band:** white page or full-width dark band?
-5. **RTL:** the parent ships RTL stylesheets. Which wordpress.tv locales need RTL support, and should `style.css` be authored with logical properties only?
+1. **Single-video player band:** the owner prefers a full-width dark band behind the player. Study it with a single-video mockup before adopting it: band color (`charcoal-1` or `charcoal-2`), where the title and reactions sit (on the band or below it), how the band meets the sticky navigation bar, and how it behaves on mobile.
+
+## Answered
+
+- **wporg-mu-plugins:** WordPress.tv has no access to them. Replicate the design with core blocks and theme code.
+- **Global header:** the site does not have to be identical to a wordpress.org site, but it must follow the same visual language. Do not copy the .org global header; use the local navigation bar.
+- **Font loading:** local fonts. Keep the bundled WOFF2 files; no CDN.
+- **RTL:** no RTL support for now. WordPress.tv is English only. Do not ship RTL stylesheets; using logical CSS properties is still welcome but not required.
