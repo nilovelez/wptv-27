@@ -6,6 +6,8 @@ The reference is the installed `wptv3` theme, read-only. This is not a new visua
 
 The owner explicitly chose to continue with this design while consulting the WordPress.org Design team. No new WordPress.org visual direction, parent theme, palette, typography or shared header/footer implementation is approved. Treat previously discussed official sources as research only; wait for new guidance before changing the look. This does not prevent separately requested editor usability changes or functional fixes.
 
+At the version 0.3.4 checkpoint, the owner accepted the current category/event structure for this version, deferred restructuring and prioritized design before further functional work. Claude Code is studying WordPress/WordPress.org guidance and will update the design document and supply instructions. Read that handoff before implementing the new look; do not assume official Design team approval has already arrived. The pre-handoff site-root Studio specification is archived verbatim in [design-baseline-0.3.4.md](design-baseline-0.3.4.md), outside the live design-instruction path.
+
 ## Tokens
 
 - Blue `blue`: #3858e9; coal `coal`: #1e1e1e; coal-2 `coal-2`: #23282d; orange `orange`: #d54e21; body text `ink`: #1a1919; gray `gray`: #edeff0; white `white`: #ffffff.
@@ -39,6 +41,26 @@ Video and term grids reduce to two columns below 900px and one below 480px. Pres
 8. Shared footer, unchanged.
 
 Unavailable multisite data is omitted, never fabricated. Machete may independently inject sharing controls on the local/Atomic sites; do not change plugin configuration or add environment-specific theme patches to compensate.
+
+## General templates (version 0.3.3)
+
+- Archive: unchanged shared header, square full-width gray title band, inherited wide four-column video grid with real 16:9 VideoPress thumbnails, linked speakers, compact Inter titles and native pagination, unchanged footer.
+- Page: gray band with one h1, stored content at the existing 960px reading width. No institutional copy or metadata is rewritten.
+- Search: native query title and labeled search form above the inherited video grid; editable no-results message.
+- 404: one reading-width h1, concise explanation and native search; retains its 404 status.
+- Grids reduce to two columns below 900px and one below 480px. Root-aware gutters stay intact; sections own their vertical padding without an extra core block gap.
+- Other taxonomy/date archives retain this general fallback. Category/event views now use the dedicated layout below. WordCampTV's featured/tag query and featured-event menu remain pending; do not treat its category fallback as completed special-landing-page parity.
+- Desktop/mobile screenshots and rendered DOM checks reviewed these four general views. The existing palette, typography, header, footer, homepage and single layout are unchanged.
+
+## Category/event layout (version 0.3.4)
+
+1. Shared header, unchanged.
+2. Full-width gray band: native breadcrumbs and one unprefixed term-title h1 on the wide grid. Categories retain their stored description through core Term Description; events do not add a description that the legacy template omitted. Local category descriptions are empty, so production copy still needs visual review.
+3. First page only, with more than six results: white spotlight on the wide grid; first player and dark inset caption in the larger left column, next five linked thumbnails/titles in the right column. Category captions retain linked event terms; event secondary items do not repeat the event. Stack below 782px. Use the existing Post Content player approach and real images; no stored-content conversion.
+4. Remaining main-query videos in the existing four-column grid, followed by native pagination. Later pages and archives with six or fewer results omit the spotlight and show every result in the grid. Preserve query order, total, page size and pagination boundaries; rendering uses isolated in-memory slices, not database offsets or extra queries.
+5. Shared footer, unchanged.
+
+The 8px frames, compact Inter titles, root gutters, palette and fonts are unchanged. Category/event desktop/mobile screenshots and rendered DOM checks completed; removed only the extra core margin before the already-padded spotlight. Offscreen lazy images remain lazy. The special WordCampTV featured/event-menu layout is still separate work.
 
 ## Content and imagery
 

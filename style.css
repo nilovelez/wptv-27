@@ -4,7 +4,7 @@ Theme URI: https://github.com/nilovelez/wptv-27
 Description: Block theme for WordPress.tv. Replaces the legacy wptv2 theme while keeping every route unchanged.
 Author: WordPress.org
 Author URI: https://wordpress.org/
-Version: 0.3.2
+Version: 0.3.4
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
@@ -423,6 +423,146 @@ figure.is-style-video-frame {
 		border-top: 1px solid var(--wp--preset--color--gray);
 		padding-inline-start: 0;
 		padding-top: var(--wp--preset--spacing--30);
+	}
+}
+
+/* === archives, pages, search and 404 === */
+
+.wptv-listing__heading {
+	padding-block: var(--wp--preset--spacing--40);
+}
+
+.wptv-listing__heading h1 {
+	margin-block: 0;
+}
+
+.wptv-listing__query,
+.wptv-page__content {
+	padding-block: var(--wp--preset--spacing--40);
+}
+
+.is-flush.wptv-listing > .wptv-listing__query,
+.wptv-page > .wptv-page__content {
+	margin-block-start: 0;
+}
+
+.wptv-listing__videos {
+	gap: var(--wp--preset--spacing--30);
+}
+
+.wptv-listing__videos .wp-block-post-featured-image {
+	margin: 0;
+}
+
+.wptv-listing__videos .wp-block-post-title {
+	font-family: var(--wp--preset--font-family--inter);
+	font-weight: 600;
+	line-height: 1.5;
+	margin-block: 0;
+}
+
+.wptv-listing__videos .wp-block-post-terms {
+	margin-block: var(--wp--preset--spacing--10) 0;
+}
+
+.wptv-listing__query .wp-block-query-pagination {
+	margin-top: var(--wp--preset--spacing--40);
+}
+
+.wptv-page__content,
+.wptv-not-found {
+	overflow-wrap: anywhere;
+}
+
+.wptv-page__content iframe,
+.wptv-page__content video {
+	max-width: 100%;
+}
+
+@media (max-width: 900px) {
+	.wptv-listing .wptv-listing__videos {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 480px) {
+	.wptv-listing .wptv-listing__videos {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+/* === category and event spotlight === */
+
+.wptv-taxonomy__spotlight {
+	padding-block: var(--wp--preset--spacing--40);
+}
+
+.is-flush.wptv-listing > .wptv-taxonomy__spotlight {
+	margin-block-start: 0;
+}
+
+.wptv-taxonomy__spotlight + .wptv-listing__query {
+	padding-block-start: 0;
+}
+
+.wptv-taxonomy__heading .wp-block-breadcrumbs {
+	margin-bottom: var(--wp--preset--spacing--20);
+}
+
+.wptv-taxonomy__heading .wp-block-term-description > :last-child {
+	margin-bottom: 0;
+}
+
+.wptv-taxonomy__lead .wp-block-post-content > :first-child {
+	margin-top: 0;
+}
+
+.wptv-taxonomy__lead .wp-block-post-content > :last-child {
+	margin-bottom: 0;
+}
+
+.wptv-taxonomy__lead .wp-block-post-content iframe,
+.wptv-taxonomy__lead .wp-block-post-content video {
+	max-width: 100%;
+}
+
+.wptv-taxonomy__lead .wp-block-post-title,
+.wptv-taxonomy__secondary .wp-block-post-title {
+	font-family: var(--wp--preset--font-family--inter);
+	font-weight: 600;
+	line-height: 1.5;
+	margin-block: 0;
+}
+
+.wptv-taxonomy__category-events {
+	font-size: var(--wp--preset--font-size--small);
+}
+
+.wptv-taxonomy__secondary > li {
+	display: grid;
+	grid-template-columns: minmax(5rem, 1fr) 2fr;
+	gap: var(--wp--preset--spacing--10);
+	align-items: start;
+	margin-bottom: var(--wp--preset--spacing--20);
+}
+
+.wptv-taxonomy__secondary .wp-block-post-featured-image {
+	margin: 0;
+}
+
+.wptv-taxonomy__secondary .wp-block-group,
+.wptv-taxonomy__secondary .wp-block-post-title {
+	min-width: 0;
+	overflow-wrap: anywhere;
+}
+
+.wptv-taxonomy__secondary .wp-block-post-terms {
+	margin-block: var(--wp--preset--spacing--10) 0;
+}
+
+@media (min-width: 782px) {
+	.wptv-taxonomy__columns > .wp-block-column:first-child {
+		flex-grow: 2;
 	}
 }
 

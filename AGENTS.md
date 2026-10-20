@@ -2,7 +2,7 @@
 
 Instructions for AI coding agents (and humans) working on **wptv-27**, the new block theme for [WordPress.tv](https://wordpress.tv/).
 
-Read this file first, then the current [session handoff](docs/handoff.md) and the documents in [`docs/`](docs/) that are relevant to your task. The owner confirmed Atomic thumbnails, but the last route regression is not green; do not mistake that confirmation for completed Phase 1c or production readiness. Keep the existing wptv3-based design pending guidance from the WordPress.org Design team.
+Read this file first, then the current [session handoff](docs/handoff.md) and the documents in [`docs/`](docs/) that are relevant to your task. The owner confirmed Atomic thumbnails, but the last route regression is not green; do not mistake that confirmation for completed Phase 1c or production readiness. The owner accepted the current category/event structure for this version and prioritized design before further functional work. Claude Code will supply an updated design document and instructions based on WordPress/WordPress.org research. Keep the existing wptv3-based design until that handoff arrives; then read the latest site-root DESIGN.md and supplied instructions rather than restoring the historical 0.3.4 snapshot. Do not claim official Design team approval has already been obtained.
 
 ## Project in one paragraph
 

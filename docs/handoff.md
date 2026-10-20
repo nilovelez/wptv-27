@@ -2,19 +2,22 @@
 
 ## Current state
 
-- Theme: `wptv-27`, version **0.3.2**, branch `trunk`. Leave it active locally. No further theme/runtime changes were requested for this session closeout.
-- Phase 1a foundation is complete. Phase 1b homepage and single-video templates are complete; remaining templates are pending. Phase 1c GUID/thumbnail work has started, but full block integration is not complete.
+- Theme: `wptv-27`, version **0.3.4**, branch `trunk`. Leave it active locally. This handoff accompanies the version 0.3.4 Git checkpoint, following `02099d0`. The owner requested committing and publishing all pending theme changes to GitHub before design collaboration. Git publication is not a WordPress sync or production deployment; neither is part of this checkpoint.
+- Phase 1a foundation is complete. Phase 1b homepage, single, general archive/page/search/404 and category/event title/spotlight layouts are implemented. The special WordCampTV featured/tag query and event-menu landing page remain pending; its category fallback is not complete landing-page parity. Other taxonomies use the general archive fallback.
+- Phase 1c local theme-owned GUID consumers now support block fallback. Real multisite integrations and four residual feed hashes keep the phase open. No stored content, plugins, route definitions or page sizes were changed.
 - The owner synchronized the site to the Atomic test environment and **confirmed that thumbnails work there**. This is owner-reported verification, not an independent remote audit or proof of multisite production compatibility.
-- Keep the current **wptv3-based design**. The owner will consult the WordPress.org Design team. Do not adopt a new WordPress.org visual system, change tokens, install a parent theme or begin a redesign without new direction.
+- The owner accepted the current category/event structure for this version; broader restructuring is deferred. **Pause further functional work and address design next.** Claude Code is researching WordPress/WordPress.org design guidance and will update the design document and supply implementation instructions. Wait for that handoff before changing the current wptv3 tokens/layout. This is not a claim that official Design team guidance has already arrived.
+- The site-root `DESIGN.md` lives outside this theme repository. Its pre-design contents are preserved verbatim in [design-baseline-0.3.4.md](design-baseline-0.3.4.md) as historical reference, not a second live source of instructions. Do not overwrite Claude Code's forthcoming design updates with that snapshot.
 - The owner is reviewing the transition from Classic Editor to the block editor and will supply specific changes. No editor redesign or new field/moderation workflow has been approved or implemented yet.
 
-## Implemented and published code
+## Git history (not deployment evidence)
 
 - `cfc9aa0`: single-video pattern, guarded producer/download blocks and full description.
 - `f141c72`: CSS-only 1:2 label/value metadata rows following wptv3.
 - `c1dbb9c`: initial local MU-plugin environment guards.
 - `501f508`: shortcode/block GUID extraction, real standalone VideoPress posters and opt-in route-test doubles; version 0.3.2.
-- Today's closeout only updates documentation. The final documentation commit follows these code commits on `trunk`.
+- `02099d0`: previous documentation closeout (Atomic thumbnail confirmation and environment cleanup).
+- Version 0.3.4 checkpoint: block fallback for endpoint/social/API/download consumers, published-post GUID lookup with parsed-block verification, general listing/page/search/404 templates, category/event spotlight rendering and templates, tests and documentation. See Git history for the checkpoint commit IDs. Keep the four-feed regression warning below; owner acceptance is not evidence of production readiness.
 
 ## Thumbnail behavior and verification
 
@@ -26,14 +29,25 @@
 
 ## Regression is still blocked
 
-The last full run, **before the subsequent media cleanup**, covered 145 URLs and reported **27 unaccepted field differences across 11 URLs**, plus the same four expected API differences; no PHP notices.
+The latest full run, **`phase-1c-integrations`, after media cleanup**, covers 145 URLs and reports **4 unaccepted field differences across 4 URLs**, plus the same four expected API differences; no PHP notices. This is down from the previous 27 differences across 11 URLs.
 
-- oEmbed JSON/XML/maxwidth and unisubs by URL still require literal shortcode content and return 501 for the converted fixture.
-- Unisubs GUID lookup and GUID redirects still search shortcode text and do not find that block-only post.
-- Four feed body hashes differ after the conversion, including build timestamps, player serialization and renderer markup/lazy attributes.
-- The already-expected API body differences also contain missing shortcode-only video data for the converted post.
+- oEmbed JSON/XML/maxwidth, unisubs URL/GUID and both GUID redirects now match the original wptv2 baseline.
+- Four feed body hashes still differ: single feed (lastBuildDate only), language feed, main feed and rss2 query-var feed (build dates, converted block player and paragraph/lazy renderer attributes).
+- Expected API bodies were also inspected rather than blindly waived: block file data is restored and the deleted local MP4 reference is gone, alongside existing slug-based year/location differences. No baseline, fixed URL list or expected-difference allowances changed.
+- Remaining theme-owned consumers were audited: Open Graph/API/downloads use their original first-shortcode selection with block fallback; JSON-LD already uses shared helpers. The theme MRSS filter reads attachments. Actual platform MRSS, production APIs and serialization remain unverified.
 
-Do not describe this as a passing regression, change the baseline or broaden expected-difference allowances to hide it. Media cleanup may produce additional fixture-related differences on the next run. Audit the remaining GUID consumers in Phase 1c: oEmbed, unisubs/GUID redirects, API, Open Graph, JSON-LD, MRSS and downloads/subtitles. Keep route names, query parameters, redirects and pagination contracts unchanged.
+Do not describe this as a passing regression or production readiness. Keep route names, query parameters, redirects, the deferred unisubs permalink bug and pagination contracts unchanged. The full run preceded the general template additions; nine targeted HTTP samples after those markup-only changes retained statuses, query sizes and one h1 per view.
+
+## Current verification
+
+- Passing checks: 48 category/event checks plus all previous 117 (22 integration, 19 general templates, 27 GUID/images, 8 simulated production images, 12 simulated downloads/subtitles, 18 single and 11 homepage): **165 total**, rerun successfully. The earlier missing-production-API smoke check remains recorded; it was not rerun in the category/event step.
+- New category/event templates, the hidden spotlight pattern and the modified grid pattern pass editor validation. Desktop/mobile screenshots and DOM checks cover both layouts, plus the second-page category grid. Removed the extra 20px core margin before the spotlight; existing tokens/header/footer remain unchanged.
+- Fourteen targeted HTTP samples preserve the original baseline status/query contracts, ordered unique rendered counts and one h1 on category/event first, second, last and past-last pages, Zaragoza's 23-result boundary and unaffected tag/speaker views. The event feed matches the original normalized body hash. This is not a new full regression run.
+- `inc/archives.php` renders marked inherited Post Templates with isolated in-memory main-query slices (1 + 5 + rest). Explicitly unset the cloned `posts` property before assigning the slice: core binds it to `$GLOBALS['posts']` by reference during real HTTP bootstrap. The tests reproduce that condition and assert the original query, loop state, totals and global post remain unchanged. No database offsets or extra post queries.
+- Category descriptions use core Term Description; local descriptions are all empty, so production copy still needs review. Lead players use the existing core Post Content approach, so the unresolved production content-shape question still matters. The special WordCampTV featured/tag/menu layout and forms/admin remain unfinished.
+- New general template files and three hidden patterns passed editor validation, including the evaluated/translated pattern content.
+- Archive, page, search and 404 received desktop/mobile screenshots and DOM checks. Removed the core's extra 20px margin before already-padded page/archive sections. Existing header/footer, tokens, homepage and single design remain unchanged; offscreen lazy thumbnails are not forced eager for screenshots.
+- Simulations do not prove real production files, subtitles or private-video behavior. No real remote audit was run.
 
 ## Environment cleanup and sync size
 
@@ -51,8 +65,8 @@ Do not describe this as a passing regression, change the baseline or broaden exp
 
 ## Next session
 
-1. Start from this handoff and the [plan](plan.md); keep `wptv-27` active and the current design unchanged.
-2. Receive the owner's specific editor changes; separate editor presentation from changes to fields/moderation, which must preserve Release 1 workflow.
-3. Agree on the order of remaining Phase 1c integration fixes and Phase 1b templates; do not silently expand scope.
-4. Re-run route regression at the next relevant routing/integration milestone and review fixture changes explicitly. Do not run it for this documentation-only closeout.
+1. Start from this handoff and the [plan](plan.md); keep `wptv-27` active. Read the latest site-root `DESIGN.md`, versioned design documentation and Claude Code's supplied instructions before any design implementation. Do not restore the historical 0.3.4 snapshot over new guidance.
+2. **Design is the next priority.** The owner accepted the current category/event structure for this version and deferred restructuring. Do not continue special WordCampTV or forms/admin implementation before the design handoff. Those functional gaps remain tracked, not completed or silently removed; preserve the Release 1 submission and moderation workflow.
+3. Review the four residual feed hashes and the documented fixture changes without rewriting the baseline or broadening allowances. Obtain real multisite integration verification through the production contact.
+4. Re-run full regression at the next routing/integration milestone, not for each template/CSS change. The owner's specific editor adjustments still have not been supplied; do not invent them.
 5. Production rollout remains blocked on unfinished templates/forms, block integrations, regression and production-only verification. Retain wptv2 for rollback.
