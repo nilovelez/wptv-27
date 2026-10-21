@@ -29,6 +29,7 @@ function resolve_terms( $query, $block ) {
 
 	$constraints = array(
 		'wptv/featured' => array( 'post_tag' => 'featured' ),
+		'wptv/home-lead' => array( 'post_tag' => 'featured' ),
 		'wptv/wordcamp' => array( 'category' => 'wordcamptv' ),
 		'wptv/wordcamp-event' => array( 'category' => 'wordcamptv' ),
 	);
@@ -50,6 +51,14 @@ function resolve_terms( $query, $block ) {
 			'field'    => 'term_id',
 			'terms'    => array( $term->term_id ),
 		);
+	}
+	// Match wptv2's front-page lead: newest featured post, restricted to stickies
+	// when configured. The WordCampTV category belongs to a different listing.
+	if ( 'wptv/home-lead' === $namespace ) {
+		$sticky = get_option( 'sticky_posts', array() );
+		if ( $sticky ) {
+			$query['post__in'] = wp_parse_id_list( $sticky );
+		}
 	}
 	// Independent landing-page cards must match BOTH the category and this event.
 	// Never fall back to all category videos when the prototype has no event ID.

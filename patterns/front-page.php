@@ -27,7 +27,7 @@
 <!-- /wp:buttons --></div>
 <!-- /wp:column -->
 <!-- wp:column {"verticalAlignment":"center"} -->
-<div class="wp-block-column is-vertically-aligned-center"><!-- wp:query {"query":{"perPage":1,"pages":1,"offset":0,"postType":"post","order":"desc","orderBy":"date","inherit":false,"sticky":"ignore"}} -->
+<div class="wp-block-column is-vertically-aligned-center"><!-- wp:query {"namespace":"wptv/home-lead","query":{"wptvQuery":"wptv/home-lead","perPage":1,"pages":1,"offset":0,"postType":"post","order":"desc","orderBy":"date","inherit":false,"sticky":"ignore"}} -->
 <div class="wp-block-query"><!-- wp:post-template -->
 <!-- wp:post-content {"layout":{"type":"default"}} /-->
 <!-- wp:group {"className":"wptv-home__lead-caption","layout":{"type":"default"}} -->
@@ -64,7 +64,7 @@
 <div class="wp-block-group alignfull wptv-home__recent"><!-- wp:heading {"align":"wide","fontSize":"heading-4"} -->
 <h2 class="wp-block-heading alignwide has-heading-4-font-size"><?php esc_html_e( 'Recent videos', 'wptv' ); ?></h2>
 <!-- /wp:heading -->
-<!-- wp:query {"query":{"inherit":true},"align":"wide"} -->
+<!-- wp:query {"queryId":1,"query":{"inherit":true},"enhancedPagination":true,"align":"wide"} -->
 <div class="wp-block-query alignwide"><!-- wp:post-template {"className":"wptv-home__videos is-style-cards-grid","layout":{"type":"grid","columnCount":4}} -->
 <!-- wp:post-featured-image {"aspectRatio":"16/9","className":"wptv-card__thumbnail"} /-->
 <!-- wp:post-terms {"term":"speakers","suffix":":","className":"wptv-card__speakers"} /-->

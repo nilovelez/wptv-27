@@ -21,10 +21,30 @@ function prototype( $name ) {
 	return $pattern['content'] ?? '';
 }
 
+/** Match flagship event names, with or without their edition year. */
+function is_flagship( $name ) {
+	return (bool) preg_match( '/^WordCamp\s+(?:Europe|US|Asia|India)(?:\s+[0-9]{4})?$/iu', trim( $name ) );
+}
+
+/** Stable partition: keep the recorded-date order within both groups. */
+function prioritize_flagships( $events ) {
+	$flagships = array();
+	$others = array();
+	foreach ( $events as $id => $date ) {
+		$term = get_term( $id, 'event' );
+		if ( $term instanceof \WP_Term && is_flagship( $term->name ) ) {
+			$flagships[ $id ] = $date;
+		} else {
+			$others[ $id ] = $date;
+		}
+	}
+	return $flagships + $others;
+}
+
 /** Four publication-date-ordered category videos per recent event, not cached HTML. */
 function recent_markup( $events = null ) {
 	$markup = '';
-	foreach ( ( $events ?? recent() ) as $id => $date ) {
+	foreach ( prioritize_flagships( $events ?? recent() ) as $id => $date ) {
 		$term = get_term( $id, 'event' );
 		if ( ! $term instanceof \WP_Term || ! is_wordcamp( $term->name ) ) {
 			continue;
