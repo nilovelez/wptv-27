@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const { chromium } = require(process.env.WPTV_PLAYWRIGHT_PATH || 'playwright');
 const base = process.env.WPTV_TEST_URL || 'http://localhost:8882';
 const blockPost = Number(process.env.WPTV_BLOCK_POST || 141567);
-const shortcodePost = Number(process.env.WPTV_SHORTCODE_POST || 141820);
+const shortcodePost = Number(process.env.WPTV_SHORTCODE_POST || 141575);
 
 (async () => {
 	const browser = await chromium.launch({ headless: true });
@@ -38,7 +38,10 @@ const shortcodePost = Number(process.env.WPTV_SHORTCODE_POST || 141820);
 		// Shortcode-only post: converted in the editor, never saved by this test.
 		await open(shortcodePost);
 		let result = await state();
-		assert.deepEqual(result.blocks, [{ name: 'videopress/video', guid: 'TtzkyMGI' }], 'Shortcode post becomes one VideoPress block');
+		const originalContent = await page.evaluate(() => window.wp.data.select('core/editor').getCurrentPostAttribute('content'));
+		const originalGuid = originalContent.match(/^\s*\[wpvideo\s+([A-Za-z0-9]{8})(?:\s[^\]]*)?\]\s*$/)?.[1];
+		assert.ok(originalGuid, 'Shortcode fixture must still contain an unsaved legacy shortcode');
+		assert.deepEqual(result.blocks, [{ name: 'videopress/video', guid: originalGuid }], 'Shortcode post becomes one VideoPress block');
 		assert.equal(result.valid, true, 'No template mismatch notice');
 		assert.equal(result.dirty, true, 'Conversion waits for a save');
 		assert.ok(result.notices.some((text) => /converted/.test(text)), 'Conversion is announced');
@@ -50,6 +53,10 @@ const shortcodePost = Number(process.env.WPTV_SHORTCODE_POST || 141820);
 		assert.deepEqual(result.blocks.map((block) => block.name), ['videopress/video'], 'Only the video block remains');
 		assert.equal(result.alignSupport, false, 'Alignment is removed from the video block');
 		assert.equal(result.inserter, false, 'No other blocks can be inserted');
+		for (const selector of ['.editor-document-tools__inserter-toggle', '.editor-document-tools__document-overview-toggle']) {
+			assert.equal(await page.locator(selector).count(), 1, `${selector} still exists in core`);
+			assert.equal(await page.locator(selector).isVisible(), false, `${selector} is hidden for video posts`);
+		}
 		await page.evaluate(() => window.wp.data.dispatch('core/edit-post').openGeneralSidebar('edit-post/document'));
 		const panel = page.locator('.components-panel__body', { hasText: 'Video details' });
 		await panel.waitFor({ timeout: 15000 });
@@ -59,6 +66,7 @@ const shortcodePost = Number(process.env.WPTV_SHORTCODE_POST || 141820);
 		assert.deepEqual(await panel.locator('label').allTextContents(), ['Language', 'Categories', 'Tags', 'Event', 'Producer WordPress.org username', 'Speakers', 'Description (excerpt)', 'Slides URL'], 'Video details follows the submission form field order');
 		await page.waitForFunction(() => document.querySelectorAll('.components-panel__body .components-form-token-field__token').length > 0, null, { timeout: 15000 });
 		assert.ok((await panel.locator('textarea').inputValue()).startsWith('During COVID-19'), 'Excerpt is loaded');
+		assert.equal(await panel.getByText('Separate with commas or the Enter key.', { exact: true }).count(), 0, 'Taxonomy fields omit repetitive help');
 		for (const title of ['Speakers', 'Event', 'Language', 'Categories', 'Tags', 'Excerpt']) {
 			assert.equal(await page.locator('.components-panel__body-toggle', { hasText: new RegExp(`^${title}$`) }).count(), 0, `Native ${title} panel is removed`);
 		}

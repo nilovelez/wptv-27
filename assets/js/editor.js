@@ -35,6 +35,8 @@
 	const toolbar = '.block-editor-block-toolbar';
 	const style = document.createElement('style');
 	style.textContent = '[role="tab"][data-tab-id="edit-post/block"] { display: none; }\n' +
+		// A locked single-video canvas needs neither insertion nor an outline.
+		'body.post-type-post .editor-header .editor-document-tools__inserter-toggle, body.post-type-post .editor-header .editor-document-tools__document-overview-toggle { display: none; }\n' +
 		'body.wptv-video-selected .block-editor-block-inspector { display: none; }\n' +
 		[...new Set(hiddenLabels)].map((label) => `body.wptv-video-selected ${toolbar} button[aria-label="${CSS.escape(label)}"]`).join(',\n') +
 		' { display: none; }\n' +
@@ -126,6 +128,7 @@
 
 		return el(components.FormTokenField, {
 			label,
+			help: '',
 			value,
 			suggestions: suggestions.map(name),
 			onInputChange: setSearch,
