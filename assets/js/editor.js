@@ -33,8 +33,16 @@
 		__('Manage chapters', 'jetpack-videopress-pkg'),
 	];
 	const toolbar = '.block-editor-block-toolbar';
+	// Hide summary rows, not their saved values or the underlying permissions.
+	const authorLabel = __('Change author: %s').split('%s');
+	const authorMatch = authorLabel.map((part, index) => part ? `[aria-label${index ? '$' : '^'}="${CSS.escape(part)}"]` : '').join('');
+	const hiddenSummaryRows = [
+		`.editor-post-panel__row:has(button${authorMatch})`,
+		`.editor-post-panel__row:has(button[aria-label="${CSS.escape(__('Template options'))}"])`,
+	];
 	const style = document.createElement('style');
 	style.textContent = '[role="tab"][data-tab-id="edit-post/block"] { display: none; }\n' +
+		hiddenSummaryRows.join(',\n') + ' { display: none; }\n' +
 		// A locked single-video canvas needs neither insertion nor an outline.
 		'body.post-type-post .editor-header .editor-document-tools__inserter-toggle, body.post-type-post .editor-header .editor-document-tools__document-overview-toggle { display: none; }\n' +
 		'body.wptv-video-selected .block-editor-block-inspector { display: none; }\n' +

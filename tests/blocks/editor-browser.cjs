@@ -58,6 +58,11 @@ const shortcodePost = Number(process.env.WPTV_SHORTCODE_POST || 141575);
 			assert.equal(await page.locator(selector).isVisible(), false, `${selector} is hidden for video posts`);
 		}
 		await page.evaluate(() => window.wp.data.dispatch('core/edit-post').openGeneralSidebar('edit-post/document'));
+		for (const label of [/^Change author:/, /^Template options$/]) {
+			const control = page.getByRole('button', { name: label, includeHidden: true });
+			assert.equal(await control.count(), 1, `${label} remains registered`);
+			assert.equal(await control.isVisible(), false, `${label} is hidden on video posts`);
+		}
 		const panel = page.locator('.components-panel__body', { hasText: 'Video details' });
 		await panel.waitFor({ timeout: 15000 });
 		for (const label of ['Language', 'Categories', 'Tags', 'Event', 'Producer WordPress.org username', 'Speakers', 'Description (excerpt)', 'Slides URL']) {
