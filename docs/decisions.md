@@ -15,6 +15,16 @@ Template:
 
 ---
 
+## 2026-10-21: Use the featured image as the block player poster
+
+- **Finding:** VideoPress no longer exposes poster/download/loop settings through the shortcode workflow; the owner confirmed with the VideoPress team that this is permanent and the block is the configuration surface. In local tests (video not owned by the site) and on the test host (video uploaded by the owner), the block's poster control stores only a per-post `poster` URL with `posterData.type: media-library` and passes it to the embed as a parameter. It does not update the VideoPress video. The actual video poster is edited under Jetpack > VideoPress, which does not exist on WordPress.com multisite sites, where VideoPress is native. In the local VideoPress version, `allowDownload`, sharing menu, privacy and rating mirror video-level settings that only an owner can change; the theme cannot enforce them by rewriting block attributes.
+- **Decision:** the post featured image becomes the video poster. Remove poster settings from the VideoPress block and discard stored block poster attributes on save. At render, pass the featured image URL to the player; without one, fall back to the VideoPress poster, as today. Cards, Open Graph, feeds and the theme oEmbed use the same image. The `post` type is used only for videos.
+- **Rejected:** block poster controls, because the value is an untracked URL inside content and would compete with the featured image. Setting a poster from the upload script would cover only uploads and depends on unconfirmed multisite VideoPress support; it remains a possible future enhancement.
+- **Accepted limitations:** embeds outside WordPress.tv keep the VideoPress poster. The local count of 32 published posts with featured images is erroneous legacy data; featured images should not exist on videos today. Most older videos have manually set VideoPress posters; roughly the last year is broken. Clean up erroneous production featured images before shipping, or they will override VideoPress posters. Theme download links remain until production videos are confirmed downloadable through VideoPress. The owner found Allow download disabled on a 2016 production video and on a newly uploaded test-host video, so the effective default is disabled; see [open question 27](open-questions.md).
+- **Image sizes (planned):** thumbnail 320x180 for the media library, one 640x360 size for almost all theme uses, 1920px `-scaled` originals, and disable other core intermediate sizes. Verify WordPress.com's image handling before relying on generated files.
+- **Affects:** future editor prototype, VideoPress rendering, featured-image usage, image sizes and backlog B9. Not implemented yet.
+- **Status:** accepted by the owner.
+
 ## 2026-10-20: Correct the WordCampTV video introduction
 
 - **Owner correction:** the landing must start with one latest video player and the next five small videos, like other categories, not 22 Recent videos cards. Remove that heading/grid/pagination from the landing; rename the next section Latest WordCamps. Both automatic event sections remain complete and unpaginated.

@@ -26,6 +26,14 @@ Status legend: ⏳ pending · 🔄 in progress · ✅ done
 - **Open points:** placement, interaction and any URL behavior remain undecided. Coordinate the data source with the future Year taxonomy work in B5.
 - **Status:** backlog only; implementation is not approved yet.
 
+### B9. Add manual-correction lists to Tools ⏳
+
+- **Owner request:** add admin Tools screens that list videos needing human correction, so moderators can open and fix each post.
+- **First example:** videos without a custom poster, so moderators can capture a suitable frame or upload a title card.
+- **Poster list:** the 100 most recent videos without a featured image, which is the player poster under the [2026-10-21 decision](decisions.md). Fixing an item means setting its featured image; the post then leaves the list.
+- **Open points:** other list types, which statuses are included and required capabilities. Read-only lists; never apply automated corrections or change videos in bulk. Use core admin APIs, no plugins.
+- **Status:** backlog only; implementation is not approved yet.
+
 ## Pending route changes
 
 ### B2. `/unisubs/` returns the wrong `permalink` ⏳
