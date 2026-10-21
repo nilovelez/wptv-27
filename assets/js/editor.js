@@ -38,6 +38,8 @@
 		// A locked single-video canvas needs neither insertion nor an outline.
 		'body.post-type-post .editor-header .editor-document-tools__inserter-toggle, body.post-type-post .editor-header .editor-document-tools__document-overview-toggle { display: none; }\n' +
 		'body.wptv-video-selected .block-editor-block-inspector { display: none; }\n' +
+		// Published videos cannot use this selector; retain it for other statuses.
+		'.edit-flow-extended-post-status-publish { display: none; }\n' +
 		[...new Set(hiddenLabels)].map((label) => `body.wptv-video-selected ${toolbar} button[aria-label="${CSS.escape(label)}"]`).join(',\n') +
 		' { display: none; }\n' +
 		// Native-admin review table: label, submitted value, approval action.

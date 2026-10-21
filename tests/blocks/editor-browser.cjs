@@ -67,6 +67,17 @@ const shortcodePost = Number(process.env.WPTV_SHORTCODE_POST || 141575);
 		await page.waitForFunction(() => document.querySelectorAll('.components-panel__body .components-form-token-field__token').length > 0, null, { timeout: 15000 });
 		assert.ok((await panel.locator('textarea').inputValue()).startsWith('During COVID-19'), 'Excerpt is loaded');
 		assert.equal(await panel.getByText('Separate with commas or the Enter key.', { exact: true }).count(), 0, 'Taxonomy fields omit repetitive help');
+		const extendedStatus = page.locator('.edit-flow-extended-post-status');
+		assert.equal(await extendedStatus.count(), 1, 'Edit Flow status integration remains registered');
+		assert.equal(await extendedStatus.isVisible(), false, 'Published videos hide the disabled Edit Flow status box');
+		assert.equal(await page.locator('.editor-post-status__toggle').isVisible(), true, 'Native Status control remains available');
+		// Exercise the reactive status class without saving or publishing anything.
+		await page.evaluate(() => window.wp.data.dispatch('core/editor').editPost({ status: 'pending' }));
+		await page.locator('.edit-flow-extended-post-status-pending').waitFor();
+		assert.equal(await extendedStatus.isVisible(), true, 'Nonpublished videos keep the custom-status selector');
+		assert.equal(await extendedStatus.locator('select option[value="in-progress"]').count(), 1, 'Edit Flow custom statuses remain selectable');
+		await page.evaluate(() => window.wp.data.dispatch('core/editor').editPost({ status: 'publish' }));
+		await page.locator('.edit-flow-extended-post-status-publish').waitFor({ state: 'hidden' });
 		for (const title of ['Speakers', 'Event', 'Language', 'Categories', 'Tags', 'Excerpt']) {
 			assert.equal(await page.locator('.components-panel__body-toggle', { hasText: new RegExp(`^${title}$`) }).count(), 0, `Native ${title} panel is removed`);
 		}
