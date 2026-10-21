@@ -4,7 +4,7 @@ Block theme for [WordPress.tv](https://wordpress.tv/), the WordPress community s
 
 wptv-27 replaces the legacy classic theme (`wptv2`). It is built with Full Site Editing (block templates, template parts, patterns and `theme.json`), and relies on WordPress core features instead of hand-written code wherever possible.
 
-> **Status:** in development, version 0.3.2. Foundation/routing, the homepage and the single-video template are implemented. VideoPress GUID extraction and thumbnail support work locally; the owner also confirmed thumbnails on the synchronized Atomic test site. Remaining templates, editor/admin work and full block integration are pending. The last route regression is **not green**; this is not a production-ready release. See the [session handoff](docs/handoff.md) and [project plan](docs/plan.md).
+> **Status:** in development, version 0.4.2. The block-theme layouts, automatic WordCampTV landing, locked video editor, anonymous submission form and per-field moderation are implemented. This checkpoint refines the video editor while keeping page editing unaffected. The current-data 145-URL comparison matches all recorded route/query fields but is **not an exact-match pass**: four feed hashes differ only by the featured-image poster parameter; four API hashes remain under existing allowances. Real VideoPress upload/processing and production compatibility still need verification. Subtitle player integration, upload and incoming-subtitle management are deferred to the next delivery. Git publication is not deployment. See the [regression report](docs/regression-editor-checkpoint.md), [session handoff](docs/handoff.md) and [project plan](docs/plan.md).
 
 ## Constraints
 
