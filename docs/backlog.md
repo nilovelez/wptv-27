@@ -102,6 +102,13 @@ This is the next subtitle delivery, not an automatic commitment to every release
 - **Open points:** which SSO mechanism is available on the WordPress.com multisite for wordpress.tv; what anonymous visitors see instead of the form; whether the subtitle form (`/subtitle/`) follows the same rule.
 - **Depends on:** release 2 form (see [submission-form.md](submission-form.md)). May ship with it or later.
 
+### B12. Publish videos directly from the post editor ⏳
+
+- **Owner request:** let moderators publish videos from the post editor without using the submission form.
+- **Scope:** moderators fill in the video fields manually and upload a new video directly to VideoPress through the VideoPress block, then use the native post publication workflow. This path must not require anonymous-submission metadata or per-field approval of a submission.
+- **Open points:** verify direct block upload, VideoPress processing/GUID availability and permissions in the target environment; agree required fields and validation before publication. Keep the submission-form workflow available unless separately retired by the owner.
+- **Status:** deferred route/editorial-workflow backlog; direct VideoPress upload and the complete editor-only publication path are not yet verified. Listing this item does not authorize implementation.
+
 ## Ideas (not yet agreed)
 
 ### B4. Retire `/unisubs/` if it is confirmed unused ⏳
