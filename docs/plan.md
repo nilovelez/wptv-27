@@ -125,7 +125,7 @@ Posts may embed the video either as `[wpvideo <guid>]` or as a VideoPress block.
 - ✅ Thumbnail lookup retains the production API and falls through to the standalone plugin poster resolver on Atomic/Studio. Featured images and the placeholder remain fallbacks. 27 deterministic checks, 8 multisite simulations and a missing-plugin smoke check pass. All 12 real homepage posters return HTTP 200 with JPEG content; desktop/mobile DOM and screenshots reviewed. The owner subsequently synchronized the site and confirmed that thumbnails work on Atomic. Real multisite verification remains pending; this confirmation does not complete the broader Atomic rollout checklist.
 - ✅ Route-test APIs and thumbnail suppression now require an explicit request header from `run.sh`; ordinary Studio browsing uses real VideoPress data.
 - ✅ Local theme-consumer audit and block fallback: oEmbed/discovery, unisubs/GUID lookup, API, Open Graph and downloads/subtitles now support block-only content while retaining each legacy first-shortcode parser. JSON-LD already uses shared helpers; theme MRSS reads attachments, not shortcode text. 22 integration simulations and a missing-production-API smoke check pass.
-- ⏳ Verify real built-in multisite APIs, Open Graph, JSON-LD, MRSS/player output, downloads and subtitle tracks on production; local doubles are not production evidence.
+- ⏳ Verify real built-in multisite APIs, Open Graph, JSON-LD, MRSS/player output and downloads on production; local doubles are not production evidence. Passing existing subtitle tracks to the player is deferred to the next delivery by owner decision; see [backlog.md](backlog.md#next-delivery-subtitle-functionality-). Preserve existing data and routes without claiming subtitle verification.
 - **Regression warning:** `phase-1c-integrations` covers 145 URLs after the conversion and media cleanup. Four unaccepted feed body hashes remain (single, language, main and rss2 query var), down from 27 fields across 11 URLs. oEmbed/unisubs/GUID redirects now match. Four pre-existing expected API hashes remain, with reviewed block-file/removed-MP4 fixture changes as well as existing year/location differences. No PHP notices. Keep the baseline and expected allowances untouched; do not call this green or normalize away feed content/build-date differences. See the latest [decision](decisions.md#phase-1c-integrations-and-general-phase-1b-templates).
 - The single template renders the player from post content in both cases; no duplicate player.
 - Shortcode posts keep producing exactly the same output (route test unchanged).
@@ -134,15 +134,16 @@ Posts may embed the video either as `[wpvideo <guid>]` or as a VideoPress block.
 
 ### 1d. Forms and admin (parity) ⏳
 
-- Anonymous video upload (`/submit-video/`) and subtitle upload (`/subtitle/`): form blocks plus the existing `admin-post.php` handlers, unchanged in behavior. The form still saves `[wpvideo]` and `_wptv_submitted_video`.
-- Hardcoded IDs in the legacy handler (for example the WordCampTV category `12784353`) are resolved by slug.
-- Admin: video review box with the per-field **Approve** buttons, subtitle moderation, slides URL field, event term meta.
+- ✅ Anonymous video upload (`/submit-video/`): fixed form block, editable instructions and `admin-post.php` handlers, retaining the intermediate anonymous/pending/per-field-approval workflow. It saves a VideoPress block and `_wptv_submitted_video`, not a shortcode. Real VideoPress processing still needs environment verification.
+- Hardcoded category IDs in the legacy handler are resolved by slug; the anonymous author is resolved by login with a compatibility fallback.
+- ✅ Admin: video review box with per-field **Approve** buttons and the slides URL field. Event term meta remains subject to its existing checks.
+- **Deferred to the next delivery by the owner:** passing existing subtitle tracks to the player, reproducing the `wptv2` `/subtitle/` upload form, and a new incoming-subtitle management workflow. These do not block closing the current delivery. Direct VideoPress subtitle storage and a Media Library migration tool are separate backlog items B10/B11; see [backlog.md](backlog.md).
 
 ### 1e. Verification and rollout ⏳
 
 1. Full route regression run locally against the `wptv2` baseline.
-2. Activate on the **test site** (https://wptv.nilovelez.com/, Atomic). Checklist: routes sample, front page, single (shortcode and block posts), archives, search, feeds, `/api/`, `/oembed/`, `/unisubs/`, submission form rendering and validation, subtitle form, review box, design lockdown, PHP error log. Multisite-only features must fail gracefully here (no fatal errors, sections hidden).
-3. Deploy to **production** through the WP.com employee and activate in an agreed window. Repeat the checklist, plus the **production-only** items: video submission end to end (VideoPress upload and GUID), thumbnails, downloads, subtitles, video data in JSON-LD and Open Graph. Rollback: reactivate `wptv2` (kept installed) and flush rewrites.
+2. Activate on the **test site** (https://wptv.nilovelez.com/, Atomic). Checklist: routes sample, front page, single (shortcode and block posts), archives, search, feeds, `/api/`, `/oembed/`, `/unisubs/`, video submission form rendering and validation, review box, design lockdown, PHP error log. Subtitle player parameters, upload form and incoming-subtitle management are deferred to the next delivery. Multisite-only features must fail gracefully here (no fatal errors, sections hidden).
+3. Deploy to **production** through the WP.com employee and activate in an agreed window. Repeat the checklist, plus the **production-only** items: video submission end to end (VideoPress upload and GUID), thumbnails, downloads, video data in JSON-LD and Open Graph. Subtitle functionality is a separately deferred delivery; do not claim it has passed this checkpoint. Rollback: reactivate `wptv2` (kept installed) and flush rewrites.
 4. Production block test: a few posts converted by hand (see 1c).
 5. **Exit criterion:** release 1 runs in production with no regressions reported during the agreed observation period.
 

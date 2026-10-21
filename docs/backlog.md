@@ -11,6 +11,16 @@ When a route-changing item is picked up:
 
 Status legend: ⏳ pending · 🔄 in progress · ✅ done
 
+## Next delivery: subtitle functionality ⏳
+
+The owner deferred the following subtitle work to the delivery after the current editor/video-submission checkpoint. These items no longer block closing the current delivery; deferral is not evidence of subtitle compatibility or permission to remove existing data or routes.
+
+- Pass already-uploaded subtitle tracks to the VideoPress player as parameters.
+- Reproduce the `wptv2` subtitle upload form (`/subtitle/`).
+- Design and implement a new way to manage incoming subtitle submissions. The moderation interface and workflow still need agreement before implementation.
+
+This is the next subtitle delivery, not an automatic commitment to every release 2 workflow change. Direct VideoPress storage and bulk migration are separate backlog items below; do not assume the next delivery depends on them.
+
 ## Deferred product/navigation improvements
 
 ### B7. Add language filters across the site ⏳
@@ -32,6 +42,21 @@ Status legend: ⏳ pending · 🔄 in progress · ✅ done
 - **First example:** videos without a custom poster, so moderators can capture a suitable frame or upload a title card.
 - **Poster list:** the 100 most recent videos without a featured image, which is the player poster under the [2026-10-21 decision](decisions.md). Fixing an item means setting its featured image; the post then leaves the list.
 - **Open points:** other list types, which statuses are included and required capabilities. Read-only lists; never apply automated corrections or change videos in bulk. Use core admin APIs, no plugins.
+- **Status:** backlog only; implementation is not approved yet.
+
+### B10. Store newly submitted subtitles in VideoPress ⏳
+
+- **Owner request:** investigate sending and storing new subtitle uploads in VideoPress instead of the WordPress Media Library.
+- **Scope:** establish whether the available VideoPress APIs and permissions support this on the actual environments, then propose the upload, language/track association and moderation flow.
+- **Open points:** API availability, supported formats, authentication, approval timing and failure handling. Preserve current media and subtitle references while feasibility is unresolved.
+- **Status:** backlog only; feasibility and implementation remain unverified. Separate from the next-delivery subtitle form and management work.
+
+### B11. Migrate existing Media Library subtitles to VideoPress ⏳
+
+- **Owner request:** create a tool to migrate existing subtitles from the Media Library to VideoPress.
+- **Scope:** associate each subtitle with the correct VideoPress video and language, report unresolved references, support dry runs and resumable batches, and verify the destination before changing references.
+- **Depends on:** confirming the VideoPress storage/API approach in B10.
+- **Open points:** duplicate handling, supported formats, permission requirements and treatment of original attachments. No deletion of source files or bulk execution is authorized by this backlog entry.
 - **Status:** backlog only; implementation is not approved yet.
 
 ## Pending route changes
