@@ -12,6 +12,14 @@
 - The `/submit-video/` form and handlers are now implemented locally; canonical details/checks: [submission-form.md](submission-form.md). Fixed form in the template, instructions only in page 133512, no shortcode, form first on mobile. Producer username validation is ported and tested against mocked responses plus one real existing/nonexisting username pair. Real VideoPress encoding and live upload cancellation still need environment verification; browser upload responses were simulated. `/subtitle/` remains unported and is now explicitly deferred to the next delivery, together with passing existing subtitle tracks to the player and a new incoming-subtitle management workflow. These no longer block closing the current delivery. The owner also added separate backlog items B10 (investigate new subtitle storage directly in VideoPress) and B11 (a tool to migrate existing Media Library subtitles to VideoPress); neither is implemented or required implicitly for the next subtitle delivery. Preserve existing subtitle data and routes; this deferral is not subtitle compatibility evidence. The owner subsequently authorized Git publication of the accumulated editor, poster and submission-form changes. No synchronization or site deployment is authorized; check Git for the publication result.
 - A lockdown bug that created one `wp_global_styles` post per editor load is fixed, and 44 empty local duplicates were deleted (133788 kept).
 
+## Latest route checkpoint: imported data and editor follow-ups
+
+The owner requested the full route regression after the editor refinements. On 2026-10-22, the URL generator refreshed the inventory to 145 current-data URLs, then both themes were captured against that same inventory: `imported-editor-wptv2` and `imported-editor-wptv27`. Historical captures are preserved. All recorded route/query/status/redirect/canonical/title/pagination fields match; 137 rows are fully identical, four differ only in already-allowed API hashes, and four differ only in unaccepted feed hashes. Neither run logged PHP notices. The comparison still exits 1; do not call it an exact-match pass.
+
+The four feeds now differ **only by the featured-image `posterUrl` parameter**: WordCampTV category, language, main and rss2 query-var feeds. Their labels/causes are not identical to the historical four-feed warning below. The API payloads retain query totals and ordered videos; differences are slug-based year/location partitioning and, in two responses, MP4 quality keys for two block videos. See [regression-editor-checkpoint.md](regression-editor-checkpoint.md) for evidence and limits. Expected-difference allowances were not changed. `wptv-27` is active; no version bump, push or sync accompanied this checkpoint.
+
+The latest editor follow-ups are also committed: `d575f56` removes repeated taxonomy help and hides insertion/overview buttons; `2aba8b5` hides Edit Flow's disabled box only on published posts; `e05ee3e` scopes compact titles to posts rather than pages; `ea7c502` hides Author/Template rows only for video posts. The focused editor suite passes, including page isolation and retained custom-status selection on nonpublished videos.
+
 ## Current follow-ups and completed import
 
 - The homepage lead now follows verified legacy selection: newest `featured` post, restricted to configured stickies when present, without a WordCampTV category requirement or unfeatured fallback. Four targeted query checks passed.
@@ -75,9 +83,9 @@ The 18 read-only selection checks pass, including a final handoff run. PHP synta
 - Last code verification: 27 GUID/image checks, 8 simulated multisite image checks, 11 homepage checks, 18 single checks and 12 simulated download/subtitle checks passed. A plugins-skipped smoke check covered absent APIs. All 12 real homepage poster URLs returned HTTP 200/image/jpeg. Atomic thumbnail success was subsequently confirmed by the owner.
 - Built-in multisite serialization, actual production thumbnail APIs and other production-only integrations still require verification.
 
-## Regression is still blocked
+## Historical regression warning (before the completed import)
 
-The latest full run, **`design-0.4.0`**, covers all 145 fixed URLs and reports **4 unaccepted field differences across 4 URLs**, plus the same four expected API hashes; no PHP notices (zero-byte route log). Every recorded field is identical to the previous full `phase-1c-integrations` run: **zero new differences**. This remains down from the earlier 27 differences across 11 URLs, but is not green.
+The latest full run **at that pre-import checkpoint**, **`design-0.4.0`**, covers all 145 fixed URLs and reports **4 unaccepted field differences across 4 URLs**, plus the same four expected API hashes; no PHP notices (zero-byte route log). Every recorded field is identical to the previous full `phase-1c-integrations` run: **zero new differences**. This remains down from the earlier 27 differences across 11 URLs, but is not green.
 
 - oEmbed JSON/XML/maxwidth, unisubs URL/GUID and both GUID redirects now match the original wptv2 baseline.
 - Four feed body hashes still differ: single feed (lastBuildDate only), language feed, main feed and rss2 query-var feed (build dates, converted block player and paragraph/lazy renderer attributes).

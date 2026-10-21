@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>nilovelez &#8211; WordPress.TV</title>
+	<atom:link href="/producer-username/nilovelez/feed/" rel="self" type="application/rss+xml" />
+	<link></link>
+	<description>WordPress-related videos, curated and moderated by the WordPress community</description>
+	<lastBuildDate>Tue, 29 Sep 2026 11:23:19 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=7.1.3</generator>
+	<item>
+		<title>Equipo de Marketing de WordPress España: cómo colaboramos y qué hacemos</title>
+		<link>/2026/09/29/equipo-de-marketing-de-wordpress-espana-como-colaboramos-y-que-hacemos/</link>
+					<comments>/2026/09/29/equipo-de-marketing-de-wordpress-espana-como-colaboramos-y-que-hacemos/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 29 Sep 2026 11:23:19 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[WordPress Meetup]]></category>
+		<category><![CDATA[World Wide Web]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=141254&#038;preview=true&#038;preview_id=141254</guid>
+
+					<description><![CDATA[¿Quieres contribuir a WordPress pero no sabes por dónde empezar? ¿Te atrae colaborar en una comunidad, pero te preocupa que sea caótico, que tengas que comprometerte indefinidamente, o que necesites ser especialista en marketing?
+
+En esta charla Ana te presenta el Equipo de Marketing de WordPress España desde adentro. Verás cómo estamos estructurados, cuándo nos reunimos, quién participa y cómo es el ambiente real de trabajar con nosotros. Conocerás cómo diferentes perfiles colaboran (diseñadores, devs, documentalistas, gente sin experiencia en marketing), cómo nos repartimos las tareas.
+
+También descubrirás en qué estamos enfocados ahora mismo, qué activaciones lanzamos en septiembre, y de qué formas concretas se necesita ayuda. No es una charla teórica: vamos a hablar de tareas reales, perfiles que buscamos, y cómo es trabajar codo con codo en iniciativas que amplifican WordPress en español.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/qCbspeoZ?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/09/29/equipo-de-marketing-de-wordpress-espana-como-colaboramos-y-que-hacemos/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">141254</post-id>	</item>
+		<item>
+		<title>Automatización la publicación de un podcast con VozCaster</title>
+		<link>/2026/09/29/automatizacion-la-publicacion-de-un-podcast-con-vozcaster/</link>
+					<comments>/2026/09/29/automatizacion-la-publicacion-de-un-podcast-con-vozcaster/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 29 Sep 2026 11:06:30 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Sevilla]]></category>
+		<category><![CDATA[WordPress Meetup]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=141249&#038;preview=true&#038;preview_id=141249</guid>
+
+					<description><![CDATA[De una nota de voz a un podcast publicado
+
+VozCaster convierte tus notas de voz de Telegram en episodios de podcast publicados automáticamente en tu WordPress con PowerPress. Sin editar, sin subir archivos a mano.
+
+Graba y envía.
+
+Mandas una nota de voz o un archivo de audio al bot de Telegram, como cualquier mensaje.
+
+Se publica solo.
+
+El episodio aparece en tu WordPress con PowerPress, listo para revisar o publicar al instante.
+
+Una maravilla de la automatización con IA que conoceremos y aprenderemos a hacer otras automatizaciones entre la IA y WordPress.
+
+¡No te lo pierdas!]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/AqjP9EWU?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/09/29/automatizacion-la-publicacion-de-un-podcast-con-vozcaster/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">141249</post-id>	</item>
+		<item>
+		<title>Keynote – Fireside Chat</title>
+		<link>/2026/08/20/keynote-fireside-chat-2/</link>
+					<comments>/2026/08/20/keynote-fireside-chat-2/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Thu, 20 Aug 2026 17:23:37 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Phoenix]]></category>
+		<category><![CDATA[US]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<category><![CDATA[Featured]]></category>
+		<category><![CDATA[Keynote]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=141022&#038;preview=true&#038;preview_id=141022</guid>
+
+					<description><![CDATA[Every WordCamp needs a great send-off, and this year, we’re doing it the way our community actually talks to each other: two chairs, a real conversation, and a room full of people who get it. Think of it less like a keynote and more like the best hallway conversation of the week, just given a mic and a stage.    The conversation we’ve all been having comes to the big stage.     WordPress is evolving alongside AI, changing user expectations, and a rapidly shifting web. How do we keep open source thriving? What should we hold onto? What needs to change? And where do we go from here?    That’s what this conversation is about. Not prepared talking points, but an honest discussion between two people who’ve spent decades helping shape, support, and steward the WordPress ecosystem from different perspectives. Even better, it doesn’t end on stage. The final 30 minutes belong to the community, with live audience Q&#38;A.    Two perspectives shaped by decades in open source.    Ma.tt Mullenweg has helped guide the project since co-founding WordPress more than twenty years ago, while also leading Automattic and its portfolio of products supporting publishing, commerce, and the open web.     Robert Jacobi has spent his career guiding organizations build, secure, and scale open source technologies, contributing across hosting, infrastructure, community leadership, and digital strategy.    Together, they bring two distinct perspectives on the opportunities, challenges, and decisions shaping WordPress today. It’s a conversation grounded in years of experience, but one that’s ultimately about where the project goes from here and what that means for everyone building with it.    The best conversations don’t end when the session does.    By the time Wednesday afternoon arrives, you’ll have spent four days learning new skills, meeting people from across the community, and sharing ideas that continue long after the event ends. This conversation is a chance to zoom out and connect those experiences to the bigger picture.    Expect an honest discussion about open source, the evolving web, AI, community, and the future of WordPress. Then, the conversation opens up to you. The final 30 minutes are dedicated to audience Q&#38;A, giving you the opportunity to ask questions, share perspectives, and be part of the discussion that closes out WordCamp US 2026.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/OWeq4IPf?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/08/20/keynote-fireside-chat-2/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">141022</post-id>	</item>
+		<item>
+		<title>Agentic Development for WordPress – How Modern Teams Are Building with AI Workers, Not Just AI Chat</title>
+		<link>/2026/08/20/agentic-development-for-wordpress-how-modern-teams-are-building-with-ai-workers-not-just-ai-chat/</link>
+					<comments>/2026/08/20/agentic-development-for-wordpress-how-modern-teams-are-building-with-ai-workers-not-just-ai-chat/#comments</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Thu, 20 Aug 2026 11:54:35 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Phoenix]]></category>
+		<category><![CDATA[US]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=140991&#038;preview=true&#038;preview_id=140991</guid>
+
+					<description><![CDATA[AI is quickly becoming part of everyday work for WordPress teams, but in many cases we are still using it in a very limited way: asking isolated questions, retrying prompts, and manually feeding context into every conversation.    Whats next is not simply using better prompts. It is learning how to delegate.    In this session I will check how agentic development, is a new way of structuring repositories, workflows, and AI tooling so coding agents can operate with memory, reusable processes, and external awareness instead of acting like one-time chat assistants.    I will look at why this changes the way modern WordPress teams think about development, delivery, documentation, and internal knowledge sharing, and why the competitive advantage in the near future will not come from access to AI itself, but from how well teams learn to organize AI execution.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/WCRePNhO?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/08/20/agentic-development-for-wordpress-how-modern-teams-are-building-with-ai-workers-not-just-ai-chat/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">140991</post-id>	</item>
+		<item>
+		<title>Your Client Wants AI. Their Lawyer Just Said No.</title>
+		<link>/2026/08/20/your-client-wants-ai-their-lawyer-just-said-no/</link>
+					<comments>/2026/08/20/your-client-wants-ai-their-lawyer-just-said-no/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Thu, 20 Aug 2026 11:53:57 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Phoenix]]></category>
+		<category><![CDATA[US]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=141002&#038;preview=true&#038;preview_id=141002</guid>
+
+					<description><![CDATA[Two clients showed up with the same UX problem: visitors land on a complex site and can’t find the right path forward. One project ended up shipping a GPT-powered search block. The other shipped a deterministic, persona-driven block on rails, no AI at all. Both worked. Neither was wrong.    This talk walks through both production engagements side by side. The AI search block, built for a community college’s 643-course catalog, comes with the production-hardening list nobody mentions in the demos: rate limits, kill switches, prompt-injection mitigations, token ceilings, and cost predictability. The persona-by-goal Mosaic block, built for an industrial services company after their legal team rejected an AI chatbot SOW, comes with a different lesson: deterministic UX, full editorial control, zero model cost.    Attendees leave with a framework for when an AI block belongs in a project and when a deterministic block does the same job better, plus a reusable persona-by-goal pattern they can adapt on their next engagement.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/Jv2zswos?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/08/20/your-client-wants-ai-their-lawyer-just-said-no/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">141002</post-id>	</item>
+		<item>
+		<title>Beyond Plugins: When to Move Workflows Outside WordPress</title>
+		<link>/2026/08/20/beyond-plugins-when-to-move-workflows-outside-wordpress/</link>
+					<comments>/2026/08/20/beyond-plugins-when-to-move-workflows-outside-wordpress/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Thu, 20 Aug 2026 11:53:45 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Phoenix]]></category>
+		<category><![CDATA[US]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=140997&#038;preview=true&#038;preview_id=140997</guid>
+
+					<description><![CDATA[Plugins are how most WordPress users solve problems, and for good reason. But there’s a point where adding another one starts to hurt. Performance gets shaky, updates break things, and your site ends up depending on a chain of small tools nobody fully understands.    This talk is about recognizing that point. How do you tell when a workflow has outgrown its plugin? How do you move that logic somewhere else without losing what made WordPress easy in the first place? We’ll work through real examples, like a membership flow that started as three plugins and became one automation, and a CRM sync that stopped breaking once it left the plugin world.    Most WordPress talks assume the right answer is always to find the right plugin. This one is honest about when the right answer is to stop adding plugins.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/7BgLDhJi?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/08/20/beyond-plugins-when-to-move-workflows-outside-wordpress/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">140997</post-id>	</item>
+		<item>
+		<title>The Handshake Is The Roadmap: Product, Partnerships, and the Loop Between Them</title>
+		<link>/2026/08/20/the-handshake-is-the-roadmap-product-partnerships-and-the-loop-between-them/</link>
+					<comments>/2026/08/20/the-handshake-is-the-roadmap-product-partnerships-and-the-loop-between-them/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Thu, 20 Aug 2026 11:53:34 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Phoenix]]></category>
+		<category><![CDATA[US]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=140996&#038;preview=true&#038;preview_id=140996</guid>
+
+					<description><![CDATA[Product builds. Partnerships open doors. Most companies treat these as separate functions that meet quarterly to align. Deals close on promises the roadmap doesn’t reflect, integrations ship that no partner actually asked for, customer feedback dies in notes that nobody on the product side ever sees, and the next big partnership opportunity fades away because nobody connected the dots in time.  The presenters have been working this loop together for years. They’ve seen what happens when the loop holds and what happens when it breaks, and they’re shaping how a business operates around that hard-won pattern.  In this talk, they’ll walk through partnership decisions made without product context and what they cost, product decisions made without partnership context and what those cost, and key moments where the loop worked and value compounded.  They’ll talk candidly about AI as a tool running the loop with them: surfacing patterns across partner conversations and product signals, drafting the first version of things humans then sharpen, and making it possible for a small team to hold more of the big picture at once. The argument isn’t that AI replaces either role. It’s that AI, used well, makes the loop between them faster, sharper, and harder to drop.  Expect concrete examples, honest failure stories, and a working model you can take back to your own team whether you sit on the product side, the business side, or somewhere in between.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/oUpLwX9P?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/08/20/the-handshake-is-the-roadmap-product-partnerships-and-the-loop-between-them/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">140996</post-id>	</item>
+		<item>
+		<title>The Agentic Web Is Coming – Is WordPress Ready?</title>
+		<link>/2026/08/20/the-agentic-web-is-coming-is-wordpress-ready/</link>
+					<comments>/2026/08/20/the-agentic-web-is-coming-is-wordpress-ready/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Thu, 20 Aug 2026 11:53:23 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Phoenix]]></category>
+		<category><![CDATA[US]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=140990&#038;preview=true&#038;preview_id=140990</guid>
+
+					<description><![CDATA[AI agents don’t browse the web the way humans do. They need to read it, query it, take actions on it. A new layer of the web is being built right now – one where sites aren’t just destinations for human visitors but interfaces that AI systems can interact with directly. WordPress, which already powers 43% of the web, has a real structural role to play here. But it requires the ecosystem to think differently about what a WordPress site actually is.    In this talk I’ll dig into what the agentic web actually means in practice – what agents need from a site, how MCP and the WordPress AI infrastructure being built in core (WP AI Client, MCP Adapter, Abilities API) fit in, and what developers, agencies, and site owners should be thinking about now before this shift accelerates..]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/vnWN8A2r?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/08/20/the-agentic-web-is-coming-is-wordpress-ready/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">140990</post-id>	</item>
+		<item>
+		<title>The Update Day: A Bulletproof Maintenance Workflow for WordPress Agencies</title>
+		<link>/2026/08/20/the-update-day-a-bulletproof-maintenance-workflow-for-wordpress-agencies/</link>
+					<comments>/2026/08/20/the-update-day-a-bulletproof-maintenance-workflow-for-wordpress-agencies/#comments</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Thu, 20 Aug 2026 11:53:13 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Phoenix]]></category>
+		<category><![CDATA[US]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=140985&#038;preview=true&#038;preview_id=140985</guid>
+
+					<description><![CDATA[Most agencies still update WordPress sites the same way regardless of risk: backup, update, then click through some pages hoping nothing broke. That approach burns hours, scales badly, and still misses the layout break a client catches first. This session presents a rock-solid maintenance workflow.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/UZyLTta5?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/08/20/the-update-day-a-bulletproof-maintenance-workflow-for-wordpress-agencies/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">140985</post-id>	</item>
+		<item>
+		<title>The Site Is the Source of Truth: Block Themes, AI, and Agency Workflows</title>
+		<link>/2026/08/20/the-site-is-the-source-of-truth-block-themes-ai-and-agency-workflows/</link>
+					<comments>/2026/08/20/the-site-is-the-source-of-truth-block-themes-ai-and-agency-workflows/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Thu, 20 Aug 2026 11:53:01 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Phoenix]]></category>
+		<category><![CDATA[US]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=140984&#038;preview=true&#038;preview_id=140984</guid>
+
+					<description><![CDATA[Block themes give WordPress an opportunity to become more than a publishing tool or a place where finished designs are implemented. With the right theme structure, patterns, templates, and brand guidelines, a WordPress site can become the source of truth for how new pages and layouts should be built.  That matters even more as agencies begin using AI in their build process. AI is useful when it can work from existing pieces: approved patterns, real content, design tokens, reusable blocks, and known template structures. It is much less useful when it starts every landing page from scratch.  In this session, we’ll look at how agencies can treat WordPress as a practical design system for real client work. We’ll cover how block themes, patterns, `theme.json`, reusable layouts, and clear content structure can give both humans and AI better building blocks. WooCommerce will be used as a case study because store pages make the stakes obvious: product, cart, and checkout experiences need brand consistency, editing flexibility, and reliable structure.  Attendees will leave with a clearer model for using block themes as a foundation for agency workflows, client handoff, and AI-assisted page building without losing control of the design system.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/6MKqidhw?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/08/20/the-site-is-the-source-of-truth-block-themes-ai-and-agency-workflows/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">140984</post-id>	</item>
+	</channel>
+</rss>

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Videos from WordPress Credits &#8211; WordPress.TV</title>
+	<atom:link href="/event/wordpress-credits/feed/" rel="self" type="application/rss+xml" />
+	<link></link>
+	<description>WordPress-related videos, curated and moderated by the WordPress community</description>
+	<lastBuildDate>Wed, 24 Jun 2026 08:51:42 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=7.1.3</generator>
+	<item>
+		<title>Mi experiencia en el WordPress Photo Directory</title>
+		<link>/2026/06/24/mi-experiencia-en-el-wordpress-photo-directory/</link>
+					<comments>/2026/06/24/mi-experiencia-en-el-wordpress-photo-directory/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Wed, 24 Jun 2026 08:51:42 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Madrid]]></category>
+		<category><![CDATA[Presentation]]></category>
+		<category><![CDATA[WPCredits]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=140495&#038;preview=true&#038;preview_id=140495</guid>
+
+					<description><![CDATA[En este vídeo comparto mi experiencia en WP Credits dentro del WordPress Photo Directory como colaboradora y moderadora.
+
+Explico brevemente el proyecto, mi proceso de aprendizaje y cómo funciona la contribución y la moderación de fotografías en la comunidad de WordPress.
+
+Este vídeo está dirigido a quienes estén interesados en colaborar en el equipo de Photos.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/Hc1tZOw9?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/06/24/mi-experiencia-en-el-wordpress-photo-directory/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">140495</post-id>	</item>
+		<item>
+		<title>Presentación Proyecto de sistema de recursos visuales para comunidades y meetups de WordPress</title>
+		<link>/2026/05/28/presentacion-proyecto-de-sistema-de-recursos-visuales-para-comunidades-y-meetups-de-wordpress/</link>
+					<comments>/2026/05/28/presentacion-proyecto-de-sistema-de-recursos-visuales-para-comunidades-y-meetups-de-wordpress/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Thu, 28 May 2026 11:16:04 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[España]]></category>
+		<category><![CDATA[WPCredits]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=140137&#038;preview=true&#038;preview_id=140137</guid>
+
+					<description><![CDATA[En este vídeo mostramos el proceso de trabajo realizado durante nuestras prácticas en WordPress España. El proyecto consiste en diseñar un sistema de recursos visuales para comunidades y meetups, con el objetivo de mejorar la coherencia gráfica de sus comunicaciones y facilitar la creación de piezas para redes sociales, eventos y presentaciones.
+
+Durante el vídeo se puede ver cómo partimos de una fase de investigación, en la que analizamos las necesidades principales: falta de coherencia visual, una paleta de color poco definida y la necesidad de crear una identidad adaptable a distintos formatos. A partir de ahí, desarrollamos en Figma diferentes plantillas y propuestas visuales pensadas para que puedan editarse posteriormente en Canva de forma sencilla.
+
+También se muestran dos líneas gráficas distintas: una más limpia y minimalista, y otra más dinámica y llamativa. Ambas mantienen la identidad de WordPress España, pero ofrecen diferentes posibilidades según el tipo de comunicación o evento. En conjunto, el vídeo resume la evolución del proyecto desde el análisis inicial hasta la creación de un sistema visual flexible, útil y accesible para las comunidades.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/9bJij61z?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/05/28/presentacion-proyecto-de-sistema-de-recursos-visuales-para-comunidades-y-meetups-de-wordpress/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">140137</post-id>	</item>
+		<item>
+		<title>Mi experiencia contribuyendo a WordPress</title>
+		<link>/2026/05/14/mi-experiencia-contribuyendo-a-wordpress/</link>
+					<comments>/2026/05/14/mi-experiencia-contribuyendo-a-wordpress/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Thu, 14 May 2026 22:10:47 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Cochabamba]]></category>
+		<category><![CDATA[WPCredits]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=139710&#038;preview=true&#038;preview_id=139710</guid>
+
+					<description><![CDATA[En esta entrevista, Erika Joana Claros Choque comparte su experiencia dentro del programa WordPress Credits Bolivia, donde participó en el área de traducción contribuyendo al proyecto “Translation of 7.0.x - Development: Spanish (Uruguay)”.
+
+Durante la conversación, habla sobre el aprendizaje obtenido, los retos de colaborar en una comunidad global y cómo esta experiencia fortaleció sus habilidades técnicas y profesionales dentro del ecosistema WordPress.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/ZZgKk9wO?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/05/14/mi-experiencia-contribuyendo-a-wordpress/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">139710</post-id>	</item>
+		<item>
+		<title>WordPress Wrapup Presentation</title>
+		<link>/2026/05/06/wordpress-wrapup-presentation/</link>
+					<comments>/2026/05/06/wordpress-wrapup-presentation/#comments</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Wed, 06 May 2026 16:11:29 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Albuquerque]]></category>
+		<category><![CDATA[WPCredits]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=139680&#038;preview=true&#038;preview_id=139680</guid>
+
+					<description><![CDATA[A reflection of my project and future contributions to WordPress as a member of the WPCredits program.
+
+(Presentation was intended to be given before an audience unfamiliar with WordPress Credits).]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/xNAcGxw3?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/05/06/wordpress-wrapup-presentation/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">139680</post-id>	</item>
+		<item>
+		<title>My Credits Course Journey</title>
+		<link>/2026/05/04/my-credits-course-journey/</link>
+					<comments>/2026/05/04/my-credits-course-journey/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 05 May 2026 06:48:40 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[WPCredits]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=139660&#038;preview=true&#038;preview_id=139660</guid>
+
+					<description><![CDATA[I have completed this course, and now I will contribute to the WordPress team.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/2k9UVd6w?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/05/04/my-credits-course-journey/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">139660</post-id>	</item>
+		<item>
+		<title>WP Credits wrap-up video</title>
+		<link>/2026/05/04/wp-credits-wrap-up-video/</link>
+					<comments>/2026/05/04/wp-credits-wrap-up-video/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 05 May 2026 06:45:50 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Italy]]></category>
+		<category><![CDATA[WPCredits]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=139655&#038;preview=true&#038;preview_id=139655</guid>
+
+					<description><![CDATA[My video for the conclusion of my WP Credits traineeship in the Polyglots Team.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/nhknX4Db?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/05/04/wp-credits-wrap-up-video/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">139655</post-id>	</item>
+		<item>
+		<title>Mi contribución al soporte de WordPress</title>
+		<link>/2026/04/27/mi-contribucion-al-soporte-de-wordpress-2/</link>
+					<comments>/2026/04/27/mi-contribucion-al-soporte-de-wordpress-2/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Mon, 27 Apr 2026 17:06:54 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Costa Rica]]></category>
+		<category><![CDATA[WPCredits]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=139521&#038;preview=true&#038;preview_id=139521</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/lawgGlce?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/04/27/mi-contribucion-al-soporte-de-wordpress-2/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">139521</post-id>	</item>
+		<item>
+		<title>Fotos de Costa Rica</title>
+		<link>/2026/04/26/fotos-de-costa-rica/</link>
+					<comments>/2026/04/26/fotos-de-costa-rica/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Sun, 26 Apr 2026 19:31:04 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Costa Rica]]></category>
+		<category><![CDATA[WPCredits]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=139503&#038;preview=true&#038;preview_id=139503</guid>
+
+					<description><![CDATA[Photos organicas de Costa Rica]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/dXi7vbgy?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/04/26/fotos-de-costa-rica/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">139503</post-id>	</item>
+		<item>
+		<title>Polyglots: Aporte desde Costa Rica</title>
+		<link>/2026/04/26/polyglots-aporte-desde-costa-rica/</link>
+					<comments>/2026/04/26/polyglots-aporte-desde-costa-rica/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Sun, 26 Apr 2026 19:26:36 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Costa Rica]]></category>
+		<category><![CDATA[WPCredits]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=139453&#038;preview=true&#038;preview_id=139453</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/BTTL5ons?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/04/26/polyglots-aporte-desde-costa-rica/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">139453</post-id>	</item>
+		<item>
+		<title>Reproducir un bug del core de WordPress using Trac</title>
+		<link>/2026/04/26/reproducir-un-bug-del-core-de-wordpress-using-trac/</link>
+					<comments>/2026/04/26/reproducir-un-bug-del-core-de-wordpress-using-trac/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Sun, 26 Apr 2026 19:23:20 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Costa Rica]]></category>
+		<category><![CDATA[WPCredits]]></category>
+		<category><![CDATA[INCOMPLETE UPLOAD]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=139443&#038;preview=true&#038;preview_id=139443</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/K9sNDAXi?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/04/26/reproducir-un-bug-del-core-de-wordpress-using-trac/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">139443</post-id>	</item>
+	</channel>
+</rss>

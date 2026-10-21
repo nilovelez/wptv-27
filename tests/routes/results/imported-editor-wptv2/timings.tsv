@@ -1,0 +1,146 @@
+label	seconds
+front	1.667404
+front page 2	1.466997
+front last page (2310)	1.646950
+front past last page (2311)	1.417768
+single: latest	1.680631
+single: oldest	1.500113
+single: with slides	1.552081
+single: most commented	1.564108
+single: latest with video	1.392188
+single: by ?p=ID	1.464137
+single: wrong date in URL	1.553080
+single: feed	1.579907
+page: about	1.339103
+page: get-involved	1.493002
+page: submit-video	1.345170
+page: subtitle (production only)	1.514269
+page: subtitle with video param	1.383217
+date: year	1.617320
+date: year page 2	1.375584
+date: year last page (82)	1.522926
+date: year past last page (83)	1.314575
+date: month	1.569192
+date: day	1.446633
+category: wordcamptv	1.878814
+category: wordcamptv page 2	1.745188
+category: wordcamptv last page (704)	1.606875
+category: wordcamptv past last page (705)	1.532944
+category: wordcamptv feed	1.667373
+category: how-to	1.450849
+category: how-to page 2	1.638421
+category: how-to last page (27)	1.423389
+category: how-to past last page (28)	1.486461
+category: learn-wordpress-online-workshops	1.441372
+category: learn-wordpress-online-workshops page 2	1.638267
+category: learn-wordpress-online-workshops last page (17)	1.351394
+category: learn-wordpress-online-workshops past last page (18)	1.488786
+category: year (parent)	1.682527
+category: year child	1.658711
+category: year child page 2	1.470382
+category: year child last page (89)	1.626671
+category: year child past last page (90)	1.571588
+category: location (parent)	5.079786
+category: location child	1.640045
+category: location child page 2	1.607214
+category: location child last page (24)	1.442814
+category: location child past last page (25)	1.500130
+tag: most used	1.389631
+tag: most used page 2	1.580478
+tag: most used last page (44)	1.340621
+tag: most used past last page (45)	1.557248
+tag: featured	1.417859
+event: most used	1.702934
+event: most used page 2	1.442457
+event: most used last page (7)	1.596559
+event: most used past last page (8)	1.323769
+event: just over boundary (23)	1.822100
+event: just over boundary (23) page 2	1.646753
+event: just over boundary (23) past last page (3)	1.394344
+event: non-ASCII slug	1.573514
+event: feed	1.395893
+event: unknown term	1.488092
+speakers: most used	1.426286
+speakers: most used page 2	1.527894
+speakers: most used last page (21)	1.574866
+speakers: most used past last page (22)	1.358382
+speakers: just over boundary (11)	1.562279
+speakers: just over boundary (11) page 2	1.347736
+speakers: just over boundary (11) past last page (3)	1.482381
+speakers: non-ASCII slug	1.533668
+speakers: feed	1.421738
+speakers: unknown term	1.487780
+language: most used	1.428293
+language: most used page 2	1.556622
+language: most used last page (1173)	1.410506
+language: most used past last page (1174)	1.545824
+language: just over boundary (11)	1.431098
+language: just over boundary (11) page 2	1.542285
+language: just over boundary (11) past last page (3)	1.311789
+language: non-ASCII slug	1.552539
+language: feed	1.396972
+language: unknown term	1.471012
+producer: most used	1.403110
+producer: most used page 2	1.620828
+producer: most used last page (6)	1.346154
+producer: most used past last page (7)	1.487138
+producer: just over boundary (12)	1.375634
+producer: just over boundary (12) page 2	1.567254
+producer: just over boundary (12) past last page (3)	1.314741
+producer: feed	1.639600
+producer: unknown term	1.344931
+producer-username: most used	1.576777
+producer-username: most used page 2	1.400998
+producer-username: most used last page (134)	1.533703
+producer-username: most used past last page (135)	1.314191
+producer-username: just over boundary (11)	1.556280
+producer-username: just over boundary (11) page 2	1.345758
+producer-username: just over boundary (11) past last page (3)	1.525963
+producer-username: feed	1.520746
+producer-username: unknown term	1.499201
+author	1.416212
+author page 2	1.625205
+author last page (1779)	1.426324
+author past last page (1780)	1.545347
+search: results	1.970691
+search: page 2	2.026015
+search: pretty URL	1.766510
+search: no results	1.879952
+feed: main	1.553188
+feed: rss2 query var	1.422552
+feed: comments	1.581184
+redirect: /upload	1.276218
+redirect: /upload/	1.483300
+redirect: social-learning	1.335039
+redirect: social-learning page 2	1.463540
+api: videos.json	1.465782
+api: videos.array	1.526885
+api: videos.json posts_per_page	1.416894
+api: videos.json by event	1.728523
+api: videos.json page 2	1.381759
+api: events.json	1.604709
+api: speakers.json	1.329889
+api: languages.json	1.439518
+api: tags.json	1.334577
+api: categories.json	1.505870
+api: invalid method	1.316636
+api: invalid format	1.515756
+oembed: json	1.337474
+oembed: xml	1.490802
+oembed: maxwidth	1.334904
+oembed: missing url	1.493620
+oembed: unknown url	1.306227
+oembed: core endpoint	1.736294
+unisubs: by url	1.368149
+unisubs: missing params	1.482051
+unisubs: by guid	1.367456
+guid redirect: home	1.547592
+guid redirect: any URL	1.343579
+guid redirect: unknown guid	1.681048
+rest: speakers	1.490454
+rest: language	1.635019
+rest: event	1.462857
+rest: posts filtered by event	1.658097
+maintenance: flush_rules (anonymous)	1.460971
+not found: page	1.490010
+not found: deep path	1.409157
