@@ -16,17 +16,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Post types that store design changes made in the Site Editor.
+ * Post types that store template changes made in the Site Editor.
+ *
+ * Global styles are not hidden: core creates a new user global styles post
+ * whenever its lookup finds none, so hiding them added one post per editor
+ * load. empty_user_theme_json() already ignores their content.
  */
-const DESIGN_POST_TYPES = array( 'wp_template', 'wp_template_part', 'wp_global_styles' );
+const DESIGN_POST_TYPES = array( 'wp_template', 'wp_template_part' );
 
 /**
- * Hides database copies of templates, template parts and global styles.
+ * Hides database copies of templates and template parts.
  *
- * Every lookup of these post types (template resolution, the template-part
- * block, the global styles resolver) goes through WP_Query, so returning no
- * posts makes WordPress fall back to the theme files and theme.json. Existing
- * copies stay in the database untouched, but have no effect.
+ * Template resolution and the template-part block look these post types up
+ * through WP_Query, so returning no posts makes WordPress fall back to the
+ * theme files. Existing copies stay in the database untouched, but have no
+ * effect.
  *
  * @param \WP_Post[]|int[]|null $posts Short-circuit value.
  * @param \WP_Query             $query The query.

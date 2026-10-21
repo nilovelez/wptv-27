@@ -30,7 +30,7 @@ Questions that need an answer from the project owner or a WordPress.com employee
 
 ### Editorial workflow
 
-16. **Editor:** the owner is now reviewing the transition from Classic Editor to the block editor and will supply specific adjustments. Those adjustments have not yet been provided or implemented; production editorial usage and field/moderation requirements still need confirmation. Preserve the Release 1 workflow.
+16. **Editor:** resolved in part. The owner retired the classic editor and shortcode authoring, and a block-editor prototype exists ([decisions](decisions.md)). The owner accepted the current field order for now. `producer` and `flavor` stay out of the editor: `flavor` has no terms, and the owner will empty `producer` before the migration. Still open: Play inline, which the owner will test both ways before deciding.
 17. **Upload flows:** who publishes videos, and how? Are the anonymous upload (`/submit-video/`) and subtitle upload (`/subtitle/`) still in active use?
 18. **Footer:** keep the random "An Automattic Production / Joint / Medley…" word?
 19. **Prev/next links:** keep `<link rel="prev|next">` on archives? Search engines no longer use them, but removing them changes the `<head>` output.

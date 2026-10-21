@@ -1,13 +1,18 @@
 # Video submission form
 
-Specification of the `/submit-video/` form. **Release 1** reproduces the current behavior exactly. **Release 2** applies the target behavior described per field. See [plan.md](plan.md) (1d and 2a).
+Specification of the `/submit-video/` form. The owner approved an **intermediate release (option A)**: preserve anonymous submissions and per-field moderation while retiring classic-editor and shortcode authoring. **Release 2** remains future work. See [plan.md](plan.md) (1d and 2a).
 
-## Current workflow (release 1, unchanged)
+## Implemented intermediate release (local)
 
-- The handler (`admin_post_wptv_video_upload`, also for logged-out users) creates a `pending` post titled `<speakers>: <title>`, uploads the file to VideoPress and sets the content to `[wpvideo <guid>]`.
+- `templates/page-submit-video.html` owns the fixed `wptv/submission-form` block on the left and `core/post-content` instructions on the right (2:1 columns above 1080px; stacked with form first at 1080px and below). The instructions column has `id="guidelines"`; only at stacked widths does the introductory prompt appear, with “review the guidelines” linked to `#guidelines`. All labels and controls share aligned columns above 600px, including Location, Category and Description; labels for large controls align to the top. Category groups the WordCamp checkbox with the category list under one accessible group heading. Instructions edited by the owner are left untouched. The page editor contains instructions only; the existing theme design lockdown protects the template. No upload shortcode is registered. Local page 133512 now contains only its original instruction blocks; production must recreate those instructions as page content. Its prior local content is backed up in `wp-content/wptv-work/submit-video-before.json`, outside the theme repository.
+- `inc/submission-form.php` renders the form; `assets/js/submission-form.js` preserves legacy validation, event composition, speaker separators, progress/cancellation and redirect prefills. Network/malformed-server responses allow a retry instead of navigating to error output. Error codes are read from `$_REQUEST`, as in wptv2: core removes `$_GET['error']` during permalink parsing.
+- `inc/submissions.php` handles `admin_post_wptv_video_upload`, also for logged-out users: creates a `pending` post titled `<speakers>: <title>`, uploads the file and embeds the resulting GUID as a `videopress/video` block, not a shortcode.
 - Every field is stored in the `_wptv_submitted_video` post meta array. The excerpt is left empty.
-- Only categories are assigned directly: WordCampTV (hardcoded ID `12784353`) or Uncategorized.
-- Moderators copy each value to its real field by pressing **Approve** per field in the admin review box. The description ends up as the post excerpt.
+- Only categories are assigned directly: WordCampTV by slug or the site's default category. User-selected categories and the recorded year stay in submitted metadata until approval.
+- Moderators copy each value to its real field by pressing **Approve** in the Submitted video meta box below the editor. It appears on any editable post with submission metadata, regardless of author. The description ends up as the post excerpt.
+- Producer username validation is ported into `WordPressTV\Submissions\wporg_username_exists()`: requests `https://wordpress.org/grav-redirect.php?user=…` without following redirects and checks Location for `d=mm`, exactly as wptv2. HTTP failures fail validation; a nonempty producer is never silently skipped.
+- Real processing still requires `video_get_info_by_blogpostid()` or a compatible integration. A local media upload alone does not create a VideoPress GUID. The existing `wptv_pre_submission_video_guid` filter is only a test seam, not a production processing fallback.
+- Checks: template 11/11 and instruction content 15/15 valid blocks; `tests/blocks/submission-validation.php` passes 14 mocked HTTP/validation assertions; `tests/blocks/submission-form-browser.cjs` checks anonymous required fields, event composition/manual override, speaker normalization, XHR failure/retry, malformed responses, simulated success redirects, error 14/prefill, mobile order and overflow. No videos were sent to VideoPress or new posts created by these checks. Real encoding and cancellation during a live upload remain environment checks.
 - Client-side only: a 100-character `maxlength` on text inputs (200 on the slides URL), required checks and a honeypot (`wptv_honey`). The server does not enforce lengths.
 
 ## Target workflow (release 2)
@@ -18,7 +23,7 @@ Every rule below is validated **server-side** as well as in the browser. Hardcod
 
 ## Fields
 
-Order is provisional; some fields will move.
+Current anonymous form order (owner-approved): Uploaded by, Email address, Video title, Speakers, Language, Date recorded, Location, Category (including the WordCamp checkbox), Event, Producer WordPress.org Username, Description, Slides URL, Video file. The table below documents field behavior rather than display order.
 
 | Field | Today | Release 2 |
 |---|---|---|

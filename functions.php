@@ -30,6 +30,9 @@ if ( apply_filters( 'wptv_setup_theme', true ) ) {
 	require_once WPTV_THEME_DIR . '/inc/query.php';
 	require_once WPTV_THEME_DIR . '/inc/block-queries.php';
 	require_once WPTV_THEME_DIR . '/inc/video-blocks.php';
+	require_once WPTV_THEME_DIR . '/inc/editor.php';
+	require_once WPTV_THEME_DIR . '/inc/submissions.php';
+	require_once WPTV_THEME_DIR . '/inc/submission-form.php';
 	require_once WPTV_THEME_DIR . '/inc/single.php';
 	require_once WPTV_THEME_DIR . '/inc/archives.php';
 	require_once WPTV_THEME_DIR . '/inc/wordcamps.php';

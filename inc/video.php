@@ -143,6 +143,12 @@ function get_image_url( $post = null ) {
 		return is_string( $image ) && $image ? esc_url_raw( $image, array( 'http', 'https' ) ) : false;
 	}
 
+	// The featured image is the video poster (docs/decisions.md, 2026-10-21).
+	$image = get_featured_image_url( $post );
+	if ( $image ) {
+		return $image;
+	}
+
 	// Keep the production multisite API first, unchanged for existing shortcodes.
 	if ( function_exists( 'video_get_highest_resolution_image_url' ) ) {
 		$image = video_get_highest_resolution_image_url( $guid );
@@ -164,10 +170,70 @@ function get_image_url( $post = null ) {
 }
 
 /**
- * Supplies VideoPress thumbnails to the core Featured Image block.
+ * Returns the full-size URL of a post's featured image, if it is a real image.
  *
- * Keeps core's image/link wrapper, accessibility attributes and aspect ratio.
- * Existing featured images remain the fallback for non-video posts.
+ * @param int|\WP_Post|null $post Post.
+ * @return string|false
+ */
+function get_featured_image_url( $post = null ) {
+	$post = get_post( $post );
+	$id   = $post ? (int) get_post_thumbnail_id( $post ) : 0;
+	if ( ! $id || ! wp_attachment_is_image( $id ) ) {
+		return false;
+	}
+	$url = wp_get_attachment_image_url( $id, 'full' );
+	return $url ? esc_url_raw( $url, array( 'http', 'https' ) ) : false;
+}
+
+/**
+ * Applies the global player settings and the featured-image poster to
+ * VideoPress blocks in video posts. Render-time only: stored content is not
+ * rewritten, and changing the featured image updates the player.
+ *
+ * Without a featured image, block poster values are discarded so the
+ * VideoPress poster is used. Video-level settings (download, sharing,
+ * privacy, rating) belong to VideoPress and are deliberately untouched.
+ *
+ * @param array $block Parsed block.
+ * @return array
+ */
+function player_attributes( $block ) {
+	if ( ! in_array( $block['blockName'] ?? '', array( 'videopress/video', 'jetpack/videopress' ), true ) ) {
+		return $block;
+	}
+	$post_id = get_the_ID();
+	if ( ! $post_id || 'post' !== get_post_type( $post_id ) ) {
+		return $block;
+	}
+	$attributes = array_merge( $block['attrs'] ?? array(), array(
+		'autoplay'           => false,
+		'loop'               => false,
+		'muted'              => false,
+		'controls'           => true,
+		'preload'            => 'metadata',
+		'useAverageColor'    => true,
+		'seekbarColor'       => '',
+		'seekbarLoadingColor' => '',
+		'seekbarPlayedColor' => '',
+		'maxWidth'           => '100%',
+		'posterData'         => array(),
+	) );
+	unset( $attributes['align'], $attributes['poster'] );
+	$poster = get_featured_image_url( $post_id );
+	if ( $poster ) {
+		$attributes['poster'] = $poster;
+	}
+	$block['attrs'] = $attributes;
+	return $block;
+}
+add_filter( 'render_block_data', __NAMESPACE__ . '\player_attributes' );
+
+/**
+ * Supplies video thumbnails to the core Featured Image block.
+ *
+ * A real featured image is the poster and keeps core's sized markup; otherwise
+ * the VideoPress thumbnail is used. Keeps core's image/link wrapper,
+ * accessibility attributes and aspect ratio.
  *
  * @param string       $html          Existing thumbnail HTML.
  * @param int          $post_id       Post ID.
@@ -177,7 +243,7 @@ function get_image_url( $post = null ) {
  * @return string
  */
 function thumbnail_html( $html, $post_id, $thumbnail_id, $size, $attr ) {
-	if ( 'post' !== get_post_type( $post_id ) ) {
+	if ( 'post' !== get_post_type( $post_id ) || ( $html && get_featured_image_url( $post_id ) ) ) {
 		return $html;
 	}
 	$url = get_image_url( $post_id );
