@@ -107,6 +107,19 @@ const shortcodePost = Number(process.env.WPTV_SHORTCODE_POST || 141575);
 		const handle = page.frameLocator('iframe[name=editor-canvas]').locator('[data-type="videopress/video"] .components-resizable-box__handle');
 		assert.equal(await handle.evaluateAll((nodes) => nodes.some((node) => getComputedStyle(node).display !== 'none')), false, 'Resize handle is hidden');
 		assert.equal((await state()).dirty, false, 'Opening the block post leaves it unchanged');
+		const canvasTitle = () => page.frameLocator('iframe[name=editor-canvas]').locator('.editor-post-title');
+		await canvasTitle().waitFor();
+		assert.equal(await canvasTitle().evaluate((node) => getComputedStyle(node).fontSize), '30px', 'Video editing title remains compact');
+
+		// Pages must retain their title typography and standard publication controls.
+		await open(Number(process.env.WPTV_PAGE_POST || 133512));
+		await canvasTitle().waitFor();
+		assert.ok(parseFloat(await canvasTitle().evaluate((node) => getComputedStyle(node).fontSize)) > 30, 'Page title does not inherit compact video styling');
+		assert.equal(await page.getByRole('button', { name: /^Change author:/ }).isVisible(), true, 'Pages retain Author');
+		assert.equal(await page.getByRole('button', { name: 'Template options', exact: true }).isVisible(), true, 'Pages retain Template');
+		assert.equal(await page.locator('.editor-document-tools__inserter-toggle').isVisible(), true, 'Pages retain the block inserter');
+		assert.equal(await page.locator('#wptv-editor-js').count(), 0, 'Video-only editor script is not loaded on pages');
+
 		// Optional: any post with _wptv_submitted_video. Approves only fields that create no terms.
 		const submissionPost = Number(process.env.WPTV_SUBMISSION_POST || 0);
 		if (submissionPost) {

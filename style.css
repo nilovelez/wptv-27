@@ -302,6 +302,6 @@ img, video, iframe { max-width: 100%; }
 /* === editor === */
 /* The player width is global (inc/video.php); hide the VideoPress block resize handle in the editor canvas. */
 .editor-styles-wrapper [data-type="videopress/video"] .components-resizable-box__handle { display: none; }
-/* Compact editing title; public post-title styles remain unchanged. */
+/* Compact video editing title only; page and public post-title styles remain unchanged. */
 body.editor-styles-wrapper.post-type-post .editor-visual-editor__post-title-wrapper { margin-top: 16px !important; margin-bottom: 16px !important; }
-.editor-styles-wrapper .editor-post-title { font-size: 30px; line-height: 1.2; margin-top: 0; margin-bottom: 16px; padding-top: 0; padding-bottom: 0; }
+body.editor-styles-wrapper.post-type-post .editor-post-title { font-size: 30px; line-height: 1.2; margin-top: 0; margin-bottom: 16px; padding-top: 0; padding-bottom: 0; }
