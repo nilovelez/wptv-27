@@ -45,7 +45,9 @@
 
 ## Replacement map
 
-Legend: **Core** = WordPress core / core block · **Keep** = same logic, cleaned up · **Block** = small custom dynamic block · **Drop** = removed
+Legend: **Core** = WordPress core / core block · **Keep** = same logic, cleaned up · **Block** = small custom dynamic block · **Drop** = removed · **Pending** = not ported yet
+
+Updated on October 22, 2026 against the implementation; the full audit is in [review-parity.md](review-parity.md).
 
 ### Theme setup and head
 
@@ -56,8 +58,8 @@ Legend: **Core** = WordPress core / core block · **Keep** = same logic, cleaned
 | `archive_link_rel_prev_next()` | Same logic (pending decision) | Keep |
 | `json_ld()` VideoObject | Same output, data from VideoPress helpers | Keep |
 | Open Graph / Twitter player tags | Same Jetpack filter | Keep |
-| Manual RSS `<link>` tags | `automatic-feed-links` plus the blog feed link | Core |
-| GTM inline script | `wp_print_inline_script_tag()` (if still needed) | Keep |
+| Manual RSS `<link>` tags | Core automatic feed links for the site feed; the blog feed link is not implemented (O2 in [review-parity.md](review-parity.md)) | Core |
+| GTM inline script | Not implemented; depends on open question 11 | Pending |
 | Typekit | Local fonts declared in `theme.json` | Core |
 | IE conditional comments, `ie6.css`, `profile` / `pingback` links | none | Drop |
 | `videopress_flash_params()` (Flash, jQuery) | none | Drop |
@@ -70,10 +72,10 @@ Legend: **Core** = WordPress core / core block · **Keep** = same logic, cleaned
 | `register_taxonomies()` | Identical arguments, plus `show_in_rest` and `show_admin_column` where they do not affect routes | Keep |
 | `posts_per_page()` | Same values (route contract) | Keep |
 | `redirects()` | Same redirects | Keep |
-| `register_nav_menus()` | Navigation blocks | Core |
+| `register_nav_menus()` | Fixed Navigation links in `patterns/header.php`; owner-specified footer; automatic WordCampTV landing instead of `featured_wordcamps` | Core |
 | `widgets_init()` | Template parts | Drop |
-| Slides URL meta box + `wptv_excerpt_slides` | `register_post_meta()` (`show_in_rest`) + Block Bindings | Core |
-| Event term meta form | `register_term_meta()` + minimal form | Keep |
+| Slides URL meta box + `wptv_excerpt_slides` | `register_post_meta()` (`show_in_rest`) + block-editor panel; the link is still appended through `get_the_excerpt` (`inc/content.php`) | Core |
+| Event term meta form | Not ported yet (O1 in [review-parity.md](review-parity.md)); `/api/events.json` still reads the options | Pending |
 | `publish_post` → `wptv_post_views = 0` | Same (the popular query depends on it) | Keep |
 | `transition_post_status` → `bump_stats_extras()` | Same, guarded | Keep |
 | `blog_upload_space` filter | Same | Keep |
@@ -90,18 +92,18 @@ Legend: **Core** = WordPress core / core block · **Keep** = same logic, cleaned
 | Front page: WordCampTV featured, latest | Query Loops | Core |
 | Front page: popular (`wptv_post_views`, last 180 days) | Dropped; replaced by recent events and video categories (`core/terms-query`) | Drop |
 | Category/event "hero" (first 6 posts, page 1 only) | Single inherited Query Loop, first items styled with CSS (keeps pagination intact) | Core |
-| `WordCampTV_Walker_Nav_Menu` | One Query Loop per event in `category-wordcamptv.html` | Core |
+| `WordCampTV_Walker_Nav_Menu` | Replaced by the automatic WordCampTV landing ([wordcamptv.md](wordcamptv.md)) | Drop |
 | `archive.php` title switch | Query Title block | Core |
-| `the_video()` (strips `[wpvideo]` and renders it separately) | Post Content block (to be verified against real content) | Core |
+| `the_video()` (strips `[wpvideo]` and renders it separately) | Post Content block; player size/HD and surrounding text still to verify (D1, D2 in [review-parity.md](review-parity.md)) | Core |
 | `the_video_image()` / `get_the_video_image()` | `post_thumbnail_html` / `has_post_thumbnail` filters → Post Featured Image block | Keep |
-| Breadcrumbs (priority category + first event) | `core/breadcrumbs`; check its trail against wptv2 and adjust with its filters if needed | Core |
+| Breadcrumbs (priority category + first event) | `core/breadcrumbs` with the owner's trail filter (`inc/setup.php`); no trail on taxonomy archives | Core |
 | Sidebar: date, excerpt, event, speakers, tags, language | Post Date, Post Excerpt, Post Terms | Core |
 | Sidebar: downloads and subtitles (VideoPress API) | `wptv/video-downloads` (PHP-only block) | Block |
 | Sidebar: producer credit | `wptv/producer` (PHP-only block) | Block |
-| CC license widget, Resources (Links manager) | Pattern / template part | Core |
+| CC license widget, Resources (Links manager) | CC license in the single-video details; Resources not implemented (O3 in [review-parity.md](review-parity.md)) | Core |
 | `comments.php` + `list_comments()` | Comment blocks | Core |
 | `pagination.php` | Query Pagination blocks | Core |
-| Random footer word ("An Automattic Production / Joint / …") | To decide (a tiny block or a fixed word) | Block |
+| Random footer word ("An Automattic Production / Joint / …") | Dropped; owner-specified footer | Drop |
 
 ### Endpoints, forms and admin
 
@@ -110,11 +112,11 @@ Legend: **Core** = WordPress core / core block · **Keep** = same logic, cleaned
 | `/oembed/` | Same endpoint, cleaned up | Keep |
 | `/api/` | Same endpoint and payload | Keep |
 | `/unisubs/` and `?guid=` redirect | Same (Phase 2 candidate for removal) | Keep |
-| `?flush_rules=1` | To decide (`after_switch_theme` flush is an alternative) | Keep |
-| Anonymous upload page template | `templates/page-submit-video.html` + `wptv/video-upload-form` | Block |
+| `?flush_rules=1` | `inc/maintenance.php`, super admins only; open question 5 decides whether it stays | Keep |
+| Anonymous upload page template | `templates/page-submit-video.html` + `wptv/submission-form` | Block |
 | Upload handler, admin review box | Same handler, cleaned up | Keep |
-| Subtitle upload page template | `templates/page-subtitle.html` + `wptv/subtitle-upload-form` | Block |
-| Subtitle handler, AJAX nonce, moderation | Same handlers, cleaned up | Keep |
+| Subtitle upload page template | Not ported; next delivery ([backlog.md](backlog.md)) | Pending |
+| Subtitle handler, AJAX nonce, moderation | Not ported; next delivery | Pending |
 | `wporg_username_exists()` | Same, prefixed | Keep |
 
 ## WordPress.com-only functions used
