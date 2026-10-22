@@ -63,7 +63,11 @@ function handle() {
 	$redir = home_url( '/submit-video/' );
 	$error = false;
 	$saved = false;
-	if ( empty( $_POST['wptvvideon'] ) || ( empty( $_POST['wptv_uploaded_by'] ) && ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['wptvvideon'] ) ), 'wptv-upload-video' ) ) ) {
+	$nonce = isset( $_POST['wptvvideon'] ) ? sanitize_text_field( wp_unslash( $_POST['wptvvideon'] ) ) : '';
+	// Logged-in users always need a valid nonce. As in wptv2, anonymous visitors
+	// who fill in their name may send an expired one from a cached form page.
+	$must_verify = is_user_logged_in() || empty( $_POST['wptv_uploaded_by'] );
+	if ( '' === $nonce || ( $must_verify && ! wp_verify_nonce( $nonce, 'wptv-upload-video' ) ) ) {
 		$error = 15;
 	} else {
 		$error = validate();
@@ -112,6 +116,13 @@ function wporg_username_exists( $username ) {
 	$location = wp_remote_retrieve_header( $response, 'location' );
 	return is_string( $location ) && '' !== $location && false === strpos( $location, 'd=mm' );
 }
+
+/*
+ * validate(), save() and handle_upload() only run from handle(), after its
+ * nonce check: always for logged-in users, and for anonymous visitors unless
+ * they come from a cached form (see handle() and docs/review-security.md, R1).
+ */
+// phpcs:disable WordPress.Security.NonceVerification
 
 /** Server checks behind the form's JavaScript validation. Returns an error code or false. */
 function validate() {
@@ -317,6 +328,7 @@ function handle_upload( $parent_id ) {
 	}
 	return $attachment_id;
 }
+// phpcs:enable WordPress.Security.NonceVerification
 
 /**
  * Returns the submitted data for the review panel, decoded for display, or

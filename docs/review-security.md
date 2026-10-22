@@ -9,14 +9,14 @@ Evidence comes from code reading and from an empty Studio review site (WordPress
 
 | ID | Area | Severity | Inherited from wptv2 | Owner |
 |---|---|---|---|---|
-| R1 | Submission nonce skipped when `wptv_uploaded_by` is filled | Low–medium | Yes | Theme developers (behavior) |
+| R1 | Submission nonce skipped when `wptv_uploaded_by` is filled | Low–medium | Yes | Fixed by the reviewer |
 | R2 | oEmbed and unisubs `?url=` resolve unpublished posts | Medium | Yes | Theme developers (behavior, routes) |
 | R3 | `/api/videos.json?posts_per_page=` is unbounded | Medium (availability) | Yes | Recorded as backlog B13 |
 | R4 | Submission length check measures field names, not values | Low | Yes | Theme developers (behavior) |
 | R5 | REST design lockdown bypassed with uppercase routes | Low | No (new code) | Done by the reviewer |
 | R6 | Single-block cleanup drops non-empty content too | — | No | Intended; decision log corrected |
 | D1–D2 | Unslash/sanitize and documented false positives | None (standards) | — | Done by the reviewer |
-| D3 | Nonce warnings in `validate()`/`save()` | — | — | Open until R1 is decided |
+| D3 | Nonce warnings in `validate()`/`save()` | — | — | Documented with R1 |
 
 No SQL injection, output-escaping or stored-XSS defect was found. The submission review panel renders through React elements (text is escaped), the slides URL is sanitized with `esc_url_raw()` for http/https and escaped on output, and REST meta writes require `edit_post`.
 
@@ -30,6 +30,7 @@ No SQL injection, output-escaping or stored-XSS defect was found. The submission
 - Impact is limited: the post is pending and owned by `anonvideoupload`, but it is attributed to a real user and accepts an arbitrary upload.
 - Suggested change: always verify the nonce when `is_user_logged_in()`; keep the anonymous exception only if page caching requires it, and record that reason in `docs/decisions.md`.
 - Check after the change: logged-in submission with a valid nonce succeeds; logged-in submission with a filled `wptv_uploaded_by` and an invalid nonce returns `?error=15`; anonymous submissions behave as before.
+- **Fixed (owner-authorized, October 22, 2026).** `handle()` now verifies the nonce for every logged-in user. Anonymous visitors keep the `wptv2` exception when they fill in their name, because a cached form page may carry an expired nonce for them, and their submission is not attributed to any account. Checked over HTTP on the review site: logged-in + name + invalid nonce returned `error=15` (the previous code let it through to the file check, `error=1`); logged-in + valid nonce passed the check; anonymous + name + invalid nonce behaved as before (`error=11`, missing email); anonymous without a name or with an empty nonce returned `error=15`.
 
 ### R2. oEmbed and unisubs resolve unpublished posts
 
@@ -89,10 +90,10 @@ This is a policy guard, not a privilege boundary: only users who can already edi
 
 ### D3. Remaining nonce warnings in `validate()`/`save()`
 
-These are the real consequence of R1 and are left open until R1 is decided. They should not be silenced with a comment while the nonce is conditional.
+Resolved with R1: `validate()`, `save()` and `handle_upload()` only run after `handle()`'s nonce check, and the remaining anonymous exception is intentional. A `phpcs:disable` block documents it, and `composer lint` is now clean.
 
 ## Not covered yet
 
-- Formatting and docblock findings: **fixed** on October 22, 2026. `phpcbf` handled 140 (a token comparison showed no code change), and the rest were fixed by hand with equivalent code. `composer lint` now reports only the 16 D3 nonce findings in `inc/submissions.php`, open until R1 is decided.
+- Formatting and docblock findings: **fixed** on October 22, 2026. `phpcbf` handled 140 (a token comparison showed no code change), and the rest were fixed by hand with equivalent code. `composer lint` is clean since R1 was fixed.
 - JavaScript review beyond the HTML sinks searched here.
 - Feature parity with `wptv2`.
