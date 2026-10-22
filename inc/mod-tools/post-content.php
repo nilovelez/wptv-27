@@ -112,21 +112,24 @@ function render() {
 	_prime_post_caches( wp_list_pluck( $rows, 'ID' ), false, false );
 	$home = untrailingslashit( home_url() );
 
-	echo '<ol>';
+	// A plain table, so it can be copied into a spreadsheet as cells.
+	echo '<table class="widefat striped"><thead><tr>';
+	echo '<th>' . esc_html__( 'Address', 'wptv' ) . '</th>';
+	echo '<th>' . esc_html__( 'Title', 'wptv' ) . '</th>';
+	echo '<th>' . esc_html__( 'Status', 'wptv' ) . '</th>';
+	echo '<th>' . esc_html__( 'Reason', 'wptv' ) . '</th>';
+	echo '<th>' . esc_html__( 'Content besides the shortcode', 'wptv' ) . '</th>';
+	echo '</tr></thead><tbody>';
 	foreach ( $rows as $row ) {
-		if ( 'publish' === $row->post_status ) {
-			$url  = PRODUCTION_URL . substr( get_permalink( $row->ID ), strlen( $home ) );
-			$link = '<a href="' . esc_url( $url ) . '">' . esc_html( $url ) . '</a>';
-		} else {
-			$title = '' !== $row->post_title ? $row->post_title : __( '(no title)', 'wptv' );
-			$link  = esc_html( $title ) . ' <em>(' . esc_html( $row->post_status ) . ')</em>';
-		}
-		$leftover = leftover( $row->post_content );
-		echo '<li>' . $link . ' &mdash; ' . esc_html( $row->reason ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $link is escaped above.
-		if ( '' !== $leftover ) {
-			echo ' <code>' . esc_html( $leftover ) . '</code>';
-		}
-		echo '</li>';
+		// Unpublished posts have no WordPress.tv address, only their title.
+		$url = 'publish' === $row->post_status ? PRODUCTION_URL . substr( get_permalink( $row->ID ), strlen( $home ) ) : '';
+		echo '<tr>';
+		echo '<td>' . ( $url ? '<a href="' . esc_url( $url ) . '">' . esc_html( $url ) . '</a>' : '' ) . '</td>';
+		echo '<td>' . esc_html( $row->post_title ) . '</td>';
+		echo '<td>' . esc_html( $row->post_status ) . '</td>';
+		echo '<td>' . esc_html( $row->reason ) . '</td>';
+		echo '<td>' . esc_html( leftover( $row->post_content ) ) . '</td>';
+		echo '</tr>';
 	}
-	echo '</ol>';
+	echo '</tbody></table>';
 }
