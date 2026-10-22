@@ -13,7 +13,7 @@ Evidence comes from code reading and from an empty Studio review site (WordPress
 | R2 | oEmbed and unisubs `?url=` resolve unpublished posts | Medium | Yes | Theme developers (behavior, routes) |
 | R3 | `/api/videos.json?posts_per_page=` is unbounded | Medium (availability) | Yes | Recorded as backlog B13 |
 | R4 | Submission length check measures field names, not values | Low | Yes | Theme developers (behavior) |
-| R5 | REST design lockdown bypassed with uppercase routes | Low | No (new code) | Reviewer, pending authorization |
+| R5 | REST design lockdown bypassed with uppercase routes | Low | No (new code) | Done by the reviewer |
 | R6 | Single-block cleanup drops non-empty content too | — | No | Intended; decision log corrected |
 | D1–D2 | Unslash/sanitize and documented false positives | None (standards) | — | Done by the reviewer |
 | D3 | Nonce warnings in `validate()`/`save()` | — | — | Open until R1 is decided |
@@ -63,11 +63,11 @@ No SQL injection, output-escaping or stored-XSS defect was found. The submission
 
 ## Reviewer changes
 
-### R5. Pending authorization
+### R5. REST design lockdown was case-sensitive (done)
 
-REST design lockdown is case-sensitive. `block_design_writes()` (`inc/lockdown.php:75-84`) matches `#^/wp/v2/(templates|template-parts|global-styles)(/|$)#`, but core matches REST routes case-insensitively (`class-wp-rest-server.php`, `'@^' . $route . '$@i'`). On the review site, as an administrator, `POST /wp/v2/templates` returned `403 wptv_design_locked` while `POST /wp/v2/TEMPLATES` reached the templates controller.
+`block_design_writes()` (`inc/lockdown.php`) matched `#^/wp/v2/(templates|template-parts|global-styles)(/|$)#`, but core matches REST routes case-insensitively (`class-wp-rest-server.php`, `'@^' . $route . '$@i'`). On the review site, as an administrator, `POST /wp/v2/templates` returned `403 wptv_design_locked`, while `POST /wp/v2/TEMPLATES` reached the templates controller and stored a published `wp_template` (the response was a 400, but the post was created; it was deleted afterwards).
 
-This is a policy guard, not a privilege boundary: only users who can already edit theme options can write there. Fix: add the `i` modifier to the pattern.
+This is a policy guard, not a privilege boundary: only users who can already edit theme options can write there. The pattern now has the `i` modifier. Check on the review site: `POST` to `/wp/v2/templates`, `/wp/v2/TEMPLATES` and `/wp/v2/Global-Styles/1` all return `403 wptv_design_locked`; `GET /wp/v2/TEMPLATES` still returns 200 and `POST /wp/v2/posts` is not affected.
 
 ### D1. Unslash and sanitize request values (done)
 

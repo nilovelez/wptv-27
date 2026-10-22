@@ -72,7 +72,7 @@ function block_design_writes( $result, $server, $request ) {
 	if ( 'GET' === $request->get_method() ) {
 		return $result;
 	}
-	if ( preg_match( '#^/wp/v2/(templates|template-parts|global-styles)(/|$)#', $request->get_route() ) ) {
+	if ( preg_match( '#^/wp/v2/(templates|template-parts|global-styles)(/|$)#i', $request->get_route() ) ) {
 		return new \WP_Error(
 			'wptv_design_locked',
 			__( 'The design is managed in the theme code and cannot be changed here.', 'wptv' ),
