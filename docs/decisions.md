@@ -15,6 +15,13 @@ Template:
 
 ---
 
+## 2026-10-22: Pages have no comments or page breaks
+
+- **Decision (owner):** `templates/page.html` keeps only the title and content. The `wptv2` page template's comments (`comments_template()`) and multipage navigation (`wp_link_pages()`) are not ported.
+- **Reason:** pages do not have, and will not have, comments or `<!--nextpage-->` page breaks.
+- **Affects:** `templates/page.html` and `templates/page-submit-video.html`. Video comments are unaffected. Found as O4 in [review-parity.md](review-parity.md).
+- **Status:** accepted
+
 ## 2026-10-22: Do not show the "Resources" links
 
 - **Decision (owner):** the `wptv2` sidebar block "Resources" (Links Manager bookmarks, `wp_list_bookmarks()`) is not ported.

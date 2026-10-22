@@ -14,11 +14,11 @@ Reviewer: external review session (Claude Code), October 22, 2026. Audit only: n
 | Migrated with a difference to verify | 6 | [2](#2-migrated-with-a-difference-to-verify) |
 | Not migrated, by decision | 17 | [3.1](#31-by-decision) |
 | Not migrated, pending | 5 | [3.2](#32-pending-tracked) |
-| Not migrated, apparently overlooked | 4 | [3.3](#33-apparently-overlooked) |
+| Not migrated, apparently overlooked | 4 (all resolved by the owner: not ported) | [3.3](#33-apparently-overlooked) |
 | Core replacement opportunities | 8 | [4](#4-core-replacement-opportunities) |
 | Documentation inconsistencies | 4 | [5](#5-documentation-inconsistencies) |
 
-The four overlooked items ([3.3](#33-apparently-overlooked)) and the six differences to verify ([2](#2-migrated-with-a-difference-to-verify)) need an owner decision or a developer task. Everything else is either complete or already tracked.
+The six differences to verify ([2](#2-migrated-with-a-difference-to-verify)) need an owner decision or a developer task. The four overlooked items ([3.3](#33-apparently-overlooked)) are resolved. Everything else is either complete or already tracked.
 
 ## 1. Migrated and complete
 
@@ -142,7 +142,7 @@ The `primary` menu became fixed Navigation links in `patterns/header.php`: WordC
 
 ### 3.3. Apparently overlooked
 
-These features exist in `wptv2`, appear in the legacy replacement map as **Keep** or **Core**, and have no implementation, decision or backlog entry.
+These features exist in `wptv2`, appeared in the legacy replacement map as **Keep** or **Core**, and had no implementation, decision or backlog entry. The owner reviewed all four on October 22, 2026 and decided not to port them.
 
 #### O1. Event term meta form
 
@@ -168,7 +168,7 @@ These features exist in `wptv2`, appear in the legacy replacement map as **Keep*
 
 - Pages with open comments, or with existing ones, show no comments or reply form.
 - Pages split with `<!--nextpage-->` show only their first part.
-- **Check first:** count pages with comments or `<!--nextpage-->` in the imported data. If there are none, record a decision instead of adding blocks.
+- **Resolved (owner, October 22, 2026): not ported.** Pages do not have, and will not have, comments or page breaks. See [decisions](decisions.md).
 
 ## 4. Core replacement opportunities
 
