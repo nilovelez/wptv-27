@@ -75,7 +75,7 @@ Updated on October 22, 2026 against the implementation; the full audit is in [re
 | `register_nav_menus()` | Fixed Navigation links in `patterns/header.php`; owner-specified footer; automatic WordCampTV landing instead of `featured_wordcamps` | Core |
 | `widgets_init()` | Template parts | Drop |
 | Slides URL meta box + `wptv_excerpt_slides` | `register_post_meta()` (`show_in_rest`) + block-editor panel; the link is still appended through `get_the_excerpt` (`inc/content.php`) | Core |
-| Event term meta form | Not ported yet (O1 in [review-parity.md](review-parity.md)); `/api/events.json` still reads the options | Pending |
+| Event term meta form | Not ported: never used (no stored values); see [decisions](decisions.md) and backlog B14 | Drop |
 | `publish_post` → `wptv_post_views = 0` | Same (the popular query depends on it) | Keep |
 | `transition_post_status` → `bump_stats_extras()` | Same, guarded | Keep |
 | `blog_upload_space` filter | Same | Keep |

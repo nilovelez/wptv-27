@@ -148,9 +148,7 @@ These features exist in `wptv2`, appear in the legacy replacement map as **Keep*
 
 `wptv2` (`plugins/wordpresstv-event-meta/`) adds four fields to the event add/edit screens: YouTube playlist ID, hashtag, owners (WordPress.org usernames) and owners (Slack). They are stored as options `term_meta_{term_id}_{key}`. `wptv-27` still **reads** two of them in `/api/events.json`, but editors can no longer **edit** any of them.
 
-- Impact: new events get empty `youtube_playlist_id` and `hashtag` in the API; owners can no longer be recorded.
-- The legacy map lists "`register_term_meta()` + minimal form" as Keep, and `plan.md` mentions "existing checks".
-- **For the developers:** port the form (the same four fields and option storage, so the API keeps working), or record a decision to drop it. See C6 for the storage choice.
+- **Resolved (owner, October 22, 2026): not ported.** The form was never used: `wp option list --search="term_meta_%" --format=count` returned 0 on the imported data. The API keeps both keys, always empty. The owner recorded a new idea instead: backlog B14, connect a WordCamp's video album to its website. See [decisions](decisions.md).
 
 #### O2. Blog feed link in the head
 
@@ -183,7 +181,7 @@ The theme already relies on core in most places. It uses no custom sitemap, whic
 | C3 | `inc/content.php`: slides link appended through `get_the_excerpt` everywhere | Render the link only on the single (C2) | Phase 2 | Today the HTML link also enters JSON-LD `description`, feeds and the API, as in `wptv2`. Changing it alters feed/API output (route regression). |
 | C4 | `inc/endpoints/oembed.php`: hand-rolled `/oembed/` provider | Core oEmbed provider (`/wp-json/oembed/1.0/embed`) with the `oembed_response_data` filter for the VideoPress HTML; keep `/oembed/` as a thin alias | Phase 2, after open question 8 | Core already prints its own discovery links on singles, so every video currently advertises two providers, as in `wptv2`. |
 | C5 | `inc/endpoints/api.php`: `/api/*.json` with `query_posts()` | Core REST (`/wp/v2/posts`, taxonomy routes) plus `register_rest_field()` for video data | Phase 2, after open question 7 | Also removes the unbounded page size (B13). |
-| C6 | Event fields as options `term_meta_{id}_{key}` (read in `api.php`; form missing, O1) | Core term meta (`register_term_meta()` with `show_in_rest`), editable from the term screen and REST | With O1 | Needs a one-time copy from options to term meta, which is a data change; otherwise keep the options and port the form as is. |
+| C6 | Event fields as options `term_meta_{id}_{key}` (read in `api.php`) | Core term meta (`register_term_meta()` with `show_in_rest`) | With B14 | No stored values exist (O1), so B14 can start on term meta without migrating data. |
 | C7 | `inc/wordcamps.php`: recent events found with `LIKE` scans of serialized `_wptv_submitted_video` | A separate indexed meta such as `_wptv_recorded` (Y-m-d), written on approval, queried with `meta_query`/`orderby` | Phase 2 | Removes the custom SQL and its ignores; needs a backfill of existing posts (data change). |
 | C8 | `inc/maintenance.php`: `?flush_rules=1` | Flush on `after_switch_theme`, or rely on the platform flushing rules on theme switch | After open question 5 | Removes a GET-triggered admin action. |
 

@@ -44,6 +44,13 @@ This is the next subtitle delivery, not an automatic commitment to every release
 - **Open points:** other list types, which statuses are included and required capabilities. Read-only lists; never apply automated corrections or change videos in bulk. Use core admin APIs, no plugins.
 - **Status:** backlog only; implementation is not approved yet.
 
+### B14. Connect a WordCamp's video album to its website ⏳
+
+- **Owner request:** link each WordCamp's event archive (its "album" of videos) to that WordCamp's website.
+- **Background:** `wptv2` had an unused event term meta form (YouTube playlist ID, hashtag, owners, Slack owners). Production-shaped data has no stored values (`wp option list --search="term_meta_%"` returned 0), so the form was not ported ([decision](decisions.md), O1 in [review-parity.md](review-parity.md)). `/api/events.json` keeps returning the two legacy keys, now always empty.
+- **Open points:** where the website URL comes from (a new event field, or matching against WordCamp.org data), where the link appears (event archive, WordCampTV directory, API) and how existing events are filled in. Prefer core term meta (`register_term_meta()`) over the legacy option storage.
+- **Status:** backlog only; implementation is not approved yet.
+
 ### B10. Store newly submitted subtitles in VideoPress ⏳
 
 - **Owner request:** investigate sending and storing new subtitle uploads in VideoPress instead of the WordPress Media Library.

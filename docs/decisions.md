@@ -15,6 +15,13 @@ Template:
 
 ---
 
+## 2026-10-22: Do not port the event term meta form
+
+- **Decision (owner):** the `wptv2` event term meta form (`plugins/wordpresstv-event-meta/`: YouTube playlist ID, hashtag, owners, Slack owners) is not ported.
+- **Reason:** it was planned but never used: `wp option list --search="term_meta_%" --format=count` returned 0 on the imported data. The owner replaced the idea with backlog B14 (connect a WordCamp's video album to its website).
+- **Affects:** event admin screens. `/api/events.json` keeps its `youtube_playlist_id` and `hashtag` keys (API contract), which stay empty. Found as O1 in [review-parity.md](review-parity.md).
+- **Status:** accepted
+
 ## 2026-10-21: Use the featured image as the block player poster
 
 - **Finding:** VideoPress no longer exposes poster/download/loop settings through the shortcode workflow; the owner confirmed with the VideoPress team that this is permanent and the block is the configuration surface. In local tests (video not owned by the site) and on the test host (video uploaded by the owner), the block's poster control stores only a per-post `poster` URL with `posterData.type: media-library` and passes it to the embed as a parameter. It does not update the VideoPress video. The actual video poster is edited under Jetpack > VideoPress, which does not exist on WordPress.com multisite sites, where VideoPress is native. In the local VideoPress version, `allowDownload`, sharing menu, privacy and rating mirror video-level settings that only an owner can change; the theme cannot enforce them by rewriting block attributes.

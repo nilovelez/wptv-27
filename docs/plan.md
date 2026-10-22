@@ -137,7 +137,7 @@ Posts may embed the video either as `[wpvideo <guid>]` or as a VideoPress block.
 - ✅ Anonymous video upload (`/submit-video/`): fixed form block, editable instructions and `admin-post.php` handlers, retaining the intermediate anonymous/pending/per-field-approval workflow. It saves a VideoPress block and `_wptv_submitted_video`, not a shortcode. Real VideoPress processing still needs environment verification.
 - Hardcoded category IDs in the legacy handler are resolved by slug; the anonymous author is resolved by login with a compatibility fallback.
 - ✅ Admin: video review box with per-field **Approve** buttons and the slides URL field.
-- ⏳ Admin: the `wptv2` event term meta form (YouTube playlist ID, hashtag, owners, Slack owners) is not ported; `/api/events.json` still reads two of those values. See O1 in [review-parity.md](review-parity.md).
+- Admin: the unused `wptv2` event term meta form is not ported by owner decision; see [decisions](decisions.md) and backlog B14.
 - **Deferred to the next delivery by the owner:** passing existing subtitle tracks to the player, reproducing the `wptv2` `/subtitle/` upload form, and a new incoming-subtitle management workflow. These do not block closing the current delivery. Direct VideoPress subtitle storage and a Media Library migration tool are separate backlog items B10/B11; see [backlog.md](backlog.md).
 
 ### 1e. Verification and rollout ⏳
