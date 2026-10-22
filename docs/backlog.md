@@ -42,7 +42,8 @@ This is the next subtitle delivery, not an automatic commitment to every release
 - **First example:** videos without a custom poster, so moderators can capture a suitable frame or upload a title card.
 - **Poster list:** the 100 most recent videos without a featured image, which is the player poster under the [2026-10-21 decision](decisions.md). Fixing an item means setting its featured image; the post then leaves the list.
 - **Open points:** other list types, which statuses are included and required capabilities. Read-only lists; never apply automated corrections or change videos in bulk. Use core admin APIs, no plugins.
-- **Status:** backlog only; implementation is not approved yet.
+- **Started (October 22, 2026):** Tools > Moderation tools (`inc/mod-tools/`, administrators only via `edit_theme_options`) with an index and one screen per tool. First tool, **Post content to clean**: every post whose content is not exactly one `[wpvideo]` shortcode, found with one uncached SQL query, with the total, the count per reason and each post's WordPress.tv address (title for unpublished posts). Built to size and fix the pre-migration cleanup by hand in production (D2 in [review-parity.md](review-parity.md)); it can be removed afterwards.
+- **Status:** the poster list (above) is not approved yet.
 
 ### B14. Connect a WordCamp's video album to its website ⏳
 
