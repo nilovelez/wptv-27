@@ -100,7 +100,7 @@ Updated on October 22, 2026 against the implementation; the full audit is in [re
 | Sidebar: date, excerpt, event, speakers, tags, language | Post Date, Post Excerpt, Post Terms | Core |
 | Sidebar: downloads and subtitles (VideoPress API) | `wptv/video-downloads` (PHP-only block) | Block |
 | Sidebar: producer credit | `wptv/producer` (PHP-only block) | Block |
-| CC license widget, Resources (Links manager) | CC license in the single-video details; Resources not implemented (O3 in [review-parity.md](review-parity.md)) | Core |
+| CC license widget, Resources (Links manager) | CC license in the single-video details; Resources dropped (see [decisions](decisions.md)) | Core |
 | `comments.php` + `list_comments()` | Comment blocks | Core |
 | `pagination.php` | Query Pagination blocks | Core |
 | Random footer word ("An Automattic Production / Joint / …") | Dropped; owner-specified footer | Drop |

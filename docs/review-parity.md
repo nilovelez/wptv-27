@@ -160,7 +160,7 @@ These features exist in `wptv2`, appear in the legacy replacement map as **Keep*
 
 `wptv2`'s sidebar (`sidebar.php`, used by the front page and archives) lists the Links Manager bookmarks (`wp_list_bookmarks()`, 10 bookmarks at the time of the analysis). The legacy map lists "Pattern / template part". No `wptv-27` template shows them, and no decision drops them.
 
-- **For the owner:** decide whether these links move to the footer or a page, or are dropped. The links themselves stay in the database either way.
+- **Resolved (owner, October 22, 2026): not ported.** The five production links are outdated or already in the footer. See [decisions](decisions.md).
 
 #### O4. Comments and page breaks on pages
 

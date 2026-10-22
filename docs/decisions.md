@@ -15,6 +15,13 @@ Template:
 
 ---
 
+## 2026-10-22: Do not show the "Resources" links
+
+- **Decision (owner):** the `wptv2` sidebar block "Resources" (Links Manager bookmarks, `wp_list_bookmarks()`) is not ported.
+- **Reason:** the five links shown on production (Making WordPress.tv on Meta Trac, WordPress.org, WordPress.tv on Twitter, WordPress.tv on YouTube, WordPress.tv Team Blog) are outdated or already covered by the footer. The bookmarks stay in the database, unused.
+- **Affects:** front page, category and archive presentation only. Found as O3 in [review-parity.md](review-parity.md).
+- **Status:** accepted
+
 ## 2026-10-22: Do not link the blog.wordpress.tv feed
 
 - **Decision (owner):** the `<link rel="alternate">` to `https://blog.wordpress.tv/feed/` that `wptv2` printed in every page head is not ported.
