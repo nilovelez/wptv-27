@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WordPress.tv RSS Feed</title>
+<meta name="description" content="Element-by-element reference of the WordPress.tv RSS feed: tree, producers (core, WordPress.com, VideoPress, theme), content anatomy and an annotated production item.">
+<!--
+	RSS feed reference, published with the mockups on GitHub Pages by
+	.github/workflows/mockups.yml. Text version: docs/rss-feed.md. Not theme code.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Atkinson+Hyperlegible+Mono:wght@400;600&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&display=swap">
+<style>
+/* Layout: a single reading column for prose, widening to a full-bleed field for the tree and the annotated XML. */
+:root {
+  --bg: #f6f7fa;
+  --surface: #ffffff;
+  --ink: #18202e;
+  --muted: #5b6577;
+  --rule: #dde1e9;
+  --code-bg: #eef1f6;
+  --accent: #e8590c;          /* feed orange, used sparingly */
+  --core: #2f55d4;            /* WordPress core */
+  --core-soft: #e3e9fb;
+  --wpcom: #0b7a75;           /* WordPress.com platform */
+  --wpcom-soft: #dcf1ef;
+  --vp: #7a3fc4;              /* VideoPress */
+  --vp-soft: #eee4fa;
+  --theme: #c2410c;           /* the theme */
+  --theme-soft: #fde9dc;
+  --font-display: "Bricolage Grotesque", "Atkinson Hyperlegible", system-ui, sans-serif;
+  --font-body: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Atkinson Hyperlegible Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11151d; --surface: #181e29; --ink: #e7ebf3; --muted: #9aa4b6; --rule: #2a3241; --code-bg: #1f2633;
+    --accent: #ff8a3d;
+    --core: #8ea6ff; --core-soft: #1f2a4d;
+    --wpcom: #4fd1c5; --wpcom-soft: #123634;
+    --vp: #c4a1ff; --vp-soft: #2e2047;
+    --theme: #ff9a5c; --theme-soft: #3d2416;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11151d; --surface: #181e29; --ink: #e7ebf3; --muted: #9aa4b6; --rule: #2a3241; --code-bg: #1f2633;
+  --accent: #ff8a3d;
+  --core: #8ea6ff; --core-soft: #1f2a4d;
+  --wpcom: #4fd1c5; --wpcom-soft: #123634;
+  --vp: #c4a1ff; --vp-soft: #2e2047;
+  --theme: #ff9a5c; --theme-soft: #3d2416;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.6 var(--font-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 64px;
+}
+.page { max-width: 1120px; margin: 0 auto; display: grid; gap: 56px; }
+.prose { max-width: 70ch; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.15; margin: 0; }
+h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; letter-spacing: -0.01em; }
+h2 { font-size: 1.6rem; font-weight: 700; }
+h3 { font-size: 1.15rem; font-weight: 700; }
+p { margin: 0; }
+section { display: grid; gap: 18px; }
+code, .mono { font-family: var(--font-mono); font-size: 0.92em; }
+a { color: var(--core); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.eyebrow { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+
+/* Header */
+header.top { padding-top: 48px; display: grid; gap: 16px; }
+.back { font-size: 0.9rem; color: var(--muted); text-decoration: none; justify-self: start; }
+.back:hover { color: var(--ink); text-decoration: underline; }
+.lede { font-size: 1.12rem; color: var(--muted); max-width: 68ch; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 0.9rem; color: var(--muted); }
+.meta strong { color: var(--ink); }
+
+/* Facts row */
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.fact { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 16px; display: grid; gap: 4px; }
+.fact b { font-family: var(--font-display); font-size: 1.9rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.fact span { color: var(--muted); font-size: 0.92rem; }
+
+/* Producer chips */
+.chip { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.02em; padding: 1px 8px; border-radius: 999px; white-space: nowrap; border: 1px solid transparent; }
+.chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.p-core { color: var(--core); background: var(--core-soft); }
+.p-wpcom { color: var(--wpcom); background: var(--wpcom-soft); }
+.p-vp { color: var(--vp); background: var(--vp-soft); }
+.p-theme { color: var(--theme); background: var(--theme-soft); }
+
+.legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.legend-item { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; display: grid; gap: 6px; }
+.legend-item p { color: var(--muted); font-size: 0.92rem; }
+.legend-item .chip { justify-self: start; }
+
+/* Filter */
+.filter { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.filter span.label { font-size: 0.9rem; color: var(--muted); margin-right: 4px; }
+.filter button { font: 600 0.82rem var(--font-mono); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--rule); background: var(--surface); color: var(--ink); cursor: pointer; }
+.filter button[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: var(--surface); }
+
+/* Tree */
+.tree-wrap { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 24px 20px; overflow-x: auto; }
+.tree, .tree ul { list-style: none; margin: 0; padding: 0; }
+.tree ul { margin-left: 14px; padding-left: 18px; border-left: 1px solid var(--rule); }
+.tree li { position: relative; padding: 3px 0; }
+.tree ul > li::before { content: ""; position: absolute; left: -18px; top: 17px; width: 14px; border-top: 1px solid var(--rule); }
+.node { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; padding: 4px 8px; border-radius: 6px; transition: opacity .15s ease; min-width: 0; }
+.node .tag { font-family: var(--font-mono); font-weight: 600; font-size: 0.95rem; color: var(--ink); }
+.node .tag .lt { color: var(--muted); font-weight: 400; }
+.node .card { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); border: 1px solid var(--rule); border-radius: 4px; padding: 0 5px; }
+.node .attrs { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); }
+.node .attrs i { font-style: normal; color: var(--ink); }
+.node .val { font-size: 0.9rem; color: var(--muted); flex-basis: 100%; padding-left: 2px; }
+.node.group > .tag { font-size: 1.02rem; }
+.tree .note { font-size: 0.85rem; color: var(--muted); padding: 2px 8px 6px; font-style: italic; }
+.dim .node:not(.hit) { opacity: 0.28; }
+@media (prefers-reduced-motion: reduce) { .node { transition: none; } }
+
+/* Tables */
+.table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.93rem; }
+th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--rule); }
+th { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 600; background: var(--code-bg); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { white-space: nowrap; }
+td code { background: var(--code-bg); padding: 1px 5px; border-radius: 4px; }
+td .chip { margin: 1px 2px 1px 0; }
+
+/* Anatomy */
+.anatomy { display: grid; gap: 12px; }
+.piece { display: grid; grid-template-columns: 40px 1fr; gap: 14px; background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 16px; }
+.piece .n { font-family: var(--font-display); font-weight: 700; font-size: 1.6rem; color: var(--accent); line-height: 1; }
+.piece > div { min-width: 0; display: grid; gap: 8px; }
+.piece pre { margin: 0; overflow-x: auto; background: var(--code-bg); border-radius: 6px; padding: 10px 12px; font: 0.8rem/1.55 var(--font-mono); }
+
+.media-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.media-card { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 18px; display: grid; gap: 12px; align-content: start; }
+.media-card header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: baseline; }
+.media-card dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; font-size: 0.9rem; }
+.media-card dt { font-family: var(--font-mono); font-size: 0.82rem; color: var(--ink); font-weight: 600; }
+.media-card dd { margin: 0; color: var(--muted); min-width: 0; overflow-wrap: anywhere; }
+
+/* Annotated XML */
+.xml { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; overflow-x: auto; }
+.xml ol { margin: 0; padding: 14px 0; list-style: none; counter-reset: ln; font: 0.8rem/1.7 var(--font-mono); min-width: max-content; }
+.xml li { counter-increment: ln; display: grid; grid-template-columns: 3.2em 6px 1fr; gap: 0 12px; padding-right: 20px; white-space: pre; }
+.xml li::before { content: counter(ln); text-align: right; color: var(--muted); opacity: .6; }
+.xml li .bar { align-self: stretch; border-radius: 2px; }
+.xml li.l-core .bar { background: var(--core); }
+.xml li.l-wpcom .bar { background: var(--wpcom); }
+.xml li.l-vp .bar { background: var(--vp); }
+.xml li.l-theme .bar { background: var(--theme); }
+.xml li.l-mix .bar { background: linear-gradient(var(--core) 50%, var(--theme) 50%); }
+.xml li.l-mixvp .bar { background: linear-gradient(var(--core) 50%, var(--vp) 50%); }
+.xml .t { color: var(--core); }
+.xml .c { color: var(--muted); font-style: italic; }
+
+.callout { border-left: 3px solid var(--accent); background: var(--surface); padding: 14px 18px; border-radius: 0 6px 6px 0; display: grid; gap: 6px; max-width: 80ch; }
+ul.plain { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+footer { color: var(--muted); font-size: 0.88rem; border-top: 1px solid var(--rule); padding-top: 20px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="top">
+  <a class="back" href="index.html">&larr; All mockups and references</a>
+  <span class="eyebrow">Integration reference · RSS 2.0</span>
+  <h1>WordPress.tv RSS Feed</h1>
+  <p class="lede">Every element of <code>https://wordpress.tv/feed/</code>, what it contains and who produces it: WordPress core, the WordPress.com platform, VideoPress or the theme. Use it to know what the next version may change and what other tools rely on.</p>
+  <div class="meta">
+    <span><strong>Checked:</strong> October 22, 2026</span>
+    <span><strong>Production:</strong> 50 items parsed, served by <code>wptv2</code></span>
+    <span><strong>New theme:</strong> <code>wptv-27</code> on an empty WordPress 7.1.3 review site</span>
+  </div>
+</header>
+
+<section aria-labelledby="facts-h">
+  <h2 id="facts-h" class="sr-only" hidden>Key facts</h2>
+  <div class="facts">
+    <div class="fact"><b>50</b><span>items per feed in production (<code>posts_per_rss</code>), newest first</span></div>
+    <div class="fact"><b>2</b><span><code>media:content</code> per video: the VideoPress video and the original upload</span></div>
+    <div class="fact"><b>40 / 50</b><span>items with the "Presentation Slides" link in <code>description</code></span></div>
+    <div class="fact"><b>3</b><span>places where the theme changes the feed, all ported unchanged</span></div>
+  </div>
+</section>
+
+<section aria-labelledby="who-h">
+  <h2 id="who-h">Who produces each element</h2>
+  <div class="legend">
+    <div class="legend-item"><span class="chip p-core">core</span><p>WordPress core feed template (<code>feed-rss2.php</code>). Same on any WordPress site.</p></div>
+    <div class="legend-item"><span class="chip p-wpcom">wpcom</span><p>Added by the WordPress.com platform. Absent on a plain WordPress or Studio site.</p></div>
+    <div class="legend-item"><span class="chip p-vp">videopress</span><p>Video data from VideoPress, through the <code>[wpvideo]</code> shortcode and Media RSS.</p></div>
+    <div class="legend-item"><span class="chip p-theme">theme</span><p>Changed by the theme: <code>wptv2</code>, ported unchanged to <code>wptv-27</code>.</p></div>
+  </div>
+</section>
+
+<section aria-labelledby="tree-h">
+  <h2 id="tree-h">Element tree</h2>
+  <p class="prose">Brackets give how many times an element appears: <code>[1]</code> once, <code>[0..n]</code> any number, <code>[0..50]</code> up to the feed size. Attributes follow the tag with <code>@</code>.</p>
+  <div class="filter" role="group" aria-label="Highlight by producer">
+    <span class="label">Highlight:</span>
+    <button type="button" id="f-all" data-p="all" aria-pressed="true">All</button>
+    <button type="button" id="f-core" data-p="core" aria-pressed="false">core</button>
+    <button type="button" id="f-wpcom" data-p="wpcom" aria-pressed="false">wpcom</button>
+    <button type="button" id="f-vp" data-p="vp" aria-pressed="false">videopress</button>
+    <button type="button" id="f-theme" data-p="theme" aria-pressed="false">theme</button>
+  </div>
+  <div class="tree-wrap">
+    <ul class="tree" id="tree">
+      <li>
+        <div class="node group" data-p="core"><span class="tag"><span class="lt">&lt;</span>rss<span class="lt">&gt;</span></span><span class="card">[1]</span><span class="attrs">@<i>version</i>="2.0"</span><span class="chip p-core">core</span>
+          <span class="val">Namespaces: <code>content</code> <code>wfw</code> <code>dc</code> <code>atom</code> <code>sy</code> <code>slash</code> (core) · <code>media</code> <code>georss</code> <code>geo</code> (wpcom; <code>georss</code> and <code>geo</code> are declared but unused)</span></div>
+        <ul>
+          <li>
+            <div class="node group" data-p="core"><span class="tag"><span class="lt">&lt;</span>channel<span class="lt">&gt;</span></span><span class="card">[1]</span><span class="chip p-core">core</span></div>
+            <ul>
+              <li><div class="node" data-p="core"><span class="tag">title</span><span class="card">[1]</span><span class="chip p-core">core</span><span class="val">"WordPress.tv"</span></div></li>
+              <li><div class="node" data-p="core"><span class="tag">atom:link</span><span class="card">[1]</span><span class="attrs">@<i>rel</i>="self" @<i>href</i>=feed URL @<i>type</i>="application/rss+xml"</span><span class="chip p-core">core</span></div></li>
+              <li><div class="node" data-p="core"><span class="tag">link</span><span class="card">[1]</span><span class="chip p-core">core</span><span class="val">"https://wordpress.tv"</span></div></li>
+              <li><div class="node" data-p="core"><span class="tag">description</span><span class="card">[1]</span><span class="chip p-core">core</span><span class="val">Site tagline: "WordPress-related videos curated and moderated by the WordPress.org community"</span></div></li>
+              <li><div class="node" data-p="core"><span class="tag">lastBuildDate</span><span class="card">[1]</span><span class="chip p-core">core</span><span class="val">RFC 822 date of the newest change</span></div></li>
+              <li><div class="node" data-p="core"><span class="tag">language</span><span class="card">[1]</span><span class="chip p-core">core</span><span class="val">"en"</span></div></li>
+              <li><div class="node" data-p="core"><span class="tag">sy:updatePeriod</span><span class="card">[1]</span><span class="chip p-core">core</span><span class="val">"hourly"</span></div></li>
+              <li><div class="node" data-p="core"><span class="tag">sy:updateFrequency</span><span class="card">[1]</span><span class="chip p-core">core</span><span class="val">"1"</span></div></li>
+              <li><div class="node" data-p="core wpcom"><span class="tag">generator</span><span class="card">[1]</span><span class="chip p-core">core</span><span class="chip p-wpcom">wpcom</span><span class="val">"http://wordpress.com/" (element from core, value set by the platform)</span></div></li>
+              <li><div class="node" data-p="wpcom"><span class="tag">site</span><span class="card">[1]</span><span class="attrs">xmlns="com-wordpress:feed-additions:1"</span><span class="chip p-wpcom">wpcom</span><span class="val">Blog ID "5089392"</span></div></li>
+              <li><div class="node" data-p="wpcom"><span class="tag">cloud</span><span class="card">[1]</span><span class="attrs">@<i>domain</i> @<i>port</i> @<i>path</i>="/?rsscloud=notify" @<i>registerProcedure</i> @<i>protocol</i>="http-post"</span><span class="chip p-wpcom">wpcom</span><span class="val">rssCloud push notifications</span></div></li>
+              <li><div class="node" data-p="wpcom"><span class="tag">source:cloud</span><span class="card">[1]</span><span class="chip p-wpcom">wpcom</span><span class="val">"https://wordpress.tv/?rsscloud=notify"</span></div></li>
+              <li>
+                <div class="node" data-p="wpcom"><span class="tag">image</span><span class="card">[1]</span><span class="chip p-wpcom">wpcom</span></div>
+                <ul>
+                  <li><div class="node" data-p="wpcom"><span class="tag">url</span><span class="card">[1]</span><span class="chip p-wpcom">wpcom</span><span class="val">"https://s2.wp.com/i/webclip.png"</span></div></li>
+                  <li><div class="node" data-p="wpcom"><span class="tag">title</span><span class="card">[1]</span><span class="chip p-wpcom">wpcom</span><span class="val">"WordPress.tv"</span></div></li>
+                  <li><div class="node" data-p="wpcom"><span class="tag">link</span><span class="card">[1]</span><span class="chip p-wpcom">wpcom</span><span class="val">"https://wordpress.tv"</span></div></li>
+                </ul>
+              </li>
+              <li><div class="node" data-p="wpcom"><span class="tag">atom:link</span><span class="card">[1]</span><span class="attrs">@<i>rel</i>="search" @<i>href</i>="https://wordpress.tv/osd.xml" @<i>type</i>="application/opensearchdescription+xml" @<i>title</i></span><span class="chip p-wpcom">wpcom</span></div></li>
+              <li><div class="node" data-p="wpcom"><span class="tag">atom:link</span><span class="card">[1]</span><span class="attrs">@<i>rel</i>="hub" @<i>href</i>="https://wordpress.tv/?pushpress=hub"</span><span class="chip p-wpcom">wpcom</span><span class="val">WebSub (PubSubHubbub) hub</span></div></li>
+              <li>
+                <div class="node group" data-p="core"><span class="tag"><span class="lt">&lt;</span>item<span class="lt">&gt;</span></span><span class="card">[0..50]</span><span class="chip p-core">core</span><span class="val">One per video, newest first. The count is the site setting <code>posts_per_rss</code>.</span></div>
+                <ul>
+                  <li><div class="node" data-p="core"><span class="tag">title</span><span class="card">[1]</span><span class="chip p-core">core</span><span class="val">Post title, usually "Speakers: Title"</span></div></li>
+                  <li><div class="node" data-p="core"><span class="tag">link</span><span class="card">[1]</span><span class="chip p-core">core</span><span class="val">Permalink: https://wordpress.tv/YYYY/MM/DD/slug/</span></div></li>
+                  <li><div class="node" data-p="core"><span class="tag">comments</span><span class="card">[1]</span><span class="chip p-core">core</span><span class="val">Permalink + "#respond" (no comments) or "#comments"</span></div></li>
+                  <li><div class="node" data-p="core"><span class="tag">dc:creator</span><span class="card">[1]</span><span class="chip p-core">core</span><span class="val">Author display name: "WordPress.tv" (the anonymous upload user)</span></div></li>
+                  <li><div class="node" data-p="core"><span class="tag">pubDate</span><span class="card">[1]</span><span class="chip p-core">core</span><span class="val">RFC 822 publication date</span></div></li>
+                  <li><div class="node" data-p="core"><span class="tag">category</span><span class="card">[0..n]</span><span class="chip p-core">core</span><span class="val">Categories first (year and location included), then tags. No speakers, event, language or producer.</span></div></li>
+                  <li><div class="node" data-p="core"><span class="tag">guid</span><span class="card">[1]</span><span class="attrs">@<i>isPermaLink</i>="false"</span><span class="chip p-core">core</span><span class="val">Stored GUID: http://wordpress.tv/?p={ID}&amp;preview=true&amp;preview_id={ID}</span></div></li>
+                  <li><div class="node" data-p="core theme"><span class="tag">description</span><span class="card">[1]</span><span class="chip p-core">core</span><span class="chip p-theme">theme</span><span class="val">The excerpt, plus the "Presentation Slides" link when the video has slides</span></div></li>
+                  <li><div class="node" data-p="core vp"><span class="tag">content:encoded</span><span class="card">[1]</span><span class="chip p-core">core</span><span class="chip p-vp">videopress</span><span class="val">Rendered post content: player iframe, player script, linked thumbnail</span></div></li>
+                  <li><div class="node" data-p="core"><span class="tag">wfw:commentRss</span><span class="card">[1]</span><span class="chip p-core">core</span><span class="val">{permalink}feed/</span></div></li>
+                  <li><div class="node" data-p="core"><span class="tag">slash:comments</span><span class="card">[1]</span><span class="chip p-core">core</span><span class="val">Comment count</span></div></li>
+                  <li><div class="node" data-p="wpcom"><span class="tag">post-id</span><span class="card">[1]</span><span class="attrs">xmlns="com-wordpress:feed-additions:1"</span><span class="chip p-wpcom">wpcom</span><span class="val">Post ID</span></div></li>
+                  <li>
+                    <div class="node" data-p="vp"><span class="tag">media:content</span><span class="card">[1]</span><span class="attrs">@<i>width</i> @<i>height</i></span><span class="chip p-vp">videopress</span><span class="val">The hosted VideoPress video</span></div>
+                    <ul>
+                      <li><div class="node" data-p="vp"><span class="tag">media:player</span><span class="card">[1]</span><span class="attrs">@<i>url</i>="https://videopress.com/v/{GUID}"</span><span class="chip p-vp">videopress</span></div></li>
+                      <li><div class="node" data-p="vp"><span class="tag">media:rating</span><span class="card">[1]</span><span class="attrs">@<i>scheme</i>="urn:mpaa"</span><span class="chip p-vp">videopress</span><span class="val">"g", "pg", …</span></div></li>
+                      <li><div class="node" data-p="vp"><span class="tag">media:title</span><span class="card">[1]</span><span class="attrs">@<i>type</i>="plain"</span><span class="chip p-vp">videopress</span><span class="val">Title of the video attachment, not of the post</span></div></li>
+                      <li><div class="node" data-p="vp"><span class="tag">media:thumbnail</span><span class="card">[1]</span><span class="attrs">@<i>url</i> @<i>width</i> @<i>height</i></span><span class="chip p-vp">videopress</span><span class="val">VideoPress poster image</span></div></li>
+                    </ul>
+                  </li>
+                  <li><div class="node" data-p="theme"><span class="tag">media:content</span><span class="card">[0..1]</span><span class="attrs">@<i>medium</i>="video" @<i>isDefault</i>="false" @<i>url</i></span><span class="chip p-theme">theme</span><span class="val">The original uploaded file, when the post has a video attachment</span></div></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="channel-h">
+  <h2 id="channel-h">Channel reference</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Element</th><th>Value in production</th><th>Producer</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><code>title</code></td><td>WordPress.tv</td><td><span class="chip p-core">core</span></td><td>Site title</td></tr>
+        <tr><td><code>atom:link rel="self"</code></td><td>https://wordpress.tv/feed/</td><td><span class="chip p-core">core</span></td><td>URL of the feed being read; changes on taxonomy and search feeds</td></tr>
+        <tr><td><code>link</code></td><td>https://wordpress.tv</td><td><span class="chip p-core">core</span></td><td>Site address</td></tr>
+        <tr><td><code>description</code></td><td>WordPress-related videos curated and moderated by the WordPress.org community</td><td><span class="chip p-core">core</span></td><td>Site tagline</td></tr>
+        <tr><td><code>lastBuildDate</code></td><td>Thu, 22 Oct 2026 14:51:02 +0000</td><td><span class="chip p-core">core</span></td><td>Newest modification among the posts</td></tr>
+        <tr><td><code>language</code></td><td>en</td><td><span class="chip p-core">core</span></td><td><code>en-US</code> on a plain WordPress site</td></tr>
+        <tr><td><code>sy:updatePeriod</code>, <code>sy:updateFrequency</code></td><td>hourly, 1</td><td><span class="chip p-core">core</span></td><td></td></tr>
+        <tr><td><code>generator</code></td><td>http://wordpress.com/</td><td><span class="chip p-core">core</span><span class="chip p-wpcom">wpcom</span></td><td>WordPress version URL on a plain site</td></tr>
+        <tr><td><code>site</code></td><td>5089392</td><td><span class="chip p-wpcom">wpcom</span></td><td>WordPress.com blog ID</td></tr>
+        <tr><td><code>cloud</code>, <code>source:cloud</code></td><td>/?rsscloud=notify</td><td><span class="chip p-wpcom">wpcom</span></td><td>rssCloud push notifications for feed readers</td></tr>
+        <tr><td><code>image</code></td><td>url, title, link</td><td><span class="chip p-wpcom">wpcom</span></td><td>WordPress.com web clip icon</td></tr>
+        <tr><td><code>atom:link rel="search"</code></td><td>https://wordpress.tv/osd.xml</td><td><span class="chip p-wpcom">wpcom</span></td><td>OpenSearch description</td></tr>
+        <tr><td><code>atom:link rel="hub"</code></td><td>https://wordpress.tv/?pushpress=hub</td><td><span class="chip p-wpcom">wpcom</span></td><td>WebSub hub</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="item-h">
+  <h2 id="item-h">Item reference</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Element</th><th>Value</th><th>Producer</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><code>title</code></td><td>Post title</td><td><span class="chip p-core">core</span></td><td>Usually "Speakers: Title"</td></tr>
+        <tr><td><code>link</code></td><td>Permalink</td><td><span class="chip p-core">core</span></td><td><code>https://wordpress.tv/YYYY/MM/DD/slug/</code></td></tr>
+        <tr><td><code>comments</code></td><td>Permalink + <code>#respond</code> or <code>#comments</code></td><td><span class="chip p-core">core</span></td><td></td></tr>
+        <tr><td><code>dc:creator</code></td><td>Author display name</td><td><span class="chip p-core">core</span></td><td>"WordPress.tv" in production: the display name of the anonymous upload user</td></tr>
+        <tr><td><code>pubDate</code></td><td>Publication date</td><td><span class="chip p-core">core</span></td><td></td></tr>
+        <tr><td><code>category</code></td><td>One per category, then one per tag</td><td><span class="chip p-core">core</span></td><td>Includes the year and location categories. Speakers, event, language and producer are not listed: core only outputs categories and tags. Up to 4 per item in the sample.</td></tr>
+        <tr><td><code>guid</code></td><td><code>http://wordpress.tv/?p={ID}&amp;preview=true&amp;preview_id={ID}</code></td><td><span class="chip p-core">core</span></td><td><code>isPermaLink="false"</code>. The GUID stored when the draft was created by the submission flow. Odd-looking but stable.</td></tr>
+        <tr><td><code>description</code></td><td>The excerpt</td><td><span class="chip p-core">core</span><span class="chip p-theme">theme</span></td><td>Manual excerpt as typed (all 50 production items had one). If empty, the first 55 words of the content without shortcodes. When the video has slides, the theme appends <code>&lt;p&gt;&lt;a href="{slides URL}"&gt;Presentation Slides &amp;#187;&lt;/a&gt;&lt;/p&gt;</code>.</td></tr>
+        <tr><td><code>content:encoded</code></td><td>Rendered post content</td><td><span class="chip p-core">core</span><span class="chip p-vp">videopress</span></td><td>See "Inside content:encoded" below</td></tr>
+        <tr><td><code>wfw:commentRss</code></td><td><code>{permalink}feed/</code></td><td><span class="chip p-core">core</span></td><td></td></tr>
+        <tr><td><code>slash:comments</code></td><td>Comment count</td><td><span class="chip p-core">core</span></td><td></td></tr>
+        <tr><td><code>post-id</code></td><td>Post ID</td><td><span class="chip p-wpcom">wpcom</span></td><td>Namespace <code>com-wordpress:feed-additions:1</code></td></tr>
+        <tr><td><code>media:content</code> ×2</td><td>VideoPress video, original upload</td><td><span class="chip p-vp">videopress</span><span class="chip p-theme">theme</span></td><td>See "The two media:content elements" below</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="content-h">
+  <h2 id="content-h">Inside <code>content:encoded</code></h2>
+  <p class="prose">For a clean video post (its content is one <code>[wpvideo]</code> shortcode), WordPress.com renders the shortcode into the same three pieces in all 50 production items.</p>
+  <div class="anatomy">
+    <div class="piece"><span class="n">1</span><div><h3>Player iframe</h3><p>The VideoPress embed at feed size, 400 × 233, with the player options as query parameters.</p>
+<pre>&lt;iframe title='VideoPress Video Player' aria-label='VideoPress Video Player'
+        width='400' height='233'
+        src='https://video.wordpress.com/embed/{GUID}?hd=1&amp;autoPlay=0&amp;permalink=1&amp;loop=0
+             &amp;preloadContent=metadata&amp;muted=0&amp;playsinline=0&amp;controls=1&amp;cover=1'
+        frameborder='0' allowfullscreen allow='clipboard-write; presentation'&gt;&lt;/iframe&gt;</pre></div></div>
+    <div class="piece"><span class="n">2</span><div><h3>Player script</h3><p>Loads the VideoPress iframe API.</p>
+<pre>&lt;script src='https://v0.wordpress.com/js/next/videopress-iframe.js?m={version}'&gt;&lt;/script&gt;</pre></div></div>
+    <div class="piece"><span class="n">3</span><div><h3>Linked thumbnail</h3><p>A fallback for feed readers that strip iframes and scripts: the poster at 160 × 120, linking to the video page. Its <code>alt</code> is the video attachment title.</p>
+<pre>&lt;div&gt;&lt;a href="{permalink}"&gt;&lt;img alt="{video title}"
+  src="https://videos.files.wordpress.com/{GUID}/{file}_mp4_std.original.jpg"
+  width="160" height="120" /&gt;&lt;/a&gt;&lt;/div&gt;</pre></div></div>
+  </div>
+  <div class="callout"><strong>Anything else in the post content follows these three pieces.</strong><p>That is why the pre-migration cleanup (Tools → Moderation tools → Post content to clean) matters for feed readers too: stray text and empty paragraphs end up in <code>content:encoded</code>.</p></div>
+</section>
+
+<section aria-labelledby="media-h">
+  <h2 id="media-h">The two <code>media:content</code> elements</h2>
+  <p class="prose">Every production item carries both, in this order. Media RSS (<code>xmlns:media="http://search.yahoo.com/mrss/"</code>) only exists on WordPress.com.</p>
+  <div class="media-pair">
+    <article class="media-card">
+      <header><h3>1 · The VideoPress video</h3><span class="chip p-vp">videopress</span></header>
+      <dl>
+        <dt>@width, @height</dt><dd>Feed player size, e.g. 400 × 233. No <code>@url</code> or <code>@medium</code> here.</dd>
+        <dt>media:player</dt><dd><code>@url="https://videopress.com/v/{GUID}"</code></dd>
+        <dt>media:rating</dt><dd><code>@scheme="urn:mpaa"</code>, value such as <code>g</code></dd>
+        <dt>media:title</dt><dd><code>@type="plain"</code>. The title of the video <strong>attachment</strong>, not the post. The theme keeps it in sync with the post title when it was the default or the previous title.</dd>
+        <dt>media:thumbnail</dt><dd><code>@url @width @height</code>, the VideoPress poster, e.g. <code>…_mp4_hd_1080p.original.jpg</code> at 256 × 149</dd>
+      </dl>
+    </article>
+    <article class="media-card">
+      <header><h3>2 · The original upload</h3><span class="chip p-theme">theme</span></header>
+      <dl>
+        <dt>@medium</dt><dd><code>video</code></dd>
+        <dt>@isDefault</dt><dd><code>false</code></dd>
+        <dt>@url</dt><dd>The file uploaded through the submission form, e.g. <code>https://wordpress.tv/wp-content/uploads/YYYY/MM/video-{random}.mp4</code></dd>
+        <dt>Source</dt><dd>Added by the theme through the <code>mrss_media</code> filter, only when the post has a video attachment</dd>
+        <dt>Also removed</dt><dd>The author avatar that WordPress.com adds to each item (<code>mrss_avatar_user</code> filter), since every video belongs to the anonymous upload user</dd>
+      </dl>
+    </article>
+  </div>
+</section>
+
+<section aria-labelledby="xml-h">
+  <h2 id="xml-h">A real production item, annotated</h2>
+  <p class="prose">The first item of the production feed on October 22, 2026. Long values are shortened with <code>…</code>. The bar on the left marks the producer of each line.</p>
+  <div class="xml">
+    <ol>
+      <li class="l-core"><span class="bar"></span><span><span class="t">&lt;item&gt;</span></span></li>
+      <li class="l-core"><span class="bar"></span><span>  <span class="t">&lt;title&gt;</span>Automatisation des mises à jour WordPress, enjeux et exemple avec Updatronix<span class="t">&lt;/title&gt;</span></span></li>
+      <li class="l-core"><span class="bar"></span><span>  <span class="t">&lt;link&gt;</span>https://wordpress.tv/2026/10/21/automatisation-des-mises-a-jour-…/<span class="t">&lt;/link&gt;</span></span></li>
+      <li class="l-core"><span class="bar"></span><span>  <span class="t">&lt;comments&gt;</span>https://wordpress.tv/2026/10/21/automatisation-des-mises-a-jour-…/#respond<span class="t">&lt;/comments&gt;</span></span></li>
+      <li class="l-core"><span class="bar"></span><span>  <span class="t">&lt;dc:creator&gt;</span>&lt;![CDATA[WordPress.tv]]&gt;<span class="t">&lt;/dc:creator&gt;</span></span></li>
+      <li class="l-core"><span class="bar"></span><span>  <span class="t">&lt;pubDate&gt;</span>Thu, 22 Oct 2026 06:42:13 +0000<span class="t">&lt;/pubDate&gt;</span></span></li>
+      <li class="l-core"><span class="bar"></span><span>  <span class="t">&lt;category&gt;</span>&lt;![CDATA[2026]]&gt;<span class="t">&lt;/category&gt;</span>  <span class="c">← year category</span></span></li>
+      <li class="l-core"><span class="bar"></span><span>  <span class="t">&lt;category&gt;</span>&lt;![CDATA[Livestream]]&gt;<span class="t">&lt;/category&gt;</span></span></li>
+      <li class="l-core"><span class="bar"></span><span>  <span class="t">&lt;category&gt;</span>&lt;![CDATA[WordPress Related Events]]&gt;<span class="t">&lt;/category&gt;</span></span></li>
+      <li class="l-core"><span class="bar"></span><span>  <span class="t">&lt;guid isPermaLink="false"&gt;</span>http://wordpress.tv/?p=142018&amp;#038;preview=true&amp;#038;preview_id=142018<span class="t">&lt;/guid&gt;</span></span></li>
+      <li class="l-mix"><span class="bar"></span><span>  <span class="t">&lt;description&gt;</span>&lt;![CDATA[Les mises à jour font partie du quotidien de tous les utilisateurs de WordPress. …]]&gt;<span class="t">&lt;/description&gt;</span></span></li>
+      <li class="l-mixvp"><span class="bar"></span><span>  <span class="t">&lt;content:encoded&gt;</span>&lt;![CDATA[&lt;iframe … src='https://video.wordpress.com/embed/SL1VrVwt?hd=1&amp;…'&gt;&lt;/iframe&gt;</span></li>
+      <li class="l-vp"><span class="bar"></span><span>    &lt;script src='https://v0.wordpress.com/js/next/videopress-iframe.js?m=…'&gt;&lt;/script&gt;</span></li>
+      <li class="l-vp"><span class="bar"></span><span>    &lt;div&gt;&lt;a href="https://wordpress.tv/2026/10/21/…/"&gt;&lt;img alt="Permanence Quentin" src="https://videos.files.wordpress.com/SL1VrVwt/…_mp4_std.original.jpg" width="160" height="120" /&gt;&lt;/a&gt;&lt;/div&gt;]]&gt;<span class="t">&lt;/content:encoded&gt;</span></span></li>
+      <li class="l-core"><span class="bar"></span><span>  <span class="t">&lt;wfw:commentRss&gt;</span>https://wordpress.tv/2026/10/21/automatisation-des-mises-a-jour-…/feed/<span class="t">&lt;/wfw:commentRss&gt;</span></span></li>
+      <li class="l-core"><span class="bar"></span><span>  <span class="t">&lt;slash:comments&gt;</span>0<span class="t">&lt;/slash:comments&gt;</span></span></li>
+      <li class="l-wpcom"><span class="bar"></span><span>  <span class="t">&lt;post-id xmlns="com-wordpress:feed-additions:1"&gt;</span>142018<span class="t">&lt;/post-id&gt;</span></span></li>
+      <li class="l-vp"><span class="bar"></span><span>  <span class="t">&lt;media:content width="400" height="233"&gt;</span></span></li>
+      <li class="l-vp"><span class="bar"></span><span>    <span class="t">&lt;media:player url="https://videopress.com/v/SL1VrVwt" /&gt;</span></span></li>
+      <li class="l-vp"><span class="bar"></span><span>    <span class="t">&lt;media:rating scheme="urn:mpaa"&gt;</span>g<span class="t">&lt;/media:rating&gt;</span></span></li>
+      <li class="l-vp"><span class="bar"></span><span>    <span class="t">&lt;media:title type="plain"&gt;</span>Permanence Quentin<span class="t">&lt;/media:title&gt;</span>  <span class="c">← attachment title, not the post title</span></span></li>
+      <li class="l-vp"><span class="bar"></span><span>    <span class="t">&lt;media:thumbnail url="https://videos.files.wordpress.com/SL1VrVwt/…_mp4_hd_1080p.original.jpg" width="256" height="149" /&gt;</span></span></li>
+      <li class="l-vp"><span class="bar"></span><span>  <span class="t">&lt;/media:content&gt;</span></span></li>
+      <li class="l-theme"><span class="bar"></span><span>  <span class="t">&lt;media:content medium="video" isDefault="false" url="https://wordpress.tv/wp-content/uploads/2026/10/video-5420f4a48f.mp4" /&gt;</span></span></li>
+      <li class="l-core"><span class="bar"></span><span><span class="t">&lt;/item&gt;</span></span></li>
+    </ol>
+  </div>
+</section>
+
+<section aria-labelledby="other-h">
+  <h2 id="other-h">Other feeds with the same items</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Feed</th><th>URL pattern</th><th>What changes</th></tr></thead>
+      <tbody>
+        <tr><td>All videos</td><td><code>/feed/</code></td><td>The reference above</td></tr>
+        <tr><td>Category, tag</td><td><code>/category/{slug}/feed/</code>, <code>/tag/{slug}/feed/</code></td><td>Channel <code>title</code>, <code>link</code> and <code>atom:link rel="self"</code></td></tr>
+        <tr><td>Event, speaker, language, producer</td><td><code>/event/{slug}/feed/</code>, <code>/speakers/{slug}/feed/</code>, <code>/language/{slug}/feed/</code>, <code>/producer-username/{slug}/feed/</code></td><td>Same</td></tr>
+        <tr><td>Search</td><td><code>/?s={query}&amp;feed=rss2</code></td><td>Same</td></tr>
+        <tr><td>Atom</td><td><code>/feed/atom/</code></td><td>Same data in Atom: <code>entry</code>, <code>summary</code> for the excerpt, <code>content</code> for the rendered content</td></tr>
+        <tr><td>Comments</td><td><code>/comments/feed/</code>, <code>{permalink}feed/</code></td><td>Comments, not videos</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="diff-h">
+  <h2 id="diff-h"><code>wptv-27</code> compared with <code>wptv2</code></h2>
+  <div class="prose" style="display:grid;gap:14px">
+    <p><strong>Same structure and fields.</strong> The theme changes the feed in only three places, all ported unchanged:</p>
+    <ul class="plain">
+      <li>the "Presentation Slides" link appended to <code>description</code> (<code>inc/content.php</code>);</li>
+      <li>the original upload as the second <code>media:content</code> (<code>mrss_media</code> filter);</li>
+      <li>the author avatar removed from Media RSS (<code>mrss_avatar_user</code> filter).</li>
+    </ul>
+    <p>Everything tagged <span class="chip p-wpcom">wpcom</span> or <span class="chip p-vp">videopress</span> comes from the platform and does not depend on the theme. On a plain WordPress site the feed has only the <span class="chip p-core">core</span> elements, and <code>content:encoded</code> holds the raw <code>[wpvideo]</code> shortcode.</p>
+    <div class="callout"><strong>Known difference</strong><p>For posts converted to the VideoPress block, <code>content:encoded</code> renders the block player instead of the shortcode iframe, and its <code>posterUrl</code> parameter carries the featured image, as the approved poster decision requires. The latest route regression found exactly this difference in four feeds.</p></div>
+  </div>
+</section>
+
+<footer>Sources: the production feed downloaded from https://wordpress.tv/feed/ on October 22, 2026, and the <code>wptv-27</code> feed on the review site. Text version in the repository: <a href="https://github.com/nilovelez/wptv-27/blob/trunk/docs/rss-feed.md">docs/rss-feed.md</a>.</footer>
+
+</div>
+
+<script>
+(function () {
+  var tree = document.getElementById('tree');
+  var buttons = document.querySelectorAll('.filter button');
+  function apply(p) {
+    buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.p === p)); });
+    var nodes = tree.querySelectorAll('.node');
+    nodes.forEach(function (n) {
+      var hit = p !== 'all' && n.dataset.p.split(' ').indexOf(p) !== -1;
+      n.classList.toggle('hit', hit);
+    });
+    tree.classList.toggle('dim', p !== 'all');
+  }
+  buttons.forEach(function (b) { b.addEventListener('click', function () { apply(b.dataset.p); }); });
+})();
+</script>
+</body>
+</html>
