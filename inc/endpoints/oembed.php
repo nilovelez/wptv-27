@@ -74,6 +74,11 @@ function handle_request() {
 		not_found();
 	}
 
+	// url_to_postid() resolves ?p= URLs of any status: only embed public videos.
+	if ( ! is_post_publicly_viewable( $post ) || '' !== $post->post_password ) {
+		not_found();
+	}
+
 	$maxwidth  = ! empty( $_GET['maxwidth'] ) ? (int) $_GET['maxwidth'] : 0;
 	$maxheight = ! empty( $_GET['maxheight'] ) ? (int) $_GET['maxheight'] : 0;
 	$maxwidth  = $maxwidth ? $maxwidth : 400;

@@ -136,6 +136,12 @@ function handle_request() {
 		}
 	}
 
+	// url_to_postid() resolves ?p= URLs of any status, and ?guid= finds published
+	// posts with a password too: only describe public videos.
+	if ( ! is_post_publicly_viewable( $post ) || '' !== $post->post_password ) {
+		not_found();
+	}
+
 	$format = ! empty( $_GET['format'] ) ? strtolower( sanitize_text_field( wp_unslash( $_GET['format'] ) ) ) : 'json';
 	// phpcs:enable
 

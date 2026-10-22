@@ -10,7 +10,7 @@ Evidence comes from code reading and from an empty Studio review site (WordPress
 | ID | Area | Severity | Inherited from wptv2 | Owner |
 |---|---|---|---|---|
 | R1 | Submission nonce skipped when `wptv_uploaded_by` is filled | Low–medium | Yes | Fixed by the reviewer |
-| R2 | oEmbed and unisubs `?url=` resolve unpublished posts | Medium | Yes | Theme developers (behavior, routes) |
+| R2 | oEmbed and unisubs `?url=` resolve unpublished posts | Medium | Yes | Fixed by the reviewer |
 | R3 | `/api/videos.json?posts_per_page=` is unbounded | Medium (availability) | Yes | Recorded as backlog B13 |
 | R4 | Submission length check measures field names, not values | Low | Yes | Theme developers (behavior) |
 | R5 | REST design lockdown bypassed with uppercase routes | Low | No (new code) | Done by the reviewer |
@@ -41,6 +41,7 @@ No SQL injection, output-escaping or stored-XSS defect was found. The submission
 - Same code path in `wptv2` (`plugins/wordpresstv-oembed/wordpresstv-oembed.php:63`, `plugins/wordpresstv-unisubs/wordpresstv-unisubs.php:97`).
 - Suggested change: after resolving the post, return the existing 404 unless `is_post_publicly_viewable( $post )` and `! post_password_required( $post )`.
 - This changes responses for non-public posts only. Route regression: published fixtures must stay identical.
+- **Fixed (owner-authorized, October 22, 2026).** Both endpoints return their existing 404 unless `is_post_publicly_viewable( $post )` and the post has no password. In unisubs the check runs after both lookups, so `?guid=` is covered too for logged-in visitors (core search already hides password-protected posts from anonymous ones). Checked on the review site with posts in each status: before, pending, draft, private and password-protected posts went through to the VideoPress lookup (HTTP 500 locally, without VideoPress; their data in production); now they return 404, while the published post follows the same path as before. Published route fixtures are expected to stay identical; the developers verify that with the route regression.
 
 ### R3. The videos API accepts any page size
 
