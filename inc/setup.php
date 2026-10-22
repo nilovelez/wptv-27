@@ -18,8 +18,70 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function setup() {
 	add_editor_style( 'style.css' );
+
+	// Same location name as wptv2, so the assigned menu survives switching between both themes.
+	register_nav_menus(
+		array(
+			'primary' => __( 'Primary Menu', 'wptv' ),
+		)
+	);
 }
 add_action( 'after_setup_theme', __NAMESPACE__ . '\setup' );
+
+/**
+ * Fills the header Navigation block with the classic menu assigned to `primary`.
+ *
+ * Administrators edit it in Appearance > Menus, because the Site Editor is locked.
+ * Core converts the menu items into navigation link blocks; the header's search
+ * and submit button stay in place. Without an assigned menu, or with an empty
+ * one, the pattern's own links are kept.
+ *
+ * @param array $parsed_block Parsed block.
+ * @return array
+ */
+function primary_menu_links( $parsed_block ) {
+	$classes = preg_split( '/\s+/', $parsed_block['attrs']['className'] ?? '' );
+	if ( 'core/navigation' !== $parsed_block['blockName'] || ! in_array( 'wptv-header__nav', $classes, true ) ) {
+		return $parsed_block;
+	}
+
+	$locations = get_nav_menu_locations();
+	$menu      = wp_get_nav_menu_object( $locations['primary'] ?? 0 );
+	if ( ! $menu ) {
+		return $parsed_block;
+	}
+
+	$markup = \WP_Classic_To_Block_Menu_Converter::convert( $menu );
+	if ( is_wp_error( $markup ) || '' === $markup ) {
+		return $parsed_block;
+	}
+
+	$menu_blocks = array();
+	foreach ( parse_blocks( $markup ) as $block ) {
+		if ( $block['blockName'] ) {
+			$menu_blocks[] = $block;
+		}
+	}
+
+	// Replace the pattern's links with the menu, where the first link was.
+	$inner_blocks = array();
+	$inserted     = false;
+	foreach ( $parsed_block['innerBlocks'] as $block ) {
+		if ( in_array( $block['blockName'], array( 'core/navigation-link', 'core/navigation-submenu' ), true ) ) {
+			if ( ! $inserted ) {
+				$inner_blocks = array_merge( $inner_blocks, $menu_blocks );
+				$inserted     = true;
+			}
+			continue;
+		}
+		$inner_blocks[] = $block;
+	}
+
+	$parsed_block['innerBlocks']  = $inner_blocks;
+	$parsed_block['innerContent'] = array_fill( 0, count( $inner_blocks ), null );
+	return $parsed_block;
+}
+add_filter( 'render_block_data', __NAMESPACE__ . '\primary_menu_links' );
 
 /**
  * Registers the recurring visual treatments used by theme patterns.

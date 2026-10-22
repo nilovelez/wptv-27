@@ -184,7 +184,7 @@ WordPress.org sites have a global header (`wporg/global-header`) and footer (`wp
 
 - Same on every page. White background, 1px `light-grey-1` bottom rule, `charcoal-1` text, min height 57px, horizontal padding `edge-space`, sticky from 890px.
 - Left: the WordPress "W" mark (28px, `currentColor`, the core `w-logo` artwork, `aria-hidden`) followed by the site title "WordPress.tv" in `small` weight 600. Both link to the home page. With no global header above, the mark ties the site to WordPress.org.
-- Right: Navigation (existing links: WordCamp.tv, How-To, Learn WordPress, Get Involved) in `small`, a Search block with the light style, and "Submit a video" as a small fill button.
+- Right: Navigation in `small`, filled from the classic menu assigned to the `primary` location (Appearance > Menus); without one, the fallback links WordCamp.tv, How-To, Learn WordPress and Get Involved, a Search block with the light style, and "Submit a video" as a small fill button.
 - Below 1080px: the title stays on the left with a "Menu" toggle on the right; the menu opens below with links as rows separated by `light-grey-1` rules, a full-width search field and the button.
 - Do not copy the WordPress.org global header (its menu, "Get WordPress" button or layout).
 

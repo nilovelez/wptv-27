@@ -15,6 +15,15 @@ Template:
 
 ---
 
+## 2026-10-22: Editable header menu through Appearance > Menus
+
+- **Decision (owner):** the header menu must be editable without code, while the Site Editor stays locked. The theme registers the classic `primary` menu location and fills the header Navigation block from the menu assigned to it; the pattern's four links remain only as a fallback.
+- **Reason:** core can only edit block navigation menus (`wp_navigation`) in the Site Editor, and the Navigation block's classic-location mode (`__unstableLocation`) only works with the Gutenberg plugin. Appearance > Menus is outside the Site Editor, and core's `WP_Classic_To_Block_Menu_Converter` turns the classic menu into navigation link blocks, so the header keeps core's markup, mobile overlay and accessibility. Reusing `wptv2`'s location name keeps the assigned menu when switching between both themes during testing; once `wptv-27` is kept, the owner replaces the links by hand.
+- **Roles (owner):** editors only work on videos and subtitles; administrators change the allowed settings, including this menu (`edit_theme_options`); only super admins change the site itself.
+- **Rejected:** opening the Site Editor's navigation section (it exposes locked areas and needs environment-specific menu IDs), a synced pattern (same ID problem) and a custom settings screen (it would reimplement Appearance > Menus).
+- **Affects:** `inc/setup.php` (`register_nav_menus()`, `render_block_data` filter for the Navigation block marked `wptv-header__nav`), `patterns/header.php`. Found as D6 in [review-parity.md](review-parity.md). `wptv2` also had a flat `footer` location and `featured_wordcamps`; the latter was replaced by the automatic WordCampTV landing, and the footer is fixed by the owner's design.
+- **Status:** accepted
+
 ## 2026-10-22: Video cards in search and archives; pingbacks follow the settings
 
 - **Decision (owner):** search results and generic archives keep the approved video card (thumbnail, speakers, title, date), without the event links and excerpts that `wptv2` listed. Comment lists show pingbacks whenever the discussion settings accept them and they are approved; the template does not filter comment types, unlike `wptv2`'s `list_comments()`.
