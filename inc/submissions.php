@@ -188,7 +188,7 @@ function save() {
 	if ( '' === $extension ) {
 		return 3;
 	}
-	if ( ! in_array( $extension, array( 'avi', 'mov', 'qt', 'mpeg', 'mpg', 'mpe', 'mp4', 'm4v', 'asf', 'asx', 'wax', 'wmv', 'wmx', 'ogv', '3gp', '3g2' ), true ) ) {
+	if ( ! in_array( $extension, array( 'avi', 'mov', 'qt', 'mpeg', 'mpg', 'mpe', 'mp4', 'm4v', 'wmv', 'ogv', '3gp', '3g2' ), true ) ) {
 		return 2;
 	}
 
@@ -314,14 +314,14 @@ function handle_upload( $parent_id ) {
 		array(
 			'test_form' => false,
 			'mimes'     => array(
-				'avi'                 => 'video/avi',
-				'mov|qt'              => 'video/quicktime',
-				'mpeg|mpg|mpe'        => 'video/mpeg',
-				'mp4|m4v'             => 'video/mp4',
-				'asf|asx|wax|wmv|wmx' => 'video/asf',
-				'ogv'                 => 'video/ogg',
-				'3gp'                 => 'video/3gpp',
-				'3g2'                 => 'video/3gpp2',
+				'avi'          => 'video/avi',
+				'mov|qt'       => 'video/quicktime',
+				'mpeg|mpg|mpe' => 'video/mpeg',
+				'mp4|m4v'      => 'video/mp4',
+				'wmv'          => 'video/asf',
+				'ogv'          => 'video/ogg',
+				'3gp'          => 'video/3gpp',
+				'3g2'          => 'video/3gpp2',
 			),
 		)
 	);

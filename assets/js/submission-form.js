@@ -57,7 +57,7 @@ jQuery(($) => {
 		check('#wptv_uploaded_by', (value) => !!value);
 		check('#wptv_email', (value) => /\S+@\S+\.\S+/.test(value));
 		// Keep extensions in sync with Submissions\save().
-		check('#wptv_file', (value) => /\.(avi|mov|qt|mpeg|mpg|mpe|mp4|m4v|asf|asx|wax|wmv|wmx|ogv|3gp|3g2)$/i.test(value));
+		check('#wptv_file', (value) => /\.(avi|mov|qt|mpeg|mpg|mpe|mp4|m4v|wmv|ogv|3gp|3g2)$/i.test(value));
 		check('#wptv_honey', (value) => !value.length);
 		if (invalid.length) {
 			event.preventDefault();
