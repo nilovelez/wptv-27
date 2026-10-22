@@ -109,6 +109,14 @@ This is the next subtitle delivery, not an automatic commitment to every release
 - **Open points:** verify direct block upload, VideoPress processing/GUID availability and permissions in the target environment; agree required fields and validation before publication. Keep the submission-form workflow available unless separately retired by the owner.
 - **Status:** deferred route/editorial-workflow backlog; direct VideoPress upload and the complete editor-only publication path are not yet verified. Listing this item does not authorize implementation.
 
+### B13. Limit the page size of `/api/videos.json` ⏳
+
+- **Found by:** external security review (R3 in [review-security.md](review-security.md)).
+- **Current behavior:** `?posts_per_page=` re-runs the main query with any value, inherited from `wptv2`. `-1` or a very large value builds one uncached response for every published video (about 18,700), with per-video term and VideoPress lookups. Any anonymous visitor can request it.
+- **Fix:** clamp the value to a maximum (for example 1–100) and treat non-positive values as the default page size.
+- **Expected route test differences:** none for the current fixtures, unless a fixture uses a page size above the chosen maximum.
+- **Status:** recorded by the owner; implementation is not approved yet.
+
 ## Ideas (not yet agreed)
 
 ### B4. Retire `/unisubs/` if it is confirmed unused ⏳

@@ -21,6 +21,13 @@ function category_id( $slug ) {
 	return $term ? (int) $term->term_id : 0;
 }
 
+/*
+ * The functions below only display the redirect codes and prefilled values
+ * that inc/submissions.php sends back; nothing is saved, and every value is
+ * escaped on output.
+ */
+// phpcs:disable WordPress.Security.NonceVerification.Recommended
+
 /** Messages for the ?error= and ?success= redirects (wptv2 wording). */
 function message() {
 	// WP::parse_request() unsets $_GET['error'] for resolved permalinks.
@@ -51,7 +58,14 @@ function message() {
 
 /** Prefilled value from the redirect query, as in wptv2. */
 function prefill( $key ) {
-	return isset( $_GET[ $key ] ) && is_string( $_GET[ $key ] ) ? wp_unslash( $_GET[ $key ] ) : '';
+	if ( ! isset( $_GET[ $key ] ) || ! is_string( $_GET[ $key ] ) ) {
+		return '';
+	}
+	// The description keeps its line breaks, as when it is saved.
+	if ( 'wptv_video_description' === $key ) {
+		return sanitize_textarea_field( wp_unslash( $_GET[ $key ] ) );
+	}
+	return sanitize_text_field( wp_unslash( $_GET[ $key ] ) );
 }
 
 /** Category checkboxes, keeping prefilled selections. */
@@ -137,6 +151,8 @@ function render() {
 	$html .= '<p id="upload-progress" hidden><progress value="0" max="100"></progress> <span class="percent"></span><br><span class="status" aria-live="polite"></span> <a href="#" class="abort">' . esc_html__( 'Cancel', 'wptv' ) . '</a></p>';
 	return $html . '</form></div>';
 }
+// phpcs:enable WordPress.Security.NonceVerification.Recommended
+
 /** Registers a server-rendered block used only by the fixed page template. */
 function register_block() {
 	register_block_type( 'wptv/submission-form', array(

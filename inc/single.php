@@ -30,7 +30,7 @@ function full_description( $content, $parsed, $block ) {
 		return $content;
 	}
 	$excerpt = get_the_excerpt( $post_id );
-	$excerpt = apply_filters( 'the_excerpt', $excerpt );
+	$excerpt = apply_filters( 'the_excerpt', $excerpt ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Core filter.
 	return preg_replace_callback(
 		'/^(<div\b[^>]*>).*<\/div>$/s',
 		static function ( $matches ) use ( $excerpt ) {

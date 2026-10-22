@@ -100,11 +100,14 @@ function directory_terms() {
 	if ( ! $scope ) {
 		return array();
 	}
+	// $scope only contains integer IDs (category_predicate()); the result is cached by directory().
+	// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 	$ids = $wpdb->get_col( "SELECT DISTINCT et.term_id FROM {$wpdb->posts} p
 		INNER JOIN {$wpdb->term_relationships} er ON er.object_id = p.ID
 		INNER JOIN {$wpdb->term_taxonomy} et ON et.term_taxonomy_id = er.term_taxonomy_id
 		WHERE p.post_type = 'post' AND p.post_status = 'publish'
 		AND et.taxonomy = 'event' AND $scope" );
+	// phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 	if ( $wpdb->last_error ) {
 		return new \WP_Error( 'wptv_wordcamp_index', __( 'The WordCamp event index could not be loaded.', 'wptv' ) );
 	}
@@ -157,6 +160,8 @@ function recent() {
 	$events = array();
 	do {
 		$args = array_merge( array( $cursor ), $patterns );
+		// $likes only contains %s placeholders and $scope integer IDs; the result is cached by recent().
+		// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		$rows = $wpdb->get_results( $wpdb->prepare(
 			"SELECT m.meta_id, p.ID, m.meta_value FROM {$wpdb->postmeta} m
 			INNER JOIN {$wpdb->posts} p ON p.ID = m.post_id
@@ -164,6 +169,7 @@ function recent() {
 			AND p.post_type = 'post' AND p.post_status = 'publish'
 			AND ($likes) AND $scope ORDER BY m.meta_id ASC LIMIT 500", $args
 		) );
+		// phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		if ( $wpdb->last_error ) {
 			return array();
 		}

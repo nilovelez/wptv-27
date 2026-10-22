@@ -11,11 +11,12 @@ Evidence comes from code reading and from an empty Studio review site (WordPress
 |---|---|---|---|---|
 | R1 | Submission nonce skipped when `wptv_uploaded_by` is filled | Low–medium | Yes | Theme developers (behavior) |
 | R2 | oEmbed and unisubs `?url=` resolve unpublished posts | Medium | Yes | Theme developers (behavior, routes) |
-| R3 | `/api/videos.json?posts_per_page=` is unbounded | Medium (availability) | Yes | Owner decision (route contract, backlog) |
+| R3 | `/api/videos.json?posts_per_page=` is unbounded | Medium (availability) | Yes | Recorded as backlog B13 |
 | R4 | Submission length check measures field names, not values | Low | Yes | Theme developers (behavior) |
 | R5 | REST design lockdown bypassed with uppercase routes | Low | No (new code) | Reviewer, pending authorization |
-| R6 | Single-block cleanup drops non-empty content too | Data risk | No (owner decision) | Owner confirmation |
-| D1–D3 | Unslash/sanitize and documented false positives | None (standards) | — | Reviewer, pending authorization |
+| R6 | Single-block cleanup drops non-empty content too | — | No | Intended; decision log corrected |
+| D1–D2 | Unslash/sanitize and documented false positives | None (standards) | — | Done by the reviewer |
+| D3 | Nonce warnings in `validate()`/`save()` | — | — | Open until R1 is decided |
 
 No SQL injection, output-escaping or stored-XSS defect was found. The submission review panel renders through React elements (text is escaped), the slides URL is sanitized with `esc_url_raw()` for http/https and escaped on output, and REST meta writes require `edit_post`.
 
@@ -45,7 +46,7 @@ No SQL injection, output-escaping or stored-XSS defect was found. The submission
 `inc/endpoints/api.php:129-132` re-runs the main query with `posts_per_page` from the request. `-1` or a very large value builds one response for every published video (about 18,700), with per-post term and VideoPress lookups. It is an unauthenticated, uncached way to load the server.
 
 - Inherited unchanged from `wptv2` (`plugins/wordpresstv-rest/wordpresstv-rest.php:64-65`) and part of the API contract, so Phase 1 rule 1 applies.
-- Suggested change for the backlog: clamp to a maximum (for example 1–100) and treat non-positive values as the default. Owner decision required because it changes the API contract.
+- The owner recorded it as [backlog B13](backlog.md); no change for now.
 
 ### R4. Submission text fields have no server-side length limit
 
@@ -54,32 +55,28 @@ No SQL injection, output-escaping or stored-XSS defect was found. The submission
 - Only the browser limits lengths (`assets/js/submission-form.js`, slides URL only). Direct POSTs can store arbitrarily long titles, speakers and descriptions in post meta.
 - Suggested change: measure `$_POST[ $field ]` values. Owner decision because it changes which submissions are accepted.
 
-## Findings for the owner
+## Resolved by the owner
 
 ### R6. The single-block cleanup removes all other content
 
-`keep_only_video_block()` (`inc/editor.php:112-128`) keeps only the video block whenever a `post` contains exactly one `videopress/video` block. The decision log describes it as removing "stray empty paragraphs", but the code removes **any** other block, including paragraphs with text, on every save, including programmatic saves (`wp_insert_post()`/`wp_update_post()` from WP-CLI, imports or other plugins).
+`keep_only_video_block()` (`inc/editor.php`) keeps only the video block whenever a `post` contains exactly one `videopress/video` block, removing any other block, including paragraphs with text, on every save. The decision log only mentioned "stray empty paragraphs". The owner confirmed this is intended: a video post's content may only hold its single VideoPress block. `docs/decisions.md` now says so. No code change.
 
-Please confirm this is intended. If not, the filter should drop only empty paragraphs. Shortcode posts and posts without blocks are not affected.
+## Reviewer changes
 
-## Changes the reviewer can make (pending authorization)
+### R5. Pending authorization
 
-None of these change behavior for legitimate requests.
-
-### R5. REST design lockdown is case-sensitive
-
-`block_design_writes()` (`inc/lockdown.php:75-84`) matches `#^/wp/v2/(templates|template-parts|global-styles)(/|$)#`, but core matches REST routes case-insensitively (`class-wp-rest-server.php`, `'@^' . $route . '$@i'`). On the review site, as an administrator, `POST /wp/v2/templates` returned `403 wptv_design_locked` while `POST /wp/v2/TEMPLATES` reached the templates controller.
+REST design lockdown is case-sensitive. `block_design_writes()` (`inc/lockdown.php:75-84`) matches `#^/wp/v2/(templates|template-parts|global-styles)(/|$)#`, but core matches REST routes case-insensitively (`class-wp-rest-server.php`, `'@^' . $route . '$@i'`). On the review site, as an administrator, `POST /wp/v2/templates` returned `403 wptv_design_locked` while `POST /wp/v2/TEMPLATES` reached the templates controller.
 
 This is a policy guard, not a privilege boundary: only users who can already edit theme options can write there. Fix: add the `i` modifier to the pattern.
 
-### D1. Unslash and sanitize request values
+### D1. Unslash and sanitize request values (done)
 
-- `inc/submissions.php:55`: pass `sanitize_text_field( wp_unslash( $_POST['wptvvideon'] ) )` to `wp_verify_nonce()`.
-- `inc/submissions.php:110`: `sanitize_text_field()` around the unslashed producer username.
-- `inc/submissions.php:215`: sanitize `REMOTE_ADDR` before storing it.
-- `inc/submission-form.php:54`: sanitize prefilled values with `sanitize_text_field()` (`sanitize_textarea_field()` for the description) before the existing escaping.
+- `inc/submissions.php`: the nonce, producer username and `REMOTE_ADDR` are unslashed and sanitized; the email is unslashed and passed through `sanitize_email()` before `is_email()`; the uploaded file name is sanitized before reading its extension and building the attachment title.
+- `inc/submission-form.php`: prefilled values are sanitized with `sanitize_text_field()` (`sanitize_textarea_field()` for the description, which keeps its line breaks) before the existing escaping. The stored submission is sanitized the same way, so a redisplayed value matches what would be saved.
+- One visible effect: an email with an apostrophe (`o'brien@example.com`) was rejected with error 12, because `is_email()` received the slashed value (`o\'brien`). It is now accepted. `wptv2` had the same bug.
+- Checks on the review site: the existing `tests/blocks/submission-validation.php` passes (14 checks), plus 8 focused checks (apostrophe email accepted, invalid email still error 12, nonce round trip, title/description/slides prefills, missing prefill, no raw `<script>` in the rendered form). PHP syntax passes.
 
-### D2. Document false positives with targeted `phpcs:ignore` comments
+### D2. Document false positives with targeted `phpcs:ignore` comments (done)
 
 | Location | Sniff | Why it is safe |
 |---|---|---|
@@ -96,6 +93,6 @@ These are the real consequence of R1 and are left open until R1 is decided. They
 
 ## Not covered yet
 
-- Formatting and docblock findings (about 200, 138 fixable with `phpcbf`); these touch many lines and should be scheduled with the developers to avoid conflicts.
+- Formatting and docblock findings (about 200, 140 fixable with `phpcbf`); these touch many lines and should be scheduled with the developers to avoid conflicts.
 - JavaScript review beyond the HTML sinks searched here.
 - Feature parity with `wptv2`.

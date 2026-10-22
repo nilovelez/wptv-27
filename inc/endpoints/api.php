@@ -212,7 +212,7 @@ function get_video_item( $post ) {
 	$producer_username = get_the_terms( $post->ID, 'producer-username' );
 	if ( $producer_username && ! is_wp_error( $producer_username ) ) {
 		$video['producer']['username'] = $producer_username[0]->name;
-		// urlencode() (not rawurlencode()) keeps the wptv2 output byte for byte.
+		// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.urlencode_urlencode -- urlencode() (not rawurlencode()) keeps the wptv2 output byte for byte.
 		$video['producer']['link'] = 'https://profiles.wordpress.org/' . urlencode( $producer_username[0]->name ) . '/';
 	}
 

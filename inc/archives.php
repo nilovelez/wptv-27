@@ -85,6 +85,8 @@ function render_partition( $pre_render, $parsed, $parent_block = null ) {
 	$context               = $parent_block->context;
 	$context['query']       = array( 'inherit' => true );
 
+	// The globals are swapped only while this block renders and restored in finally.
+	// phpcs:disable WordPress.WP.GlobalVariablesOverride.Prohibited
 	$rendering = true;
 	$wp_query  = $isolated;
 	try {
@@ -92,6 +94,7 @@ function render_partition( $pre_render, $parsed, $parent_block = null ) {
 	} finally {
 		$wp_query  = $original_query;
 		$post      = $original_post;
+		// phpcs:enable WordPress.WP.GlobalVariablesOverride.Prohibited
 		$rendering = false;
 		if ( $post instanceof \WP_Post ) {
 			setup_postdata( $post );

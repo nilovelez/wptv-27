@@ -155,6 +155,7 @@ function discovery_links() {
 			esc_url(
 				add_query_arg(
 					array(
+						// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.urlencode_urlencode -- Keeps the wptv2 discovery links byte for byte.
 						'url'    => urlencode( get_permalink() ),
 						'format' => $format,
 					),
