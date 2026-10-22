@@ -6,7 +6,6 @@ Questions that need an answer from the project owner or a WordPress.com employee
 
 ### Platform
 
-1. **blog.wordpress.tv:** how will it be closed? It is unused and will be migrated to the team blog on Make WordPress. The process is undecided (owner, October 22, 2026). Options: (a) leave it as is with `wptv2` until it closes; (b) switch it to a generic theme until it closes; (c) migrate the content now, close it and redirect the domain. None of the options runs `wptv-27` on the blog, so `wptv-27` does not need blog support: the dropped `wptv_home_url` filter is not needed, and the `wptv_setup_theme` switch is harmless and can stay until the blog closes.
 2. **Production versions:** which PHP and WordPress versions run in production?
 3. **Plugins:** what is the full list of plugins available on the multisite? Can we assume Jetpack and VideoPress are always active?
 4. **Blocks from the theme:** can a theme register custom blocks from `block.json` files on the WordPress.com multisite? Are there any restrictions on PHP files in `inc/`?
@@ -47,6 +46,8 @@ Questions that need an answer from the project owner or a WordPress.com employee
 25. **Rollout window:** who switches the theme on the test site and production, when, and how long is the production observation period? **Status:** not known yet.
 
 ## Answered
+
+- **blog.wordpress.tv (was question 1, October 22, 2026):** the blog will never use `wptv-27`. It is a standard blog kept for historical reasons that any block theme can reproduce, and it will be migrated to the team blog on Make WordPress. How it closes is still undecided and outside this theme's scope: keep `wptv2` there until it closes, switch it to a generic theme, or migrate it now and redirect the domain. `wptv-27` needs neither the `wptv_setup_theme` switch nor the `wptv_home_url` filter. See [decisions](decisions.md).
 
 - **WordCampTV introduction correction:** the owner requires the native one-large/five-small category spotlight, not the 22-video Recent videos grid. The next heading is Latest WordCamps. Both event sections show all qualifying events without pagination. This overrides the earlier interpretation of retaining a full recent-video grid on the landing; existing later-page URLs remain preserved.
 
