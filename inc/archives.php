@@ -67,23 +67,23 @@ function render_partition( $pre_render, $parsed, $parent_block = null ) {
 		'wptv-taxonomy__secondary' => array( 1, 5 ),
 		'wptv-taxonomy__remaining' => array( 6, null ),
 	);
-	$partition = array_intersect( array_keys( $partitions ), $classes );
+	$partition  = array_intersect( array_keys( $partitions ), $classes );
 	if ( ! $partition || ! $spotlight ) {
 		return $pre_render;
 	}
 
 	list( $offset, $length ) = $partitions[ reset( $partition ) ];
-	$original_query         = $wp_query;
-	$original_post          = $post;
-	$isolated               = clone $wp_query;
+	$original_query          = $wp_query;
+	$original_post           = $post;
+	$isolated                = clone $wp_query;
 	// WP::register_globals() binds posts by reference; cloning retains that link.
 	unset( $isolated->posts );
-	$isolated->posts        = array_slice( $wp_query->posts, $offset, $length );
-	$isolated->post_count   = count( $isolated->posts );
+	$isolated->posts      = array_slice( $wp_query->posts, $offset, $length );
+	$isolated->post_count = count( $isolated->posts );
 	$isolated->rewind_posts();
-	$isolated->in_the_loop  = false;
+	$isolated->in_the_loop = false;
 	$context               = $parent_block->context;
-	$context['query']       = array( 'inherit' => true );
+	$context['query']      = array( 'inherit' => true );
 
 	// The globals are swapped only while this block renders and restored in finally.
 	// phpcs:disable WordPress.WP.GlobalVariablesOverride.Prohibited
@@ -92,8 +92,8 @@ function render_partition( $pre_render, $parsed, $parent_block = null ) {
 	try {
 		return ( new \WP_Block( $parsed, $context ) )->render();
 	} finally {
-		$wp_query  = $original_query;
-		$post      = $original_post;
+		$wp_query = $original_query;
+		$post     = $original_post;
 		// phpcs:enable WordPress.WP.GlobalVariablesOverride.Prohibited
 		$rendering = false;
 		if ( $post instanceof \WP_Post ) {

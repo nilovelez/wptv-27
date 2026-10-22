@@ -93,6 +93,6 @@ These are the real consequence of R1 and are left open until R1 is decided. They
 
 ## Not covered yet
 
-- Formatting and docblock findings (about 200, 140 fixable with `phpcbf`); these touch many lines and should be scheduled with the developers to avoid conflicts.
+- Formatting and docblock findings: **fixed** on October 22, 2026. `phpcbf` handled 140 (a token comparison showed no code change), and the rest were fixed by hand with equivalent code. `composer lint` now reports only the 16 D3 nonce findings in `inc/submissions.php`, open until R1 is decided.
 - JavaScript review beyond the HTML sinks searched here.
 - Feature parity with `wptv2`.

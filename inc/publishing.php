@@ -31,7 +31,7 @@ add_action( 'publish_post', __NAMESPACE__ . '\init_post_views' );
 /**
  * Counts newly published videos in WordPress.com stats.
  *
- * bump_stats_extras() only exists on WordPress.com. wptv2 defined an empty
+ * The bump_stats_extras() function only exists on WordPress.com. wptv2 defined an empty
  * global stub elsewhere; a function_exists() guard does the same job.
  *
  * @param string $new_status New post status.

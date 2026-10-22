@@ -15,7 +15,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/** Returns a category ID by slug, or 0. */
+/**
+ * Returns a category ID by slug, or 0.
+ *
+ * @param string $slug Category slug.
+ * @return int
+ */
 function category_id( $slug ) {
 	$term = get_term_by( 'slug', $slug, 'category' );
 	return $term ? (int) $term->term_id : 0;
@@ -47,7 +52,7 @@ function message() {
 			14 => __( 'Error: please enter a valid WordPress.org username for the producer, or leave the field empty.', 'wptv' ),
 			15 => __( 'Error: form nonce was missing or invalid.', 'wptv' ),
 		);
-		$code = (int) $_REQUEST['error'];
+		$code     = (int) $_REQUEST['error'];
 		return '<div class="wptv-submit__notice is-error" role="alert"><p>' . esc_html( $messages[ $code ] ?? '' ) . '</p></div>';
 	}
 	if ( ! empty( $_GET['success'] ) ) {
@@ -56,7 +61,12 @@ function message() {
 	return '';
 }
 
-/** Prefilled value from the redirect query, as in wptv2. */
+/**
+ * Prefilled value from the redirect query, as in wptv2.
+ *
+ * @param string $key Field name.
+ * @return string
+ */
 function prefill( $key ) {
 	if ( ! isset( $_GET[ $key ] ) || ! is_string( $_GET[ $key ] ) ) {
 		return '';
@@ -68,7 +78,13 @@ function prefill( $key ) {
 	return sanitize_text_field( wp_unslash( $_GET[ $key ] ) );
 }
 
-/** Category checkboxes, keeping prefilled selections. */
+/**
+ * Category checkboxes, keeping prefilled selections.
+ *
+ * @param \WP_Term[] $terms    Categories.
+ * @param array      $selected Selected category IDs, as keys.
+ * @return string
+ */
 function checkboxes( $terms, $selected ) {
 	$html = '<ul class="cats-checkboxes">';
 	foreach ( $terms as $term ) {
@@ -82,7 +98,16 @@ function checkboxes( $terms, $selected ) {
 	return $html . '</ul>';
 }
 
-/** A labeled text input. */
+/**
+ * A labeled text input.
+ *
+ * @param string $id          Field ID and name.
+ * @param string $label       Label text.
+ * @param bool   $required    Whether to mark the field as required.
+ * @param string $type        Input type.
+ * @param string $placeholder Placeholder text.
+ * @return string
+ */
 function text_field( $id, $label, $required = false, $type = 'text', $placeholder = '' ) {
 	return sprintf(
 		'<p class="wptv-submit__row"><label for="%1$s">%2$s%3$s</label><input type="%4$s" id="%1$s" name="%1$s" value="%5$s"%6$s /></p>',
@@ -137,11 +162,28 @@ function render() {
 	$html .= text_field( 'wptv_language', __( 'Language', 'wptv' ) );
 	$html .= text_field( 'wptv_date', __( 'Date recorded', 'wptv' ), false, 'date' );
 	if ( $location ) {
-		$html .= '<div class="location wptv-submit__row wptv-submit__row--large" role="group" aria-labelledby="wptv-location-label"><span class="wptv-submit__label" id="wptv-location-label">' . esc_html__( 'Location', 'wptv' ) . '</span><div class="wptv-submit__controls">' . checkboxes( get_categories( array( 'parent' => $location, 'hide_empty' => false ) ), $selected ) . '</div></div>';
+		$html .= '<div class="location wptv-submit__row wptv-submit__row--large" role="group" aria-labelledby="wptv-location-label"><span class="wptv-submit__label" id="wptv-location-label">' . esc_html__( 'Location', 'wptv' ) . '</span><div class="wptv-submit__controls">' . checkboxes(
+			get_categories(
+				array(
+					'parent'     => $location,
+					'hide_empty' => false,
+				)
+			),
+			$selected
+		) . '</div></div>';
 	}
 	$html .= '<div class="cats wptv-submit__row wptv-submit__row--large" role="group" aria-labelledby="wptv-category-label"><span class="wptv-submit__label" id="wptv-category-label">' . esc_html__( 'Category', 'wptv' ) . '</span><div class="wptv-submit__controls">';
 	$html .= '<p class="wptv-submit__check"><input type="checkbox" id="wptv_video_wordcamp" name="wptv_video_wordcamp" ' . ( prefill( 'wptv_video_wordcamp' ) ? 'checked="checked"' : '' ) . ' /> <label for="wptv_video_wordcamp">' . esc_html__( 'This is a WordCamp video', 'wptv' ) . '</label></p>';
-	$html .= checkboxes( get_categories( array( 'exclude_tree' => array_filter( array( $location, $year ) ), 'parent' => 0, 'hide_empty' => false ) ), $selected ) . '</div></div>';
+	$html .= checkboxes(
+		get_categories(
+			array(
+				'exclude_tree' => array_filter( array( $location, $year ) ),
+				'parent'       => 0,
+				'hide_empty'   => false,
+			)
+		),
+		$selected
+	) . '</div></div>';
 	$html .= text_field( 'wptv_event', __( 'Event', 'wptv' ) );
 	$html .= text_field( 'wptv_producer_username', __( 'Producer WordPress.org Username', 'wptv' ) );
 	$html .= '<p class="wptv-submit__row wptv-submit__row--large"><label for="wptv_video_description">' . esc_html__( 'Description', 'wptv' ) . '</label><textarea name="wptv_video_description" id="wptv_video_description" rows="8" cols="40">' . esc_textarea( prefill( 'wptv_video_description' ) ) . '</textarea></p>';
@@ -155,12 +197,20 @@ function render() {
 
 /** Registers a server-rendered block used only by the fixed page template. */
 function register_block() {
-	register_block_type( 'wptv/submission-form', array(
-		'api_version'     => 3,
-		'title'           => __( 'Video submission form', 'wptv' ),
-		'category'        => 'widgets',
-		'supports'        => array( 'autoRegister' => true, 'inserter' => false, 'html' => false, 'multiple' => false ),
-		'render_callback' => __NAMESPACE__ . '\\render',
-	) );
+	register_block_type(
+		'wptv/submission-form',
+		array(
+			'api_version'     => 3,
+			'title'           => __( 'Video submission form', 'wptv' ),
+			'category'        => 'widgets',
+			'supports'        => array(
+				'autoRegister' => true,
+				'inserter'     => false,
+				'html'         => false,
+				'multiple'     => false,
+			),
+			'render_callback' => __NAMESPACE__ . '\\render',
+		)
+	);
 }
 add_action( 'init', __NAMESPACE__ . '\\register_block' );

@@ -15,7 +15,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /** Registers the two metadata features that core blocks cannot express. */
 function register_blocks() {
-	foreach ( array( 'producer' => __( 'Producer', 'wptv' ), 'video-downloads' => __( 'Video downloads and subtitles', 'wptv' ) ) as $name => $title ) {
+	foreach ( array(
+		'producer'        => __( 'Producer', 'wptv' ),
+		'video-downloads' => __( 'Video downloads and subtitles', 'wptv' ),
+	) as $name => $title ) {
 		register_block_type(
 			'wptv/' . $name,
 			array(
@@ -23,7 +26,11 @@ function register_blocks() {
 				'title'           => $title,
 				'category'        => 'widgets',
 				'uses_context'    => array( 'postId', 'postType' ),
-				'supports'        => array( 'autoRegister' => true, 'html' => false, 'inserter' => false ),
+				'supports'        => array(
+					'autoRegister' => true,
+					'html'         => false,
+					'inserter'     => false,
+				),
 				'render_callback' => __NAMESPACE__ . ( 'producer' === $name ? '\\render_producer' : '\\render_downloads' ),
 			)
 		);
@@ -109,7 +116,11 @@ function file_links( $video, $post_id ) {
 	}
 	$api_data = video_get_single_response( $video );
 	$api_data = is_array( $api_data ) ? $api_data : array();
-	$formats  = array( 'fmt_std' => __( 'Low', 'wptv' ), 'fmt_dvd' => __( 'Med', 'wptv' ), 'fmt_hd' => __( 'High', 'wptv' ) );
+	$formats  = array(
+		'fmt_std' => __( 'Low', 'wptv' ),
+		'fmt_dvd' => __( 'Med', 'wptv' ),
+		'fmt_hd'  => __( 'High', 'wptv' ),
+	);
 	$links    = array();
 	foreach ( $formats as $format => $label ) {
 		if ( ! function_exists( 'video_url_by_format' ) || ! empty( $api_data['files'][ str_replace( 'fmt_', '', $format ) ]['hls'] ) ) {
@@ -121,7 +132,9 @@ function file_links( $video, $post_id ) {
 		}
 	}
 	$original = Video\get_attachment_url( $post_id );
-	$original = $original ?: ( $api_data['original'] ?? '' );
+	if ( ! $original ) {
+		$original = $api_data['original'] ?? '';
+	}
 	if ( $original ) {
 		$links[] = '<a href="' . esc_url( $original ) . '">' . esc_html__( 'Original', 'wptv' ) . '</a>';
 	}

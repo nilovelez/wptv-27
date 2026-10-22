@@ -105,11 +105,10 @@ add_action( 'init', __NAMESPACE__ . '\\register_meta' );
  * stray empty paragraphs and anything else. Other content is left untouched,
  * so unmigrated shortcode posts are never altered on save.
  *
- * @param array $data    Slashed post data.
- * @param array $postarr Raw post array (unused).
+ * @param array $data Slashed post data.
  * @return array
  */
-function keep_only_video_block( $data, $postarr ) {
+function keep_only_video_block( $data ) {
 	if ( 'post' !== ( $data['post_type'] ?? '' ) ) {
 		return $data;
 	}
@@ -117,15 +116,20 @@ function keep_only_video_block( $data, $postarr ) {
 	if ( ! has_blocks( $content ) ) {
 		return $data;
 	}
-	$videos = array_values( array_filter( parse_blocks( $content ), static function ( $block ) {
-		return VIDEO_BLOCK === $block['blockName'];
-	} ) );
+	$videos = array_values(
+		array_filter(
+			parse_blocks( $content ),
+			static function ( $block ) {
+				return VIDEO_BLOCK === $block['blockName'];
+			}
+		)
+	);
 	if ( 1 === count( $videos ) ) {
 		$data['post_content'] = wp_slash( serialize_block( $videos[0] ) );
 	}
 	return $data;
 }
-add_filter( 'wp_insert_post_data', __NAMESPACE__ . '\\keep_only_video_block', 10, 2 );
+add_filter( 'wp_insert_post_data', __NAMESPACE__ . '\\keep_only_video_block' );
 
 /**
  * Loads the video editing restrictions and data panel on the video editor only.

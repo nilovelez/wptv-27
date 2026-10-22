@@ -205,19 +205,22 @@ function player_attributes( $block ) {
 	if ( ! $post_id || 'post' !== get_post_type( $post_id ) ) {
 		return $block;
 	}
-	$attributes = array_merge( $block['attrs'] ?? array(), array(
-		'autoplay'           => false,
-		'loop'               => false,
-		'muted'              => false,
-		'controls'           => true,
-		'preload'            => 'metadata',
-		'useAverageColor'    => true,
-		'seekbarColor'       => '',
-		'seekbarLoadingColor' => '',
-		'seekbarPlayedColor' => '',
-		'maxWidth'           => '100%',
-		'posterData'         => array(),
-	) );
+	$attributes = array_merge(
+		$block['attrs'] ?? array(),
+		array(
+			'autoplay'            => false,
+			'loop'                => false,
+			'muted'               => false,
+			'controls'            => true,
+			'preload'             => 'metadata',
+			'useAverageColor'     => true,
+			'seekbarColor'        => '',
+			'seekbarLoadingColor' => '',
+			'seekbarPlayedColor'  => '',
+			'maxWidth'            => '100%',
+			'posterData'          => array(),
+		)
+	);
 	unset( $attributes['align'], $attributes['poster'] );
 	$poster = get_featured_image_url( $post_id );
 	if ( $poster ) {
@@ -250,13 +253,18 @@ function thumbnail_html( $html, $post_id, $thumbnail_id, $size, $attr ) {
 	if ( ! $url && $html ) {
 		return $html;
 	}
-	$url = $url ?: get_theme_file_uri( 'assets/images/placeholder.png' );
-	$attributes = wp_parse_args( $attr, array(
-		'alt'      => '',
-		'loading'  => 'lazy',
-		'decoding' => 'async',
-	) );
-	$image = new \WP_HTML_Tag_Processor( '<img>' );
+	if ( ! $url ) {
+		$url = get_theme_file_uri( 'assets/images/placeholder.png' );
+	}
+	$attributes = wp_parse_args(
+		$attr,
+		array(
+			'alt'      => '',
+			'loading'  => 'lazy',
+			'decoding' => 'async',
+		)
+	);
+	$image      = new \WP_HTML_Tag_Processor( '<img>' );
 	$image->next_tag();
 	$image->set_attribute( 'src', esc_url_raw( $url ) );
 	foreach ( array( 'alt', 'class', 'width', 'height', 'loading', 'decoding', 'style' ) as $name ) {
@@ -360,7 +368,7 @@ function language_to_locale( $slug ) {
 		'ελληνικά'                => 'el',
 		'japanese'                => 'ja',
 		'japanese-and-english'    => 'ja',
-		'japanese日本語'          => 'ja',
+		'japanese日本語'             => 'ja',
 		'kananda'                 => 'kn',
 		'lithuanian'              => 'lt_LT',
 		'malay'                   => 'ms_MY',

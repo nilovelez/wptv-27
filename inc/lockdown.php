@@ -90,7 +90,10 @@ function block_site_editor() {
 	wp_die(
 		esc_html__( 'The design is managed in the theme code and cannot be changed here.', 'wptv' ),
 		'',
-		array( 'response' => 403, 'back_link' => true )
+		array(
+			'response'  => 403,
+			'back_link' => true,
+		)
 	);
 }
 add_action( 'load-site-editor.php', __NAMESPACE__ . '\block_site_editor' );

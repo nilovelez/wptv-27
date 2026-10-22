@@ -11,6 +11,7 @@
  *
  * @package WordPressTV
  */
+
 ?>
 <!-- wp:group {"align":"full","className":"wptv-footer","backgroundColor":"charcoal-1","textColor":"charcoal-5","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull wptv-footer has-charcoal-5-color has-charcoal-1-background-color has-text-color has-background"><!-- wp:columns {"align":"wide","className":"wptv-footer__columns"} -->
