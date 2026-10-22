@@ -65,6 +65,7 @@ This is a standing instruction, not a preference limited to the conversation in 
 | [`docs/design.md`](docs/design.md) | Approved design direction: WordPress.org visual language, tokens, components, page layouts, sources |
 | [`docs/design-handoff.md`](docs/design-handoff.md) | Design implementation order, file list, verification criteria and confirmed owner decisions |
 | [`docs/mockups/`](docs/mockups/) | Static HTML reference mockups of the front page and single video |
+| [`docs/excerpt-outputs.md`](docs/excerpt-outputs.md) | How the video description (excerpt) is built and what each integration receives |
 | [`docs/decisions.md`](docs/decisions.md) | Decision log (what was decided, when and why) |
 | [`docs/open-questions.md`](docs/open-questions.md) | Questions waiting for an answer, and answered questions |
 
