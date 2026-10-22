@@ -73,6 +73,7 @@ The behavior matches `wptv2`. Any difference was owner-approved and is listed in
 `wptv2`'s `the_video()` re-rendered each `[wpvideo]` with `w="940"` on singles and `w="575"` elsewhere, and set `hd` from the `video_player_high_quality` option when the shortcode lacked it. `wptv-27` renders the stored shortcode through Post Content without those overrides. On WordPress.com, the player width then follows the shortcode and `content_width`, and HD follows the platform default.
 
 - **Check:** compare a shortcode video on Atomic or production under both themes, at single and archive spotlight widths.
+- **Status (October 22, 2026):** parked until the owner can test it on Atomic.
 - **Owner:** theme developers, if the width or quality differs.
 
 ### D2. Text around the shortcode in legacy posts
@@ -85,19 +86,21 @@ The behavior matches `wptv2`. Any difference was owner-approved and is listed in
 
 `wptv2` listed each archive and search result with event links, speakers, date and excerpt. `wptv-27` uses the approved video card: thumbnail, speakers, title and date. The event names and excerpts are no longer shown.
 
-- This is a design change. It is consistent with the approved cards, but it is not recorded as a decision for search and generic archives. **Check:** owner confirmation.
+- This is a design change, consistent with the approved cards.
+- **Resolved (owner, October 22, 2026):** kept as is. See [decisions](decisions.md).
 
 ### D4. Archive headings
 
 `wptv2` showed headings such as "'Tag' Videos", "Archive for {date}", "Author Archive" and "Taxonomy: term". `wptv-27`'s generic `archive.html` uses core Query Title with its default prefixes ("Tag: …", "Year: …", "Author: …"). Category and event templates hide the prefix. Document titles (`<title>`) are unchanged.
 
 - **Check:** owner confirmation of the visible wording.
+- **Status (October 22, 2026):** parked by the owner.
 
 ### D5. Pingbacks in comment lists
 
 `wptv2`'s `list_comments()` skipped pingbacks. Core Comment Template lists every approved comment type.
 
-- **Check:** whether imported videos contain approved pingbacks. If they do, add a decision or a small `comments_template_query_args` filter.
+- **Resolved (owner, October 22, 2026):** showing pingbacks is fine, as long as the site settings decide, not the template. That is already the case: `wptv-27` does not filter comment types, so pingbacks appear only when the discussion settings accept them and they are approved. See [decisions](decisions.md).
 
 ### D6. Header navigation targets
 

@@ -15,6 +15,13 @@ Template:
 
 ---
 
+## 2026-10-22: Video cards in search and archives; pingbacks follow the settings
+
+- **Decision (owner):** search results and generic archives keep the approved video card (thumbnail, speakers, title, date), without the event links and excerpts that `wptv2` listed. Comment lists show pingbacks whenever the discussion settings accept them and they are approved; the template does not filter comment types, unlike `wptv2`'s `list_comments()`.
+- **Reason:** consistent with the approved card design; comment visibility belongs to the site configuration, not the theme.
+- **Affects:** `templates/search.html`, `templates/archive.html`, `patterns/video-grid.php`, `patterns/single.php` (no change needed). Found as D3 and D5 in [review-parity.md](review-parity.md).
+- **Status:** accepted
+
 ## 2026-10-22: wptv-27 only serves WordPress.tv
 
 - **Decision (owner):** blog.wordpress.tv will never use `wptv-27`. The theme does not need the `wptv2` multi-site switch (`wptv_setup_theme` filter, `setup()`/`setup_always()` split) or the `wptv_home_url` filter.
