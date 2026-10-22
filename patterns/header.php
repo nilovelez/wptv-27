@@ -11,6 +11,7 @@
  *
  * @package WordPressTV
  */
+
 ?>
 <!-- wp:group {"align":"full","className":"wptv-header","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull wptv-header"><!-- wp:group {"align":"wide","className":"wptv-header__bar","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between","verticalAlignment":"center"}} -->

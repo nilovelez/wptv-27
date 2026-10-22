@@ -15,21 +15,36 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/** Hidden core-block prototype, registered by WordPress from patterns/. */
+/**
+ * Hidden core-block prototype, registered by WordPress from patterns/.
+ *
+ * @param string $name Pattern name, without the wptv/ namespace.
+ * @return string
+ */
 function prototype( $name ) {
 	$pattern = \WP_Block_Patterns_Registry::get_instance()->get_registered( 'wptv/' . $name );
 	return $pattern['content'] ?? '';
 }
 
-/** Match flagship event names, with or without their edition year. */
+/**
+ * Match flagship event names, with or without their edition year.
+ *
+ * @param string $name Event name.
+ * @return bool
+ */
 function is_flagship( $name ) {
 	return (bool) preg_match( '/^WordCamp\s+(?:Europe|US|Asia|India)(?:\s+[0-9]{4})?$/iu', trim( $name ) );
 }
 
-/** Stable partition: keep the recorded-date order within both groups. */
+/**
+ * Stable partition: keep the recorded-date order within both groups.
+ *
+ * @param array $events Recorded dates keyed by event term ID.
+ * @return array
+ */
 function prioritize_flagships( $events ) {
 	$flagships = array();
-	$others = array();
+	$others    = array();
 	foreach ( $events as $id => $date ) {
 		$term = get_term( $id, 'event' );
 		if ( $term instanceof \WP_Term && is_flagship( $term->name ) ) {
@@ -41,7 +56,12 @@ function prioritize_flagships( $events ) {
 	return $flagships + $others;
 }
 
-/** Four publication-date-ordered category videos per recent event, not cached HTML. */
+/**
+ * Four publication-date-ordered category videos per recent event, not cached HTML.
+ *
+ * @param array|null $events Recorded dates keyed by event term ID; null reads the index.
+ * @return string
+ */
 function recent_markup( $events = null ) {
 	$markup = '';
 	foreach ( prioritize_flagships( $events ?? recent() ) as $id => $date ) {
@@ -53,16 +73,24 @@ function recent_markup( $events = null ) {
 		if ( is_wp_error( $url ) ) {
 			continue;
 		}
-		$markup .= strtr( prototype( 'wordcamp-event' ), array(
-			'WPTV_EVENT_NAME' => esc_html( $term->name ),
-			'/#wptv-event'   => esc_url( $url ),
-			'"wptvEvent":0' => '"wptvEvent":' . (int) $id,
-		) );
+		$markup .= strtr(
+			prototype( 'wordcamp-event' ),
+			array(
+				'WPTV_EVENT_NAME' => esc_html( $term->name ),
+				'/#wptv-event'    => esc_url( $url ),
+				'"wptvEvent":0'   => '"wptvEvent":' . (int) $id,
+			)
+		);
 	}
 	return $markup;
 }
 
-/** Native Terms Queries restrict each year to its derived category-associated IDs. */
+/**
+ * Native Terms Queries restrict each year to its derived category-associated IDs.
+ *
+ * @param array|null $groups Event term IDs keyed by year; null reads the index.
+ * @return string
+ */
 function directory_markup( $groups = null ) {
 	$markup = '';
 	foreach ( ( $groups ?? directory() ) as $year => $ids ) {
@@ -70,10 +98,13 @@ function directory_markup( $groups = null ) {
 		if ( ! $ids || $year < 2000 || $year > 2099 ) {
 			continue;
 		}
-		$markup .= strtr( prototype( 'wordcamp-year' ), array(
-			'WPTV_YEAR'      => (string) (int) $year,
-			'"include":[0]' => '"include":' . wp_json_encode( $ids ),
-		) );
+		$markup .= strtr(
+			prototype( 'wordcamp-year' ),
+			array(
+				'WPTV_YEAR'     => (string) (int) $year,
+				'"include":[0]' => '"include":' . wp_json_encode( $ids ),
+			)
+		);
 	}
 	return $markup;
 }
@@ -84,6 +115,10 @@ function directory_markup( $groups = null ) {
  * a replacement core Group is guarded and never changes main-query globals.
  * The landing shows only the native 1 + 5 spotlight, never the 22-video grid.
  * Existing paginated URLs keep their inherited grid without these extras.
+ *
+ * @param string|null $pre_render Short-circuited block output, or null.
+ * @param array       $parsed     Parsed block.
+ * @return string|null
  */
 function render_sections( $pre_render, $parsed ) {
 	static $rendering = false;
@@ -116,12 +151,12 @@ function render_sections( $pre_render, $parsed ) {
 	if ( '' === $markup ) {
 		return $pre_render;
 	}
-	$children = parse_blocks( $markup );
-	$open = reset( $parsed['innerContent'] );
-	$close = end( $parsed['innerContent'] );
-	$parsed['innerBlocks'] = $children;
+	$children               = parse_blocks( $markup );
+	$open                   = reset( $parsed['innerContent'] );
+	$close                  = end( $parsed['innerContent'] );
+	$parsed['innerBlocks']  = $children;
 	$parsed['innerContent'] = array_merge( array( $open ), array_fill( 0, count( $children ), null ), array( $close ) );
-	$rendering = true;
+	$rendering              = true;
 	try {
 		return ( new \WP_Block( $parsed ) )->render();
 	} finally {

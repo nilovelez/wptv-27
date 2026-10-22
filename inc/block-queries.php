@@ -28,9 +28,9 @@ function resolve_terms( $query, $block ) {
 	}
 
 	$constraints = array(
-		'wptv/featured' => array( 'post_tag' => 'featured' ),
-		'wptv/home-lead' => array( 'post_tag' => 'featured' ),
-		'wptv/wordcamp' => array( 'category' => 'wordcamptv' ),
+		'wptv/featured'       => array( 'post_tag' => 'featured' ),
+		'wptv/home-lead'      => array( 'post_tag' => 'featured' ),
+		'wptv/wordcamp'       => array( 'category' => 'wordcamptv' ),
 		'wptv/wordcamp-event' => array( 'category' => 'wordcamptv' ),
 	);
 	// Core provides the query object as context, but not the namespace attribute.
@@ -68,14 +68,25 @@ function resolve_terms( $query, $block ) {
 			$query['post__in'] = array( 0 );
 			return $query;
 		}
-		$tax_query[] = array( 'taxonomy' => 'event', 'field' => 'term_id', 'terms' => array( $event_id ) );
-		$query['posts_per_page'] = 4;
-		$query['orderby'] = array( 'date' => 'DESC', 'ID' => 'DESC' );
+		$tax_query[]                  = array(
+			'taxonomy' => 'event',
+			'field'    => 'term_id',
+			'terms'    => array( $event_id ),
+		);
+		$query['posts_per_page']      = 4;
+		$query['orderby']             = array(
+			'date' => 'DESC',
+			'ID'   => 'DESC',
+		);
 		$query['ignore_sticky_posts'] = true;
 	}
 	// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- Taxonomy filter the block needs; part of the documented query.
 	$query['tax_query'] = ! empty( $query['tax_query'] )
-		? array( 'relation' => 'AND', $query['tax_query'], $tax_query )
+		? array(
+			'relation' => 'AND',
+			$query['tax_query'],
+			$tax_query,
+		)
 		: $tax_query;
 	return $query;
 }
@@ -96,7 +107,7 @@ function register_category_card_renderer( $args, $name ) {
 		return $args;
 	}
 
-	$render = $args['render_callback'];
+	$render                  = $args['render_callback'];
 	$args['render_callback'] = static function ( $attributes, $content, $block ) use ( $render ) {
 		$classes = preg_split( '/\s+/', $attributes['className'] ?? '' );
 		$query   = $block->context['termQuery'] ?? array();
@@ -114,10 +125,12 @@ function register_category_card_renderer( $args, $name ) {
 		}
 		$exclude = static function ( $term_args, $taxonomies ) use ( $excluded ) {
 			if ( array( 'category' ) === (array) $taxonomies ) {
-				$term_args['exclude'] = array_unique( array_merge(
-					wp_parse_id_list( $term_args['exclude'] ?? array() ),
-					$excluded
-				) );
+				$term_args['exclude'] = array_unique(
+					array_merge(
+						wp_parse_id_list( $term_args['exclude'] ?? array() ),
+						$excluded
+					)
+				);
 			}
 			return $term_args;
 		};

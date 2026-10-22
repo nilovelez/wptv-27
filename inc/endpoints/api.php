@@ -57,7 +57,7 @@ function error( $message, $http_code = 404 ) {
 /**
  * Returns the term ID of a top-level category branch, looked up by slug.
  *
- * wptv2 hardcoded the production IDs (year = 91093, location = 6418).
+ * The wptv2 theme hardcoded the production IDs (year = 91093, location = 6418).
  *
  * @param string $slug Category slug.
  * @return int 0 when the category does not exist.
@@ -65,7 +65,7 @@ function error( $message, $http_code = 404 ) {
 function get_branch_id( $slug ) {
 	static $ids = array();
 	if ( ! isset( $ids[ $slug ] ) ) {
-		$term          = get_category_by_slug( $slug );
+		$term         = get_category_by_slug( $slug );
 		$ids[ $slug ] = $term ? (int) $term->term_id : 0;
 	}
 	return $ids[ $slug ];
@@ -260,7 +260,11 @@ function add_videopress_files( $video, $post ) {
 
 	// MP4: HLS-only formats have no audio in the MP4 file, so they are skipped.
 	if ( function_exists( 'video_url_by_format' ) ) {
-		foreach ( array( 'low' => 'fmt_std', 'med' => 'fmt_dvd', 'high' => 'fmt_hd' ) as $field => $format ) {
+		foreach ( array(
+			'low'  => 'fmt_std',
+			'med'  => 'fmt_dvd',
+			'high' => 'fmt_hd',
+		) as $field => $format ) {
 			if ( ! empty( $api_data['files'][ str_replace( 'fmt_', '', $format ) ]['hls'] ) ) {
 				continue;
 			}
@@ -290,7 +294,12 @@ function get_terms_response( $method ) {
 
 	$taxonomy     = $taxonomies[ $method ];
 	$taxonomy_obj = get_taxonomy( $taxonomy );
-	$total_count  = (int) wp_count_terms( array( 'taxonomy' => $taxonomy, 'hide_empty' => false ) );
+	$total_count  = (int) wp_count_terms(
+		array(
+			'taxonomy'   => $taxonomy,
+			'hide_empty' => false,
+		)
+	);
 	$page         = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
 	$per_page     = 200;
 
@@ -306,12 +315,12 @@ function get_terms_response( $method ) {
 	);
 
 	$response = array(
-		'query'  => array(
+		'query' => array(
 			'results' => $total_count,
 			'page'    => $page,
 			'pages'   => ceil( $total_count / $per_page ),
 		),
-		$method  => array(),
+		$method => array(),
 	);
 
 	foreach ( $terms as $term ) {

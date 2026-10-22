@@ -26,14 +26,25 @@ function drafts_author() {
 	return (int) apply_filters( 'wptv_drafts_author_id', $user ? $user->ID : 34340661 );
 }
 
-/** Bumps a WordPress.com stat when available. */
+/**
+ * Bumps a WordPress.com stat when available.
+ *
+ * @param string $group Stat group.
+ * @param string $name  Stat name.
+ */
 function stat( $group, $name ) {
 	if ( function_exists( 'bump_stats_extras' ) ) {
 		bump_stats_extras( $group, $name );
 	}
 }
 
-/** Same sanitizer as wptv2: expects slashed, returns unslashed and HTML-escaped. */
+/**
+ * Same sanitizer as wptv2: expects slashed, returns unslashed and HTML-escaped.
+ *
+ * @param string $str                Slashed text.
+ * @param bool   $remove_line_breaks Whether to remove line breaks.
+ * @return string
+ */
 function sanitize_text( $str, $remove_line_breaks = true ) {
 	$str = str_replace( '\\', '', (string) $str );
 	if ( $remove_line_breaks ) {
@@ -91,6 +102,9 @@ add_action( 'admin_post_nopriv_wptv_video_upload', __NAMESPACE__ . '\\handle' );
 /**
  * Checks a WordPress.org username using the same redirect endpoint as wptv2.
  * Missing Location headers and HTTP errors fail validation, as in the legacy form.
+ *
+ * @param string $username WordPress.org username.
+ * @return bool
  */
 function wporg_username_exists( $username ) {
 	$url      = add_query_arg( 'user', $username, 'https://wordpress.org/grav-redirect.php' );
@@ -149,13 +163,23 @@ function save() {
 	// Empty the request globals while inserting, as wptv2 did.
 	$posted = $_POST;
 	$saved  = array( $_POST, $_REQUEST, $_GET );
-	$_POST  = $_REQUEST = $_GET = array();
+
+	$_POST    = array();
+	$_REQUEST = array();
+	$_GET     = array();
+
 	$result = insert_submission( $posted );
+
 	list( $_POST, $_REQUEST, $_GET ) = $saved;
 	return $result;
 }
 
-/** Inserts the submission from the saved POST copy. */
+/**
+ * Inserts the submission from the saved POST copy.
+ *
+ * @param array $posted Slashed POST data.
+ * @return true|int True, or an error code.
+ */
 function insert_submission( $posted ) {
 	$post                 = get_object_vars( get_default_post_to_edit( 'post' ) );
 	$post['post_title']   = sanitize_text( $posted['wptv_speakers'] ?? '' ) . ': ' . sanitize_text( $posted['wptv_video_title'] ?? '' );
@@ -184,11 +208,24 @@ function insert_submission( $posted ) {
 	if ( ! is_string( $guid ) || ! preg_match( '/^[A-Za-z0-9]{8}$/D', $guid ) ) {
 		return 4;
 	}
-	$block = array( 'blockName' => 'videopress/video', 'attrs' => array( 'guid' => $guid ), 'innerBlocks' => array(), 'innerHTML' => '', 'innerContent' => array() );
-	wp_update_post( wp_slash( array( 'ID' => $post_id, 'post_content' => serialize_block( $block ) ) ) );
+	$block = array(
+		'blockName'    => 'videopress/video',
+		'attrs'        => array( 'guid' => $guid ),
+		'innerBlocks'  => array(),
+		'innerHTML'    => '',
+		'innerContent' => array(),
+	);
+	wp_update_post(
+		wp_slash(
+			array(
+				'ID'           => $post_id,
+				'post_content' => serialize_block( $block ),
+			)
+		)
+	);
 
-	$user = wp_get_current_user();
-	$recorded   = sanitize_text( $posted['wptv_date'] ?? '' ); // yyyy-mm-dd
+	$user       = wp_get_current_user();
+	$recorded   = sanitize_text( $posted['wptv_date'] ?? '' ); // Format: yyyy-mm-dd.
 	$categories = '';
 	foreach ( (array) ( $posted['post_category'] ?? array() ) as $cat ) {
 		if ( (int) $cat ) {
@@ -200,63 +237,81 @@ function insert_submission( $posted ) {
 	if ( $year ) {
 		$categories .= $year->term_id;
 	}
-	update_post_meta( $post_id, '_wptv_submitted_video', array(
-		'attachment_id'     => $attachment_id,
-		'submitted_by'      => $user->ID ? $user->display_name : sanitize_text( $posted['wptv_uploaded_by'] ?? '' ),
-		'submitted_email'   => $user->ID ? $user->user_email : sanitize_text( $posted['wptv_email'] ?? '' ),
-		'title'             => sanitize_text( $posted['wptv_video_title'] ?? '' ),
-		'producer_username' => sanitize_text( $posted['wptv_producer_username'] ?? '' ),
-		'speakers'          => sanitize_text( $posted['wptv_speakers'] ?? '' ),
-		'event'             => sanitize_text( $posted['wptv_event'] ?? '' ),
-		'language'          => sanitize_text( $posted['wptv_language'] ?? '' ),
-		'categories'        => $categories,
-		'description'       => sanitize_text( $posted['wptv_video_description'] ?? '', false ),
-		'slides'            => sanitize_text( $posted['wptv_slides_url'] ?? '' ),
-		'ip'                => isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '',
-		'recorded'          => $recorded,
-		'video_guid'        => $guid,
-	) );
+	update_post_meta(
+		$post_id,
+		'_wptv_submitted_video',
+		array(
+			'attachment_id'     => $attachment_id,
+			'submitted_by'      => $user->ID ? $user->display_name : sanitize_text( $posted['wptv_uploaded_by'] ?? '' ),
+			'submitted_email'   => $user->ID ? $user->user_email : sanitize_text( $posted['wptv_email'] ?? '' ),
+			'title'             => sanitize_text( $posted['wptv_video_title'] ?? '' ),
+			'producer_username' => sanitize_text( $posted['wptv_producer_username'] ?? '' ),
+			'speakers'          => sanitize_text( $posted['wptv_speakers'] ?? '' ),
+			'event'             => sanitize_text( $posted['wptv_event'] ?? '' ),
+			'language'          => sanitize_text( $posted['wptv_language'] ?? '' ),
+			'categories'        => $categories,
+			'description'       => sanitize_text( $posted['wptv_video_description'] ?? '', false ),
+			'slides'            => sanitize_text( $posted['wptv_slides_url'] ?? '' ),
+			'ip'                => isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '',
+			'recorded'          => $recorded,
+			'video_guid'        => $guid,
+		)
+	);
 	return true;
 }
 
-/** Stores the uploaded video as an attachment with a random file name. */
+/**
+ * Stores the uploaded video as an attachment with a random file name.
+ *
+ * @param int $parent_id Post ID the attachment belongs to.
+ * @return int|\WP_Error Attachment ID or error.
+ */
 function handle_upload( $parent_id ) {
 	unset( $_FILES['async-upload'] );
 	if ( empty( $_FILES['wptv_file']['name'] ) ) {
 		return new \WP_Error( 'upload_error', 'Invalid file name.' );
 	}
-	$name     = sanitize_file_name( $_FILES['wptv_file']['name'] );
-	$rename   = static function ( $file ) {
+	$name   = sanitize_file_name( $_FILES['wptv_file']['name'] );
+	$rename = static function ( $file ) {
 		$file['name'] = 'video-' . substr( md5( time() . wp_rand( 1, 1000000 ) ), wp_rand( 5, 20 ), 10 ) . '.' . pathinfo( $file['name'], PATHINFO_EXTENSION );
 		return $file;
 	};
 	add_filter( 'wp_handle_upload_prefilter', $rename, 5 );
-	$file = wp_handle_upload( $_FILES['wptv_file'], array(
-		'test_form' => false,
-		'mimes'     => array(
-			'avi'                 => 'video/avi',
-			'mov|qt'              => 'video/quicktime',
-			'mpeg|mpg|mpe'        => 'video/mpeg',
-			'mp4|m4v'             => 'video/mp4',
-			'asf|asx|wax|wmv|wmx' => 'video/asf',
-			'ogv'                 => 'video/ogg',
-			'3gp'                 => 'video/3gpp',
-			'3g2'                 => 'video/3gpp2',
-		),
-	) );
+	$file = wp_handle_upload(
+		$_FILES['wptv_file'],
+		array(
+			'test_form' => false,
+			'mimes'     => array(
+				'avi'                 => 'video/avi',
+				'mov|qt'              => 'video/quicktime',
+				'mpeg|mpg|mpe'        => 'video/mpeg',
+				'mp4|m4v'             => 'video/mp4',
+				'asf|asx|wax|wmv|wmx' => 'video/asf',
+				'ogv'                 => 'video/ogg',
+				'3gp'                 => 'video/3gpp',
+				'3g2'                 => 'video/3gpp2',
+			),
+		)
+	);
 	remove_filter( 'wp_handle_upload_prefilter', $rename, 5 );
 	if ( isset( $file['error'] ) ) {
 		return new \WP_Error( 'upload_error', $file['error'] );
 	}
 	$parent        = get_post( $parent_id );
-	$attachment_id = wp_insert_attachment( add_magic_quotes( array(
-		'post_title'     => $parent->post_title ?: sanitize_file_name( $name ),
-		'post_name'      => sanitize_title_with_dashes( sanitize_file_name( $name ) ),
-		'guid'           => $file['url'],
-		'post_mime_type' => $file['type'],
-		'post_content'   => '',
-		'post_author'    => drafts_author(),
-	) ), $file['file'], $parent_id );
+	$attachment_id = wp_insert_attachment(
+		add_magic_quotes(
+			array(
+				'post_title'     => $parent->post_title ? $parent->post_title : sanitize_file_name( $name ),
+				'post_name'      => sanitize_title_with_dashes( sanitize_file_name( $name ) ),
+				'guid'           => $file['url'],
+				'post_mime_type' => $file['type'],
+				'post_content'   => '',
+				'post_author'    => drafts_author(),
+			)
+		),
+		$file['file'],
+		$parent_id
+	);
 	if ( ! is_wp_error( $attachment_id ) ) {
 		wp_update_attachment_metadata( $attachment_id, wp_generate_attachment_metadata( $attachment_id, $file['file'] ) );
 	}
@@ -278,12 +333,15 @@ function review_data( $post ) {
 	if ( ! is_array( $meta ) || ! $meta ) {
 		return null;
 	}
-	$text = static function ( $key ) use ( $meta ) {
+	$text     = static function ( $key ) use ( $meta ) {
 		return html_entity_decode( (string) ( $meta[ $key ] ?? '' ), ENT_QUOTES, 'UTF-8' );
 	};
-	$term = static function ( $id ) {
+	$term     = static function ( $id ) {
 		$term = get_term( (int) $id, 'category' );
-		return $term && ! is_wp_error( $term ) ? array( 'id' => $term->term_id, 'name' => html_entity_decode( $term->name, ENT_QUOTES, 'UTF-8' ) ) : null;
+		return $term && ! is_wp_error( $term ) ? array(
+			'id'   => $term->term_id,
+			'name' => html_entity_decode( $term->name, ENT_QUOTES, 'UTF-8' ),
+		) : null;
 	};
 	$year     = $text( 'recorded' ) ? get_term_by( 'name', substr( $text( 'recorded' ), 0, 4 ), 'category' ) : false;
 	$ids      = array_filter( array_map( 'intval', explode( ',', preg_replace( '/[^0-9,]+/', '', trim( (string) ( $meta['categories'] ?? '' ), ' ,' ) ) ) ) );
@@ -296,7 +354,11 @@ function review_data( $post ) {
 	$data['yearCategory'] = $year ? $term( $year->term_id ) : null;
 	// The year category is offered beside the recorded date, so list it only once.
 	$data['categories'] = array_values( array_filter( array_map( $term, array_diff( $ids, $year ? array( $year->term_id ) : array() ) ) ) );
-	$data['attachment']   = get_post( $id ) ? array( 'title' => html_entity_decode( get_post( $id )->post_title, ENT_QUOTES, 'UTF-8' ), 'url' => wp_get_attachment_url( $id ), 'edit' => get_edit_post_link( $id, 'raw' ) ) : null;
+	$data['attachment'] = get_post( $id ) ? array(
+		'title' => html_entity_decode( get_post( $id )->post_title, ENT_QUOTES, 'UTF-8' ),
+		'url'   => wp_get_attachment_url( $id ),
+		'edit'  => get_edit_post_link( $id, 'raw' ),
+	) : null;
 	return $data;
 }
 

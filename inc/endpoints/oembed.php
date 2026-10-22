@@ -148,7 +148,10 @@ function discovery_links() {
 		return;
 	}
 
-	foreach ( array( 'json' => 'application/json+oembed', 'xml' => 'text/xml+oembed' ) as $format => $type ) {
+	foreach ( array(
+		'json' => 'application/json+oembed',
+		'xml'  => 'text/xml+oembed',
+	) as $format => $type ) {
 		printf(
 			'<link rel="alternate" type="%1$s" href="%2$s" title="%3$s" />' . "\n",
 			esc_attr( $type ),

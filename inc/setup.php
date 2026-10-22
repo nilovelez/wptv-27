@@ -129,20 +129,50 @@ add_filter( 'render_block_core/list', __NAMESPACE__ . '\footer_menu_links', 10, 
  */
 function register_block_styles() {
 	foreach ( array( 'core/group', 'core/post-template', 'core/term-template' ) as $block ) {
-		register_block_style( $block, array( 'name' => 'cards-grid', 'label' => __( 'Cards grid', 'wptv' ) ) );
+		register_block_style(
+			$block,
+			array(
+				'name'  => 'cards-grid',
+				'label' => __( 'Cards grid', 'wptv' ),
+			)
+		);
 	}
 	foreach ( array( 'core/group', 'core/comments' ) as $block ) {
-		register_block_style( $block, array( 'name' => 'two-column-display', 'label' => __( 'Two-column display', 'wptv' ) ) );
+		register_block_style(
+			$block,
+			array(
+				'name'  => 'two-column-display',
+				'label' => __( 'Two-column display', 'wptv' ),
+			)
+		);
 	}
-	register_block_style( 'core/heading', array( 'name' => 'with-arrow', 'label' => __( 'With arrow', 'wptv' ) ) );
-	register_block_style( 'core/search', array( 'name' => 'light', 'label' => __( 'Light', 'wptv' ) ) );
+	register_block_style(
+		'core/heading',
+		array(
+			'name'  => 'with-arrow',
+			'label' => __( 'With arrow', 'wptv' ),
+		)
+	);
+	register_block_style(
+		'core/search',
+		array(
+			'name'  => 'light',
+			'label' => __( 'Light', 'wptv' ),
+		)
+	);
 	foreach ( array(
 		'fill-on-dark'    => __( 'Fill on dark', 'wptv' ),
 		'outline-on-dark' => __( 'Outline on dark', 'wptv' ),
 		'text'            => __( 'Text', 'wptv' ),
 		'toggle'          => __( 'Toggle', 'wptv' ),
 	) as $name => $label ) {
-		register_block_style( 'core/button', array( 'name' => $name, 'label' => $label ) );
+		register_block_style(
+			'core/button',
+			array(
+				'name'  => $name,
+				'label' => $label,
+			)
+		);
 	}
 }
 add_action( 'init', __NAMESPACE__ . '\register_block_styles' );
@@ -204,14 +234,20 @@ function enqueue_assets() {
 		get_theme_file_uri( 'assets/js/navigation.js' ),
 		array(),
 		wp_get_theme()->get( 'Version' ),
-		array( 'in_footer' => true, 'strategy' => 'defer' )
+		array(
+			'in_footer' => true,
+			'strategy'  => 'defer',
+		)
 	);
 	wp_enqueue_script(
 		'wptv-cards',
 		get_theme_file_uri( 'assets/js/cards.js' ),
 		array(),
 		wp_get_theme()->get( 'Version' ),
-		array( 'in_footer' => true, 'strategy' => 'defer' )
+		array(
+			'in_footer' => true,
+			'strategy'  => 'defer',
+		)
 	);
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_assets' );
@@ -235,9 +271,14 @@ function render_home_lead_title( $content, $parsed, $block ) {
 		return $content;
 	}
 	$prefix = esc_html( implode( ', ', wp_list_pluck( $speakers, 'name' ) ) . ': ' );
-	return preg_replace_callback( '/<a\b[^>]*>/', static function ( $match ) use ( $prefix ) {
-		return $match[0] . $prefix;
-	}, $content, 1 );
+	return preg_replace_callback(
+		'/<a\b[^>]*>/',
+		static function ( $matches ) use ( $prefix ) {
+			return $matches[0] . $prefix;
+		},
+		$content,
+		1
+	);
 }
 add_filter( 'render_block_core/post-title', __NAMESPACE__ . '\render_home_lead_title', 20, 3 );
 
@@ -258,7 +299,7 @@ function breadcrumb_terms( $categories, $events ) {
 		$by_slug[ $category->slug ] = $category;
 	}
 	if ( $events ) {
-		$terms = isset( $by_slug['wordcamptv'] ) ? array( $by_slug['wordcamptv'] ) : array();
+		$terms   = isset( $by_slug['wordcamptv'] ) ? array( $by_slug['wordcamptv'] ) : array();
 		$terms[] = reset( $events );
 		return $terms;
 	}
@@ -290,7 +331,12 @@ function filter_breadcrumb_items( $items ) {
 	$post_id    = get_queried_object_id();
 	$categories = get_the_terms( $post_id, 'category' );
 	$events     = get_the_terms( $post_id, 'event' );
-	$items      = array( array( 'label' => __( 'Home', 'wptv' ), 'url' => home_url( '/' ) ) );
+	$items      = array(
+		array(
+			'label' => __( 'Home', 'wptv' ),
+			'url'   => home_url( '/' ),
+		),
+	);
 	$terms      = breadcrumb_terms(
 		is_array( $categories ) ? $categories : array(),
 		is_array( $events ) ? $events : array()
@@ -298,7 +344,10 @@ function filter_breadcrumb_items( $items ) {
 	foreach ( $terms as $term ) {
 		$url = get_term_link( $term );
 		if ( ! is_wp_error( $url ) ) {
-			$items[] = array( 'label' => $term->name, 'url' => $url );
+			$items[] = array(
+				'label' => $term->name,
+				'url'   => $url,
+			);
 		}
 	}
 	return $items;

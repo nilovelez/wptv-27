@@ -77,13 +77,14 @@ function get_post_by_guid( $guid ) {
 				'paged'          => $page++,
 			)
 		);
+		$count      = count( $candidates );
 		foreach ( $candidates as $candidate ) {
 			// A textual mention, cached iframe or shortcode is not a block match.
 			if ( false === stristr( $candidate->post_content, '[wpvideo' ) && Video\get_guid( $candidate ) === $guid ) {
 				return $candidate;
 			}
 		}
-	} while ( 100 === count( $candidates ) );
+	} while ( 100 === $count );
 	return false;
 }
 

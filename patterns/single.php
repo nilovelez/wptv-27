@@ -6,6 +6,7 @@
  *
  * @package WordPressTV
  */
+
 ?>
 <!-- wp:group {"tagName":"main","align":"full","className":"is-flush wptv-single","layout":{"type":"constrained"}} -->
 <main class="wp-block-group alignfull is-flush wptv-single"><!-- wp:group {"align":"wide","className":"wptv-single__intro","layout":{"type":"default"}} -->
