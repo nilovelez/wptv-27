@@ -305,7 +305,7 @@ function handle_upload( $parent_id ) {
 	}
 	$name   = sanitize_file_name( $_FILES['wptv_file']['name'] );
 	$rename = static function ( $file ) {
-		$file['name'] = 'video-' . substr( md5( time() . wp_rand( 1, 1000000 ) ), wp_rand( 5, 20 ), 10 ) . '.' . pathinfo( $file['name'], PATHINFO_EXTENSION );
+		$file['name'] = 'video-' . substr( md5( time() . wp_rand( 1, 1000000 ) ), wp_rand( 5, 20 ), 10 ) . '.' . strtolower( pathinfo( $file['name'], PATHINFO_EXTENSION ) );
 		return $file;
 	};
 	add_filter( 'wp_handle_upload_prefilter', $rename, 5 );
