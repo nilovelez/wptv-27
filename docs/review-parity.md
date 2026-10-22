@@ -108,6 +108,7 @@ The `primary` menu became fixed Navigation links in `patterns/header.php`: WordC
 
 - `/category/learn-wordpress/` may not match the legacy redirect, which renames `social-learning` to `learn-wordpress-online-workshops`.
 - **Check:** confirm that all four targets exist in production and return 200.
+- **Resolved (owner, October 22, 2026):** the menu must be editable without code. The header Navigation block now takes its links from the classic menu assigned to `primary` (Appearance > Menus, administrators only), converted by core's `WP_Classic_To_Block_Menu_Converter`; the four links remain only as a fallback. Reusing `wptv2`'s location name keeps the assignment when switching themes, so production will show its existing `primary` menu, and the owner will replace its links by hand once `wptv-27` is kept. The footer Contribute column follows the same approach with `wptv2`'s `footer` location; the About column stays fixed. See [decisions](decisions.md).
 
 ## 3. Not migrated
 

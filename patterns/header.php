@@ -6,7 +6,8 @@
  * Block Types: core/template-part/header
  * Inserter: no
  *
- * Navigation links remain provisional until production menus are known.
+ * The navigation links are a fallback: a classic menu assigned to the
+ * `primary` location replaces them (inc/setup.php).
  *
  * @package WordPressTV
  */
@@ -19,7 +20,7 @@
 <!-- /wp:html -->
 <!-- wp:site-title {"level":0} /--></div>
 <!-- /wp:group -->
-<!-- wp:navigation {"overlayMenu":"mobile","ariaLabel":"<?php esc_attr_e( 'Main navigation', 'wptv' ); ?>","layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<!-- wp:navigation {"overlayMenu":"mobile","className":"wptv-header__nav","ariaLabel":"<?php esc_attr_e( 'Main navigation', 'wptv' ); ?>","layout":{"type":"flex","flexWrap":"nowrap"}} -->
 <!-- wp:navigation-link {"label":"<?php esc_attr_e( 'WordCamp.tv', 'wptv' ); ?>","url":"/category/wordcamptv/","kind":"custom"} /-->
 <!-- wp:navigation-link {"label":"<?php esc_attr_e( 'How-To', 'wptv' ); ?>","url":"/category/how-to/","kind":"custom"} /-->
 <!-- wp:navigation-link {"label":"<?php esc_attr_e( 'Learn WordPress', 'wptv' ); ?>","url":"/category/learn-wordpress/","kind":"custom"} /-->
