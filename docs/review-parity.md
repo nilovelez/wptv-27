@@ -154,7 +154,7 @@ These features exist in `wptv2`, appear in the legacy replacement map as **Keep*
 
 `wptv2`'s header prints two feed links: `wordpress.tv/feed/` and `blog.wordpress.tv/feed/`. Core's automatic feed links cover the first one only. The legacy map planned "`automatic-feed-links` plus the blog feed link".
 
-- **For the developers:** add the second `<link rel="alternate">` in `inc/head.php`, or record a decision to drop it.
+- **Resolved (owner, October 22, 2026): not ported.** blog.wordpress.tv is unused and will be closed and migrated to the team blog on Make WordPress. Core already prints the site and comments feed links (checked on the review site). See [decisions](decisions.md).
 
 #### O3. "Resources" links
 

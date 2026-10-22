@@ -15,6 +15,13 @@ Template:
 
 ---
 
+## 2026-10-22: Do not link the blog.wordpress.tv feed
+
+- **Decision (owner):** the `<link rel="alternate">` to `https://blog.wordpress.tv/feed/` that `wptv2` printed in every page head is not ported.
+- **Reason:** blog.wordpress.tv is unused and will be closed and migrated to the team blog on Make WordPress; its closure was waiting for wordpress.tv to stop linking to it. Core already prints the site feed (`/feed/`) and comments feed links, so the other manual `wptv2` link needs no code.
+- **Affects:** document head only. `wptv-27` templates and patterns contain no link to blog.wordpress.tv; links inside stored page or post content were not audited. Found as O2 in [review-parity.md](review-parity.md).
+- **Status:** accepted
+
 ## 2026-10-22: Do not port the event term meta form
 
 - **Decision (owner):** the `wptv2` event term meta form (`plugins/wordpresstv-event-meta/`: YouTube playlist ID, hashtag, owners, Slack owners) is not ported.

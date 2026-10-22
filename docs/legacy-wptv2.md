@@ -58,7 +58,7 @@ Updated on October 22, 2026 against the implementation; the full audit is in [re
 | `archive_link_rel_prev_next()` | Same logic (pending decision) | Keep |
 | `json_ld()` VideoObject | Same output, data from VideoPress helpers | Keep |
 | Open Graph / Twitter player tags | Same Jetpack filter | Keep |
-| Manual RSS `<link>` tags | Core automatic feed links for the site feed; the blog feed link is not implemented (O2 in [review-parity.md](review-parity.md)) | Core |
+| Manual RSS `<link>` tags | Core automatic feed links for the site feed; the blog feed link is dropped (blog.wordpress.tv is closing; see [decisions](decisions.md)) | Core |
 | GTM inline script | Not implemented; depends on open question 11 | Pending |
 | Typekit | Local fonts declared in `theme.json` | Core |
 | IE conditional comments, `ie6.css`, `profile` / `pingback` links | none | Drop |
