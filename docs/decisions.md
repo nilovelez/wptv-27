@@ -20,7 +20,7 @@ Template:
 - **Decision (owner):** blog.wordpress.tv will never use `wptv-27`. The theme does not need the `wptv2` multi-site switch (`wptv_setup_theme` filter, `setup()`/`setup_always()` split) or the `wptv_home_url` filter.
 - **Reason:** the blog is a standard blog kept for historical reasons, reproducible with any block theme, and it will be migrated to the team blog on Make WordPress. Its closing process is undecided and does not involve this theme.
 - **Affects:** `functions.php` (the conditional loading of WordPress.tv-only modules) and comments that mention blog.WordPress.tv in `functions.php` and `inc/head.php`. Removing the switch does not change behavior on WordPress.tv, where the filter is never set. Open question 1 is answered.
-- **Status:** accepted; code change pending authorization.
+- **Status:** accepted; implemented (the switch and the blog comments were removed from `functions.php` and `inc/head.php`).
 
 ## 2026-10-22: Pages have no comments or page breaks
 
