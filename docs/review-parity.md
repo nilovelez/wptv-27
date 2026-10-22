@@ -199,6 +199,8 @@ Considered and kept, because core has no equivalent:
 
 ## 5. Documentation inconsistencies
 
+All four were corrected on October 22, 2026: question 18 moved to the answered footer entry, question 13 now covers only the `primary` menu, the legacy replacement map was refreshed, and `plan.md` lists the event meta form as pending.
+
 1. [open-questions.md](open-questions.md) question 18 (random footer word) is still listed as open. The answered "Footer structure" entry settles it.
 2. Question 13 still asks about `featured_wordcamps`, which the automatic WordCampTV landing replaced. Only `primary` and `footer` remain relevant, and D6 depends on `primary`.
 3. The [legacy-wptv2.md](legacy-wptv2.md) replacement map is outdated in several rows:
