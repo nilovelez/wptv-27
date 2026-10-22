@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<ruleset name="WordPress.tv 27">
+	<description>WordPress Coding Standards for the WordPress.tv 27 theme.</description>
+
+	<file>.</file>
+	<exclude-pattern>/vendor/*</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<!-- Development-only files, excluded from the theme zip. -->
+	<exclude-pattern>/docs/*</exclude-pattern>
+	<exclude-pattern>/tests/*</exclude-pattern>
+
+	<arg name="extensions" value="php"/>
+	<arg name="colors"/>
+	<arg value="sp"/>
+
+	<rule ref="WordPress"/>
+
+	<config name="minimum_wp_version" value="7.0"/>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="wptv"/>
+			</property>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="wptv"/>
+				<element value="WordPressTV"/>
+			</property>
+		</properties>
+	</rule>
+</ruleset>
