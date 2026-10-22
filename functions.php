@@ -37,3 +37,7 @@ require_once WPTV_THEME_DIR . '/inc/maintenance.php';
 require_once WPTV_THEME_DIR . '/inc/endpoints/api.php';
 require_once WPTV_THEME_DIR . '/inc/endpoints/oembed.php';
 require_once WPTV_THEME_DIR . '/inc/endpoints/unisubs.php';
+
+if ( is_admin() ) {
+	require_once WPTV_THEME_DIR . '/inc/mod-tools/mod-tools.php';
+}
