@@ -13,8 +13,10 @@ jQuery(($) => {
 	let activeRequest = null;
 
 	$('#wptv_video_upload').prop('hidden', false);
+	// Keep lengths in sync with Submissions\field_lengths().
 	$form.find('input[type="text"]').prop('maxLength', 100);
 	$('#wptv_slides_url').prop('maxLength', 200);
+	$('#wptv_video_description').prop('maxLength', 1500);
 	$form.find('.cats-checkboxes input').prop('disabled', false);
 	$form.find('.cats-checkboxes').each(function () {
 		const list = $(this);
@@ -55,7 +57,7 @@ jQuery(($) => {
 		check('#wptv_uploaded_by', (value) => !!value);
 		check('#wptv_email', (value) => /\S+@\S+\.\S+/.test(value));
 		// Keep extensions in sync with Submissions\save().
-		check('#wptv_file', (value) => /\.(avi|mov|qt|mpeg|mpg|mpe|mp4|m4v|asf|asx|wax|wmv|wmx|ogv|3gp|3g2)$/.test(value));
+		check('#wptv_file', (value) => /\.(avi|mov|qt|mpeg|mpg|mpe|mp4|m4v|wmv|ogv|3gp|3g2)$/i.test(value));
 		check('#wptv_honey', (value) => !value.length);
 		if (invalid.length) {
 			event.preventDefault();
