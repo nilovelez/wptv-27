@@ -124,13 +124,42 @@ function wporg_username_exists( $username ) {
  */
 // phpcs:disable WordPress.Security.NonceVerification
 
+/**
+ * Maximum lengths of the text fields, in characters.
+ *
+ * Must stay in sync with the form's JavaScript (assets/js/submission-form.js).
+ * Speakers and title are limited separately, before they are joined into the
+ * post title.
+ *
+ * @return int[] Lengths keyed by field name.
+ */
+function field_lengths() {
+	return array(
+		'wptv_uploaded_by'       => 100,
+		'wptv_email'             => 100,
+		'wptv_video_title'       => 100,
+		'wptv_speakers'          => 100,
+		'wptv_language'          => 100,
+		'wptv_event'             => 100,
+		'wptv_producer_username' => 100,
+		'wptv_slides_url'        => 200,
+		'wptv_video_description' => 1500,
+	);
+}
+
 /** Server checks behind the form's JavaScript validation. Returns an error code or false. */
 function validate() {
-	$text_fields = array( 'wptv_video_title', 'wptv_producer_username', 'wptv_speakers', 'wptv_event', 'wptv_slides_url' );
 	// Bots fill the hidden honeypot.
 	if ( ! isset( $_POST['wptv_honey'] ) || ! empty( $_POST['wptv_honey'] ) ) {
 		stat( 'wptv-spam', 'honeypot_trapped_anon_upload' );
 		return 13;
+	}
+	// Browsers count a line break as one character but send it as two (\r\n).
+	foreach ( field_lengths() as $field => $length ) {
+		$value = wp_unslash( $_POST[ $field ] ?? '' ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Only measured.
+		if ( ! is_string( $value ) || mb_strlen( str_replace( "\r\n", "\n", $value ), 'UTF-8' ) > $length ) {
+			return 6;
+		}
 	}
 	if ( ! empty( $_POST['wptv_producer_username'] ) && ! wporg_username_exists( sanitize_text_field( wp_unslash( $_POST['wptv_producer_username'] ) ) ) ) {
 		return 14;
@@ -144,14 +173,6 @@ function validate() {
 		}
 		if ( ! is_email( sanitize_email( wp_unslash( $_POST['wptv_email'] ) ) ) ) {
 			return 12;
-		}
-		$text_fields[] = 'wptv_uploaded_by';
-		$text_fields[] = 'wptv_email';
-	}
-	// wptv2 measured the field names, not their values; kept as is.
-	foreach ( $text_fields as $field ) {
-		if ( strlen( $field ) > 150 ) {
-			return 6;
 		}
 	}
 	return false;

@@ -12,7 +12,7 @@ Evidence comes from code reading and from an empty Studio review site (WordPress
 | R1 | Submission nonce skipped when `wptv_uploaded_by` is filled | Low–medium | Yes | Fixed by the reviewer |
 | R2 | oEmbed and unisubs `?url=` resolve unpublished posts | Medium | Yes | Fixed by the reviewer |
 | R3 | `/api/videos.json?posts_per_page=` is unbounded | Medium (availability) | Yes | Recorded as backlog B13 |
-| R4 | Submission length check measures field names, not values | Low | Yes | Theme developers (behavior) |
+| R4 | Submission length check measures field names, not values | Low | Yes | Fixed by the reviewer |
 | R5 | REST design lockdown bypassed with uppercase routes | Low | No (new code) | Done by the reviewer |
 | R6 | Single-block cleanup drops non-empty content too | — | No | Intended; decision log corrected |
 | D1–D2 | Unslash/sanitize and documented false positives | None (standards) | — | Done by the reviewer |
@@ -56,6 +56,7 @@ No SQL injection, output-escaping or stored-XSS defect was found. The submission
 
 - Only the browser limits lengths (`assets/js/submission-form.js`, slides URL only). Direct POSTs can store arbitrarily long titles, speakers and descriptions in post meta.
 - Suggested change: measure `$_POST[ $field ]` values. Owner decision because it changes which submissions are accepted.
+- **Fixed (owner decision, October 22, 2026).** `Submissions\field_lengths()` sets the limits in characters: 100 for every text field (submitter name, email, title, speakers, language, event, producer username), 200 for the slides URL and 1,500 for the description. `validate()` checks them right after the honeypot, before the WordPress.org username request, and returns the existing error 6. Speakers and title are limited separately, before they are joined into the post title. Line breaks count as one character, as in the browser, which sends them as `\r\n`; non-string values are rejected. The form's JavaScript adds `maxlength="1500"` to the description; the other limits already existed in the browser. Checked on the review site: 15 boundary checks (exact limits, one over, multibyte text, CRLF descriptions, array values, honeypot precedence), the existing `submission-validation.php` suite (14 checks) and the rendered `maxlength` attributes.
 
 ## Resolved by the owner
 

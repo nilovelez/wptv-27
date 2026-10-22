@@ -13,8 +13,10 @@ jQuery(($) => {
 	let activeRequest = null;
 
 	$('#wptv_video_upload').prop('hidden', false);
+	// Keep lengths in sync with Submissions\field_lengths().
 	$form.find('input[type="text"]').prop('maxLength', 100);
 	$('#wptv_slides_url').prop('maxLength', 200);
+	$('#wptv_video_description').prop('maxLength', 1500);
 	$form.find('.cats-checkboxes input').prop('disabled', false);
 	$form.find('.cats-checkboxes').each(function () {
 		const list = $(this);
