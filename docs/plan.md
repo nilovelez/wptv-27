@@ -97,7 +97,7 @@ Purpose: remove the manual copying that moderators do today. Starts only after r
 - ✅ Redirects: `/upload`, `/category/social-learning*` (`inc/redirects.php`), `?guid=` (`inc/endpoints/unisubs.php`).
 - ✅ Endpoints: `/oembed/`, `/api/`, `/unisubs/` (`inc/endpoints/`).
 - ✅ `<head>` output: title parts, MRSS filters and excerpt slides (`inc/content.php`), archive canonical, prev/next, JSON-LD (`inc/head.php`), Open Graph/Twitter tags (`inc/open-graph.php`), oEmbed discovery.
-- ✅ `?flush_rules=1` for super admins (`inc/maintenance.php`).
+- ✅ `?flush_rules=1` for site administrators, plus a flush on theme activation (`inc/maintenance.php`).
 - ✅ Publishing hooks (`inc/publishing.php`), attachment title sync (`inc/attachments.php`).
 - **Exit criterion:** ✅ met. 141/145 identical, 4 expected differences, no PHP notices.
 

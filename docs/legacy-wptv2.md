@@ -112,7 +112,7 @@ Updated on October 22, 2026 against the implementation; the full audit is in [re
 | `/oembed/` | Same endpoint, cleaned up | Keep |
 | `/api/` | Same endpoint and payload | Keep |
 | `/unisubs/` and `?guid=` redirect | Same (Phase 2 candidate for removal) | Keep |
-| `?flush_rules=1` | `inc/maintenance.php`, super admins only; open question 5 decides whether it stays | Keep |
+| `?flush_rules=1` | `inc/maintenance.php`, site administrators (`edit_theme_options`); rules are also flushed on theme activation | Keep |
 | Anonymous upload page template | `templates/page-submit-video.html` + `wptv/submission-form` | Block |
 | Upload handler, admin review box | Same handler, cleaned up | Keep |
 | Subtitle upload page template | Not ported; next delivery ([backlog.md](backlog.md)) | Pending |

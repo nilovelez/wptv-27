@@ -48,7 +48,7 @@ The behavior matches `wptv2`. Any difference was owner-approved and is listed in
 | `/oembed/` plugin and discovery links | `inc/endpoints/oembed.php` | Same contract (see R2 in [review-security.md](review-security.md)). |
 | `/api/` plugin | `inc/endpoints/api.php` | Same payload; slug-based `year`/`location` (documented API allowance). |
 | `/unisubs/` plugin and `?guid=` redirect | `inc/endpoints/unisubs.php` | Same, including the B2 permalink bug kept on purpose. |
-| `rewrite.php` (`?flush_rules=1`) | `inc/maintenance.php` | Super admins only; the hardcoded user exception was dropped (decision). |
+| `rewrite.php` (`?flush_rules=1`) | `inc/maintenance.php` | Site administrators (`edit_theme_options`); the hardcoded user exception was dropped (decisions). |
 | Anonymous upload handler | `inc/submissions.php` | Same validation and storage; block content instead of shortcode (decision). |
 | Anonymous upload page template and inline JS | `templates/page-submit-video.html`, `inc/submission-form.php`, `assets/js/submission-form.js` | See [submission-form.md](submission-form.md). |
 | Submission review box (`dbx_post_sidebar`) with Approve buttons | `inc/submissions.php` + `assets/js/editor.js` | Moved to the block editor; shown regardless of author (decision). |
@@ -187,7 +187,7 @@ The theme already relies on core in most places. It uses no custom sitemap, whic
 | C5 | `inc/endpoints/api.php`: `/api/*.json` with `query_posts()` | Core REST (`/wp/v2/posts`, taxonomy routes) plus `register_rest_field()` for video data | Phase 2, after open question 7 | Also removes the unbounded page size (B13). |
 | C6 | Event fields as options `term_meta_{id}_{key}` (read in `api.php`) | Core term meta (`register_term_meta()` with `show_in_rest`) | With B14 | No stored values exist (O1), so B14 can start on term meta without migrating data. |
 | C7 | `inc/wordcamps.php`: recent events found with `LIKE` scans of serialized `_wptv_submitted_video` | A separate indexed meta such as `_wptv_recorded` (Y-m-d), written on approval, queried with `meta_query`/`orderby` | Phase 2 | Removes the custom SQL and its ignores; needs a backfill of existing posts (data change). |
-| C8 | `inc/maintenance.php`: `?flush_rules=1` | Flush on `after_switch_theme`, or rely on the platform flushing rules on theme switch | After open question 5 | Removes a GET-triggered admin action. |
+| C8 | `inc/maintenance.php`: `?flush_rules=1` | Flush on `after_switch_theme`; core also flushes after a theme switch | Done | **Resolved (owner, October 22, 2026):** activation flush added; `?flush_rules=1` kept for site administrators (`edit_theme_options`) for later deploys. Answers open question 5. |
 
 Considered and kept, because core has no equivalent:
 - Canonical and prev/next links on archives: core's `rel_canonical()` only covers singular views.

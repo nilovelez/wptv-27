@@ -81,7 +81,7 @@ Only run on 404 requests (`template_redirect`, priority 1):
 
 | Route | Notes |
 |---|---|
-| `/?flush_rules=1` | Flushes rewrite rules for super admins (and one hardcoded user ID). Whether to keep it is an open question. |
+| `/?flush_rules=1` | Flushes rewrite rules for site administrators (`edit_theme_options`); `wptv2` allowed super admins and one hardcoded user ID. Anonymous requests are unaffected. |
 
 ## Regression test
 
