@@ -9,7 +9,6 @@ Questions that need an answer from the project owner or a WordPress.com employee
 2. **Production versions:** which PHP and WordPress versions run in production?
 3. **Plugins:** what is the full list of plugins available on the multisite? Can we assume Jetpack and VideoPress are always active?
 4. **Blocks from the theme:** can a theme register custom blocks from `block.json` files on the WordPress.com multisite? Are there any restrictions on PHP files in `inc/`?
-5. **Rewrite flush:** does switching themes on WordPress.com flush rewrite rules? This decides whether `?flush_rules=1` is still needed.
 6. **Deploy process:** how will the theme reach production, and who reviews it?
 
 ### Routes and integrations
@@ -46,6 +45,8 @@ Questions that need an answer from the project owner or a WordPress.com employee
 25. **Rollout window:** who switches the theme on the test site and production, when, and how long is the production observation period? **Status:** not known yet.
 
 ## Answered
+
+- **Rewrite flush (was question 5, October 22, 2026):** core flushes rewrite rules on the first load after a theme switch (`check_theme_switched()` in `wp-includes/theme.php`), and `wptv2` and `wptv-27` register the same three routes. The theme also flushes on `after_switch_theme`, and keeps `?flush_rules=1` for later deploys that change its routes without a theme switch, now for site administrators (`edit_theme_options`). How WordPress.com itself switches themes was not observed. See [decisions](decisions.md).
 
 - **blog.wordpress.tv (was question 1, October 22, 2026):** the blog will never use `wptv-27`. It is a standard blog kept for historical reasons that any block theme can reproduce, and it will be migrated to the team blog on Make WordPress. How it closes is still undecided and outside this theme's scope: keep `wptv2` there until it closes, switch it to a generic theme, or migrate it now and redirect the domain. `wptv-27` needs neither the `wptv_setup_theme` switch nor the `wptv_home_url` filter. See [decisions](decisions.md).
 

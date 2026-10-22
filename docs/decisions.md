@@ -15,6 +15,13 @@ Template:
 
 ---
 
+## 2026-10-22: Rewrite rule flushing for site administrators and on activation
+
+- **Decision (owner):** keep `?flush_rules=1`, but let site administrators run it (`edit_theme_options`) instead of super admins only, and also flush rewrite rules when the theme is activated (`after_switch_theme`).
+- **Reason:** on WordPress.com, site administrators lack `manage_options` but must be able to repair the theme's routes after a deploy; the action only regenerates the rewrite rules. Core already flushes on the first load after a theme switch, and the explicit activation flush makes that guarantee part of the theme. Answers open question 5.
+- **Affects:** `inc/maintenance.php`. Supersedes the access rule of "Phase 1a: Drop the hardcoded user from `?flush_rules=1`" (the hardcoded user stays dropped). Found as C8 in [review-parity.md](review-parity.md).
+- **Status:** accepted
+
 ## 2026-10-22: Editable header and footer menus through Appearance > Menus
 
 - **Decision (owner):** the header menu must be editable without code, while the Site Editor stays locked. The theme registers the classic `primary` menu location and fills the header Navigation block from the menu assigned to it; the pattern's four links remain only as a fallback.
