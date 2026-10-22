@@ -6,7 +6,7 @@ Questions that need an answer from the project owner or a WordPress.com employee
 
 ### Platform
 
-1. **blog.wordpress.tv:** does it use this theme too? `wptv2` has a `wptv_setup_theme` filter and a `setup_always()` method that suggest it does. If so, `wptv-27` must support it (or a separate theme is needed).
+1. **blog.wordpress.tv:** how will it be closed? It is unused and will be migrated to the team blog on Make WordPress. The process is undecided (owner, October 22, 2026). Options: (a) leave it as is with `wptv2` until it closes; (b) switch it to a generic theme until it closes; (c) migrate the content now, close it and redirect the domain. None of the options runs `wptv-27` on the blog, so `wptv-27` does not need blog support: the dropped `wptv_home_url` filter is not needed, and the `wptv_setup_theme` switch is harmless and can stay until the blog closes.
 2. **Production versions:** which PHP and WordPress versions run in production?
 3. **Plugins:** what is the full list of plugins available on the multisite? Can we assume Jetpack and VideoPress are always active?
 4. **Blocks from the theme:** can a theme register custom blocks from `block.json` files on the WordPress.com multisite? Are there any restrictions on PHP files in `inc/`?
