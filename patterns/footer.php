@@ -6,6 +6,9 @@
  * Block Types: core/template-part/footer
  * Inserter: no
  *
+ * The Contribute links are a fallback: a classic menu assigned to the
+ * `footer` location replaces them (inc/setup.php). The About links are fixed.
+ *
  * @package WordPressTV
  */
 ?>
@@ -21,8 +24,8 @@
 <div class="wp-block-column"><!-- wp:heading {"level":2,"className":"wptv-footer__heading"} -->
 <h2 class="wp-block-heading wptv-footer__heading"><?php esc_html_e( 'Contribute', 'wptv' ); ?></h2>
 <!-- /wp:heading -->
-<!-- wp:list {"className":"wptv-footer__links"} -->
-<ul class="wp-block-list wptv-footer__links"><!-- wp:list-item -->
+<!-- wp:list {"className":"wptv-footer__links wptv-footer__contribute"} -->
+<ul class="wp-block-list wptv-footer__links wptv-footer__contribute"><!-- wp:list-item -->
 <li><a href="/submit-video/"><?php esc_html_e( 'Submit a video', 'wptv' ); ?></a></li>
 <!-- /wp:list-item -->
 <!-- wp:list-item -->
