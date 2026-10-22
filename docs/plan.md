@@ -12,7 +12,23 @@ Replace the legacy classic theme `wptv2` on WordPress.tv with a new block theme,
 - moves video submission to VideoPress blocks and a front-end form that fills the real fields, so moderators only review and publish (Phase 2),
 - adopts the owner-approved WordPress.org visual language for the current design checkpoint, before further functional work.
 
-## Current owner priority: automatic WordCampTV landing
+## Current owner priority: establish the Release 1 production baseline
+
+Release 1 is deliberately conservative: establish a working block-theme baseline in production, preserving `wptv2` routes, queries, data and editorial behavior except for explicitly approved changes. It is not an opportunity to pull later product improvements into the migration. Only after this baseline passes production validation and the agreed observation period may further functional development build on it.
+
+**Environment boundary:** Studio provides imported-data checks, controlled simulations and local route comparisons. The Atomic test site supports only the features available there; video uploads have already been tried and do not work there. It cannot validate the production upload path. Final Release 1 platform-dependent checks must run in production, in an owner-approved window with rollback to `wptv2`. Local or Atomic results do not establish that baseline.
+
+### Remaining Release 1 work
+
+Completed prerequisite: the local trunk is fast-forwarded to `7c9660c` and the focused security verification is recorded in [handoff.md](handoff.md). R1, R2, R4, uppercase extensions and accepted-format changes passed Studio checks on the imported data at `c7db819`; they are not open implementation tasks.
+- ⏳ Run the local route regression after these changes **only when authorized**. The owner explicitly deferred that run during focused security verification.
+- ⏳ Obtain an explicit decision on the four remaining feed differences caused by the featured-image `posterUrl`; do not silently alter baseline data or expected-difference allowances.
+- ⏳ Confirm completion of the owner's content/category cleanup; resolve the production Edit Flow configuration question without assuming local settings prove production behavior.
+- ⏳ Prepare and perform the controlled production verification in Phase 1e, including rollback and observation. This is the final validation of Release 1, not a repeatable Atomic upload test.
+
+**Latest focused evidence:** the 14 submission-validation checks and the existing form browser suite pass. Logged-in invalid nonces return error 15; anonymous cached-form behavior remains. Both endpoints return 404 for pending, draft, private and password-protected fixtures. Public responses match the prior trunk: ordinary requests retain the existing local VideoPress 500, while the explicit local helper produces identical 200 responses. Length boundaries, CRLF counting, browser limits and format gates pass. Real local `TALK.MP4` uploads save lowercase attachment names and reach error 4 at the unavailable VideoPress GUID stage. All test posts, attachments and uploaded files were removed. This is not production VideoPress evidence or a full route-regression result.
+
+## Completed implementation checkpoint: automatic WordCampTV landing
 
 **Local 0.4.1 implementation, corrected after owner review:** the landing begins with the native 1 + 5 spotlight, NOT a 22-video Recent videos grid or its pagination. The next heading is Latest WordCamps. Preserve the underlying main query/page size and existing later-page URLs. Both event sections remain complete and unpaginated. This supersedes the earlier misinterpretation of the video introduction. The manual featured-event menu and entire old sidebar are not restored. First-page-only automatic recent-event sections use recorded dates; the complete WordCamp directory groups events by years parsed from their names. Both use the approved data-only transient strategy. See [wordcamptv.md](wordcamptv.md) for implementation and [handoff.md](handoff.md) for current verification and limits.
 
@@ -56,15 +72,16 @@ The work ships in two releases. Phases below map to them.
 
 ### Release 1: block theme with current functionality (Phases 0 and 1)
 
-Purpose: a **quick, low-risk test** on the live site. A block theme with the new design that is **as faithful as possible to the current production behavior**: same features, same routes, same editorial workflow as `wptv2`, plus a first test of videos embedded as **VideoPress blocks** instead of `[wpvideo]` shortcodes. From there, features are replaced step by step.
+Purpose: establish a **working block-theme baseline in production**, with the approved design and the existing functional contract. Conservative scope is essential because final platform-dependent tests cannot be completed on Atomic and must take place on production. Further functional development starts only after that baseline is validated.
 
-The local site mirrors the test site, an Atomic site outside the multisite where some production features (such as the direct VideoPress upload) do not work. Production behavior is reproduced from the `wptv2` code; see [wpcom-constraints.md](wpcom-constraints.md#environments).
+Studio and the Atomic site are outside the production multisite. Uploads have already been tested on Atomic and do not work there: do not list an Atomic end-to-end upload check as an outstanding path to validation. Production behavior is reproduced from `wptv2` and must finally be verified on production; see [wpcom-constraints.md](wpcom-constraints.md#environments).
 
-- Functional parity: every route, endpoint, feed, form and admin tool keeps working as today.
-- The submission form keeps creating `pending` posts with a `[wpvideo <guid>]` shortcode and the `_wptv_submitted_video` custom fields; moderators keep the per-field **Approve** review box. No workflow changes.
-- **Block video test:** the theme supports posts whose video is a VideoPress block, in addition to shortcode posts. In production a moderator converts **a few existing posts by hand** (shortcode → block) and checks them. The form is not switched to blocks in this release.
-- Design: keep the accepted functional structure; replace the interim wptv3 presentation with the owner-approved WordPress.org visual language under the current design priority.
-- Rollout: WordPress.com **test site first**, then production. `wptv2` stays installed so production can switch back immediately.
+- Functional parity: preserve routes, queries, page sizes, data and editorial behavior, except for explicit owner-approved changes. Do not introduce backlog improvements implicitly.
+- **Approved intermediate submission workflow:** the form creates `pending` posts with a VideoPress block and `_wptv_submitted_video`; moderators retain the per-field **Approve** review box. This approved implementation supersedes the original plan to keep shortcode creation. Direct writes to all final editorial fields and removal of Approve remain deferred.
+- **Video compatibility:** retain existing shortcode support alongside VideoPress blocks. A moderator checks a few controlled shortcode-to-block conversions in production; no bulk migration is included.
+- **Approved exceptions:** the automatic WordCampTV landing, editor/form refinements and reviewed security/input-validation changes are already agreed. Their approval does not authorize unrelated behavior changes.
+- Design: retain the owner-approved WordPress.org visual language and functional structure, not the interim wptv3 presentation.
+- Rollout: local checks and applicable Atomic checks reduce risk but cannot close the release. Final validation is controlled production testing with `wptv2` installed and an explicit rollback procedure.
 
 ### Release 2: new submission workflow and migration (Phase 2)
 
@@ -142,11 +159,11 @@ Posts may embed the video either as `[wpvideo <guid>]` or as a VideoPress block.
 
 ### 1e. Verification and rollout ⏳
 
-1. Full route regression run locally against the `wptv2` baseline.
-2. Activate on the **test site** (https://wptv.nilovelez.com/, Atomic). Checklist: routes sample, front page, single (shortcode and block posts), archives, search, feeds, `/api/`, `/oembed/`, `/unisubs/`, video submission form rendering and validation, review box, design lockdown, PHP error log. Menus: the header shows the menu assigned to `primary` and the footer Contribute column the one assigned to `footer` (both editable in Appearance > Menus, inherited from `wptv2`). `wptv-27` has no `featured_wordcamps` location: **after switching back to `wptv2`, check the WordCampTV page and reassign the Featured WordCamps menu to its location if it was lost** (a local Studio switch kept it, but WordPress.com may behave differently). Subtitle player parameters, upload form and incoming-subtitle management are deferred to the next delivery. Multisite-only features must fail gracefully here (no fatal errors, sections hidden).
-3. Deploy to **production** through the WP.com employee and activate in an agreed window. Repeat the checklist, plus the **production-only** items: video submission end to end (VideoPress upload and GUID), thumbnails, downloads, video data in JSON-LD and Open Graph. Subtitle functionality is a separately deferred delivery; do not claim it has passed this checkpoint. Rollback: reactivate `wptv2` (kept installed), flush rewrites and check the `featured_wordcamps` menu assignment.
+1. When authorized, run the full local route regression against `wptv2` using the same imported data and URL inventory for both themes. Preserve historical evidence. Resolve any differences explicitly; the four current poster-related feed differences are not yet accepted. Focused security verification did not rerun this suite.
+2. Activate on the **test site** (https://wptv.nilovelez.com/, Atomic). Checklist: routes sample, front page, single (shortcode and block posts), archives, search, feeds, `/api/`, `/oembed/`, `/unisubs/`, video submission form rendering and validation, review box, design lockdown, PHP error log. **Do not attempt to close end-to-end upload verification here: uploads were already tested and do not work on Atomic.** Menus: the header shows the menu assigned to `primary` and the footer Contribute column the one assigned to `footer` (both editable in Appearance > Menus, inherited from `wptv2`). `wptv-27` has no `featured_wordcamps` location: **after switching back to `wptv2`, check the WordCampTV page and reassign the Featured WordCamps menu to its location if it was lost** (a local Studio switch kept it, but WordPress.com may behave differently). Subtitle player parameters, upload form and incoming-subtitle management are deferred to the next delivery. Multisite-only features must fail gracefully here (no fatal errors, sections hidden).
+3. **Final Release 1 validation takes place in production**, through the WP.com employee in an owner-approved activation window. Prepare the test cases, identifiable disposable records and rollback procedure before activation; no deployment is authorized by this plan alone. Repeat the applicable checklist and verify real video upload/processing/GUID, live cancellation, moderation/Approve/save, shortcode and block playback, poster/thumbnail, downloads, MRSS and video data in JSON-LD/Open Graph. Compare legacy shortcode player size/quality too. Clean only records created for the agreed tests. Subtitle functionality is a separately deferred delivery; do not claim it has passed this checkpoint. Rollback: reactivate `wptv2` (kept installed), flush rewrites and check the `featured_wordcamps` menu assignment.
 4. Production block test: a few posts converted by hand (see 1c).
-5. **Exit criterion:** release 1 runs in production with no regressions reported during the agreed observation period.
+5. **Exit criterion:** production checks pass and Release 1 runs without regressions during the agreed observation period. Only then is the block-theme baseline established. Local tests, Atomic checks, Git publication or deployment alone do not meet this criterion.
 
 ## Phase 2: New workflow and improvements (release 2) ⏳
 
