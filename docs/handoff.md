@@ -16,7 +16,6 @@
 
 An external review session works alongside the theme developers on WordPress Coding Standards, security and feature parity with `wptv2`. Findings that change behavior are handed over in `docs/`; the reviewer only applies owner-authorized changes that do not change behavior for legitimate requests.
 
-- Tooling: `composer install` once, then `composer lint` (WPCS 3.4.1, `phpcs.xml.dist`; `docs/` and `tests/` excluded). `blueprint.json` describes an empty review site. All of them, and `vendor/`, are `export-ignore`.
 - First security/database review: [review-security.md](review-security.md). Already applied: sanitized submission input (only visible effect: emails with an apostrophe are now accepted), justified `phpcs:ignore` for reviewed false positives, and a case-insensitive REST design lockdown (`POST /wp/v2/TEMPLATES` previously bypassed it and stored a template).
 - **For the theme developers:** R1 (always verify the submission nonce for logged-in users), R2 (oEmbed and unisubs `?url=` must return 404 for non-public or password-protected posts) and R4 (the length check must measure values, not field names). Each finding has the proposed change and its check. R3 is backlog B13. R6 was confirmed as intended and the decision log corrected.
 - Not reviewed yet: about 200 formatting/docblock findings (140 fixable with `phpcbf`, to be scheduled to avoid conflicts), JavaScript beyond HTML sinks, and feature parity with `wptv2`.
