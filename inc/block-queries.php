@@ -73,6 +73,7 @@ function resolve_terms( $query, $block ) {
 		$query['orderby'] = array( 'date' => 'DESC', 'ID' => 'DESC' );
 		$query['ignore_sticky_posts'] = true;
 	}
+	// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- Taxonomy filter the block needs; part of the documented query.
 	$query['tax_query'] = ! empty( $query['tax_query'] )
 		? array( 'relation' => 'AND', $query['tax_query'], $tax_query )
 		: $tax_query;

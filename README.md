@@ -23,6 +23,8 @@ See [`docs/wpcom-constraints.md`](docs/wpcom-constraints.md) for details.
 | `AGENTS.md` | Entry point for AI coding agents: project rules and documentation index | No |
 | `docs/` | Project documentation: handoff, plan, route inventory, legacy analysis, decisions | No |
 | `tests/` | Local-only block/API checks and route regression tooling | No |
+| `composer.json`, `phpcs.xml.dist` | WordPress Coding Standards (`composer lint`); dependencies install to the ignored `vendor/` | No |
+| `blueprint.json` | Empty Playground/Studio review site for standards, security and WP-CLI checks | No |
 | Everything else | The theme itself | Yes |
 
 ## Working on the theme
@@ -38,7 +40,7 @@ Read [`AGENTS.md`](AGENTS.md) and the [`docs/`](docs/) folder before making chan
 
 ## Building a clean theme zip
 
-Development-only files (`docs/`, `tests/`, `AGENTS.md`, `.gitattributes`, `.gitignore`, `.github/`) are marked `export-ignore` in [`.gitattributes`](.gitattributes), so `git archive` leaves them out.
+Development-only files (`docs/`, `tests/`, `AGENTS.md`, `.gitattributes`, `.gitignore`, `.github/`, `blueprint.json`, `composer.json`, `composer.lock`, `phpcs.xml.dist`) are marked `export-ignore` in [`.gitattributes`](.gitattributes), so `git archive` leaves them out.
 
 From the repository root:
 

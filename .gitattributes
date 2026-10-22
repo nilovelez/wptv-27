@@ -18,3 +18,8 @@
 /.gitattributes export-ignore
 /.gitignore export-ignore
 /.github export-ignore
+/blueprint.json export-ignore
+/composer.json export-ignore
+/composer.lock export-ignore
+/phpcs.xml.dist export-ignore
+/vendor export-ignore

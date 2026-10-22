@@ -52,7 +52,7 @@ function handle() {
 	$redir = home_url( '/submit-video/' );
 	$error = false;
 	$saved = false;
-	if ( empty( $_POST['wptvvideon'] ) || ( empty( $_POST['wptv_uploaded_by'] ) && ! wp_verify_nonce( $_POST['wptvvideon'], 'wptv-upload-video' ) ) ) {
+	if ( empty( $_POST['wptvvideon'] ) || ( empty( $_POST['wptv_uploaded_by'] ) && ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['wptvvideon'] ) ), 'wptv-upload-video' ) ) ) {
 		$error = 15;
 	} else {
 		$error = validate();
@@ -107,7 +107,7 @@ function validate() {
 		stat( 'wptv-spam', 'honeypot_trapped_anon_upload' );
 		return 13;
 	}
-	if ( ! empty( $_POST['wptv_producer_username'] ) && ! wporg_username_exists( wp_unslash( $_POST['wptv_producer_username'] ) ) ) {
+	if ( ! empty( $_POST['wptv_producer_username'] ) && ! wporg_username_exists( sanitize_text_field( wp_unslash( $_POST['wptv_producer_username'] ) ) ) ) {
 		return 14;
 	}
 	if ( ! is_user_logged_in() ) {
@@ -117,7 +117,7 @@ function validate() {
 		if ( empty( $_POST['wptv_email'] ) ) {
 			return 11;
 		}
-		if ( ! is_email( $_POST['wptv_email'] ) ) {
+		if ( ! is_email( sanitize_email( wp_unslash( $_POST['wptv_email'] ) ) ) ) {
 			return 12;
 		}
 		$text_fields[] = 'wptv_uploaded_by';
@@ -138,7 +138,7 @@ function save() {
 		return 1;
 	}
 	// Must stay in sync with the form's JavaScript.
-	$extension = strtolower( (string) pathinfo( $_FILES['wptv_file']['name'], PATHINFO_EXTENSION ) );
+	$extension = strtolower( (string) pathinfo( sanitize_text_field( $_FILES['wptv_file']['name'] ), PATHINFO_EXTENSION ) );
 	if ( '' === $extension ) {
 		return 3;
 	}
@@ -212,7 +212,7 @@ function insert_submission( $posted ) {
 		'categories'        => $categories,
 		'description'       => sanitize_text( $posted['wptv_video_description'] ?? '', false ),
 		'slides'            => sanitize_text( $posted['wptv_slides_url'] ?? '' ),
-		'ip'                => $_SERVER['REMOTE_ADDR'] ?? '',
+		'ip'                => isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '',
 		'recorded'          => $recorded,
 		'video_guid'        => $guid,
 	) );
@@ -225,7 +225,7 @@ function handle_upload( $parent_id ) {
 	if ( empty( $_FILES['wptv_file']['name'] ) ) {
 		return new \WP_Error( 'upload_error', 'Invalid file name.' );
 	}
-	$name     = $_FILES['wptv_file']['name'];
+	$name     = sanitize_file_name( $_FILES['wptv_file']['name'] );
 	$rename   = static function ( $file ) {
 		$file['name'] = 'video-' . substr( md5( time() . wp_rand( 1, 1000000 ) ), wp_rand( 5, 20 ), 10 ) . '.' . pathinfo( $file['name'], PATHINFO_EXTENSION );
 		return $file;
