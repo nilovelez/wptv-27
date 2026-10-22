@@ -2,7 +2,6 @@
 /**
  * Document head output: canonical, rel prev/next, JSON-LD.
  *
- * Loaded on every site that uses the theme, as wptv2's setup_always().
  * Core still prints its own canonical on singular views (rel_canonical()).
  *
  * @package WordPressTV

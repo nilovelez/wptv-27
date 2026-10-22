@@ -138,7 +138,7 @@ The `primary` menu became fixed Navigation links in `patterns/header.php`: WordC
 | Subtitle AJAX nonce (`wp_ajax(_nopriv)_wptv_get_subtitles_nonce`), password check, script | Next delivery. |
 | Subtitle moderation: `attachment_fields_to_save`, attachment edit box (`edit_form_after_title`), pending notice (`all_admin_notices`), Media Library view link (`views_upload`) and TTML MIME filter (`post_mime_types`) | Next delivery ("incoming-subtitle management"). |
 | Google Tag Manager `GTM-P24PF4B` (head script and `noscript` iframe) | Open question 11. Not in `wptv-27`; if it is still needed, it must be added before launch, or analytics stop. |
-| blog.wordpress.tv support: `wptv_home_url` filter used for the logo and search form | Resolved: the blog will never use `wptv-27`, so neither the filter nor the `wptv_setup_theme` switch is needed (see [decisions](decisions.md)). Removing the switch from `functions.php` is pending authorization. |
+| blog.wordpress.tv support: `wptv_home_url` filter used for the logo and search form | Resolved: the blog will never use `wptv-27`, so neither the filter nor the `wptv_setup_theme` switch is needed (see [decisions](decisions.md)). The switch was removed from `functions.php`. |
 
 ### 3.3. Apparently overlooked
 
