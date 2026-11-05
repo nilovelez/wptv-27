@@ -21,6 +21,28 @@ The owner deferred the following subtitle work to the delivery after the current
 
 This is the next subtitle delivery, not an automatic commitment to every release 2 workflow change. Direct VideoPress storage and bulk migration are separate backlog items below; do not assume the next delivery depends on them.
 
+## Next release: review follow-ups ⏳
+
+Findings from CodeRabbit's full review of the Meta pull request (November 6, 2026) that the owner deferred to the next release. See [review-security.md](review-security.md).
+
+### B15. Clean up after a failed video submission ⏳
+
+- **Current behavior:** `save()` inserts the pending post before the upload. If the upload fails (error 5), the empty pending post stays. If the VideoPress GUID is missing or invalid (error 4), both the pending post and the uploaded attachment stay. Local uploads always reach error 4, because the standalone plugin does not return a GUID.
+- **Why deferred:** deleting the attachment can ask VideoPress to delete the remote video, and it is not yet known whether the GUID can arrive late in production. Decide after the production upload test.
+- **Status:** backlog only; implementation is not approved yet.
+
+### B16. Make the "Post content to clean" check case-sensitive ⏳
+
+- **Current behavior:** the tool's `LIKE '[wpvideo %]'` follows the database collation, so `[WPVIDEO …]` in capitals counts as clean, although WordPress does not run it as the `wpvideo` shortcode.
+- **Open point:** a case-sensitive comparison that behaves the same on MySQL and on Studio's SQLite.
+- **Status:** backlog only; implementation is not approved yet.
+
+### B17. Plain-text JSON-LD description ⏳
+
+- **Current behavior:** the JSON-LD `description` uses `get_the_excerpt()`, which the theme's `excerpt_slides()` filter extends with the "Presentation Slides »" link, so videos with slides put HTML in a plain-text field. `wptv2` does the same, so Release 1 keeps it.
+- **Fix:** build the description without that filter.
+- **Status:** backlog only; implementation is not approved yet.
+
 ## Deferred product/navigation improvements
 
 ### B7. Add language filters across the site ⏳

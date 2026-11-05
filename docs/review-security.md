@@ -121,6 +121,23 @@ Sources: CodeRabbit's automatic review of the WordPress.org Meta pull request th
 
 Checks on the review site, with disposable fixtures deleted afterwards: the XHR response keeps only normalized fields and a normal failed submission keeps its fields as before; a block GUID, a legacy shortcode GUID and a common word each take exactly two searches; `posts_per_page` -1, 5 and 1000 return 100, 5 and 100 videos; a protected video keeps its metadata without file URLs; publishing a page bumps no stat; the JSON-LD stays valid with no raw `<`, `>` or `&`; `flush_rules` without a nonce does not flush, with a nonce it does, and anonymous visitors are unaffected. `submission-validation.php` (16 checks, username encoding added) and `video-integrations.php` (23 checks, updated for the bounded lookup) pass. `composer lint` and the Meta repository's `phpcs.xml.dist` report no issues. CLI checks cannot read response headers; the two header calls were confirmed to run. No full route regression was run.
 
+### Full CodeRabbit review of the final export (November 6, 2026)
+
+After the fixes above, CodeRabbit reviewed the whole theme again. The owner approved five fixes and deferred three findings to the next release.
+
+| ID | Finding | Inherited from wptv2 | Fix |
+|---|---|---|---|
+| C4 | JSON-LD of password-protected videos lists their file URLs in `contentUrl` | Yes | Done: no JSON-LD while the post needs a password |
+| C5 | Open Graph of password-protected videos adds the player and MP4 URLs | Yes | Done: existing tags only |
+| C6 | `?guid[]=x` reaches the legacy search as an array ("Array to string conversion" and a wasted query) | Yes | Done: non-strings are rejected first |
+| C7 | The design lock rejects read-only `HEAD` and `OPTIONS` requests | No | Done: GET, HEAD and OPTIONS pass |
+| C8 | JSON-LD prints `"thumbnailUrl": false` when there is no image | Yes | Done: the key is omitted |
+| — | Failed submissions leave a pending post, and on error 4 an attachment | Yes | Deferred: [B15](backlog.md) |
+| — | "Post content to clean" treats `[WPVIDEO]` in capitals as clean | No | Deferred: [B16](backlog.md) |
+| — | JSON-LD `description` contains the slides link HTML (unverified by CodeRabbit) | Yes | Deferred: [B17](backlog.md) |
+
+Checks on the review site, with disposable fixtures deleted afterwards: a public video keeps its JSON-LD and player card; a password-protected one prints no JSON-LD and keeps only the existing Open Graph tags; without an image the JSON-LD has no `thumbnailUrl`, with one it keeps it; `?guid[]` returns no post with no query and no warning; as an administrator, GET, HEAD and OPTIONS on `/wp/v2/templates` return 200 while POST and DELETE return `403 wptv_design_locked`. The GUID lookup checks and `video-integrations.php` (23 checks) still pass, and `composer lint` is clean.
+
 ## Not covered yet
 
 - Formatting and docblock findings: **fixed** on October 22, 2026. `phpcbf` handled 140 (a token comparison showed no code change), and the rest were fixed by hand with equivalent code. `composer lint` is clean since R1 was fixed.
