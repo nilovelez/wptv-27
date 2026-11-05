@@ -12,11 +12,13 @@ $expect = static function ( $condition, $label ) use ( &$checks ) {
 $saved_post = $_POST;
 $mock = null;
 $requests = 0;
-$http = static function ( $pre, $args, $url ) use ( &$mock, &$requests, $expect ) {
+$last_url = '';
+$http = static function ( $pre, $args, $url ) use ( &$mock, &$requests, &$last_url, $expect ) {
 	if ( ! str_starts_with( $url, 'https://wordpress.org/grav-redirect.php?' ) ) {
 		return $pre;
 	}
 	++$requests;
+	$last_url = $url;
 	$expect( 0 === $args['redirection'], 'Must inspect redirect rather than follow it.' );
 	return $mock;
 };
@@ -40,7 +42,9 @@ try {
 	$mock = array( 'headers' => array( 'location' => 'https://secure.gravatar.com/avatar/test?d=retro' ) );
 	$_POST['wptv_producer_username'] = 'test-user';
 	$expect( false === Submissions\validate(), 'Existing producer accepted.' );
-	echo "PASS: $checks checks; username redirects, missing headers, network errors and mandatory producer validation. No data changed.\n";
+	Submissions\wporg_username_exists( 'x&d=retro#y' );
+	$expect( 'https://wordpress.org/grav-redirect.php?user=x%26d%3Dretro%23y' === $last_url, 'Username must be sent as a single encoded value.' );
+	echo "PASS: $checks checks; username redirects, missing headers, network errors, mandatory producer validation and username encoding. No data changed.\n";
 } finally {
 	$_POST = $saved_post;
 	remove_filter( 'pre_http_request', $http, 10 );

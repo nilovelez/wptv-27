@@ -109,6 +109,7 @@ add_filter( 'posts_pre_query', $intercept, 10, 2 );
 $found = WordPressTV\Endpoints\Unisubs\get_post_by_guid( $a );
 $assert( $found && $a === WordPressTV\Video\get_guid( $found ), 'GUID fallback verifies parsed blocks rather than textual mentions.' );
 $assert( '[wpvideo ' . $a . ']' === $queries[0]['s'] && 'publish' === $queries[1]['post_status'], 'Legacy search runs first and fallback only queries published posts.' );
+$assert( 2 === count( $queries ) && '"guid":"' . $a . '"' === $queries[1]['s'] && $queries[1]['sentence'] && 10 === $queries[1]['posts_per_page'] && $queries[1]['no_found_rows'], 'Fallback is one bounded exact search for the serialized attribute.' );
 $queries = array();
 $assert( false === WordPressTV\Endpoints\Unisubs\get_post_by_guid( 'bad/guid' ) && 1 === count( $queries ), 'Invalid GUID does not enter the block search.' );
 remove_filter( 'posts_pre_query', $intercept, 10 );
@@ -116,18 +117,12 @@ $legacy = static function () use ( $shortcode ) { return array( $shortcode ); };
 add_filter( 'posts_pre_query', $legacy );
 $assert( $shortcode === WordPressTV\Endpoints\Unisubs\get_post_by_guid( $a ), 'An existing legacy search result retains precedence.' );
 remove_filter( 'posts_pre_query', $legacy );
-$pages = array();
-$paged = static function ( $posts, $query ) use ( &$pages, $make_post, $block, $a ) {
-	if ( str_starts_with( $query->get( 's' ), '[wpvideo' ) ) {
-		return array();
-	}
-	$pages[] = $query->get( 'paged' );
-	return 1 === $query->get( 'paged' )
-		? array_fill( 0, 100, $make_post( 'Plain mention: ' . $a ) )
-		: array( $make_post( $block( $a ) ) );
+$queries = array();
+$none = static function ( $posts, $query ) use ( &$queries, $make_post, $a ) {
+	$queries[] = $query->query_vars;
+	return str_starts_with( $query->get( 's' ), '[wpvideo' ) ? array() : array_fill( 0, 10, $make_post( 'Plain mention: ' . $a ) );
 };
-add_filter( 'posts_pre_query', $paged, 10, 2 );
-$found = WordPressTV\Endpoints\Unisubs\get_post_by_guid( $a );
-$assert( $found && array( 1, 2 ) === $pages, 'Block lookup continues past a full batch of textual false positives.' );
-remove_filter( 'posts_pre_query', $paged, 10 );
+add_filter( 'posts_pre_query', $none, 10, 2 );
+$assert( false === WordPressTV\Endpoints\Unisubs\get_post_by_guid( $a ) && 2 === count( $queries ), 'A full batch of textual false positives ends the lookup without paging further.' );
+remove_filter( 'posts_pre_query', $none, 10 );
 WP_CLI::success( $checks . ' integration simulations passed; no content was written.' );

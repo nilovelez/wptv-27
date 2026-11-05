@@ -15,6 +15,13 @@ Template:
 
 ---
 
+## 2026-11-06: Security fixes from the Meta pull request review
+
+- **Decision (owner):** fix every confirmed finding of CodeRabbit's review and of a private security analysis before the theme reaches production, including two small behavior changes: `/api/videos.json` caps `posts_per_page` at 100 (negative values included), and `?flush_rules=1` needs a nonce, shown as a confirmation link.
+- **Reason:** the review covered code that is about to run on wordpress.tv. The cap closes backlog B13; the nonce stops third-party pages from triggering the flush.
+- **Affects:** `inc/submissions.php`, `inc/endpoints/unisubs.php`, `inc/endpoints/api.php`, `inc/maintenance.php`, `inc/publishing.php`, `inc/head.php`, `README.md`. Details and checks: S1–S7 and C1–C3 in [review-security.md](review-security.md). Keeps the access rule of the 2026-10-22 flush decision.
+- **Status:** accepted
+
 ## 2026-10-22: Rewrite rule flushing for site administrators and on activation
 
 - **Decision (owner):** keep `?flush_rules=1`, but let site administrators run it (`edit_theme_options`) instead of super admins only, and also flush rewrite rules when the theme is activated (`after_switch_theme`).

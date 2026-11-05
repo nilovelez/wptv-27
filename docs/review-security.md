@@ -11,7 +11,7 @@ Evidence comes from code reading and from an empty Studio review site (WordPress
 |---|---|---|---|---|
 | R1 | Submission nonce skipped when `wptv_uploaded_by` is filled | Low–medium | Yes | Fixed by the reviewer |
 | R2 | oEmbed and unisubs `?url=` resolve unpublished posts | Medium | Yes | Fixed by the reviewer |
-| R3 | `/api/videos.json?posts_per_page=` is unbounded | Medium (availability) | Yes | Recorded as backlog B13 |
+| R3 | `/api/videos.json?posts_per_page=` is unbounded | Medium (availability) | Yes | Fixed (S3, November 6) |
 | R4 | Submission length check measures field names, not values | Low | Yes | Fixed by the reviewer |
 | R5 | REST design lockdown bypassed with uppercase routes | Low | No (new code) | Done by the reviewer |
 | R6 | Single-block cleanup drops non-empty content too | — | No | Intended; decision log corrected |
@@ -49,6 +49,7 @@ No SQL injection, output-escaping or stored-XSS defect was found. The submission
 
 - Inherited unchanged from `wptv2` (`plugins/wordpresstv-rest/wordpresstv-rest.php:64-65`) and part of the API contract, so Phase 1 rule 1 applies.
 - The owner recorded it as [backlog B13](backlog.md); no change for now.
+- **Fixed on November 6, 2026** with the second review below (S3).
 
 ### R4. Submission text fields have no server-side length limit
 
@@ -93,6 +94,31 @@ This is a policy guard, not a privilege boundary: only users who can already edi
 ### D3. Remaining nonce warnings in `validate()`/`save()`
 
 Resolved with R1: `validate()`, `save()` and `handle_upload()` only run after `handle()`'s nonce check, and the remaining anonymous exception is intentional. A `phpcs:disable` block documents it, and `composer lint` is now clean.
+
+## Second review: Meta pull request (November 6, 2026)
+
+Sources: CodeRabbit's automatic review of the WordPress.org Meta pull request that adds the theme ([WordPress/wordpress.org#1186](https://github.com/WordPress/wordpress.org/pull/1186)), and a security analysis sent privately to the owner. The owner approved every fix below. Each finding was confirmed against the code and against `wptv2` before it was fixed.
+
+| ID | Finding | Severity | Inherited from wptv2 | Fix |
+|---|---|---|---|---|
+| S1 | Submission XHR response: unnormalized kept fields, no content type | Hardening | Yes | Done |
+| S2 | Anonymous `?guid=` lookup scans the whole catalog (also CodeRabbit) | Medium | No (new code) | Done |
+| S3 | Unbounded `posts_per_page` in `/api/videos.json` (R3, also CodeRabbit) | Low | Yes | Done (owner decision) |
+| S4 | Producer username sent unencoded to `grav-redirect.php` (also CodeRabbit) | Low | Yes | Done |
+| S5 | `?flush_rules=1` can be triggered by a link, with no nonce | Low | Partly | Done (owner decision) |
+| S6 | Submitter email stored as typed, not as validated | Info | Yes | Done |
+| S7 | JSON-LD encoded without `JSON_HEX_TAG` | Info | Yes | Done |
+| C1 | `/api/videos.json` exposes file URLs of password-protected videos (CodeRabbit) | Low | Yes | Done |
+| C2 | `publish-video` stat counts every post type (CodeRabbit) | Low | Yes | Done |
+| C3 | README links to development files that the Meta copy does not contain (CodeRabbit) | — | No | Done |
+
+- **S1.** `handle()` copies the kept fields of a failed submission into the redirect URL. Now `post_category` keeps only non-zero integer IDs, other kept fields only plain strings, and the XHR response is `text/plain` with `X-Content-Type-Options: nosniff` and `esc_url_raw()`. `submission-form.js` already parses the response with `new URL()`.
+- **S2.** The block-GUID fallback paged through every post whose text contained the GUID, 100 at a time, and any 8-character word passes the GUID format check. It now runs one exact search for the serialized attribute (`"guid":"<GUID>"`, `sentence`, 10 posts, no found rows or cache priming) and still confirms each candidate with `Video\get_guid()`.
+- **S3.** `MAX_PER_PAGE` (100): negative values and values above it get 100. Other values behave as before. Closes [B13](backlog.md).
+- **S5.** A plain `?flush_rules=1` now shows a confirmation link with a nonce; the flush itself needs the nonce. Who can run it is unchanged.
+- **C1.** `get_video_item()` returns the metadata of password-protected videos without the original, MP4/Ogg and subtitle URLs, consistent with R2.
+
+Checks on the review site, with disposable fixtures deleted afterwards: the XHR response keeps only normalized fields and a normal failed submission keeps its fields as before; a block GUID, a legacy shortcode GUID and a common word each take exactly two searches; `posts_per_page` -1, 5 and 1000 return 100, 5 and 100 videos; a protected video keeps its metadata without file URLs; publishing a page bumps no stat; the JSON-LD stays valid with no raw `<`, `>` or `&`; `flush_rules` without a nonce does not flush, with a nonce it does, and anonymous visitors are unaffected. `submission-validation.php` (16 checks, username encoding added) and `video-integrations.php` (23 checks, updated for the bounded lookup) pass. `composer lint` and the Meta repository's `phpcs.xml.dist` report no issues. CLI checks cannot read response headers; the two header calls were confirmed to run. No full route regression was run.
 
 ## Not covered yet
 
