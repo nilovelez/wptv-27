@@ -26,7 +26,8 @@ See [`docs/wpcom-constraints.md`](https://github.com/nilovelez/wptv-27/blob/trun
 |---|---|---|
 | `AGENTS.md` | Entry point for AI coding agents: project rules and documentation index | No |
 | `docs/` | Project documentation: handoff, plan, route inventory, legacy analysis, decisions | No |
-| `tests/` | Local-only block/API checks and route regression tooling | No |
+| `tests/blocks/`, `tests/routes/` | Local-only block/API checks and route regression tooling | No |
+| `tests/*.php`, `phpunit.xml.dist` | PHPUnit suite run by the Meta repository's WordPress.tv environment and CI (`npm run wptv:test` from its `environments/` folder) | Yes |
 | `composer.json`, `phpcs.xml.dist` | WordPress Coding Standards (`composer lint`); dependencies install to the ignored `vendor/` | No |
 | `blueprint.json` | Empty Playground/Studio review site for standards, security and WP-CLI checks | No |
 | Everything else | The theme itself | Yes |
@@ -44,7 +45,7 @@ Read [`AGENTS.md`](https://github.com/nilovelez/wptv-27/blob/trunk/AGENTS.md) an
 
 ## Building a clean theme zip
 
-Development-only files (`docs/`, `tests/`, `AGENTS.md`, `.gitattributes`, `.gitignore`, `.github/`, `blueprint.json`, `composer.json`, `composer.lock`, `phpcs.xml.dist`) are marked `export-ignore` in [`.gitattributes`](https://github.com/nilovelez/wptv-27/blob/trunk/.gitattributes), so `git archive` leaves them out.
+Development-only files (`docs/`, `tests/blocks/`, `tests/routes/`, `AGENTS.md`, `.gitattributes`, `.gitignore`, `.github/`, `blueprint.json`, `composer.json`, `composer.lock`, `phpcs.xml.dist`) are marked `export-ignore` in [`.gitattributes`](https://github.com/nilovelez/wptv-27/blob/trunk/.gitattributes), so `git archive` leaves them out.
 
 From the root of the source repository (not from a repository that contains an exported copy):
 
