@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Videos of Jonathan Bossenger &#8211; WordPress.TV</title>
+	<atom:link href="/speakers/jonathan-bossenger/feed/" rel="self" type="application/rss+xml" />
+	<link></link>
+	<description>WordPress-related videos, curated and moderated by the WordPress community</description>
+	<lastBuildDate>Mon, 08 Jun 2026 17:08:31 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=7.1.3</generator>
+	<item>
+		<title>Build your first AI-powered WordPress plugin</title>
+		<link>/2026/06/08/build-your-first-ai-powered-wordpress-plugin/</link>
+					<comments>/2026/06/08/build-your-first-ai-powered-wordpress-plugin/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Mon, 08 Jun 2026 17:08:31 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Europe]]></category>
+		<category><![CDATA[Krakow]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=140386&#038;preview=true&#038;preview_id=140386</guid>
+
+					<description><![CDATA[So you've heard about the WordPress Core AI projects. Maybe you've read the blog posts, skimmed the GitHub repositories, or watched a talk about what's coming. But there's a massive difference between understanding something conceptually and actually building with it. If that’s the case, then this workshop is for you.    In this workshop, you’ll learn to build a working AI-powered WordPress plugin from scratch. You'll leave with functioning code on your laptop and a solid understanding of how each of these tools works, so you can start experimenting on your own.    What we'll build:    We're going to create a plugin that registers custom abilities, exposes them via the Model Context Protocol, and uses the WP AI Client to add intelligent behaviour. By the end, you'll have a plugin that lets an AI assistant interact with your WordPress site—discovering what's possible and taking actions on your behalf.    Prerequisites:     A laptop with a local WordPress development environment that you are familiar with (I’ll be using WordPress Studio)    Familiarity with WordPress plugin development, PHP, and JavaScript    Composer and Node.js are installed and working, the latest stable versions    An API key from one of the following AI model providers: Google, Anthropic, OpenAI (You can register one for free via Google AI Studio)    If you prefer not to register an API Key with one of these providers, you can also install Ollama and a local model of your choice. However, that model must support the ability to read image files.    One of the following MCP-compatible agentic AI applications: Claude Desktop, VS Code with GitHub Copilot, or Cursor    Claude Code is also acceptable if you use that.    You may use your own MCP-compatible AI agent, but I won’t be able to support you if things go wrong. The patience to troubleshoot if things don't work the first time (they rarely do, and that's part of learning)     Fair warning: once you see an AI assistant execute an ability you wrote yourself, you'll probably spend the rest of the weekend thinking of things to build. Don't say I didn't warn you.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/NrvnBsic?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/06/08/build-your-first-ai-powered-wordpress-plugin/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">140386</post-id>	</item>
+		<item>
+		<title>WordPress 🤝 AI: A Tour of the Core AI Projects</title>
+		<link>/2026/04/25/wordpress-%f0%9f%a4%9d-ai-a-tour-of-the-core-ai-projects/</link>
+					<comments>/2026/04/25/wordpress-%f0%9f%a4%9d-ai-a-tour-of-the-core-ai-projects/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Sat, 25 Apr 2026 08:04:50 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Vienna]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<category><![CDATA[AI]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=139411&#038;preview=true&#038;preview_id=139411</guid>
+
+					<description><![CDATA[I’ve been experimenting with AI-assisted development since 2021, so when the WordPress Core AI team launched in mid-2025, I was genuinely excited. Finally, the platform I’ve spent years working with was taking AI seriously—not as a gimmick, but as foundational infrastructure. I’ve been following the development closely ever since, and what’s emerging is remarkable. In this talk, I’ll take you on a practical tour of the six WordPress AI projects that are quietly laying the foundation for how we’ll build and interact with WordPress sites in the years to come. Whether you’re a site owner curious about where WordPress is heading, a content creator wondering how AI might help your workflow, or a developer eager to build the next generation of WordPress plugins, this talk has something for you. No AI experience required.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/BdgXVsAa?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/04/25/wordpress-%f0%9f%a4%9d-ai-a-tour-of-the-core-ai-projects/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">139411</post-id>	</item>
+		<item>
+		<title>Developer Hours: WordPress 6.9 Block Bindings &#038; Interactivity API</title>
+		<link>/2025/12/02/developer-hours-wordpress-6-9-block-bindings-interactivity-api/</link>
+					<comments>/2025/12/02/developer-hours-wordpress-6-9-block-bindings-interactivity-api/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 02 Dec 2025 12:15:24 +0000</pubDate>
+				<category><![CDATA[Learn WordPress Online Workshops]]></category>
+		<category><![CDATA[Block Bindings]]></category>
+		<category><![CDATA[Developer Hours]]></category>
+		<category><![CDATA[Interactivity API]]></category>
+		<category><![CDATA[WordPress 6.9]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=136806&#038;preview=true&#038;preview_id=136806</guid>
+
+					<description><![CDATA[WordPress 6.9 is just around the corner, so now is a great time to start digging into the new developer focused updates coming in the next release.
+
+In the first of two scheduled sessions we will cover
+
+Block Bindings
+Interactivity API &#38; Interactivity Router
+
+Join us as we dive into these new updates with live demos and code examples. We’ll wrap up with a Q&#38;A session, so feel free to bring your questions and ideas.<p><a href="https://docs.google.com/presentation/d/1G1Ro3EHBxwKiIi0jP03CiSFHEWvmsOJ1DSeDiAKr75c/edit?usp=sharing">Presentation Slides &#187;</a></p>]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/9hS5vM43?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2025/12/02/developer-hours-wordpress-6-9-block-bindings-interactivity-api/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">136806</post-id>	</item>
+		<item>
+		<title>Developer Hours: WordPress 6.9 DataViews/DataForm &#038; Abilities API</title>
+		<link>/2025/11/18/developer-hours-wordpress-6-9-dataviews-dataform-abilities-api/</link>
+					<comments>/2025/11/18/developer-hours-wordpress-6-9-dataviews-dataform-abilities-api/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 18 Nov 2025 07:12:04 +0000</pubDate>
+				<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=136374&#038;preview=true&#038;preview_id=136374</guid>
+
+					<description><![CDATA[WordPress 6.9 is just around the corner, so now is a great time to start digging into the new developer focused updates coming in the next release.
+
+In the first of two scheduled sessions we will cover
+
+Updates to DataViews and DataForm
+Introducing the Abilities API
+
+Join us as we dive into these new updates with live demos and code examples. We’ll wrap up with a Q&#38;A session, so feel free to bring your questions and ideas.<p><a href="https://docs.google.com/presentation/d/1S5-EiQNbMOWwiAHDQ8kxaD8y1qqsM4heuctYCkSugnc/edit?usp=sharing">Presentation Slides &#187;</a></p>]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/AUVEow6I?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2025/11/18/developer-hours-wordpress-6-9-dataviews-dataform-abilities-api/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">136374</post-id>	</item>
+		<item>
+		<title>So, you want to create lessons for Learn WordPress?</title>
+		<link>/2025/09/19/so-you-want-to-create-lessons-for-learn-wordpress/</link>
+					<comments>/2025/09/19/so-you-want-to-create-lessons-for-learn-wordpress/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Fri, 19 Sep 2025 07:24:26 +0000</pubDate>
+				<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=135163&#038;preview=true&#038;preview_id=135163</guid>
+
+					<description><![CDATA[Are you wanting to help create Learn.WordPress.org lesson content, but don't know where to get started? Then this workshop is for you. I'll take you through the process of finding a lesson issue to work on, researching the topic, script writing, creating the lesson video, and publishing it to Learn.WordPress.org.<p><a href="https://docs.google.com/presentation/d/1BbqOYfqwwEvUV8YKBXIL_vN3svnuVBfVA42M3AhSYjs/edit?usp=sharing">Presentation Slides &#187;</a></p>]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/Yea3xuG9?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2025/09/19/so-you-want-to-create-lessons-for-learn-wordpress/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">135163</post-id>	</item>
+		<item>
+		<title>Turn Your Local WordPress Install Into Your AI Coding Assistant</title>
+		<link>/2025/09/05/turn-your-local-wordpress-install-into-your-ai-coding-assistant/</link>
+					<comments>/2025/09/05/turn-your-local-wordpress-install-into-your-ai-coding-assistant/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Fri, 05 Sep 2025 18:05:01 +0000</pubDate>
+				<category><![CDATA[2025]]></category>
+		<category><![CDATA[Portland]]></category>
+		<category><![CDATA[US]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=135043&#038;preview=true&#038;preview_id=135043</guid>
+
+					<description><![CDATA[Unlock the next frontier of WordPress development by transforming your local WordPress install into your AI coding assistant!     In this hands-on workshop, you’ll learn how to connect the dots between WordPress, the Model Context Protocol (MCP), the experimental WordPress Abilities API, and your code editing environment. I’ll guide you through the installation and set up of the different working parts, show you what’s possible with the default tools, and then we’ll build some advanced custom Abilities.    To participate in this workshop, you will need the following:      A working computer with Composer and Node.js installed    A local WordPress installation    An AI-powered code editor with MCP support     I’ll be using WordPress Studio and VS Code with GitHub CoPilot on the free tier. You are welcome to use any AI code editor/agentic tool you prefer, as long as it supports MCP.    By the end of this workshop, you’ll have a fully operational, AI-augmented local WordPress development environment. You’ll understand how to expose site features to AI to automate all your development tasks, all inside your coding environment. Get ready to build faster, smarter, and with the full power of AI at your fingertips!]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/47pRcTLQ?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2025/09/05/turn-your-local-wordpress-install-into-your-ai-coding-assistant/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">135043</post-id>	</item>
+		<item>
+		<title>Developing with hooks</title>
+		<link>/2024/12/23/developing-with-hooks/</link>
+					<comments>/2024/12/23/developing-with-hooks/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Mon, 23 Dec 2024 14:09:23 +0000</pubDate>
+				<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=131759&#038;preview=true&#038;preview_id=131759</guid>
+
+					<description><![CDATA[As you dive deeper into developing with WordPress hooks there are some details about how hooks work that are valuable to understand.
+
+In this lesson, you'll learn some good practices to follow when developing with hooks.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/dQCy0as6?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/12/23/developing-with-hooks/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">131759</post-id>	</item>
+		<item>
+		<title>Determining the correct hook</title>
+		<link>/2024/12/23/determining-the-correct-hook/</link>
+					<comments>/2024/12/23/determining-the-correct-hook/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Mon, 23 Dec 2024 14:08:52 +0000</pubDate>
+				<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=131756&#038;preview=true&#038;preview_id=131756</guid>
+
+					<description><![CDATA[As you might guess, there is a hook for everything, so one problem you may often encounter is which is the correct hook to use for a given set of functionality.
+
+In this lesson, you will learn how to find the right hook for your needs as well as some of the more important hooks to be aware of.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/Aql28dV0?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/12/23/determining-the-correct-hook/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">131756</post-id>	</item>
+		<item>
+		<title>Removing Hooks</title>
+		<link>/2024/12/23/removing-hooks/</link>
+					<comments>/2024/12/23/removing-hooks/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Mon, 23 Dec 2024 14:08:25 +0000</pubDate>
+				<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=131753&#038;preview=true&#038;preview_id=131753</guid>
+
+					<description><![CDATA[While the WordPress hooks system makes WordPress very extendable, it can sometimes create conflicts with your plugin’s functionality.
+
+In this lesson you will learn how to remove hooked callback functions to prevent them from executing.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/0dFBMYzd?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/12/23/removing-hooks/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">131753</post-id>	</item>
+		<item>
+		<title>Custom hooks</title>
+		<link>/2024/12/23/custom-hooks/</link>
+					<comments>/2024/12/23/custom-hooks/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Mon, 23 Dec 2024 14:07:43 +0000</pubDate>
+				<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=131747&#038;preview=true&#038;preview_id=131747</guid>
+
+					<description><![CDATA[As a plugin developer, you’ll probably try to cover all possible use cases when building your plugin’s functionality.
+
+In this lesson, you will learn about custom hooks, the perfect way to enable your users to customize your plugin to their needs.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/BuKR8jdN?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2024/12/23/custom-hooks/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">131747</post-id>	</item>
+	</channel>
+</rss>

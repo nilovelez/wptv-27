@@ -40,7 +40,7 @@ The test is theme-agnostic. It never parses theme markup to count posts. Instead
 
 `run.sh` sends `X-WPTV-Route-Test: 1` on every request. Without that header the helper does nothing, including in Studio and ordinary WP-CLI commands. Test requests also install `wptv_pre_video_image_url => false`, preventing the standalone plugin from fetching real images and changing deterministic snapshots.
 
-The route helper checks both `wp_get_environment_type() === 'local'` and an already loaded Studio admin API file under the current machine's temporary `studio-mu-plugins-*` directory. A copied loader or a `local` setting alone is insufficient. It returns before changing logging, defining VideoPress test doubles or registering hooks outside Studio.
+The route helper checks both `wp_get_environment_type() === 'local'` and an already loaded Studio admin API file under either the current machine's temporary `studio-mu-plugins-*` directory or the current user's `.studio/mu-plugins/` runtime directory (resolved from `USERPROFILE` or `HOME`). A copied loader or a `local` setting alone is insufficient. It returns before changing logging, defining VideoPress test doubles or registering hooks outside Studio.
 
 The site's Studio-managed `99-studio-loader.php` also has a local guard before its database/environment constants: its configured runtime directory must belong to this machine's temporary directory and contain the Studio admin API file. This local file is not part of the theme repository. **Studio regenerated this loader during development/CLI operations and removed its guard; the guard was reapplied. Recheck it immediately before syncing MU-plugins, not just after restarts/updates. Editing this managed file is not a durable fix.** The route helper's own guard does not depend on that modification and survives loader regeneration.
 
@@ -92,7 +92,7 @@ A full run is slow (several minutes) and needs a theme switch, so do not run it 
 
 ## Known limitations
 
-- WordPress.com-only VideoPress helpers are stubbed. `video_get_info_by_guid()` returns fake but deterministic details derived from the GUID, so endpoint, JSON-LD and Open Graph code paths run. File URLs, thumbnails and subtitles return no data, so download and subtitle output is not covered. Check real video data on the WordPress.com test site.
+- WordPress.com-only VideoPress helpers are stubbed. `video_get_info_by_guid()` returns fake but deterministic details derived from the GUID, so endpoint, JSON-LD and Open Graph code paths run. File URLs, thumbnails and subtitles return no data, so download and subtitle output is not covered. Final platform-dependent checks require the production multisite. Uploads have already failed on the Atomic test site; local doubles and Atomic checks do not establish the Release 1 production baseline.
 - `wptv_post_views` is not updated locally, so "popular" queries reflect imported values only.
 - `/subtitle/` does not exist in the local data.
 - The local site is slow (several seconds per request). A full run takes a few minutes.

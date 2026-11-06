@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>WordPress.TV</title>
+	<atom:link href="/?feed=rss2" rel="self" type="application/rss+xml" />
+	<link></link>
+	<description>WordPress-related videos, curated and moderated by the WordPress community</description>
+	<lastBuildDate>Fri, 06 Nov 2026 00:31:40 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=7.1.3</generator>
+	<item>
+		<title>Automatisation des mises à jour WordPress, enjeux et exemple avec Updatronix</title>
+		<link>/2026/10/21/automatisation-des-mises-a-jour-wordpress-enjeux-et-exemple-avec-updatronix/</link>
+					<comments>/2026/10/21/automatisation-des-mises-a-jour-wordpress-enjeux-et-exemple-avec-updatronix/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Thu, 22 Oct 2026 06:42:13 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Livestream]]></category>
+		<category><![CDATA[WordPress Related Events]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=142018&#038;preview=true&#038;preview_id=142018</guid>
+
+					<description><![CDATA[Les mises à jour font partie du quotidien de tous les utilisateurs de WordPress. Mais comment fonctionnent-elles réellement ? Faut-il continuer à les effectuer manuellement à intervalles réguliers ou peut-on automatiser davantage leur gestion ?
+Dans cette présentation, Quentin Le Duff, développeur WordPress et fondateur de Hold My WP, revient sur son parcours et sur la création de ses extensions.
+Il explique ensuite le fonctionnement des mises à jour WordPress, les avantages de leur automatisation et les différentes approches possibles, que l’on gère un site personnel ou un parc de sites clients.
+Quentin présente également Updatronix, l’extension qu’il a développée pour faciliter et automatiser les mises à jour WordPress.
+Une présentation pour mieux comprendre les mécanismes de mise à jour et découvrir comment simplifier la maintenance de ses sites WordPress.
+Cette session a été enregistrée le 15 octobre 2026 dans le cadre des permanences #ActeursWPFR organisées par l’association WordPress Francophone.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/SL1VrVwt?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/10/21/automatisation-des-mises-a-jour-wordpress-enjeux-et-exemple-avec-updatronix/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">142018</post-id>	</item>
+		<item>
+		<title>Reconversion et pédagogie : ce que 13 ans d’infirmerie m’ont appris pour créer des sites WordPress</title>
+		<link>/2026/10/21/reconversion-et-pedagogie-ce-que-13-ans-dinfirmerie-mont-appris-pour-creer-des-sites-wordpress/</link>
+					<comments>/2026/10/21/reconversion-et-pedagogie-ce-que-13-ans-dinfirmerie-mont-appris-pour-creer-des-sites-wordpress/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Thu, 22 Oct 2026 06:40:17 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Rennes]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=142015&#038;preview=true&#038;preview_id=142015</guid>
+
+					<description><![CDATA[Expliquer un audit SEO, une mise à jour de plugin ou un problème d’hébergement à un client qui n’a jamais entendu ces mots, sans le perdre ni le faire culpabiliser de poser des questions : c’est un exercice quotidien pour beaucoup de freelances WordPress, mais on en parle rarement comme d’une vraie compétence.
+
+Dans cette présentation, je partage la méthode que j’utilise concrètement avec mes clients (artisans, indépendants, petites entreprises) pour rendre le numérique accessible sans jargon : comment reformuler un concept technique, comment repérer quand un client n’a pas compris sans qu’il l’exprime, comment transformer une explication en moment de confiance plutôt qu’en démonstration d’expertise.
+
+Je partagerai les techniques que j’utilise au quotidien pour vulgariser sans perdre mes clients, ainsi que quelques réflexions sur la pédagogie comme compétence professionnelle, utile à tout professionnel en contact direct avec ses clients. Ce temps de pédagogie n’est pas une perte de temps, c’est ce que j’observe régulièrement dans mes accompagnements, il construit la confiance. Et une fois cette confiance installée, les échanges deviennent souvent plus courts, plus fluides, plus ciblés et plus efficaces, pour le client comme pour le prestataire.
+
+Cette intervention s’adresse aux professionnels du web en relation directe avec leurs clients, ainsi qu’à toute personne curieuse de voir comment d’autres parcours (13 ans d’infirmerie) peuvent nourrir une posture professionnelle dans le web.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/78Et2QcW?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/10/21/reconversion-et-pedagogie-ce-que-13-ans-dinfirmerie-mont-appris-pour-creer-des-sites-wordpress/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">142015</post-id>	</item>
+		<item>
+		<title>GEO sur WordPress : ce qui marche, ce qui rassure, ce qui fait juste du bruit</title>
+		<link>/2026/10/21/geo-sur-wordpress-ce-qui-marche-ce-qui-rassure-ce-qui-fait-juste-du-bruit/</link>
+					<comments>/2026/10/21/geo-sur-wordpress-ce-qui-marche-ce-qui-rassure-ce-qui-fait-juste-du-bruit/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Thu, 22 Oct 2026 06:37:01 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Rennes]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=142012&#038;preview=true&#038;preview_id=142012</guid>
+
+					<description><![CDATA[On parle beaucoup de GEO, de visibilité dans ChatGPT, Perplexity ou Gemini, et d’optimisations “spéciales IA” à ajouter sur les sites WordPress.
+
+Mais dans les faits, il devient difficile de faire le tri entre ce qui aide vraiment, ce qui mérite d’être testé, et ce qui relève surtout de la hype.
+
+Dans cette conférence, je propose de revenir à une approche pragmatique : oui, les usages changent avec les moteurs IA, mais non, tout ne se résume pas à installer un plugin, générer un fichier `llms.txt` ou ajouter quelques données structurées.
+
+On verra pourquoi une grande partie du travail repose encore sur des fondamentaux SEO très concrets : un site accessible, des pages bien structurées, des contenus utiles, une information facile à extraire et des signaux de confiance en dehors du site.
+
+L’objectif est simple : donner une grille de lecture claire pour savoir quoi prioriser sur un site WordPress, quoi tester sans le survendre, et quoi éviter de présenter comme une solution miracle.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/UgMTk8Fj?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/10/21/geo-sur-wordpress-ce-qui-marche-ce-qui-rassure-ce-qui-fait-juste-du-bruit/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">142012</post-id>	</item>
+		<item>
+		<title>Von der Idee zur Landingpage: Wie weit komme ich heute mit KI und WordPress?</title>
+		<link>/2026/10/20/von-der-idee-zur-landingpage-wie-weit-komme-ich-heute-mit-ki-und-wordpress/</link>
+					<comments>/2026/10/20/von-der-idee-zur-landingpage-wie-weit-komme-ich-heute-mit-ki-und-wordpress/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 20 Oct 2026 20:25:14 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[WordPress Meetup]]></category>
+		<category><![CDATA[Zürich]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=141820&#038;preview=true&#038;preview_id=141820</guid>
+
+					<description><![CDATA[WordPress ist für Monika ein bisschen wie Buchhaltung: Muss sein, macht ihr aber keine besondere Freude, und sie hat wenig Ambitionen, es richtig zu lernen. Trotzdem betreibt sie seit 2025 zwei eigene WordPress-Websites und hat von Anfang an alles selbst gemacht.
+
+Inzwischen ist es für sie oft schneller, der KI zu beschreiben, was sie auf ihrer Website braucht, als herauszufinden, wie sie es mit den vorhandenen WordPress-Modulen umsetzen kann. In ihrem Vortrag zeigt sie anhand echter Beispiele, wie sie mit ChatGPT, Claude &#38; Co. einzelne Elemente und ganze Landingpages erstellt und anschliessend in WordPress integriert.
+
+Was funktioniert heute schon erstaunlich gut? Wo wird es schwierig? Und bei welchen Lösungen schlagen WordPress-Profis vermutlich die Hände über dem Kopf zusammen? 😉
+
+Monika Liechti ist selbständige Marketingberaterin, KI-Trainerin und Business-Fotografin aus Zürich. Ihr Praxisbericht zeigt bewusst die Perspektive einer Anwenderin und lädt zur Diskussion ein: Was bedeutet es für WordPress-Profis, wenn ihre Kund*innen dank KI plötzlich Dinge selbst umsetzen, für die ihnen eigentlich das Fachwissen fehlt?]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/TtzkyMGI?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/10/20/von-der-idee-zur-landingpage-wie-weit-komme-ich-heute-mit-ki-und-wordpress/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">141820</post-id>	</item>
+		<item>
+		<title>The AI Shift: Change, Challenges, and Opportunities for Tech Businesses</title>
+		<link>/2026/10/20/the-ai-shift-change-challenges-and-opportunities-for-tech-businesses/</link>
+					<comments>/2026/10/20/the-ai-shift-change-challenges-and-opportunities-for-tech-businesses/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 20 Oct 2026 20:17:19 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Kathmandu]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=141575&#038;preview=true&#038;preview_id=141575</guid>
+
+					<description><![CDATA[AI is no longer a distant trend. It’s actively changing how tech businesses operate, compete, and grow, forcing companies of every size to rethink their strategies, teams, and long term vision.
+
+This panel brings together leaders from software development, business solutions, and strategic advisory backgrounds to talk about what this shift really looks like on the ground. Our panelists will share real experiences navigating AI adoption within their organizations, the opportunities it has opened up, the challenges it has brought along, and the lessons learned along the way.
+
+Moderated by someone deeply rooted in the local tech and startup ecosystem, this session promises grounded insights rather than hype, a conversation for founders, developers, and business leaders trying to figure out where AI fits into their next move.
+
+Whether you’re already deep into AI adoption or just getting started, this panel will help you walk away with a clearer picture of what’s ahead.]]></description>
+										<content:encoded><![CDATA[<figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/LrkwFrjg?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/10/20/the-ai-shift-change-challenges-and-opportunities-for-tech-businesses/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">141575</post-id>	</item>
+		<item>
+		<title>How a 16-Year-Old Built a Free Classroom for Millions – With WordPress</title>
+		<link>/2026/10/20/how-a-16-year-old-built-a-free-classroom-for-millions-with-wordpress/</link>
+					<comments>/2026/10/20/how-a-16-year-old-built-a-free-classroom-for-millions-with-wordpress/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 20 Oct 2026 20:15:51 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Kathmandu]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=141567&#038;preview=true&#038;preview_id=141567</guid>
+
+					<description><![CDATA[During COVID-19, millions of rural Nepali students lost access to their classrooms, but their need for education remained. The SR Zone started as a simple idea: to give students free access to quality learning resources during a crisis.
+
+Today, the platform receives over 1 million visitors each month, features more than 300 STEM articles, and has reached over 2.5 million students through its website, offline Android apps, and YouTube channel.
+
+This session explores how WordPress, SEO, and ASO helped grow the platform, how YouTube and Android apps supported free education without paywalls, and how offline-first approaches such as caching, PWAs, and lightweight WordPress themes helped serve students with limited internet access. It also highlights how open-source tools and student contributors helped transform a small bedroom project into a platform reaching students across Nepal.
+
+Developers, creators, entrepreneurs, and NGO workers will gain practical insights into growing digital platforms, improving performance, and making knowledge more accessible.
+
+This experience demonstrates how WordPress can be more than a website-building tool—it can help remove barriers to education and create meaningful impact with a small team.<p><a href="https://docs.google.com/presentation/d/1rlMoqw-aPBKn8xSt_w_uJsJJctWu2EV2/edit?usp=sharing&#038;ouid=107250608796315872462&#038;rtpof=true&#038;sd=true">Presentation Slides &#187;</a></p>]]></description>
+										<content:encoded><![CDATA[
+		<figure class="wp-block-jetpack-videopress jetpack-videopress-player" style="" >
+			<div class="jetpack-videopress-player__wrapper"> <iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" width="500" height="281" src="https://video.wordpress.com/embed/8MoPO8Eo?cover=1&amp;autoPlay=0&amp;controls=1&amp;loop=0&amp;muted=0&amp;persistVolume=1&amp;playsinline=0&amp;preloadContent=metadata&amp;useAverageColor=1&amp;hd=0" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe><script src='https://v0.wordpress.com/js/next/videopress-iframe.js?m=1790791280'></script></div>
+			
+			
+		</figure>
+		]]></content:encoded>
+					
+					<wfw:commentRss>/2026/10/20/how-a-16-year-old-built-a-free-classroom-for-millions-with-wordpress/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">141567</post-id>	</item>
+		<item>
+		<title>AI as a Bicycle for the Mind: The 1968 Idea Behind Human-Centered AI</title>
+		<link>/2026/10/20/ai-as-a-bicycle-for-the-mind-the-1968-idea-behind-human-centered-ai/</link>
+					<comments>/2026/10/20/ai-as-a-bicycle-for-the-mind-the-1968-idea-behind-human-centered-ai/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 20 Oct 2026 20:15:02 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Kathmandu]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=141559&#038;preview=true&#038;preview_id=141559</guid>
+
+					<description><![CDATA[The session is built on one clear idea: AI works best when it helps people, not when it replaces them. That is a story, not a how-to. It needs enough time to set up the history from 1968, connect it to where AI is now, and share a few moments where humans came out ahead by working with new technology instead of against it. Twenty minutes covers that story well, with no padding.
+
+The topic is also made for a mixed room of product managers, designers, and developers. A short, focused talk keeps it at the level they all share. A longer workshop would pull it toward one role and lose the rest.
+
+The Q&#38;A is what ties it together. Each group will want to apply the idea to their own work. That is where a PM, a designer, and a developer can each take it into their own setting. The 20 minute talk plus question time leaves room for that.<p><a href="https://prezi.com/view/ppnOjeHrJxj5wFuk5cJK/">Presentation Slides &#187;</a></p>]]></description>
+										<content:encoded><![CDATA[<p><figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/AzgbAKad?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/10/20/ai-as-a-bicycle-for-the-mind-the-1968-idea-behind-human-centered-ai/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">141559</post-id>	</item>
+		<item>
+		<title>Payments are Fragmented, Nepali E-commerce shouldn’t</title>
+		<link>/2026/10/20/payments-are-fragmented-nepali-e-commerce-shouldnt/</link>
+					<comments>/2026/10/20/payments-are-fragmented-nepali-e-commerce-shouldnt/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 20 Oct 2026 20:13:12 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Kathmandu]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=141553&#038;preview=true&#038;preview_id=141553</guid>
+
+					<description><![CDATA[With this talk Mr. Bhattarai uncovers the market challenges for WooCommerce driven businesses, how the market is evolving, what new methods payment gateway vendors are introducing, and more. Additionally, he also emphasises what and how the WordPress dev should adapt toward or expect from the market vendors.<p><a href="https://docs.google.com/presentation/d/102ILk7btDEIZyYR4qa4urwcefU_WUgZ7/edit?usp=sharing&#038;ouid=107250608796315872462&#038;rtpof=true&#038;sd=true">Presentation Slides &#187;</a></p>]]></description>
+										<content:encoded><![CDATA[<p><figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/3vTZcFOd?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/10/20/payments-are-fragmented-nepali-e-commerce-shouldnt/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">141553</post-id>	</item>
+		<item>
+		<title>Trust, but Verify: Securing AI-Assisted Software Development</title>
+		<link>/2026/10/20/trust-but-verify-securing-ai-assisted-software-development/</link>
+					<comments>/2026/10/20/trust-but-verify-securing-ai-assisted-software-development/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 20 Oct 2026 20:11:51 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Kathmandu]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=141548&#038;preview=true&#038;preview_id=141548</guid>
+
+					<description><![CDATA[AI can generate code in seconds, but secure software requires far more than a good prompt.
+
+This session focuses on what comes after code generation: validating AI outputs, securing prompts and development workflows, identifying common security pitfalls in AI-generated code, and building confidence through code reviews, automated testing, and modern security practices.
+
+Rather than treating AI as an infallible developer, we’ll explore how to use it as a powerful engineering assistant while keeping humans in control of architecture, security, and quality. Through practical examples and real-world workflows, you’ll learn how to build software that is not only faster to develop, but also secure, maintainable, and ready for production.
+
+Whether you’re building WordPress plugins, themes, or web applications, you’ll leave with practical techniques to integrate AI into your development process without compromising security or reliability.<p><a href="https://wordcamp26.dineshdb.workers.dev/">Presentation Slides &#187;</a></p>]]></description>
+										<content:encoded><![CDATA[<p><figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/pu8d8fKH?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/10/20/trust-but-verify-securing-ai-assisted-software-development/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">141548</post-id>	</item>
+		<item>
+		<title>My AI-Powered Development Workflow</title>
+		<link>/2026/10/20/my-ai-powered-development-workflow/</link>
+					<comments>/2026/10/20/my-ai-powered-development-workflow/#respond</comments>
+		
+		<dc:creator><![CDATA[anonvideoupload]]></dc:creator>
+		<pubDate>Tue, 20 Oct 2026 19:13:49 +0000</pubDate>
+				<category><![CDATA[2026]]></category>
+		<category><![CDATA[Kathmandu]]></category>
+		<category><![CDATA[WordCampTV]]></category>
+		<guid isPermaLink="false">https://wordpress.tv/?p=141542&#038;preview=true&#038;preview_id=141542</guid>
+
+					<description><![CDATA[AI tools like Claude and Cursor are becoming increasingly useful in day-to-day WordPress development. From scaffolding themes and plugins to debugging, documentation, code reviews, and workflow automation, AI offers practical ways to streamline development workflows.
+
+This session explores how developers can use AI as a collaborative engineering tool to improve productivity while maintaining code quality, security, and WordPress best practices. Rather than debating whether AI will replace developers, the focus is on practical implementation, balancing speed with maintainability, and understanding the challenges and limitations of AI-assisted development.
+
+Attendees will gain practical insights into adopting AI in professional WordPress projects and learn how to adapt these workflows to their own freelance, agency, or in-house environments.<p><a href="https://docs.google.com/presentation/d/1WPLQFaMqg8fbKwsGCicO2my3IRoemVwd/edit?usp=sharing&#038;ouid=107250608796315872462&#038;rtpof=true&#038;sd=true">Presentation Slides &#187;</a></p>]]></description>
+										<content:encoded><![CDATA[<p><figure class="wp-block-videopress-video wp-block-jetpack-videopress jetpack-videopress-player"><div class="jetpack-videopress-player__wrapper"><iframe loading="lazy" title="VideoPress Video Player" aria-label="VideoPress Video Player" src="https://videopress.com/embed/iCFQOIty?at=0&#038;controls=1&#038;preloadContent=metadata" width="640" height="360" frameborder="0" allowfullscreen data-resize-to-parent="true" allow="clipboard-write; presentation"></iframe></div></figure></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/2026/10/20/my-ai-powered-development-workflow/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">141542</post-id>	</item>
+	</channel>
+</rss>
