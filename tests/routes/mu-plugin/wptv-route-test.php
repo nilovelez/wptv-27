@@ -15,19 +15,26 @@ if ( ( defined( 'IS_WPCOM' ) && IS_WPCOM ) || 'local' !== wp_get_environment_typ
 
 // Require an actually loaded Studio runtime, not a synced loader or localhost URL.
 // Inspect loaded files so this still works when Studio regenerates its loader.
-$wptv_studio_runtime_loaded = false;
-$wptv_studio_runtime_prefix = trailingslashit( wp_normalize_path( sys_get_temp_dir() ) ) . 'studio-mu-plugins-';
+$wptv_studio_runtime_loaded   = false;
+$wptv_studio_runtime_prefixes = array( trailingslashit( wp_normalize_path( sys_get_temp_dir() ) ) . 'studio-mu-plugins-' );
+// Newer Studio versions keep the runtime in the current machine user's home.
+$wptv_studio_home = getenv( 'USERPROFILE' ) ?: getenv( 'HOME' );
+if ( $wptv_studio_home ) {
+	$wptv_studio_runtime_prefixes[] = trailingslashit( wp_normalize_path( $wptv_studio_home ) ) . '.studio/mu-plugins/';
+}
 foreach ( get_included_files() as $wptv_loaded_file ) {
 	$wptv_loaded_file = wp_normalize_path( $wptv_loaded_file );
-	if (
-		str_starts_with( $wptv_loaded_file, $wptv_studio_runtime_prefix ) &&
-		'0-studio-admin-api.php' === basename( $wptv_loaded_file )
-	) {
-		$wptv_studio_runtime_loaded = true;
-		break;
+	if ( '0-studio-admin-api.php' !== basename( $wptv_loaded_file ) ) {
+		continue;
+	}
+	foreach ( $wptv_studio_runtime_prefixes as $wptv_studio_runtime_prefix ) {
+		if ( str_starts_with( $wptv_loaded_file, $wptv_studio_runtime_prefix ) ) {
+			$wptv_studio_runtime_loaded = true;
+			break 2;
+		}
 	}
 }
-unset( $wptv_studio_runtime_prefix, $wptv_loaded_file );
+unset( $wptv_studio_runtime_prefixes, $wptv_studio_runtime_prefix, $wptv_studio_home, $wptv_loaded_file );
 if ( ! $wptv_studio_runtime_loaded ) {
 	return;
 }
