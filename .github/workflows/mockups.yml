@@ -1,10 +1,9 @@
 # Publishes the static design mockups in docs/mockups to GitHub Pages.
 #
-# Only the mockups and the theme assets they load (fonts and the CC BY-SA
-# badge) are published; the rest of docs/ stays in the repository. The site
-# keeps the repository layout (docs/mockups/ next to assets/) so the mockups'
-# relative ../../assets paths work unchanged. The site root redirects to the
-# mockups index.
+# Only the mockups and their own assets (copies of the theme's fonts and the
+# CC BY-SA badge in docs/mockups/assets) are published; the rest of docs/
+# stays in the repository. The site keeps the docs/mockups/ path so existing
+# links work. The site root redirects to the mockups index.
 name: Mockups
 
 on:
@@ -12,8 +11,6 @@ on:
     branches: [trunk]
     paths:
       - 'docs/mockups/**'
-      - 'assets/fonts/**'
-      - 'assets/images/cc-by-sa.png'
       - '.github/workflows/mockups.yml'
   workflow_dispatch:
 
@@ -37,10 +34,8 @@ jobs:
 
       - name: Assemble the site
         run: |
-          mkdir -p _site/docs _site/assets/images
+          mkdir -p _site/docs
           cp -r docs/mockups _site/docs/mockups
-          cp -r assets/fonts _site/assets/fonts
-          cp assets/images/cc-by-sa.png _site/assets/images/
           cat > _site/index.html <<'HTML'
           <!doctype html>
           <html lang="en">

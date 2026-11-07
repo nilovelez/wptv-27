@@ -76,6 +76,8 @@ This is a standing instruction, not a preference limited to the conversation in 
 - The full route regression test is slow and costly. Run it only at milestones and after routing-code changes, never after every minor change. See "When to run" in [`tests/routes/README.md`](tests/routes/README.md).
 - Production deploys go through a WordPress.com employee. There is no direct access to production code. See [`docs/wpcom-constraints.md`](docs/wpcom-constraints.md).
 
-## Repository
+## Repositories
 
-`docs/`, `tests/` and this file are excluded from theme zips through `export-ignore` in `.gitattributes`. See the README for how to build a clean zip with `git archive`.
+This repository (`nilovelez/wptv-27`, cloned at `/Volumes/Datos/repos/wptv-27` on the owner's Mac) holds the documentation, the migration tests (`tests/blocks/`, `tests/routes/`) and the review-site blueprint. It does not hold the theme. Code paths in the documentation (`inc/…`, `templates/…`, `assets/…`) are relative to the theme folder.
+
+The theme is developed on the `wptv-27-dev` branch of the `nilovelez/wordpress.org` fork of the Meta repository, in `wordpress.tv/public_html/wp-content/themes/wptv-27` (clone: `/Volumes/Datos/repos/wordpress.org-wptv`). The Studio site's `wp-content/themes/wptv-27` is a symlink to that folder; stop the site before changing the symlink. Commit theme work only to `wptv-27-dev`, never to `trunk`. Bring in Meta changes with `git fetch upstream` and `git merge upstream/trunk`, and run the Meta repository's linter (`composer run lint` at the clone's root) before proposing a pull request. The PHPUnit suite in the theme (`tests/*.php`, `phpunit.xml.dist`) belongs to the Meta repository.

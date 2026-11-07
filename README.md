@@ -1,73 +1,37 @@
-# WordPress.tv Theme (wptv-27)
+# WordPress.tv Theme (wptv-27): project documentation
 
-Block theme for [WordPress.tv](https://wordpress.tv/), the WordPress community site that publishes videos from WordCamps, meetups and other community events.
+Documentation, decisions and migration tooling for **wptv-27**, the block theme that replaces the classic `wptv2` theme on [WordPress.tv](https://wordpress.tv/).
 
-wptv-27 replaces the legacy classic theme (`wptv2`). It is built with Full Site Editing (block templates, template parts, patterns and `theme.json`), and relies on WordPress core features instead of hand-written code wherever possible.
+## Where the theme lives
 
-> **Status:** Release 1 in development, theme version 0.4.2. The block-theme layouts, automatic WordCampTV landing, locked video editor, anonymous submission form and per-field moderation are implemented. R1/R2/R4 security fixes and upload-format changes are integrated and passed focused Studio checks with imported data. The latest full 145-URL comparison predates those fixes: all recorded route/query fields match, but it is **not an exact-match pass** because four poster-related feed hashes remain unaccepted; four API hashes have existing allowances. A post-fix route run remains pending authorization.
->
-> **Release 1 establishes a conservative block-theme baseline in production**, preserving existing behavior except for explicitly approved changes. Uploads have already been tested and do not work on the Atomic test site, so that environment cannot validate the complete upload path. Final platform-dependent checks must take place in production, in an owner-approved window with rollback to `wptv2` and an agreed observation period. That baseline is not established yet; further functional development follows it. Subtitle player integration, upload and incoming-subtitle management are deferred to the next delivery. Git publication is not deployment. See the [regression report](https://github.com/nilovelez/wptv-27/blob/trunk/docs/regression-editor-checkpoint.md), [session handoff](https://github.com/nilovelez/wptv-27/blob/trunk/docs/handoff.md) and [project plan](https://github.com/nilovelez/wptv-27/blob/trunk/docs/plan.md).
+The theme's code is not in this repository. It lives in the WordPress.org Meta repository, next to `wptv2`:
 
-> **Source repository:** the theme is developed in [nilovelez/wptv-27](https://github.com/nilovelez/wptv-27). Copies elsewhere, such as the one in the WordPress.org Meta repository, are `git archive` exports without the development files listed below. The links and commands in this README refer to that source repository.
+| Where | Path |
+|---|---|
+| Meta SVN (canonical) | [`meta.svn.wordpress.org/sites/trunk/wordpress.tv/public_html/wp-content/themes/wptv-27`](https://meta.svn.wordpress.org/sites/trunk/wordpress.tv/public_html/wp-content/themes/wptv-27/) |
+| Official GitHub mirror | [`WordPress/wordpress.org`, `trunk`](https://github.com/WordPress/wordpress.org/tree/trunk/wordpress.tv/public_html/wp-content/themes/wptv-27) |
+| Development fork | [`nilovelez/wordpress.org`, branch `wptv-27-dev`](https://github.com/nilovelez/wordpress.org/tree/wptv-27-dev/wordpress.tv/public_html/wp-content/themes/wptv-27) |
 
-## Constraints
+Changes are made on the `wptv-27-dev` branch of the fork and proposed to the Meta repository as pull requests to `WordPress/wordpress.org`. A Meta committer commits them to SVN, which is mirrored back to GitHub. The theme was first committed in Meta changeset [15507](https://meta.trac.wordpress.org/changeset/15507).
 
-WordPress.tv runs on the WordPress.com multisite. That means:
+Until November 7, 2026, this repository held the theme's code too. Its history still has it.
 
-- No custom plugins can be installed. Only the plugins available on the multisite can be used, so every site-specific feature lives in this theme.
-- Videos are hosted on VideoPress.
-- Several VideoPress helpers only exist on WordPress.com. They are always called behind `function_exists()` checks, so the theme also runs in local environments.
+## Contents
 
-See [`docs/wpcom-constraints.md`](https://github.com/nilovelez/wptv-27/blob/trunk/docs/wpcom-constraints.md) for details.
+| Path | Purpose |
+|---|---|
+| `AGENTS.md` | Entry point for AI coding agents and developers: project rules and documentation index |
+| `docs/` | Handoff, plan, decisions, backlog, route inventory, legacy analysis, reviews, design and the production checklist |
+| `docs/mockups/` | Static HTML design mockups, published to GitHub Pages |
+| `tests/blocks/` | Block, API and integration checks for the migration, run with WP-CLI against a local site |
+| `tests/routes/` | Route regression test comparing `wptv2` and `wptv-27`, with its URL inventory and committed baselines |
+| `blueprint.json` | Empty Playground/Studio review site for standards, security and WP-CLI checks |
 
-## Repository layout
-
-| Path | Purpose | In theme zip |
-|---|---|---|
-| `AGENTS.md` | Entry point for AI coding agents: project rules and documentation index | No |
-| `docs/` | Project documentation: handoff, plan, route inventory, legacy analysis, decisions | No |
-| `tests/blocks/`, `tests/routes/` | Local-only block/API checks and route regression tooling | No |
-| `tests/*.php`, `phpunit.xml.dist` | PHPUnit suite run by the Meta repository's WordPress.tv environment and CI (`npm run wptv:test` from its `environments/` folder) | Yes |
-| `composer.json`, `phpcs.xml.dist` | WordPress Coding Standards (`composer lint`); dependencies install to the ignored `vendor/` | No |
-| `blueprint.json` | Empty Playground/Studio review site for standards, security and WP-CLI checks | No |
-| Everything else | The theme itself | Yes |
-
-## Working on the theme
-
-Clone the full repository into the `wp-content/themes/` directory of a local WordPress site (for example, a [WordPress Studio](https://developer.wordpress.com/studio/) site):
-
-```bash
-cd wp-content/themes
-git clone https://github.com/nilovelez/wptv-27.git wptv-27
-```
-
-Read [`AGENTS.md`](https://github.com/nilovelez/wptv-27/blob/trunk/AGENTS.md) and the [`docs/`](https://github.com/nilovelez/wptv-27/tree/trunk/docs) folder before making changes. The most important rule: **existing URLs must not change**. See [`docs/routes.md`](https://github.com/nilovelez/wptv-27/blob/trunk/docs/routes.md).
-
-## Building a clean theme zip
-
-Development-only files (`docs/`, `tests/blocks/`, `tests/routes/`, `AGENTS.md`, `.gitattributes`, `.gitignore`, `.github/`, `blueprint.json`, `composer.json`, `composer.lock`, `phpcs.xml.dist`) are marked `export-ignore` in [`.gitattributes`](https://github.com/nilovelez/wptv-27/blob/trunk/.gitattributes), so `git archive` leaves them out.
-
-From the root of the source repository (not from a repository that contains an exported copy):
-
-```bash
-git archive --format=zip --prefix=wptv-27/ --output=wptv-27.zip HEAD
-```
-
-- `--prefix=wptv-27/` puts the files inside a `wptv-27/` folder, which is what WordPress expects when you upload a theme zip.
-- Replace `HEAD` with a tag or branch name to export a specific version, for example `v1.0.0`.
-- `git archive` only exports **committed** files and reads `export-ignore` rules from the committed `.gitattributes`. Commit your changes before you build the zip.
-
-To check what the zip will contain without creating it:
-
-```bash
-git archive --format=tar HEAD | tar -t
-```
-
-You can also download a clean zip straight from GitHub (**Code → Download ZIP**, or the source archive of any release), because GitHub honors `export-ignore` too. The folder inside that zip is named after the repository and branch, so rename it to `wptv-27` before you upload it.
+The Meta repository has its own WordPress.tv environment for integration tests (wp-env, PHPUnit); see [docs/wporg-environment.md](docs/wporg-environment.md).
 
 ## Language
 
-All project content is written in **US English (en_US)**, following the WordPress standard: code, function names, comments, translatable strings, commit messages and documentation.
+All project content is written in **US English (en_US)**, following the WordPress standard.
 
 ## License
 
