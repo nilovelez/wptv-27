@@ -15,6 +15,13 @@ Template:
 
 ---
 
+## 2026-11-06: WordPress.org global footer
+
+- **Decision:** the theme's own footer is replaced by the WordPress.org global footer, proposed by the Meta team in [PR #1203](https://github.com/WordPress/wordpress.org/pull/1203) ([r15510](https://meta.trac.wordpress.org/changeset/15510)) and accepted by the owner. The markup comes from wordpress.org's footer endpoint, because WordPress.com doesn't run the block that renders it.
+- **Reason:** WordPress.tv shares the footer of the other WordPress.org sites, and the Meta team keeps it up to date.
+- **Affects:** `parts/footer.html`, `inc/global-footer.php`, `inc/setup.php`. Supersedes the 2026-10-20 three-column footer and the footer part of the 2026-10-22 menus decision: the `footer` menu location is gone, and `primary` still fills the header.
+- **Status:** accepted
+
 ## 2026-11-06: Security fixes from the Meta pull request review
 
 - **Decision (owner):** fix every confirmed finding of CodeRabbit's review and of a private security analysis before the theme reaches production, including two small behavior changes: `/api/videos.json` caps `posts_per_page` at 100 (negative values included), and `?flush_rules=1` needs a nonce, shown as a confirmation link.
